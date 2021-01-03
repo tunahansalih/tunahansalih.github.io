@@ -4,7 +4,8 @@ published: true
 ---
 ## Currently
 
-Current Position Description
+__Computer Vision and Machine Learning Engineer__, Vispera
+__MSc Student__, Boğaziçi University
 
 ## Education
 
