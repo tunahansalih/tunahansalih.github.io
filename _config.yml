@@ -62,6 +62,7 @@ sass:
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jemoji
 
 kramdown:
   auto_ids: true
