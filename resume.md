@@ -57,7 +57,7 @@ Privacy-Preserving Intersection Management for Autonomous Vehicles, Proceedings 
 
 ## Occupation
 
-`2019-Current`
+`2019 - Current`
 __Computer Vision and Machine Learning Engineer__, Vispera
 
 - Responsible for designing, training and deploying deep learning image recognition models for retail industry.
@@ -65,7 +65,7 @@ __Computer Vision and Machine Learning Engineer__, Vispera
 - Optimizing pipeline for data collection, preprocessing, training, postprocessing and deployment for deep learning models.
 - Part of the team designing and implementing training automation system for in-site image recognition and object detection models.
 
-`2018-2019`
+`2018 - 2019`
 __Research and Development Engineer__, İdea Technology Solutions
 
 - Optimized data pipelines for training deep learning models for object detection models.
