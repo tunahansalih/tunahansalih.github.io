@@ -44,28 +44,16 @@ Runner-up, Boğaziçi University Computer Engineering Senior Projects Competitio
 
 `2016`
 Finalist, TUBITAK Undergraduate Software Project Competition
-<!--
 ## Publications
 
-### Journals
+### Conference Papers
 
-`1994`
-Article Title, Journal Title
+`2018`
+Privacy-Preserving Intersection Management for Autonomous Vehicles, Proceedings of the Tenth International Workshop on Agents in Traffic and Transportation
 
-`1994`
-Article Title, Journal Title
+`2020`
+BURST: Software and Simulation Solutions of an Autonomous Vehicle, 2020 28th Signal Processing and Communications Applications Conference
 
-### Books
-
-`1994`
-Book Title, Journal Title
-
-`1994`
-Book Title, Journal Title
-
-
-## Presentations
--->
 
 
 ## Occupation
