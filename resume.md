@@ -1,5 +1,6 @@
 ---
 layout: resume
+published: true
 ---
 ## Currently
 
@@ -7,22 +8,44 @@ Current Position Description
 
 ## Education
 
-`1990 - 1994`
-__University Name__
-Degree Awarded
+`2012 - 2017`
+__Boğaziçi  University__
+BSc in Computer Enginnering
 
-`1995 - 1997`
-__University Name__
-Degree Awarded 
+`2018 - 2021`
+__Boğaziçi  University__
+MSc in Computer Enginnering
 
 ## Awards
 
-`2012`
-Name of Award, Organization 
+`2020`
+Runner-up, Anadolu Sigorta Datathon Challenge
 
+`2020`
+Finalist, Teknofest RoboTaksi Autonomous Vehicle Competition
+
+`2020`
+Winner, Teknofest RoboTaksi Autonomous Vehicle Competition Simulation Phase
+
+`2019`
+Finalist, Teknofest RoboTaksi Autonomous Vehicle Competition
+
+`2019`
+Winner, Teknofest RoboTaksi Autonomous Vehicle Competition Simulation Phase
+
+`2018`
+Winner, Mercedes-Benz Hack.Istanbul Hackathon
+
+`2017`
+Winner, BSH Analytics for Production Excellence Hackathon
+
+`2017`
+Runner-up, Boğaziçi University Computer Engineering Senior Projects Competition
+
+`2016`
+Finalist, TUBITAK Undergraduate Software Project Competition
+<!--
 ## Publications
-
-<!-- A list is also available [online](https://scholar.google.co.uk/citations?user=LTOTl0YAAAAJ) -->
 
 ### Journals
 
@@ -43,28 +66,28 @@ Book Title, Journal Title
 
 ## Presentations
 
-`1994`
-Presentation Title, Conference, <a href="https://MyWebsite.tld/presentation1">Link to Presentation</a>
+-->
 
 
 ## Occupation
 
-`Current`
-__Current Job Title__, Current Employer 
+`2019-Current`
+__Computer Vision and Machine Learning Engineer__, Vispera
 
-- Task
-- Task
+- Responsible for designing, training and deploying deep learning image recognition models for retail industry.
+- Adapting Few-shot and Zero-shot learning models to production.
+- Optimizing pipeline for data collection, preprocessing, training, postprocessing and deployment for deep learning models.
+- Part of the team designing and implementing training automation system for in-site image recognition and object detection models.
 
-`1994-1996`
-__Current Job Title__, Current Employer 
+`2018-2019`
+__Research and Development Engineer__, İdea Technology Solutions
 
-- Task
-- Task
+- Optimized data pipelines for training deep learning models for object detection models.
+- Developed a new k-centroid-based clustering algorithm to determine anchor boxes for object detection.
+- Successfully completed a deep learning object detection project funded by TÜBİTAK (The Scientific and Technological Research Council of Turkey)
 
 
 
 <!-- ### Footer
 
 Last updated: May 2013 -->
-
-
