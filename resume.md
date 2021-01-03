@@ -44,7 +44,7 @@ Runner-up, Boğaziçi University Computer Engineering Senior Projects Competitio
 
 `2016`
 Finalist, TUBITAK Undergraduate Software Project Competition
-{%
+<!--
 ## Publications
 
 ### Journals
@@ -65,7 +65,7 @@ Book Title, Journal Title
 
 
 ## Presentations
-%}
+-->
 
 
 ## Occupation
