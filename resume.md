@@ -2,7 +2,7 @@
 layout: resume
 published: true
 ---
-## Currently
+# Currently
 
 __Computer Vision and Machine Learning Engineer__, Vispera
 
