@@ -1,6 +1,7 @@
 ---
 layout: resume
 published: true
+title: Resumé
 ---
 
 
