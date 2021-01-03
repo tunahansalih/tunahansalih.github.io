@@ -10,13 +10,13 @@ __MSc Student__, Boğaziçi University
 
 ## Education
 
-`2012 - 2017`
-__Boğaziçi  University__
-BSc in Computer Enginnering
-
 `2018 - 2021`
 __Boğaziçi  University__
 MSc in Computer Enginnering
+
+`2012 - 2017`
+__Boğaziçi  University__
+BSc in Computer Enginnering
 
 ## Awards
 
@@ -46,17 +46,17 @@ Runner-up, Boğaziçi University Computer Engineering Senior Projects Competitio
 
 `2016`
 Finalist, TUBITAK Undergraduate Software Project Competition
+
+
 ## Publications
 
 ### Conference Papers
 
-`2018`
-Privacy-Preserving Intersection Management for Autonomous Vehicles, Proceedings of the Tenth International Workshop on Agents in Traffic and Transportation
-
 `2020`
 BURST: Software and Simulation Solutions of an Autonomous Vehicle, 2020 28th Signal Processing and Communications Applications Conference
 
-
+`2018`
+Privacy-Preserving Intersection Management for Autonomous Vehicles, Proceedings of the Tenth International Workshop on Agents in Traffic and Transportation
 
 ## Occupation
 
