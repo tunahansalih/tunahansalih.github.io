@@ -7,8 +7,8 @@ logo: # filename of a logo image that has been placed into your images directory
 # Enter the following platform usernames if you would like for them to appear on your site.
 owner:
   name: Tuna Han Salih Meral
-  avatar: bio-photo.jpg
-  bio: "A brief description of yourself."
+  avatar: bio-avatar.jpg
+  bio: "Computer Vision and Machine Learning Engineer"
   email: tunahansmeral at gmail
   # Do not include the @ symbol in your Twitter username
   twitter: tunahansalih
