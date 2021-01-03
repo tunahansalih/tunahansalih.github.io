@@ -1,14 +1,18 @@
 ---
 layout: page
-excerpt: "About Me..."
+excerpt: About Me...
+published: true
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+I am a Computer Vision and Machine Learning Engineer with 2+ years experience. Currently, I am working at Vispera, which is one of the top-notch AI startup focusing on computer vision solutions for retail industry. I am also a Computer Engineering MSc student at [Bogazici University](https://www.boun.edu.tr) [Computer Engineering Department](https://cmpe.boun.edu.tr/), currently working on Few-Shot Learning, Conditional Networks and Curriculum Learning, under the supervision of Prof. Lale Akarun. We also founded [BURST](https://www.instagram.com/burstbogazici) as Bogazici University students in order to build electric autonomous prototype vehicles and compete in national and international competitions. I have been the captain of perception team for 2+ years.
+
+I'm mostly using Python, especially with tensorflow, numpy and pandas. Other than python, I have also experience with C++, C#, C and Java. 
+
+Other than work and school, I love Istanbul and cycling. :bicyclist: You can check out my [Strava](https://www.strava.com/athletes/35159014) profile. :nerd_face:
 
 ## Current Interests and Projects:
-
-- Lorem ipsum dolor sit amet
-- Lorem ipsum dolor sit amet
-- DLorem ipsum dolor sit amet
-- Lorem ipsum dolor sit amet
-- Lorem ipsum dolor sit amet
+- Few-Shot Learning
+- Representation Learning
+- Conditional Networks
+- Curriculum Learning
+- Autonomous Driving
