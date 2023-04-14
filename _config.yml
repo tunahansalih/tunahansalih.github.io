@@ -1,12 +1,12 @@
 # Site wide configuration
 
-title: Tuna's Personal Site
+title: Tuna Meral
 locale: en_US
 logo: # filename of a logo image that has been placed into your images directory
 
 # Enter the following platform usernames if you would like for them to appear on your site.
 owner:
-  name: Tuna Han Salih Meral
+  name: Tuna Meral
   avatar: bio-avatar.jpg
   bio: "Machine Learning Engineer"
   email: tunahansmeral at gmail dot com
