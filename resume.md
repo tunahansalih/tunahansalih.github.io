@@ -9,19 +9,19 @@ title: Resumé
 
 `2018 - 2021`
 __Boğaziçi  University__
-MSc in Computer Enginnering
+MSc in Computer Engineering
 
 `2012 - 2017`
 __Boğaziçi  University__
-BSc in Computer Enginnering
+BSc in Computer Engineering
 
 ## Occupation
 
 `Nov 2022 - Current`
 __Machine Learning Engineer__, Lyrebird Studio
-- Architected machine learning CI/CD pipelines using Github Actions and build architecture as code using AWS CDK, enabling outputs of the research team to be quickly deployed as service.
-- Created golden AMI's for GPU accelerated instances using Packer, dramatically reducing boot-up time from tens of minutes to a few seconds and allowing for faster scale-up to handle high volumes.
-- Designed and deployed image generation services based on stable diffusion to production environment, handling thousands of requests per day on GPU-accelerated instances.
+- Architected machine learning CI/CD pipelines using GitHub Actions and build architecture as code using AWS CDK, enabling outputs of the research team to be quickly deployed as a service.
+- Created golden AMIs for GPU-accelerated instances using Packer, dramatically reducing the boot-up time from tens of minutes to a few seconds and allowing for faster scale-up to handle high volumes.
+- Designed and deployed image generation services based on stable diffusion to the production environment, handling thousands of requests per day on GPU-accelerated instances.
 - Integrating deep learning-based generative solutions to existing applications, enhancing the capabilities of applications.
 
 `Aug 2021 - Nov 2022`
@@ -89,12 +89,12 @@ Privacy-Preserving Intersection Management for Autonomous Vehicles, Proceedings 
 
 `2021`
 __Guide__, inzva - METU ImageLab AI Labs Joint Program
-- Gave a lecture on probability, statistics, and graphical models for the Deep Generatice Models. Course was organized in coordination with Gökberk Cinbiş from METU.
+- Gave a lecture on probability, statistics, and graphical models for the Deep Generative Models. The course was organized in coordination with Gökberk Cinbiş from METU.
 
 `2018 - 2021`
-__Head of Autonomos Vision Team__, BURST (Boğaziçi University Autonomos Electrical Vehicle Team)
-- Founded a team and laboratory for building an electric autonomous vehicle, creating autonomos driving research and development facilities at Boğaziçi University.
-- Created a simulation environment using Gazebo, ROS, C++ and Python to simulate competition scenes, attaining the highest scores for two consecutive years in National Autonomos Vehicle Competition.
+__Head of Autonomous Vision Team__, BURST (Boğaziçi University Autonomous Electrical Vehicle Team)
+- Founded a team and laboratory for building an electric autonomous vehicle, creating autonomous driving research and development facilities at Boğaziçi University.
+- Created a simulation environment using Gazebo, ROS, C++, and Python to simulate competition scenes, attaining the highest scores for two consecutive years in National Autonomous Vehicle Competition.
 
 
 <!-- ### Footer
