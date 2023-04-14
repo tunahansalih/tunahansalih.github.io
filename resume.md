@@ -36,7 +36,7 @@ __Computer Vision Research Engineer__, Vispera
 - Implemented state-of-the-art deep learning image recognition models achieving above 95\% classification accuracy on online measurements. 
 - Formulated and implemented a novel zero-shot learning-based image recognition model using PyTorch, reducing image annotation time by four times by recommending the best matches without annotated data.
 
-`2018 - 2019`
+`Aug 2018 - Oct 2019`
 __Computer Vision Research Engineer__, İdea Technology Solutions
 - Introduced a novel tree-based deep learning architecture and method based on sparse execution of neural networks using Python, TensorFlow, and TensorFlow Lite for a project funded by The National Scientific and Technological Research Institution.
 - Proposed a k-centroids-based clustering algorithm to determine better anchor boxes for object detection models, increasing the model's object detection performance by approximately 15%.
