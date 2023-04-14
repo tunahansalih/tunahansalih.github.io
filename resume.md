@@ -15,7 +15,7 @@ MSc in Computer Engineering
 __Boğaziçi  University__
 BSc in Computer Engineering
 
-## Occupation
+## Work Experience
 
 `Nov 2022 - Current`
 __Machine Learning Engineer__, Lyrebird Studio
