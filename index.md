@@ -7,7 +7,7 @@ I am a highly skilled Machine Learning Engineer and Computer Vision Researcher w
 
 You can find more on my work accomplishments on the [resumé](https://tunahansalih.github.io/resume/) page.
 
-I consider myself Pythonista. I also have some experience with JavaScript, TypeScript, Go and C++.
+I consider myself a Pythonista. I also have experience with JavaScript, TypeScript, Go and C++.
 
 
 ## Current Interests:
