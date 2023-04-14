@@ -89,7 +89,7 @@ Privacy-Preserving Intersection Management for Autonomous Vehicles, Proceedings 
 
 `2021`
 __Guide__, inzva - METU ImageLab AI Labs Joint Program
-Gave a lecture on probability, statistics, and graphical models for the Deep Generatice Models. Course was organized in coordination with Gökberk Cinbiş from METU.
+- Gave a lecture on probability, statistics, and graphical models for the Deep Generatice Models. Course was organized in coordination with Gökberk Cinbiş from METU.
 
 `2018 - 2021`
 __Head of Autonomos Vision Team__, BURST (Boğaziçi University Autonomos Electrical Vehicle Team)
