@@ -3,15 +3,15 @@ layout: page
 excerpt: About Me...
 published: true
 ---
-I am a Computer Vision and Machine Learning Engineer with 2+ years of experience. Currently, I am working at [Vispera](https://www.vispera.co), one of the top-notch AI startups in Turkey, focusing on computer vision solutions for the retail industry. I am also a Computer Engineering MSc student at [Bogazici University](https://www.boun.edu.tr) [Computer Engineering Department](https://cmpe.boun.edu.tr/), currently working on Few-Shot Learning, Conditional Networks and Curriculum Learning, under the supervision of Prof. Lale Akarun. We also founded [BURST](https://www.instagram.com/burstbogazici) as Bogazici University students to build electric autonomous prototype vehicles and compete in national and international competitions. I have been the captain of the perception team for 2+ years.
+I am a highly skilled Machine Learning Engineer and Computer Vision Researcher with a passion for developing innovative solutions that push the boundaries of AI. With a Master's degree in Computer Engineering from Boğaziçi University, I have years of experience working on cutting-edge projects and achieving impressive results. My expertise includes architecting machine learning CI/CD pipelines, automating deep learning model training, and developing state-of-the-art deep learning image recognition models. I am also an award-winning participant in various tech competitions and a published author in the field of unsupervised deep learning.
 
-I'm mostly using Python, especially with the libraries Tensorflow, Numpy and Pandas.  I also have little experience with C++, C#, C and Java.
+You can find more on my work accomplishments on the [resumé](https://tunahansalih.github.io/resume/) page.
 
-Other than work and school, I love Istanbul and cycling. :bicyclist: You can check out my [Strava](https://www.strava.com/athletes/35159014) profile. :nerd_face:
+I consider myself Pythonista. I also have some experience with JavaScript, TypeScript, Go and C++.
 
-## Current Interests and Projects:
+
+## Current Interests:
+- MLOps
+- Generative Models
 - Few-Shot Learning
 - Representation Learning
-- Conditional Networks
-- Curriculum Learning
-- Autonomous Driving
