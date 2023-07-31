@@ -4,6 +4,8 @@ published: true
 title: Resumé
 ---
 
+## Summary 
+Highly accomplished and innovative Machine Learning Engineer with a strong background in Computer Science and Computer Engineering. Possessing a proven track record of developing cutting-edge machine learning solutions, optimizing deep learning models, and leading successful research and development projects. Excels in creating robust CI/CD pipelines, integrating advanced generative models into existing applications, and achieving exceptional performance in image-based generative services. A published researcher and award-winning participant in various prestigious competitions.
 
 ## Education
 `2023 - Current`
@@ -99,7 +101,7 @@ __Guide__, inzva - METU ImageLab AI Labs Joint Program
 `2018 - 2021`
 __Head of Autonomous Vision Team__, BURST (Boğaziçi University Autonomous Electrical Vehicle Team)
 - Founded a team and laboratory for building an electric autonomous vehicle, creating autonomous driving research and development facilities at Boğaziçi University.
-- Created a simulation environment using Gazebo, ROS, C++, and Python to simulate competition scenes, attaining the highest scores for two consecutive years in National Autonomous Vehicle Competition.
+- Created a simulation environment using Gazebo, ROS, C++, and Python to simulate competition scenes, attaining the highest scores for two consecutive years in the National Autonomous Vehicle Competition.
 
 
 <!-- ### Footer
