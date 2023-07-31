@@ -6,6 +6,9 @@ title: Resumé
 
 
 ## Education
+`2023 - Current`
+__Virginia Tech__
+PhD in Computer Science
 
 `2018 - 2021`
 __Boğaziçi  University__
@@ -17,7 +20,7 @@ BSc in Computer Engineering
 
 ## Work Experience
 
-`Nov 2022 - Current`
+`Nov 2022 - Aug 2023`
 __Machine Learning Engineer__, Lyrebird Studio
 - Architected machine learning CI/CD pipelines using GitHub Actions and build architecture as code using AWS CDK, enabling outputs of the research team to be quickly deployed as a service.
 - Created golden AMIs for GPU-accelerated instances using Packer, dramatically reducing the boot-up time from tens of minutes to a few seconds and allowing for faster scale-up to handle high volumes.
