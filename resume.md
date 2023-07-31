@@ -27,8 +27,7 @@ __Machine Learning Engineer__, Lyrebird Studio
 - Developed and maintained image-based generative machine learning services, processing and successfully handling an average of 5 million requests per day.
 - Architected robust machine learning CI/CD pipelines using GitHub Actions and utilized AWS CDK for build architecture as code, enabling the seamless deployment of research team outputs as production-ready services.
 - Implemented golden AMIs for GPU-accelerated instances using Packer, resulting in a remarkable reduction in boot-up time from tens of minutes to a few seconds, ensuring faster scale-up to meet high-volume demands.
-- Successfully deployed image generation services based on stable diffusion in the production environment, effectively handling thousands of requests per day on GPU-accelerated instances with high performance and stability.
-- Led the design and deployment of dreambooth-based model training services, overseeing thousands of daily trainings and inferences on GPU-accelerated instances with exceptional efficiency and reliability.
+- Led the design and deployment of stable diffusion-based model training and image generation services in the production environment, effectively handling thousands of requests per day on GPU-accelerated instances with high performance and stability.
 - Integrated deep learning-based generative solutions into existing applications, significantly enhancing their capabilities and user experience.
 
 `Aug 2021 - Nov 2022`
