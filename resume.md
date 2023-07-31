@@ -22,23 +22,25 @@ BSc in Computer Engineering
 
 `Nov 2022 - Aug 2023`
 __Machine Learning Engineer__, Lyrebird Studio
-- Architected machine learning CI/CD pipelines using GitHub Actions and build architecture as code using AWS CDK, enabling outputs of the research team to be quickly deployed as a service.
-- Created golden AMIs for GPU-accelerated instances using Packer, dramatically reducing the boot-up time from tens of minutes to a few seconds and allowing for faster scale-up to handle high volumes.
-- Designed and deployed image generation services based on stable diffusion to the production environment, handling thousands of requests per day on GPU-accelerated instances.
-- Integrating deep learning-based generative solutions to existing applications, enhancing the capabilities of applications.
+- Developed and maintained image-based generative machine learning services, processing and successfully handling an average of 5 million requests per day.
+- Architected robust machine learning CI/CD pipelines using GitHub Actions and utilized AWS CDK for build architecture as code, enabling the seamless deployment of research team outputs as production-ready services.
+- Implemented golden AMIs for GPU-accelerated instances using Packer, resulting in a remarkable reduction in boot-up time from tens of minutes to a few seconds, ensuring faster scale-up to meet high-volume demands.
+- Successfully deployed image generation services based on stable diffusion in the production environment, effectively handling thousands of requests per day on GPU-accelerated instances with high performance and stability.
+- Led the design and deployment of dreambooth-based model training services, overseeing thousands of daily trainings and inferences on GPU-accelerated instances with exceptional efficiency and reliability.
+- Integrated deep learning-based generative solutions into existing applications, significantly enhancing their capabilities and user experience.
 
 `Aug 2021 - Nov 2022`
 __Machine Learning Engineer__, Vispera
-- Automated deep learning model training with Python and TypeScript, accelerating model training and boosting the number of models deployed daily by ten times.
-- Launched a VueJS front-end service for the operations department to train and deploy new models by monitoring online and offline metrics, enhancing model observability and researchers' productivity.
-- Coordinated the deep learning stack transition to TensorFlow 2, making it faster and easier to adopt state-of-the-art deep learning models for production.
+- Spearheaded the automation of deep learning model training using Python and TypeScript, resulting in a tenfold increase in daily model deployments, significantly reducing development time and costs.
+- Led the launch of a user-friendly VueJS front-end service for the operations department, empowering researchers to efficiently train and deploy new models by providing real-time monitoring of online and offline metrics, enhancing model observability and researchers' productivity.
+- Successfully coordinated the transition of the deep learning stack to TensorFlow 2, streamlining the adoption of state-of-the-art deep learning models for production, leading to improved performance and maintainability.
 
 `Oct 2019 - Aug 2021`
 __Computer Vision Research Engineer__, Vispera
-- Led research and development for deep learning image recognition models using Python, TensorFlow, and OpenCV, developing solutions for out-of-distribution recognition and hierarchical classification.
-- Implemented state-of-the-art deep learning image recognition models achieving above 95\% classification accuracy on online measurements. 
-- Formulated and implemented a novel zero-shot learning-based image recognition model using PyTorch, reducing image annotation time by four times by recommending the best matches without annotated data.
-
+- Led research and development for deep learning image recognition models, utilizing Python, TensorFlow, and OpenCV, to solve challenging problems related to out-of-distribution recognition and hierarchical classification.
+- Successfully implemented state-of-the-art deep learning image recognition models, achieving exceptional classification accuracy above 95% on online measurements, ensuring the delivery of high-performance solutions to meet business requirements.
+- Pioneered the formulation and implementation of a novel zero-shot learning-based image recognition model using PyTorch, which significantly reduced image annotation time by four times. This innovative approach recommends best matches without annotated data, optimizing the model development process.
+  
 `Aug 2018 - Oct 2019`
 __Computer Vision Research Engineer__, İdea Technology Solutions
 - Introduced a novel tree-based deep learning architecture and method based on sparse execution of neural networks using Python, TensorFlow, and TensorFlow Lite for a project funded by The National Scientific and Technological Research Institution.
