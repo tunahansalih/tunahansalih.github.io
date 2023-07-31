@@ -36,6 +36,7 @@ __Machine Learning Engineer__, Vispera
 - Spearheaded the automation of deep learning model training using Python and TypeScript, resulting in a tenfold increase in daily model deployments, significantly reducing development time and costs.
 - Led the launch of a user-friendly VueJS front-end service for the operations department, empowering researchers to efficiently train and deploy new models by providing real-time monitoring of online and offline metrics, enhancing model observability and researchers' productivity.
 - Successfully coordinated the transition of the deep learning stack to TensorFlow 2, streamlining the adoption of state-of-the-art deep learning models for production, leading to improved performance and maintainability.
+- Worked as a full-stack machine learning engineer, using VueJS for frontend services; Python for machine learning services; TypeScript, NodeJS, Go, PostgreSQL, MongoDB, and GraphQL for backend services; Docker and Argo Workflows for containerization and orchestration.
 
 `Oct 2019 - Aug 2021`
 __Computer Vision Research Engineer__, Vispera
