@@ -8,11 +8,11 @@ logo: # filename of a logo image that has been placed into your images directory
 owner:
   name: Tuna Meral
   avatar: bio-avatar.jpg
-  bio: "Machine Learning Engineer"
+  bio: "Machine Learning Researcher"
   email: tunahansmeral at gmail dot com
   # Do not include the @ symbol in your Twitter username
   twitter: tunahansalih
-  linkedin: tunahansalih
+  linkedin: tmeral
   github: tunahansalih
   orcid: # ID Number (ex. 0000-0000-0000-0000)
   researchgate: #username
