@@ -8,5 +8,8 @@
 - title: Resume
   url: /resume/
 
-- title: Blog
-  url: /blog/
+# - title: Blog
+#   url: /blog/
+
+- title: MSc Thesis
+  url: /msc-thesis/
