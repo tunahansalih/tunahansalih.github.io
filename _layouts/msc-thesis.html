@@ -4,9 +4,7 @@
 <!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
-{% include _cvhead.html %}
-
-
+{% include _head.html %}
 </head>
 
 <body class="page">
@@ -18,17 +16,22 @@
 
 
 <div id="main" role="main">
-  <object data="{{ site.url }}{{ site.baseurl }}/_pdfs/msc-
-  thesis.pdf" width="1000" height="1000" type="application/pdf"></object>
+  <div class="article-author-side">
+    {% include _author-bio.html %}
+  </div>
+  <div id="main" role="main">
+    <object data="{{ site.url }}{{ site.baseurl }}/_pdfs/msc-
+    thesis.pdf" width="1000" height="1000" type="application/pdf"></object>
+  </div><!-- /#index -->
 </div><!-- /#index -->
 
 <div class="footer-wrap">
   <footer>
-  <!--  {% include _footer.html %}-->
+    {% include _footer.html %}
   </footer>
 </div><!-- /.footer-wrap -->
 
 {% include _scripts.html %}
-
+<script src="https://www.w3counter.com/tracker.js?id=135831"></script>
 </body>
 </html>
