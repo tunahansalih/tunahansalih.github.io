@@ -24,7 +24,7 @@ published: true
 
 ## Introduction
 
-Embodied AI is a fascinating subfield of artificial intelligence research. The aim is to create intelligent agents that can interact with the physical world in a human-like way. The main challenge in Embodied AI is to develop models that can understand and reason about the visual, linguistic, or sensory information that they receive from the surrounding and use this information to perform tasks in static or dynamic environments.
+Embodied AI is a fascinating subfield of artificial intelligence research. The aim is to create intelligent agents that can interact with the physical world in a human-like way. The main challenge in Embodied AI is to develop models that can understand and reason about the visual, linguistic, or sensory information that they receive from their surroundings and use this information to perform tasks in static or dynamic environments.
 
 <figure style="text-align:center;">
   <img src="{{ site.github.url }}/images/blog/embodied-ai-intelligent-agent.png" width="50%" heighth="50%">
@@ -55,9 +55,9 @@ OpenAI introduced CLIP (Contrastive Language–Image Pre-training)[^2] in PRML o
 
 CLIP pre-trains an image encoder and a text encoder simultaneously to predict which images were paired with which texts from a large dataset. Based on this behavior, CLIP performs zero-shot classification on a variety of image classification benchmarks. The classification task can be performed by turning labels into image descriptions. For instance, the description "a photo of a dog" can be created from the label "dog". Then, the CLIP model can be used to predict the label of an image by comparing the image with the description.
 
-CLIP models are highly efficient, flexible, and generic. It uses Vision Transformers over ResNets, which provide 3x gain in compute efficiency. It is flexible in the sense that it can be used for various tasks such as image classification, object detection, image segmentation, etc. Generic in the sense that it can be used for a variety of domains such as natural images, medical images, satellite images, etc.
+CLIP models are highly efficient, flexible, and generic. It uses Vision Transformers over ResNets, which provides a 3x gain in compute efficiency. It is flexible in the sense that it can be used for various tasks such as image classification, object detection, image segmentation, etc. Generic in the sense that it can be used for a variety of domains such as natural images, medical images, satellite images, etc.
 
-While it usually performs well on recognizing regular objects, it has difficulty understanding abstract concepts, such as counting and prepositional phrases, and also complex tasks. It can also fall short of giving fine-grained classification results such as models of cars or breeds of dogs.
+While it usually performs well in recognizing regular objects, it has difficulty understanding abstract concepts, such as counting and prepositional phrases, and also complex tasks. It can also fall short of giving fine-grained classification results such as models of cars or breeds of dogs.
 
 
 ## Using CLIP in Embodied AI
