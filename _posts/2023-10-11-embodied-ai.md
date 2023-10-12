@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Simple but Effective: CLIP Embeddings for Embodied AI'
+title: 'Embodied CLIP'
 excerpt: 'A blog post on the paper "Simple but Effective: CLIP Embeddings for Embodied AI"'
 modified: '11/10/2023, 15:46:00'
 tags:
@@ -113,7 +113,9 @@ In the free space evaluation, they train the models to predict the amount of fre
 
 ## Conclusion
 
-In this paper, authors show that the visual encoders were actually a bottleneck for the embodied AI research. They show that CLIP embeddings can be used as a substitute for visual encoders and achieve SOTA or near-SOTA results on several Embodied AI tasks. They also show that CLIP embeddings can be used to perform Embodied AI tasks in different environments such as RoboTHOR, iTHOR and Habitat. Like every field of AI, Embodied AI research also benefited extensively from the advancements in computer vision research. I think that this paper is a good example of how the advancements in computer vision research can be used to perform Embodied AI tasks.
+In this paper, authors show that the visual encoders were actually a bottleneck for the embodied AI research. They show that CLIP embeddings can be used as a substitute for visual encoders and achieve SOTA or near-SOTA results on several Embodied AI tasks. They also show that CLIP embeddings can be used to perform Embodied AI tasks in different environments such as RoboTHOR, iTHOR and Habitat. 
+
+More importantly, they show that like every field of AI, Embodied AI research also benefited extensively from the advancements in computer vision research. I think that this paper is a good example of how the advancements in computer vision research can be used to perform Embodied AI tasks.
 
 [^1]: Khandelwal, Apoorv, et al. "Simple but effective: Clip embeddings for embodied ai." Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2022.
 
