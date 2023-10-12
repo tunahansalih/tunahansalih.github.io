@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Simple but Effective: CLIP Embeddings for Embodied AI'
-excerpt: 'Contrastive language image pretraining (CLIP) encoders have been shown to be beneficial for a range of visual tasks from classification and detection to captioning and image manipulation. We investigate the effectiveness of CLIP visual backbones for Embodied AI tasks. We build incredibly simple baselines, named EmbCLIP, with no task specific architectures, inductive biases (such as the use of semantic maps), auxiliary tasks during training, or depth maps—yet we find that our improved baselines perform very well across a range of tasks and simulators. EmbCLIP tops the RoboTHOR ObjectNav leaderboard by a huge margin of 20 pts (Success Rate). It tops the iTHOR 1-Phase Rearrangement leaderboard, beating the next best submission, which employs Active Neural Mapping, and more than doubling the % Fixed Strict metric (0.08 to 0.17). It also beats the winners of the 2021 Habitat ObjectNav Challenge, which employ auxiliary tasks, depth maps, and human demonstrations, and those of the 2019 Habitat PointNav Challenge. We evaluate the ability of CLIP’s visual representations at capturing semantic information about input observations—primitives that are useful for navigation-heavy embodied tasks—and find that CLIP’s representations encode these primitives more effectively than ImageNet-pretrained backbones. Finally, we extend one of our baselines, producing an agent capable of zero-shot object navigation that can navigate to objects that were not used as targets during training. Our code and models are available at https://github.com/allenai/embodied-clip.'
+excerpt: 'A blog post on the paper "Simple but Effective: CLIP Embeddings for Embodied AI"'
 modified: '10/11/2023, 15:46:00'
 tags:
   - intro
@@ -13,13 +13,52 @@ category: blog
 published: true
 ---
 
-This is a website template created with Jekyll that is designed to be hosted on Github pages. Jekyll is a static website generator, and Github pages provides a free and easy way to host websites created using Jekyll.
+# Simple but Effective: CLIP Embeddings for Embodied AI
 
-## What is a static website generator?
-A static website generator is a program that allows for a website to be created using alternatives to HTML. In this case we are using a simple text markup language called Markdown to create and format the content on the pages. Jekyll can interpret this and convert it to html that can be rendered in any browser.
+- [Simple but Effective: CLIP Embeddings for Embodied AI](#simple-but-effective-clip-embeddings-for-embodied-ai)
+  - [Introduction](#introduction)
+  - [Prior Work](#prior-work)
+    - [Visual Encoders in Embodied AI](#visual-encoders-in-embodied-ai)
+    - [CLIP and CLIP based models](#clip-and-clip-based-models)
+  - [Simple Baselines with CLIP Backbones](#simple-baselines-with-clip-backbones)
+  - [Conclusion](#conclusion)
 
-## Why should I use a static website?
-A static website, simply put, is easier to manage than just about any other option out there for a simple website. Since it does not rely on any additional web application, it can be hosted on any webhosting server. It does not require regular updates like many dynamic websites such as WordPress or Drupal require. Everything that the website needs to work is contained within one directory, making it incredibly easy to move.
 
-## How is this template different?
-This template has been optimized for ease of use. In the next set of instructions you will see that there are less than five files that you need to edit in order to customize the look of the website.
+## Introduction
+
+Embodied AI is an interesting subfield of artificial intelligence research where the aim is to create intelligent agents that can interact with the physical world in a human-like way. The main challenge in Embodied AI is to develop models that can understand, maybe even reason, about the visual, linguistic or sensory information that they receive from the environment, and use this information to perform tasks in a static or dynamic environments.
+
+In this blog post I will talk about a paper titled ["Simple but Effective: CLIP Embeddings for Embodied AI"](https://arxiv.org/abs/2111.09888)[^1] by [Apoorv Khandelwal](https://apoorvkh.com/) et al which is a recent work that uses CLIP embeddings to perform Embodied AI tasks. The paper is published in the CVPR 2022.
+
+In this blog post, I will briefly mention the prior work in Embodied AI, and then talk about the CLIP embeddings and how they can be used to perform Embodied AI tasks.
+
+## Prior Work
+
+Embodied AI is a fast growing field of research. The advancements in simulators and introduction of new tasks and challenges have led to a lot of progress in this field. Since the task is to create agents that can interact with the physical world, embodied AI research can and should benefit from different aspects of AI research such as computer vision, natural language processing, reinforcement learning, robotics, etc. 
+
+### Visual Encoders in Embodied AI
+
+Visual information is one of the mains sources of information that Embodied AI agents receive from the environment. Therefore, it is important to have a good visual encoder that can extract useful information from the visual input. Due to the inefficiency and latency of larger models, most of the prior work in EAI benefited from only lightweight CNN or ResNet models as visual encoders.
+
+However, recent advancements in computer vision research have led to the development of more powerful visual encoders such as ViT, DeiT, etc. These models have shown to perform better than CNNs and ResNets in many computer vision tasks. Therefore, it is natural to think that these models can also be used as visual encoders in Embodied AI tasks. Although some research have shown that using larger ResNet models anly leads to marginal improvements in performance, we will talk about how CLIP embeddings can increase the performance as visual encoders in different Embodied AI tasks.
+
+### CLIP and CLIP based models
+
+CLIP (Contrastive Language–Image Pre-training)[^2] is introduced by OpenAI and addresses the problems of zero-shot image classification problem by achieving 
+
+<img src="{{ site.github.url }}/images/blog/clip.png" alt="{{ author.name }} bio photo">
+
+## Simple Baselines with CLIP Backbones
+
+
+
+## Conclusion
+
+
+[^1]: Khandelwal, Apoorv, et al. "Simple but effective: Clip embeddings for embodied ai." Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2022.
+
+[^2]: Radford, Alec, et al. "Learning transferable visual models from natural language supervision." International conference on machine learning. PMLR, 2021.
+
+***This blog post has been written as part of the "CS 6604: Embodied AI" course taught by [Ismini Lourentzou](https://isminoula.github.io/)***
+
+
