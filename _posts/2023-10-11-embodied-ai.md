@@ -25,6 +25,10 @@ published: true
 
 Embodied AI is an interesting subfield of artificial intelligence research where the aim is to create intelligent agents that can interact with the physical world in a human-like way. The main challenge in Embodied AI is to develop models that can understand, maybe even reason, about the visual, linguistic or sensory information that they receive from the environment, and use this information to perform tasks in a static or dynamic environments.
 
+<figure>
+  <img src="{{ site.github.url }}/images/blog/embodied-ai-intelligent-agent.png">
+</figure>
+
 In this blog post I will talk about a paper titled ["Simple but Effective: CLIP Embeddings for Embodied AI"](https://arxiv.org/abs/2111.09888)[^1] by [Apoorv Khandelwal](https://apoorvkh.com/) et al which is a recent work that uses CLIP embeddings to perform Embodied AI tasks. The paper is published in the CVPR 2022.
 
 In this blog post, I will briefly mention the prior work in Embodied AI, and then talk about the CLIP embeddings and how they can be used to perform Embodied AI tasks.
@@ -115,7 +119,7 @@ In the free space evaluation, they train the models to predict the amount of fre
 
 In this paper, authors show that the visual encoders were actually a bottleneck for the embodied AI research. They show that CLIP embeddings can be used as a substitute for visual encoders and achieve SOTA or near-SOTA results on several Embodied AI tasks. They also show that CLIP embeddings can be used to perform Embodied AI tasks in different environments such as RoboTHOR, iTHOR and Habitat. 
 
-More importantly, they show that like every field of AI, Embodied AI research also benefited extensively from the advancements in computer vision research. I think that this paper is a good example of how the advancements in computer vision research can be used to perform Embodied AI tasks.
+More importantly, they show that like every field of AI, Embodied AI research also benefited extensively from the advancements in other fields of AI research. I think that this paper is a good example of how the advancements in computer vision research can be used to perform Embodied AI tasks.
 
 [^1]: Khandelwal, Apoorv, et al. "Simple but effective: Clip embeddings for embodied ai." Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2022.
 
