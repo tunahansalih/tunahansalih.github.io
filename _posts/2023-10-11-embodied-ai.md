@@ -2,7 +2,7 @@
 layout: post
 title: 'Simple but Effective: CLIP Embeddings for Embodied AI'
 excerpt: 'A blog post on the paper "Simple but Effective: CLIP Embeddings for Embodied AI"'
-modified: '10/11/2023, 15:46:00'
+modified: '11/10/2023, 15:46:00'
 tags:
   - intro
   - beginner
@@ -16,8 +16,8 @@ published: true
 - [Introduction](#introduction)
 - [Prior Work](#prior-work)
   - [Visual Encoders in Embodied AI](#visual-encoders-in-embodied-ai)
-  - [CLIP and CLIP based models](#clip-and-clip-based-models)
-- [Simple Baselines with CLIP Backbones](#simple-baselines-with-clip-backbones)
+  - [CLIP Model](#clip-model)
+- [Using CLIP in Embodied AI](#using-clip-in-embodied-ai)
 - [Conclusion](#conclusion)
 
 
@@ -39,18 +39,81 @@ Visual information is one of the mains sources of information that Embodied AI a
 
 However, recent advancements in computer vision research have led to the development of more powerful visual encoders such as ViT, DeiT, etc. These models have shown to perform better than CNNs and ResNets in many computer vision tasks. Therefore, it is natural to think that these models can also be used as visual encoders in Embodied AI tasks. Although some research have shown that using larger ResNet models anly leads to marginal improvements in performance, we will talk about how CLIP embeddings can increase the performance as visual encoders in different Embodied AI tasks.
 
-### CLIP and CLIP based models
+### CLIP Model
 
-CLIP (Contrastive Language–Image Pre-training)[^2] is introduced by OpenAI and addresses the problems of zero-shot image classification problem by achieving 
+CLIP (Contrastive Language–Image Pre-training)[^2] is introduced by OpenAI. They show that scaling a simple pre-training task is effective enough to achieve competitive zero-shot results on a variety of image classification benchmarks. They use the texts paired with images from the internet as the training data. 
 
-<img src="{{ site.github.url }}/images/blog/clip.png" alt="{{ author.name }} bio photo">
+<figure>
+<img src="{{ site.github.url }}/images/blog/clip.png">
+<figcaption> Source of image: https://openai.com/research/clip </figcaption>
+</figure>
 
-## Simple Baselines with CLIP Backbones
+CLIP pre-trains an image encoder and a text encoder simultaneously yo predict which images were paired with which texts from a large dataset. Based on this behavior, CLIP can be used to perform zero-shot classification on a variety of image classification benchmarks. The classification task can be performed by turning labels into image descriptions. For example, the label "dog" can be turned into the description "a photo of a dog". Then, the CLIP model can be used to predict the label of an image by comparing the image with the description.
+
+CLIP models is highly efficient, flexible and generic. It uses Vision Transformers over ResNets which gives 3x gain in compute efficiency. Flexible in the sense that it can be used for a variety of tasks such as image classification, object detection, image segmentation, etc. Generic in the sense that it can be used for a variety of domains such as natural images, medical images, satellite images, etc.
+
+While it usually performs well on recognizing regular objects, it has difficult time understanding abstract concepts, such as counting and prepositional phrases, and also complex tasks. It can also falls short of giving fine-grained classification results such as models of cars or breeds of dogs.
+
+
+## Using CLIP in Embodied AI
+
+Although CLIP is a simple model, this visual backbone can be used to perform Embodied AI tasks. The authors of the paper show that CLIP embeddings can be used to perform Embodied AI tasks such as object goal navigation, point goal navigation and room rearrangement. They show that CLIP embeddings can be used as a substitute for visual encoders used to solve these challenges.
+
+<figure>
+<img src="{{ site.github.url }}/images/blog/high-level-clip-embodied-ai.png">
+<figcaption> Source of image: Khandelwal et al, 2022 </figcaption>
+</figure>
+
+The high-level architecture used to solve each challenge is similar to shown above. The RGB image is fed into the frozen CLIP model and then a simple trainable CNN, The embeddings and the goal embedding and then fed into a GRU network to predict the action. The authors show that this simple high level approach can be used to solve all three challenges.
+
+This simple architecture achieves SOTA or near-SOTA approaches on most of the challenges the authors have tested.
+
+
+<table cellspacing="10px" cellpadding="10px">
+    <tr>
+        <td style="text-align: center;">
+          <img src="{{ site.github.url }}/images/blog/embodied-ai-robothor-objectnav.png">
+        </td>
+        <td style="text-align: center;">
+            <img src="{{ site.github.url }}/images/blog/embodied-ai-ithor-rearrangement.png">
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align: center;">
+          <img src="{{ site.github.url }}/images/blog/embodied-ai-habitat-objectnav.png">
+        </td>
+        <td style="text-align: center;">
+          <img src="{{ site.github.url }}/images/blog/embodied-ai-habitat-pointnav.png">
+        </td>
+    </tr>
+    <caption style="caption-side:bottom">Several Benchmark Results. Source: Khandelwal et al, 2022</caption>
+</table>
+
+Additionally, the authors investigated CLIP performance on sub-tasks in some designated experiments to support the hypothesis that CLIP features natively embed visual information that is relevant to navigational and similar embodied tasks. The experiments shows that CLIP embeddings represent the primitives of the physical world in tasks such as object presence, object localization, free space and reachability.
+
+<figure>
+  <img src="{{ site.github.url }}/images/blog/embodied-ai-visual-encoder-evaluations.png">
+  <figcaption> Examples of visual encoder evaluation tasks. Source: Khandelwal et al, 2022 </figcaption>
+</figure>
+
+In the reachability evaluation, they train the models to predict whether a particular object is reachable from the robot arm or not. 
+
+In the object presence on grid evaluation, they train the models to predict whether a particular object is present in one of the grid cells or not in a 3x3 grid.
+
+In the object presence evaluation, they train the models to predict whether a particular object is present in the scene or not.
+
+In the free space evaluation, they train the models to predict the amount of free space available in front of the agent.
+
+<figure style="text-align: center;">
+  <img src="{{ site.github.url }}/images/blog/embodied-ai-visual-encoder-evaluations-table.png">
+  <figcaption> Results of visual encoder evaluation tasks. Source: Khandelwal et al, 2022 </figcaption>
+</figure>
 
 
 
 ## Conclusion
 
+In this paper, authors show that the visual encoders were actually a bottleneck for the embodied AI research. They show that CLIP embeddings can be used as a substitute for visual encoders and achieve SOTA or near-SOTA results on several Embodied AI tasks. They also show that CLIP embeddings can be used to perform Embodied AI tasks in different environments such as RoboTHOR, iTHOR and Habitat. Like every field of AI, Embodied AI research also benefited extensively from the advancements in computer vision research. I think that this paper is a good example of how the advancements in computer vision research can be used to perform Embodied AI tasks.
 
 [^1]: Khandelwal, Apoorv, et al. "Simple but effective: Clip embeddings for embodied ai." Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2022.
 
