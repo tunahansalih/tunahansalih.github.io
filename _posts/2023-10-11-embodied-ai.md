@@ -13,15 +13,12 @@ category: blog
 published: true
 ---
 
-# Simple but Effective: CLIP Embeddings for Embodied AI
-
-- [Simple but Effective: CLIP Embeddings for Embodied AI](#simple-but-effective-clip-embeddings-for-embodied-ai)
-  - [Introduction](#introduction)
-  - [Prior Work](#prior-work)
-    - [Visual Encoders in Embodied AI](#visual-encoders-in-embodied-ai)
-    - [CLIP and CLIP based models](#clip-and-clip-based-models)
-  - [Simple Baselines with CLIP Backbones](#simple-baselines-with-clip-backbones)
-  - [Conclusion](#conclusion)
+- [Introduction](#introduction)
+- [Prior Work](#prior-work)
+  - [Visual Encoders in Embodied AI](#visual-encoders-in-embodied-ai)
+  - [CLIP and CLIP based models](#clip-and-clip-based-models)
+- [Simple Baselines with CLIP Backbones](#simple-baselines-with-clip-backbones)
+- [Conclusion](#conclusion)
 
 
 ## Introduction
