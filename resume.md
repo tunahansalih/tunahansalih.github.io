@@ -83,6 +83,9 @@ Finalist, TUBITAK Undergraduate Software Project Competition
 
 ## Publications
 
+`2023`
+CONFORM: Contrast is All You Need For High-Fidelity Text-to-Image Diffusion Models. arXiv preprint arXiv:2312.06059.
+
 `2022`
 Unsupersived Routing Strategies for Conditional Deep Neural Networks. MSc Thesis. Boğaziçi University.
 
