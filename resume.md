@@ -21,6 +21,11 @@ __Boğaziçi  University__
 BSc in Computer Engineering
 
 ## Work Experience
+`Aug 2023 - Now`
+__Research Assistant__, Virginia Tech
+- Leading the research efforts on text-to-image generation.
+- Contributed to the development and publication of methods enhancing the text-image fidelity of diffusion-based text-to-image models.
+- Collaborated with Google to implement research findings in closed-source diffusion-based image generation models, resulting in a substantial improvement in image fidelity.
 
 `Nov 2022 - Aug 2023`
 __Machine Learning Engineer__, Lyrebird Studio
