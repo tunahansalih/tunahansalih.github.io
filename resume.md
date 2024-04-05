@@ -20,6 +20,25 @@ MSc in Computer Engineering
 __Boğaziçi  University__
 BSc in Computer Engineering
 
+
+## Publications
+
+`2024`
+[CLoRA: A Contrastive Approach to Compose Multiple LoRA Models. arXiv preprint arXiv:2403.19776.](https://clora-diffusion.github.io)
+
+`2023`
+[CONFORM: Contrast is All You Need For High-Fidelity Text-to-Image Diffusion Models. arXiv preprint arXiv:2312.06059.](https://conform-diffusion.github.io) **Accepted to CVPR 2024**
+
+`2022`
+Unsupersived Routing Strategies for Conditional Deep Neural Networks. MSc Thesis. Boğaziçi University.
+
+`2020`
+BURST: Software and Simulation Solutions of an Autonomous Vehicle, 2020 28th Signal Processing and Communications Applications Conference
+
+`2018`
+Privacy-Preserving Intersection Management for Autonomous Vehicles, Proceedings of the Tenth International Workshop on Agents in Traffic and Transportation
+
+
 ## Work Experience
 `Aug 2023 - Now`
 __Research Assistant__, Virginia Tech
@@ -85,20 +104,6 @@ Runner-up, Boğaziçi University Computer Engineering Senior Projects Competitio
 `2016`
 Finalist, TUBITAK Undergraduate Software Project Competition
 
-
-## Publications
-
-`2023`
-CONFORM: Contrast is All You Need For High-Fidelity Text-to-Image Diffusion Models. arXiv preprint arXiv:2312.06059.
-
-`2022`
-Unsupersived Routing Strategies for Conditional Deep Neural Networks. MSc Thesis. Boğaziçi University.
-
-`2020`
-BURST: Software and Simulation Solutions of an Autonomous Vehicle, 2020 28th Signal Processing and Communications Applications Conference
-
-`2018`
-Privacy-Preserving Intersection Management for Autonomous Vehicles, Proceedings of the Tenth International Workshop on Agents in Traffic and Transportation
 
 ## Additional Experiences
 
