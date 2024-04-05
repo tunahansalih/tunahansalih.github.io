@@ -20,7 +20,6 @@ MSc in Computer Engineering
 __Boğaziçi  University__
 BSc in Computer Engineering
 
-
 ## Publications
 
 `2024`
@@ -29,8 +28,6 @@ BSc in Computer Engineering
 
 `2023`
 [CONFORM: Contrast is All You Need For High-Fidelity Text-to-Image Diffusion Models. arXiv preprint arXiv:2312.06059.](https://conform-diffusion.github.io) **Accepted to CVPR 2024**
-
-
 
 `2022`
 Unsupersived Routing Strategies for Conditional Deep Neural Networks. MSc Thesis. Boğaziçi University.
