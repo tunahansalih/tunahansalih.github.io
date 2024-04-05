@@ -24,6 +24,8 @@ BSc in Computer Engineering
 
 `2024`
 [CLoRA: A Contrastive Approach to Compose Multiple LoRA Models. arXiv preprint arXiv:2403.19776.](https://clora-diffusion.github.io)
+
+`2024`
 [Conditional Information Gain Trellis. arXiv preprint arXiv:2402.08345](https://arxiv.org/abs/2402.08345)
 
 `2023`
