@@ -25,9 +25,12 @@ BSc in Computer Engineering
 
 `2024`
 [CLoRA: A Contrastive Approach to Compose Multiple LoRA Models. arXiv preprint arXiv:2403.19776.](https://clora-diffusion.github.io)
+[Conditional Information Gain Trellis. arXiv preprint arXiv:2402.08345](https://arxiv.org/abs/2402.08345)
 
 `2023`
 [CONFORM: Contrast is All You Need For High-Fidelity Text-to-Image Diffusion Models. arXiv preprint arXiv:2312.06059.](https://conform-diffusion.github.io) **Accepted to CVPR 2024**
+
+
 
 `2022`
 Unsupersived Routing Strategies for Conditional Deep Neural Networks. MSc Thesis. Boğaziçi University.
