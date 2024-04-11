@@ -4,6 +4,10 @@ published: true
 title: Resumé
 ---
 
+## Resumé
+
+You can find my Resumé [here](https://drive.google.com/file/d/1RxtH5A56p0lZVManDSTV9uilSw3wbbzg/view?usp=sharing).
+
 ## Summary 
 Highly accomplished and innovative Machine Learning Engineer with a strong background in Computer Science and Computer Engineering. Possessing a proven track record of developing cutting-edge machine learning solutions, optimizing deep learning models, and leading successful research and development projects. Excels in creating robust CI/CD pipelines, integrating advanced generative models into existing applications, and achieving exceptional performance in image-based generative services. A published researcher and award-winning participant in various prestigious competitions.
 
