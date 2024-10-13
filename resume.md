@@ -9,7 +9,7 @@ title: Resumé
 You can find my Resumé [here](https://drive.google.com/file/d/1RxtH5A56p0lZVManDSTV9uilSw3wbbzg/view?usp=sharing).
 
 ## Summary 
-Highly accomplished and innovative Machine Learning Engineer with a strong background in Computer Science and Computer Engineering. Possessing a proven track record of developing cutting-edge machine learning solutions, optimizing deep learning models, and leading successful research and development projects. Excels in creating robust CI/CD pipelines, integrating advanced generative models into existing applications, and achieving exceptional performance in image-based generative services. A published researcher and award-winning participant in various prestigious competitions.
+Ph.D. candidate in Computer Science with expertise in Computer Vision, Deep Learning, and Generative AI. Proven track record in developing cutting-edge machine learning solutions and leading successful research projects. Seeking a research internship position to contribute to and learn from industry-leading AI teams.
 
 ## Education
 `2023 - Current`
@@ -30,10 +30,11 @@ BSc in Computer Engineering
 [CLoRA: A Contrastive Approach to Compose Multiple LoRA Models. arXiv preprint arXiv:2403.19776.](https://clora-diffusion.github.io)
 
 `2024`
-[Conditional Information Gain Trellis. arXiv preprint arXiv:2402.08345](https://arxiv.org/abs/2402.08345)
+[Conditional Information Gain Trellis. Pattern Recognition Letters](https://www.sciencedirect.com/science/article/pii/S0167865524001880) **Accepted to Pattern Recognition Letters**
 
 `2023`
-[CONFORM: Contrast is All You Need For High-Fidelity Text-to-Image Diffusion Models. arXiv preprint arXiv:2312.06059.](https://conform-diffusion.github.io) **Accepted to CVPR 2024**
+[CONFORM: Contrast is All You Need For High-Fidelity Text-to-Image Diffusion Models. In Proceedings of the IEEE/CVF Conference on Computer
+Vision and Pattern Recognition CVPR](https://conform-diffusion.github.io) **Accepted to CVPR 2024**
 
 `2022`
 Unsupersived Routing Strategies for Conditional Deep Neural Networks. MSc Thesis. Boğaziçi University.
@@ -47,17 +48,22 @@ Privacy-Preserving Intersection Management for Autonomous Vehicles, Proceedings 
 
 ## Work Experience
 `Aug 2023 - Now`
-__Research Assistant__, Virginia Tech
-- Leading the research efforts on text-to-image generation.
-- Contributed to the development and publication of methods enhancing the text-image fidelity of diffusion-based text-to-image models.
-- Collaborated with Google to implement research findings in closed-source diffusion-based image generation models, resulting in a substantial improvement in image fidelity.
+__Research Assistant and Lab Lead__, Virginia Tech
+- Lead research efforts on generative models, focusing on enhancing diffusion-based text-to-image and text-to-video models.
+- Collaborate with **Google** to implement research findings in closed-source diffusion-based image generation models. The work has been published at **CVPR 2024** and subsequent work submitted to **ICLR 2025**.
+- Awarded research grant from **Deloitte** to work on mechanistic explanations of large language models.
+- Developing video diffusion models to efficiently transfer motion from real videos to generated videos.
+
+`May 2024 - Oct 2024`
+- Conducted research on instruction-based video editing using video diffusion transformers and image-text editing datasets.
+- Explored the temporal capabilities of video models to innovate video editing solutions.
 
 `Nov 2022 - Aug 2023`
 __Machine Learning Engineer__, Lyrebird Studio
-- Developed and maintained image-based generative machine learning services, processing and successfully handling an average of 5 million requests per day.
-- Architected robust machine learning CI/CD pipelines using GitHub Actions and utilized AWS CDK for build architecture as code, enabling the seamless deployment of research team outputs as production-ready services.
+- Developed and maintained image generation ML services handling 5 million daily requests.
+- Architected robust machine learning CI/CD pipelines using GitHub Actions and utilized AWS CDK for building architecture as code, enabling seamless deployment of research team outputs as production-ready services.
 - Implemented golden AMIs for GPU-accelerated instances using Packer, resulting in a remarkable reduction in boot-up time from tens of minutes to a few seconds, ensuring faster scale-up to meet high-volume demands.
-- Led the design and deployment of stable diffusion-based model training and image generation services in the production environment, effectively handling thousands of requests per day on GPU-accelerated instances with high performance and stability.
+- Led the design and deployment of diffusion-based model training and image generation services, effectively handling thousands of daily requests on GPU-accelerated instances with high performance and stability.
 - Integrated deep learning-based generative solutions into existing applications, significantly enhancing their capabilities and user experience.
 
 `Aug 2021 - Nov 2022`
@@ -110,17 +116,18 @@ Runner-up, Boğaziçi University Computer Engineering Senior Projects Competitio
 `2016`
 Finalist, TUBITAK Undergraduate Software Project Competition
 
+`2012`
+Top %0.01, Turkish National University Entrance Exam
 
 ## Additional Experiences
 
 `2021`
 __Guide__, inzva - METU ImageLab AI Labs Joint Program
-- Gave a lecture on probability, statistics, and graphical models for the Deep Generative Models. The course was organized in coordination with Gökberk Cinbiş from METU.
+- Conducted lectures for the review of probability, statistics, and graphical models for the Deep Generative Models course, organized in collaboration with [Prof. Gokberk Cinbis](https://user.ceng.metu.edu.tr/~gcinbis/) from METU.
 
 `2018 - 2021`
 __Head of Autonomous Vision Team__, BURST (Boğaziçi University Autonomous Electrical Vehicle Team)
-- Founded a team and laboratory for building an electric autonomous vehicle, creating autonomous driving research and development facilities at Boğaziçi University.
-- Created a simulation environment using Gazebo, ROS, C++, and Python to simulate competition scenes, attaining the highest scores for two consecutive years in the National Autonomous Vehicle Competition.
+- Founded a team and laboratory for building an electric autonomous vehicle, creating autonomous driving R&D opportunities at Bogazici University.
 
 
 <!-- ### Footer
