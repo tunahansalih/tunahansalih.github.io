@@ -4,6 +4,7 @@ excerpt: About Me...
 published: true
 ---
 
+## About Me
 I am a PhD student in Computer Science at Virginia Tech, affiliated with the Computer Science Department and The Sanghani Center for Artificial Intelligence and Data Analytics. My research focuses on image and video diffusion models, driven by a passion for advancing generative AI techniques. Since 2023, I have been working with [Assist. Prof. Pinar Yanardag Delul](https://pinguar.org/) and previously, I was supervised by [Prof. Lale Akarun](https://scholar.google.com/citations?user=MybhMyUAAAAJ&hl=en) during my M.Sc. at [Bogazici University](https://bogazici.edu.tr/en_us).
 
 Before coming to the US for my Ph.D., I worked as a Machine Learning Engineer at [Lyrebird Studio](https://lyrebirdstudio.net/) and [Vispera](https://vispera.co/). You can find more about my work accomplishments on my [resumé](https://tunahansalih.github.io/resume/) page and download my resume from [here](https://drive.google.com/file/d/1RxtH5A56p0lZVManDSTV9uilSw3wbbzg/view).
