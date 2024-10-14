@@ -55,6 +55,8 @@ __Research Assistant and Lab Lead__, Virginia Tech
 - Developing video diffusion models to efficiently transfer motion from real videos to generated videos.
 
 `May 2024 - Oct 2024`
+__Research Intern__, Adobe
+- Part of the Adobe Firefly Video Generative Model team.
 - Conducted research on instruction-based video editing using video diffusion transformers and image-text editing datasets.
 - Explored the temporal capabilities of video models to innovate video editing solutions.
 
