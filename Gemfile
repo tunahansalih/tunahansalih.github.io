@@ -8,3 +8,4 @@ gem "octopress"
 gem "kramdown-parser-gfm"
 gem "jemoji"
 gem "webrick", "~> 1.8"
+gem 'jekyll-titles-from-headings'
