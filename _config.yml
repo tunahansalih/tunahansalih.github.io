@@ -63,6 +63,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
   - jemoji
+  - jekyll-titles-from-headings
 
 kramdown:
   auto_ids: true
