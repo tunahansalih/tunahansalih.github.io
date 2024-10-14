@@ -17,8 +17,8 @@ Before coming to the US for my Ph.D., I worked as a Machine Learning Engineer at
 
 ## Personal News
 <table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td valign="top" width="120">
+<tr valign="top">
+<td width="120" style="padding-right: 10px;">
 
 - Oct 2024
 - Oct 2024
@@ -31,7 +31,7 @@ Before coming to the US for my Ph.D., I worked as a Machine Learning Engineer at
 - Aug 2023
 
 </td>
-<td valign="top">
+<td>
 
 - I have been awarded a research grant from **Deloitte** to work on mechanistic interpretability for large language models.
 - I completed my internship at **Adobe**, where I worked on Video Diffusion Transformers models, focusing on instruction-based video editing.
