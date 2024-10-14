@@ -20,28 +20,44 @@ Before coming to the US for my Ph.D., I worked as a Machine Learning Engineer at
 <tr valign="top">
 <td width="120" style="padding-right: 10px;">
 
-- Oct 2024
-- Oct 2024
-- Jun 2024
-- Jun 2024
-- May 2024
-- Mar 2024
-- Jan 2024
-- Dec 2023
-- Aug 2023
+Oct 2024
+
+Oct 2024
+
+Jun 2024
+
+Jun 2024
+
+May 2024
+
+Mar 2024
+
+Jan 2024
+
+Dec 2023
+
+Aug 2023
 
 </td>
 <td>
 
-- I have been awarded a research grant from **Deloitte** to work on mechanistic interpretability for large language models.
-- I completed my internship at **Adobe**, where I worked on Video Diffusion Transformers models, focusing on instruction-based video editing.
-- I started my research internship at **Adobe** in the Summer 2024.
-- My paper, [Conditional Information Gain Trellis](https://www.sciencedirect.com/science/article/pii/S0167865524001880) has been accepted to **Pattern Recognition Letters**.
-- My paper, [**CONFORM**](https://conform-diffusion.github.io), has been accepted to **CVPR 2024**.
-- My new preprint [**CLoRA**](https://clora-diffusion.github.io) is available at arXiv.
-- Open-sourced the code for my paper: [**CONFORM**](https://conform-diffusion.github.io).
-- My new preprint [**CONFORM**](https://conform-diffusion.github.io) is available at arXiv.
-- I started my PhD in Computer Science with [Pinar Yanardag Delul](https://pinguar.org/).
+<p>I have been awarded a research grant from **Deloitte** to work on mechanistic interpretability for large language models.</p>
+
+<p>I completed my internship at **Adobe**, where I worked on Video Diffusion Transformers models, focusing on instruction-based video editing.</p>
+
+<p>I started my research internship at **Adobe** in the Summer 2024.</p>
+
+<p>My paper, [Conditional Information Gain Trellis](https://www.sciencedirect.com/science/article/pii/S0167865524001880) has been accepted to **Pattern Recognition Letters**.</p>
+
+<p>My paper, [**CONFORM**](https://conform-diffusion.github.io), has been accepted to **CVPR 2024**.</p>
+
+<p>My new preprint [**CLoRA**](https://clora-diffusion.github.io) is available at arXiv.</p>
+
+<p>Open-sourced the code for my paper: [**CONFORM**](https://conform-diffusion.github.io).</p>
+
+<p>My new preprint [**CONFORM**](https://conform-diffusion.github.io) is available at arXiv.</p>
+
+<p>I started my PhD in Computer Science with [Pinar Yanardag Delul](https://pinguar.org/).</p>
 
 </td>
 </tr>
