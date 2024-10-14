@@ -6,7 +6,7 @@ title: Resumé
 
 ## Resumé
 
-You can find my Resumé [here](https://drive.google.com/file/d/1RxtH5A56p0lZVManDSTV9uilSw3wbbzg/view?usp=sharing).
+You can find my Resumé <u>[here](https://drive.google.com/file/d/1RxtH5A56p0lZVManDSTV9uilSw3wbbzg/view?usp=sharing)</u>.
 
 ## Summary 
 Ph.D. candidate in Computer Science with expertise in Computer Vision, Deep Learning, and Generative AI. Proven track record in developing cutting-edge machine learning solutions and leading successful research projects. Seeking a research internship position to contribute to and learn from industry-leading AI teams.
