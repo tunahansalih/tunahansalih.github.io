@@ -72,5 +72,10 @@ kramdown:
   toc_levels: 1..6
   enable_coderay: false
 
+titles_from_headings:
+  enabled:     true
+  strip_title: false
+  collections: false
+
 include: [".htaccess"]
 exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]
