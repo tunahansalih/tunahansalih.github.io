@@ -8,7 +8,7 @@ logo: # filename of a logo image that has been placed into your images directory
 owner:
   name: Tuna Meral
   avatar: bio-avatar.jpg
-  bio: "Machine Learning Researcher"
+  bio: "Vision GenAI Researcher"
   email: tunahansmeral at gmail dot com
   # Do not include the @ symbol in your Twitter username
   twitter: tunahansalih
@@ -21,9 +21,9 @@ owner:
     plus: #username
     analytics:
     verify:
-    scholar: #id
+    scholar: 5ZAhf5IAAAAJ #id
   facebook: #username
-  instagram: tunahansalih
+  instagram: howtunasees
   bing-verify:
   stackoverflow: 2959389/tuna-meral
   xing: #username
