@@ -4,8 +4,7 @@ excerpt: About Me...
 published: true
 ---
 
-# Summary
-I worked on making sense of images,
+I worked on making sense of images,\
 Now I am working on images making sense.
 
 # About Me
