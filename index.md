@@ -4,8 +4,8 @@ excerpt: About Me...
 published: true
 ---
 
-I worked on making sense of images,\
-Now I am working on images making sense.
+_I worked on making sense of images,\
+Now I am working on images making sense._
 
 # About Me
 I am a PhD student in Computer Science at Virginia Tech, affiliated with the Computer Science Department and The Sanghani Center for Artificial Intelligence and Data Analytics. My research focuses on image and video diffusion models, driven by a passion for advancing generative AI techniques. Since 2023, I have been working with [Prof. Pinar Yanardag](https://pinguar.org/) and previously, I was supervised by [Prof. Lale Akarun](https://scholar.google.com/citations?user=MybhMyUAAAAJ&hl=en) during my M.Sc. at [Bogazici University](https://bogazici.edu.tr/en_us).
