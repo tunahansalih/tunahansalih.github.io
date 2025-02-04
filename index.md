@@ -8,7 +8,7 @@ _I worked on making sense of images,\
 Now I am working on images making sense._
 
 # About Me
-I am a PhD student in Computer Science at Virginia Tech, affiliated with the Computer Science Department and The Sanghani Center for Artificial Intelligence and Data Analytics. My research focuses on image and video diffusion models, driven by a passion for advancing generative AI techniques. Since 2023, I have been working with [Prof. Pinar Yanardag](https://pinguar.org/) and previously, I was supervised by [Prof. Lale Akarun](https://scholar.google.com/citations?user=MybhMyUAAAAJ&hl=en) during my M.Sc. at [Bogazici University](https://bogazici.edu.tr/en_us).
+I am Tuna ([tu-nah]), a PhD student in Computer Science at Virginia Tech, affiliated with the Computer Science Department and The Sanghani Center for Artificial Intelligence and Data Analytics. My research focuses on image and video diffusion models, driven by a passion for advancing generative AI techniques. Since 2023, I have been working with [Prof. Pinar Yanardag](https://pinguar.org/) and previously, I was supervised by [Prof. Lale Akarun](https://scholar.google.com/citations?user=MybhMyUAAAAJ&hl=en) during my M.Sc. at [Bogazici University](https://bogazici.edu.tr/en_us).
 
 Before coming to the US for my Ph.D., I worked as a Machine Learning Engineer at [Lyrebird Studio](https://lyrebirdstudio.net/) and [Vispera](https://vispera.co/). You can find more about my work accomplishments on my [resumé](https://tunahansalih.github.io/resume/) page and download my resume from [here](https://drive.google.com/file/d/1RxtH5A56p0lZVManDSTV9uilSw3wbbzg/view).
 
@@ -19,6 +19,8 @@ Before coming to the US for my Ph.D., I worked as a Machine Learning Engineer at
 
 
 ## Personal News
+- Nov 2024  -  My new preprint [**MotionFlow**](https://motionflow-diffusion.github.io) is available at arXiv.
+- Nov 2024  -  My new preprint [**MotionShop**](https://motionshop-diffusion.github.io) is available at arXiv.
 - Oct 2024  -  I have been awarded a research grant from **Deloitte** to work on mechanistic interpretability for large language models.
 - Oct 2024  -  I completed my internship at **Adobe**, where I worked on Video Diffusion Transformers models, focusing on instruction-based video editing.
 - Jun 2024  -  I started my research internship at **Adobe** in the Summer 2024.
