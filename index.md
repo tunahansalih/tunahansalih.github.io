@@ -19,6 +19,7 @@ Before coming to the US for my Ph.D., I worked as a Machine Learning Engineer at
 
 
 ## Personal News
+- Feb 2025  -  My new preprint [**ConceptAttention**](https://arxiv.org/pdf/2502.04320) is available at arXiv.
 - Nov 2024  -  My new preprint [**MotionFlow**](https://motionflow-diffusion.github.io) is available at arXiv.
 - Nov 2024  -  My new preprint [**MotionShop**](https://motionshop-diffusion.github.io) is available at arXiv.
 - Oct 2024  -  I have been awarded a research grant from **Deloitte** to work on mechanistic interpretability for large language models.
