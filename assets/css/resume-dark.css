@@ -1,0 +1,56 @@
+/* Dark mode styles for resume page */
+.dark-theme .page {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.dark-theme .resume h1,
+.dark-theme .resume h2 {
+  color: #ff5252;
+}
+
+.dark-theme .resume h3 {
+  color: #ffffff;
+}
+
+.dark-theme .resume code {
+  color: #90caf9;
+}
+
+.dark-theme .resume a {
+  color: #64b5f6;
+}
+
+.dark-theme .resume a:hover {
+  color: #90caf9;
+}
+
+.dark-theme .resume ul li::before {
+  color: #ff5252;
+}
+
+.dark-theme .resume strong,
+.dark-theme .resume b {
+  color: #ffffff;
+}
+
+.dark-theme .resume em {
+  color: #ffffff;
+}
+
+.dark-theme .resume .button {
+  background-color: #ff5252;
+  color: #ffffff;
+}
+
+.dark-theme .resume p code,
+.dark-theme .resume li code {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  border: 1px solid #333;
+}
+
+/* Override university and degree colors */
+.dark-theme .resume h4 {
+  color: #e0e0e0;
+} 

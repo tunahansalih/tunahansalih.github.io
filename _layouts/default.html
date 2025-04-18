@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  {% include _head.html %}
+</head>
+
+<body class="{% if page.image.feature %}feature{% endif %}">
+
+  {% include _browser-upgrade.html %}
+  {% include _navigation.html %}
+
+  <!-- Dark mode toggle button -->
+  <button id="darkModeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+  </button>
+
+  <style>
+    #darkModeToggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background-color: #f2f3f3;
+      border: none;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    #darkModeToggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+    
+    body.dark-mode #darkModeToggle {
+      background-color: #3d4852;
+    }
+    
+    #darkModeToggle .sun {
+      display: none;
+    }
+    
+    #darkModeToggle .moon {
+      display: block;
+    }
+    
+    body.dark-mode #darkModeToggle .sun {
+      display: block;
+      color: #e2e8f0;
+    }
+    
+    body.dark-mode #darkModeToggle .moon {
+      display: none;
+    }
+  </style>
+
+  {% if page.image.feature %}
+  <div class="image-wrap">
+    <img src=
+    {% if page.image.feature contains 'http://' %}
+      "{{ page.image.feature }}"
+    {% elsif page.image.feature contains 'https://' %}
+      "{{ page.image.feature }}"
+    {% else %}
+      "{{ site.url }}/images/{{ page.image.feature }}"
+    {% endif %}
+    alt="{{ page.title }} feature image">
+    {% if page.image.credit %}
+      <span class="image-credit">Photo Credit: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a></span>
+    {% endif %}
+  </div><!-- /.image-wrap -->
+  {% endif %}
+
+  <div id="main" role="main">
+    {{ content }}
+  </div><!-- /#main -->
+
+  <div class="footer-wrap">
+    <footer>
+      {% include _footer.html %}
+    </footer>
+  </div><!-- /.footer-wrap -->
+
+  {% include _scripts.html %}
+
+  <script>
+    // Dark mode toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      const body = document.body;
+      
+      // Check for saved theme preference or use user's system preference
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      // Apply dark mode if saved or preferred
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        body.classList.add('dark-mode');
+      }
+      
+      // Toggle dark mode on button click
+      darkModeToggle.addEventListener('click', function() {
+        body.classList.toggle('dark-mode');
+        
+        // Save preference to localStorage
+        if (body.classList.contains('dark-mode')) {
+          localStorage.setItem('theme', 'dark');
+        } else {
+          localStorage.setItem('theme', 'light');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html> 

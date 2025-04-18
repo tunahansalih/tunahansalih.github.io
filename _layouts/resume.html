@@ -4,47 +4,234 @@
 <!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
-{% include _cvhead.html %}
-
-
+{% include _head.html %}
+<style>
+  .resume {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--card-bg-color, #ffffff);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  .resume h2 {
+    font-size: 1.75rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--highlight-color, #52adc8);
+    padding-bottom: 0.5rem;
+    color: var(--heading-color, #212121);
+  }
+  
+  .resume h1 {
+    font-size: 2.25rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--heading-color, #212121);
+  }
+  
+  .resume-item {
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--highlight-color, #52adc8);
+  }
+  
+  .time-period {
+    font-family: monospace;
+    background-color: rgba(82, 173, 200, 0.1);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+  }
+  
+  .institution {
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  
+  .position {
+    font-style: italic;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .description {
+    margin-top: 0.5rem;
+  }
+  
+  .description ul {
+    margin: 0.5rem 0 0.5rem 1.5rem;
+  }
+  
+  .download-button {
+    display: inline-block;
+    background-color: var(--highlight-color, #52adc8);
+    color: white !important;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    margin: 1rem 0;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .download-button:hover {
+    background-color: var(--link-hover-color, #3a87a0);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .award-item {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border-radius: 6px;
+    background-color: rgba(82, 173, 200, 0.05);
+  }
+  
+  @media screen and (max-width: 768px) {
+    .resume {
+      padding: 1.5rem;
+    }
+    
+    .resume h1 {
+      font-size: 1.75rem;
+    }
+    
+    .resume h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style>
 </head>
 
 <body class="page">
 
 {% include _browser-upgrade.html %}
-
 {% include _navigation.html %}
 
-
+<div style="position: fixed; top: 20px; right: 20px; z-index: 1000; background-color: var(--background-color, #fff); border-radius: 50%; padding: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+  <button id="darkModeToggle" style="background: transparent; border: none; cursor: pointer; font-size: 20px;" title="Toggle Dark Mode">
+    <i class="fa-solid fa-circle-half-stroke"></i>
+  </button>
+</div>
 
 <div id="main" role="main">
   <div class="article-author-side">
     {% include _author-bio.html %}
   </div>
   <article class="page">
-    <h1>{{ page.title }}</h1>
-
-   <div class="resume">
+    <div class="resume">
       {{ content }}
-</div><!--closing resume div-->
-    <!--  {% if page.share != false %}
-        <hr />
-  
-      {% endif %}-->
-
-   <!-- {% if site.owner.disqus-shortname and page.comments == true %}
-      <section id="disqus_thread"></section><!-- /#disqus_thread -->
-  {% endif %}
+    </div>
   </article>
 </div><!-- /#index -->
 
 <div class="footer-wrap">
   <footer>
-  <!--  {% include _footer.html %}-->
+    {% include _footer.html %}
   </footer>
 </div><!-- /.footer-wrap -->
 
 {% include _scripts.html %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Format resume content
+    formatResume();
+    
+    // Setup dark mode toggle
+    setupDarkMode();
+    
+    function formatResume() {
+      // Wrap time periods in special formatting
+      const resume = document.querySelector('.resume');
+      if (!resume) return;
+      
+      // Find all code blocks that have years (typically formatted with backticks)
+      const timePeriods = resume.querySelectorAll('code');
+      timePeriods.forEach(period => {
+        // Only process if it looks like a year
+        if (/^\`\d{4}/.test(period.textContent)) {
+          const span = document.createElement('span');
+          span.className = 'time-period';
+          span.textContent = period.textContent.replace(/\`/g, '');
+          period.parentNode.replaceChild(span, period);
+        }
+      });
+      
+      // Format institution and position
+      const paragraphs = resume.querySelectorAll('p');
+      paragraphs.forEach(p => {
+        const text = p.innerHTML;
+        if (text.includes('__') && !p.classList.contains('processed')) {
+          // Replace __Institution__ with formatted span
+          p.innerHTML = text.replace(/__([^_]+)__/g, '<span class="institution">$1</span>');
+          p.classList.add('processed');
+          
+          // Check if the next element is a list, if so, wrap them together
+          if (p.nextElementSibling && p.nextElementSibling.tagName === 'UL') {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'resume-item';
+            p.parentNode.insertBefore(wrapper, p);
+            wrapper.appendChild(p);
+            wrapper.appendChild(p.nextElementSibling);
+          } else {
+            // Just wrap the paragraph
+            const wrapper = document.createElement('div');
+            wrapper.className = 'resume-item';
+            p.parentNode.insertBefore(wrapper, p);
+            wrapper.appendChild(p);
+          }
+        }
+      });
+      
+      // Create wrapper for awards
+      const awardSection = Array.from(resume.querySelectorAll('h2')).find(h => h.textContent.includes('Awards'));
+      if (awardSection) {
+        // Find all awards (all `year` codes after the Awards heading until the next heading)
+        let nextEl = awardSection.nextElementSibling;
+        while (nextEl && nextEl.tagName !== 'H2') {
+          if (nextEl.tagName === 'P' && nextEl.querySelector('.time-period')) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'award-item';
+            nextEl.parentNode.insertBefore(wrapper, nextEl);
+            wrapper.appendChild(nextEl);
+          }
+          nextEl = nextEl.nextElementSibling;
+        }
+      }
+    }
+    
+    function setupDarkMode() {
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      const body = document.body;
+      
+      // Check for saved theme preference or prefer-color-scheme
+      const isDarkMode = localStorage.getItem('darkMode') === 'true' || 
+                        (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      
+      // Apply initial theme
+      if (isDarkMode) {
+        body.classList.add('dark-mode');
+        document.documentElement.classList.add('dark-theme');
+        localStorage.setItem('darkMode', 'true');
+      }
+      
+      // Toggle theme when button is clicked
+      darkModeToggle.addEventListener('click', function() {
+        body.classList.toggle('dark-mode');
+        document.documentElement.classList.toggle('dark-theme');
+        const isDark = body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDark.toString());
+      });
+    }
+  });
+</script>
 
 </body>
 </html>

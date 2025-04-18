@@ -2,40 +2,57 @@
 
 /* Fix the page width issues */
 body {
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow-x: hidden !important;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+  font-family: 'Inter', sans-serif;
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 /* Fix main content layout */
 #main {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  width: calc(100% - 40px) !important;
-  box-sizing: border-box !important;
-  padding: 20px !important;
-  margin: 0 auto !important;
-  max-width: 1200px !important;
-  padding-top: 1rem;
-  border-top-width: 1px;
+  margin-bottom: 2rem;
 }
 
 /* Fix author bio section */
-.article-author-side {
-  text-align: center !important;
-  margin-right: 30px !important;
+.author-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.bio-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid #f2f3f3;
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
+.author-info {
+  margin-bottom: 1rem;
+}
+
+.author-name {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+}
+
+.author-bio {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 /* Social icons styling */
 .social-icons {
-  margin-top: 1rem;
-  text-align: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
 
 .author-social {
@@ -44,22 +61,212 @@ body {
   justify-content: center;
   width: 36px;
   height: 36px;
-  margin: 0.3rem;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.2);
-  color: var(--text-color);
+  background-color: #f2f3f3;
+  color: #343434;
+  font-size: 16px;
   transition: all 0.3s ease;
 }
 
 .author-social:hover {
-  transform: translateY(-3px);
-  background-color: #64b5f6;
+  background-color: #52adc8;
   color: white;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
 }
 
-.dark-theme .author-social {
-  background-color: rgba(255, 255, 255, 0.1);
+/* Blockquote styling */
+blockquote {
+  border-left: 6px solid #52adc8;
+  padding-left: 1.5rem;
+  margin-left: 0;
+  font-style: italic;
+}
+
+/* Publications styling */
+.publications h2 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+}
+
+.publication-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.publication-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.publication-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* News timeline styling */
+.timeline {
+  position: relative;
+  margin: 2rem 0;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #e0e0e0;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -2.35rem;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #52adc8;
+  border: 2px solid white;
+}
+
+.timeline-year {
+  position: relative;
+  margin: 2rem 0 1rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.timeline-year::before {
+  content: "";
+  position: absolute;
+  left: -2.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #343434;
+  border: 2px solid white;
+}
+
+.timeline-icon {
+  margin-right: 0.5rem;
+}
+
+.timeline-content {
+  margin-top: 0.5rem;
+}
+
+.timeline-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  margin-right: 1rem;
+  color: #52adc8;
+  text-decoration: none;
+}
+
+.timeline-link:hover {
+  text-decoration: underline;
+}
+
+/* Mobile optimizations */
+@media screen and (max-width: 768px) {
+  .publication-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .author-container {
+    padding: 0 1rem;
+  }
+  
+  .timeline {
+    padding-left: 1.5rem;
+  }
+  
+  .timeline-item::before {
+    left: -1.85rem;
+  }
+  
+  .timeline-year::before {
+    left: -2rem;
+  }
+}
+
+/* Dark theme adjustments */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+  
+  .bio-photo {
+    border-color: #343434;
+  }
+  
+  .author-social {
+    background-color: #343434;
+    color: #e0e0e0;
+  }
+  
+  .author-social:hover {
+    background-color: #52adc8;
+    color: white;
+  }
+  
+  .timeline::before {
+    background-color: #343434;
+  }
+  
+  .timeline-item::before {
+    border-color: #121212;
+  }
+  
+  .timeline-year::before {
+    background-color: #52adc8;
+    border-color: #121212;
+  }
+  
+  .publication-card {
+    border-color: #343434;
+    background-color: #1e1e1e;
+  }
+  
+  blockquote {
+    border-left-color: #52adc8;
+  }
+  
+  a {
+    color: #52adc8;
+  }
+  
+  a:hover {
+    color: #7abfd1;
+  }
+  
+  .top-navigation {
+    background-color: #121212;
+  }
+  
+  nav ul li a {
+    color: #e0e0e0;
+  }
+  
+  nav ul li a:hover {
+    color: #52adc8;
+  }
 }
 
 /* Fix font icons */
@@ -83,28 +290,6 @@ body {
   margin-bottom: 30px !important;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
   border-left: 3px solid #ff5252 !important;
-}
-
-/* Ensure blockquotes are properly styled */
-blockquote {
-  background-color: #1e1e1e !important;
-  padding: 20px !important;
-  border-radius: 8px !important;
-  margin-bottom: 30px !important;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
-  border-left: 3px solid #ff5252 !important;
-  color: #e0e0e0 !important;
-}
-
-/* Publication cards */
-.publications-grid {
-  width: 100% !important;
-}
-
-/* Publications heading */
-.publications h2 {
-  text-align: center;
-  margin-bottom: 2rem;
 }
 
 /* Ensure dark theme applies correctly */
@@ -147,7 +332,7 @@ blockquote {
   --link-color: #1976d2;
   --link-hover-color: #1565c0;
   --card-bg-color: #ffffff;
-  --highlight-color: #CC0000;
+  --highlight-color: #52adc8;
   --lowlight-color: #000000;
 }
 
@@ -158,18 +343,199 @@ blockquote {
   --link-color: #64b5f6;
   --link-hover-color: #90caf9;
   --card-bg-color: #1e1e1e;
-  --highlight-color: #ff5252;
+  --highlight-color: #64b5f6;
   --lowlight-color: #ffffff;
 }
 
-/* Mobile optimizations */
-@media (max-width: 767px) {
-  .article-author-side {
-    margin-right: 0 !important;
-    width: 100% !important;
+/* Navigation wrapper */
+.navigation-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #e2e8f0;
+}
+
+body.dark-mode .publication-card {
+  background-color: #1e1e1e;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .navigation-wrapper {
+  background-color: #1e1e1e;
+  border-bottom: 1px solid #333;
+}
+
+body.dark-mode article.page {
+  background-color: #1a202c;
+}
+
+body.dark-mode a {
+  color: #4dabf5;
+}
+
+body.dark-mode blockquote {
+  border-left-color: #0288d1;
+  color: #bbb;
+}
+
+body.dark-mode .top-navigation li a {
+  color: #e2e8f0;
+}
+
+body.dark-mode .footer-wrap {
+  background-color: #1e1e1e;
+  border-top: 1px solid #333;
+}
+
+/* News timeline dark mode */
+body.dark-mode .timeline {
+  border-left-color: #3d4852;
+}
+
+body.dark-mode .timeline-item {
+  background-color: #1e1e1e;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .timeline-item:hover {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .timeline-icon {
+  background-color: #3d4852;
+  color: #e2e8f0;
+}
+
+body.dark-mode .year-divider {
+  background-color: #1e1e1e;
+  color: #e2e8f0;
+  border: 1px solid #3d4852;
+}
+
+/* Resume page styles */
+.resume h1 {
+  color: var(--heading-color);
+  margin-bottom: 1.5rem;
+}
+
+.resume h2 {
+  color: var(--heading-color);
+  border-bottom: 2px solid var(--highlight-color);
+  padding-bottom: 0.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.resume .institution {
+  color: var(--heading-color);
+  font-weight: 600;
+}
+
+.resume .time-period {
+  font-family: 'SF Mono', 'Consolas', monospace;
+  background-color: rgba(82, 173, 200, 0.1);
+  color: var(--highlight-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.resume-item {
+  border-left: 3px solid var(--highlight-color);
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.award-item {
+  background-color: rgba(82, 173, 200, 0.05);
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.download-button {
+  display: inline-block;
+  background-color: var(--highlight-color);
+  color: white !important;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  margin: 1rem 0;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.download-button:hover {
+  background-color: var(--link-hover-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  text-decoration: none !important;
+}
+
+.download-button i {
+  margin-right: 0.5rem;
+}
+
+/* Dark mode for resume */
+.dark-theme .resume, 
+body.dark-mode .resume {
+  background-color: var(--card-bg-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.dark-theme .resume .time-period,
+body.dark-mode .resume .time-period {
+  background-color: rgba(100, 181, 246, 0.1);
+  color: var(--highlight-color);
+}
+
+.dark-theme .resume-item,
+body.dark-mode .resume-item {
+  border-left-color: var(--highlight-color);
+}
+
+.dark-theme .award-item,
+body.dark-mode .award-item {
+  background-color: rgba(100, 181, 246, 0.05);
+}
+
+.dark-theme .download-button,
+body.dark-mode .download-button {
+  background-color: var(--highlight-color);
+  color: #121212 !important;
+}
+
+.dark-theme .download-button:hover,
+body.dark-mode .download-button:hover {
+  background-color: var(--link-hover-color);
+}
+
+/* Mobile adjustments for resume */
+@media screen and (max-width: 768px) {
+  .resume {
+    padding: 1rem;
   }
   
-  article.page {
-    width: 100% !important;
+  .resume h1 {
+    font-size: 1.75rem;
+  }
+  
+  .resume h2 {
+    font-size: 1.5rem;
+  }
+  
+  .resume-item {
+    padding-left: 0.75rem;
+  }
+  
+  .download-button {
+    display: block;
+    text-align: center;
   }
 } 
