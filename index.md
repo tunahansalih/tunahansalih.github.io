@@ -20,7 +20,7 @@ At the core of my work is a belief that generative AI should not only create hig
 
 ## Current Interests
 
-- Controllable generation in diffusion and autoregressive models 
+- Controllable generation in diffusion and autoregressive models
 - Token-level interpretability in transformers (image/video/LLM)
 - Steering of foundation models  
 - Zero-shot image/video editing  
