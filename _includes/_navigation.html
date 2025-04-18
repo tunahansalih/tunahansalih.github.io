@@ -1,13 +1,14 @@
 <div class="navigation-wrapper">
 	<div class="site-name">
 		{% if site.logo %}
-		<a href="{{ site.github.url }}/"><img src="{{ site.github.url }}/images/{{ site.logo }} "></a>
+		<a href="{{ site.github.url }}/"><img src="{{ site.github.url }}/images/{{ site.logo }}" alt="{{ site.title }}"></a>
 		{% else %}
 		<a href="{{ site.github.url }}/">{{ site.title }}</a>
 		{% endif %}
 	</div><!-- /.site-name -->
 	<div class="top-navigation">
-		<nav role="navigation" id="site-nav" class="nav">
+		<nav role="navigation" class="site-nav">
+			{% include _mobile-nav.html %}
 		    <ul>
 		        {% for link in site.data.navigation %}
 				    {% if link.url contains 'http' %}
@@ -20,4 +21,5 @@
 		    </ul>
 		</nav>
 	</div><!-- /.top-navigation -->
+	{% include _dark-mode-toggle.html %}
 </div><!-- /.navigation-wrapper -->
