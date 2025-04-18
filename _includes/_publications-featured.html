@@ -1,20 +1,20 @@
-<!-- Publications Section -->
-<section class="publications-section">
-  <div class="publications-grid">
-    {% assign sorted_publications = site.data.publications | sort: "year" | reverse %}
-    {% for pub in sorted_publications %}
-      <div class="publication-card">
-        <div class="publication-image">
+<!-- Featured Publications Section -->
+<section class="featured-publications">
+  <h2>Featured Publications</h2>
+  <div class="featured-pubs-grid">
+    {% assign featured_pubs = site.data.publications | where: "featured", true | sort: "featured_order" %}
+    {% for pub in featured_pubs %}
+      <div class="featured-pub-card">
+        <div class="featured-pub-image">
           <img src="images/publications/{{ pub.image }}" onerror="this.src='images/publications/placeholder.jpg'; this.onerror=null;" alt="{{ pub.title }}">
         </div>
-        <div class="publication-content">
+        <div class="featured-pub-content">
           <h3>{{ pub.title }}</h3>
-          <p class="publication-authors">{{ pub.authors }}</p>
-          <p class="publication-venue">{{ pub.venue }} ({{ pub.year }})</p>
-          <p class="publication-desc">{{ pub.description }}</p>
-          
+          <p class="featured-pub-authors">{{ pub.authors }}</p>
+          <p class="featured-pub-venue">{{ pub.venue }}</p>
+          <p class="featured-pub-desc">{{ pub.description }}</p>
           {% if pub.links %}
-            <div class="publication-links">
+            <div class="featured-pub-links">
               {% for link in pub.links %}
                 <a href="{{ link.url }}" class="{% if link.type %}{{ link.type }}-link{% endif %}" target="_blank">
                   {{ link.text }}
@@ -22,95 +22,97 @@
               {% endfor %}
             </div>
           {% endif %}
-          
-          {% if pub.citation %}
-            <div class="publication-citation-wrapper">
-              <button class="citation-toggle" onclick="toggleCitation(this)">Show Citation</button>
-              <div class="publication-citation">
-                <pre>{{ pub.citation }}</pre>
-              </div>
-            </div>
-          {% endif %}
         </div>
       </div>
     {% endfor %}
   </div>
+  
+  <div class="view-all-pubs">
+    <a href="/publications/" class="view-all-link">
+      View all publications <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
 </section>
 
 <style>
-  .publications-section {
-    margin: 2rem 0;
+  .featured-publications {
+    margin: 3rem 0;
   }
   
-  .publications-grid {
+  .featured-publications h2 {
+    margin-bottom: 2rem;
+    color: var(--heading-color);
+    font-size: 1.8rem;
+  }
+  
+  .featured-pubs-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
   }
   
-  .publication-card {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
+  .featured-pub-card {
+    display: flex;
+    flex-direction: column;
     background-color: var(--card-bg-color);
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
-  .publication-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  .featured-pub-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   }
   
-  .publication-image {
+  .featured-pub-image {
     width: 100%;
-    height: 100%;
-    min-height: 200px;
+    height: 200px;
+    overflow: hidden;
     background-color: rgba(100, 181, 246, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
   }
   
-  .publication-image img {
+  .featured-pub-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
   }
   
-  .publication-card:hover .publication-image img {
+  .featured-pub-card:hover .featured-pub-image img {
     transform: scale(1.05);
   }
   
-  .publication-content {
+  .featured-pub-content {
     padding: 1.5rem;
   }
   
-  .publication-content h3 {
+  .featured-pub-content h3 {
     margin: 0 0 0.75rem 0;
     font-size: 1.25rem;
     line-height: 1.4;
     font-weight: 600;
   }
   
-  .publication-authors {
+  .featured-pub-authors {
     font-size: 0.9rem;
     margin: 0 0 0.5rem 0;
     color: var(--text-color);
     opacity: 0.9;
   }
   
-  .publication-venue {
+  .featured-pub-venue {
     font-size: 0.85rem;
     font-weight: 600;
     color: #64b5f6;
     margin: 0 0 0.75rem 0;
   }
   
-  .publication-desc {
+  .featured-pub-desc {
     font-size: 0.95rem;
     line-height: 1.5;
     margin: 0 0 1.25rem 0;
@@ -118,14 +120,13 @@
     opacity: 0.9;
   }
   
-  .publication-links {
+  .featured-pub-links {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-bottom: 1rem;
   }
   
-  .publication-links a {
+  .featured-pub-links a {
     padding: 0.4rem 0.8rem;
     font-size: 0.85rem;
     border-radius: 4px;
@@ -164,88 +165,76 @@
     color: #ffb74d;
   }
   
-  .citation-toggle {
-    background-color: transparent;
-    border: 1px solid #ddd;
-    padding: 0.4rem 0.8rem;
+  .view-all-pubs {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  
+  .view-all-pubs .view-all-link {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background-color: #64b5f6;
+    color: white;
+    font-weight: 500;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+  
+  .view-all-pubs .view-all-link:hover {
+    background-color: #2196f3;
+    transform: translateY(-2px);
+  }
+  
+  .view-all-pubs .view-all-link i {
+    margin-left: 0.25rem;
     font-size: 0.85rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  
-  .citation-toggle:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-  }
-  
-  .publication-citation {
-    display: none;
-    margin-top: 1rem;
-    padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.03);
-    border-radius: 4px;
-    font-family: monospace;
-    font-size: 0.85rem;
-    white-space: pre-wrap;
-    overflow-x: auto;
-  }
-  
-  .publication-citation pre {
-    margin: 0;
-    white-space: pre-wrap;
   }
   
   /* Dark theme adjustments */
-  .dark-theme .publication-card {
+  .dark-theme .featured-pub-card {
     background-color: #1e1e1e;
   }
   
-  .dark-theme .publication-image {
+  .dark-theme .featured-pub-image {
     background-color: rgba(100, 181, 246, 0.05);
   }
   
-  .dark-theme .citation-toggle {
-    border-color: #444;
-  }
-  
-  .dark-theme .publication-citation {
-    background-color: rgba(255, 255, 255, 0.05);
+  @media (min-width: 768px) {
+    .featured-pubs-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
   
   @media (max-width: 767px) {
-    .publication-card {
-      grid-template-columns: 1fr;
+    .featured-pub-card {
+      margin-bottom: 1.5rem;
     }
     
-    .publication-image {
+    .featured-pub-image {
       height: 180px;
+    }
+    
+    .featured-pub-content {
+      padding: 1.25rem;
     }
   }
 </style>
 
 <script>
-  function toggleCitation(button) {
-    const citationElement = button.parentNode.querySelector('.publication-citation');
-    if (citationElement.style.display === 'block') {
-      citationElement.style.display = 'none';
-      button.textContent = 'Show Citation';
-    } else {
-      citationElement.style.display = 'block';
-      button.textContent = 'Hide Citation';
-    }
-  }
-  
-  // Create placeholders for missing images
+  // Fallback function to handle missing images
   document.addEventListener('DOMContentLoaded', function() {
-    const pubImages = document.querySelectorAll('.publication-image img');
+    const pubImages = document.querySelectorAll('.featured-pub-image img');
     
+    // Create a placeholder SVG with publication title if image fails to load
     pubImages.forEach(img => {
       img.addEventListener('error', function() {
         const title = this.alt || 'Publication';
+        const pubCard = this.closest('.featured-pub-card');
         const letterMatch = title.match(/\b(\w)/g);
         const initials = letterMatch ? letterMatch.slice(0, 2).join('').toUpperCase() : 'PUB';
         
-        // Create SVG placeholder
+        // If no fallback image, create SVG placeholder
         const svgNS = "http://www.w3.org/2000/svg";
         const svg = document.createElementNS(svgNS, "svg");
         svg.setAttribute("width", "100%");

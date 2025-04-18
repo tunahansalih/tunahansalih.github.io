@@ -25,6 +25,6 @@ At the core of my work is a belief that generative AI should not only create hig
 - Steering of foundation models  
 - Zero-shot image/video editing  
 
-{% include _news-timeline.html %}
+{% include _news-recent.html %}
 
-{% include _publications.html %}
+{% include _publications-featured.html %}

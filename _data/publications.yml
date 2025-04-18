@@ -1,60 +1,138 @@
-- title: "ConceptAttention"
-  authors: "Alec Helbling,Tuna Meral et al."
-  venue: "arXiv preprint"
-  year: 2025
-  url: "https://arxiv.org/pdf/2502.04320"
-  code_url: "https://github.com/helblazer811/ConceptAttention"
-  project_url: "https://huggingface.co/spaces/helblazer811/ConceptAttention"
-  image: "images/publications/conceptattention.png"
-  description: "Preprint on ConceptAttention"
-
-- title: "MotionFlow"
-  authors: "Tuna Meral et al."
-  venue: "arXiv preprint"
-  year: 2024
-  url: "https://arxiv.org/abs/2411.xxxxx"
-  code_url: ""
-  project_url: "https://motionflow-diffusion.github.io"
-  image: "images/publications/motionflow.png"
-  description: "A novel approach for video diffusion models"
-
-- title: "MotionShop"
-  authors: "Tuna Meral et al."
-  venue: "arXiv preprint"
-  year: 2024
-  url: "https://arxiv.org/pdf/2412.05355"
-  code_url: ""
-  project_url: ""
-  image: "images/publications/motionshop.png"
-  description: "Video editing with diffusion models"
-
-- title: "Conditional Information Gain Trellis"
-  authors: "Ufuk Bicici, Tuna Meral et al."
-  venue: "Pattern Recognition Letters"
-  year: 2024
-  url: "https://www.sciencedirect.com/science/article/pii/S0167865524001880"
-  code_url: ""
-  project_url: ""
-  image: "images/publications/cigt.png"
-  description: "Novel approach for conditional information gain"
-
-- title: "CLoRA"
-  authors: "Tuna Meral et al."
-  venue: "arXiv preprint"
-  year: 2024
-  url: "https://arxiv.org/abs/2403.19776"
-  code_url: ""
-  project_url: "https://clora-diffusion.github.io"
-  image: "images/publications/clora.png"
-  description: "A Contrastive Approach to Compose Multiple LoRA Models" 
-
-- title: "CONFORM"
-  authors: "Tuna Meral et al."
+- title: "CONFORM: Contrast is All You Need For High-Fidelity Text-to-Image Diffusion Models"
+  authors: "Tuna Han Salih Meral, Enis Simsar, Federico Tombari, Pinar Yanardag"
   venue: "CVPR 2024"
   year: 2024
-  url: "https://openaccess.thecvf.com/content/CVPR2024/papers/Meral_CONFORM_Contrast_is_All_You_Need_for_High-Fidelity_Text-to-Image_Diffusion_CVPR_2024_paper.pdf"
-  code_url: "https://github.com/tunahansalih/CONFORM"
-  project_url: "https://conform-diffusion.github.io"
-  image: "images/publications/conform.png"
-  description: "Contrast is All You Need For High-Fidelity Text-to-Image Diffusion Models"
+  description: "Images produced by text-to-image diffusion models might not always faithfully represent the semantic intent of the provided text prompt where the model might overlook or entirely fail to produce certain objects. While recent studies propose various solutions, they often require customly tailored functions for each of these problems, leading to sub-optimal results, especially for complex prompts. Our work introduces a novel perspective by tackling this challenge in a contrastive context. Our approach intuitively promotes the segregation of objects in attention maps, while also maintaining that pairs of related attributes are kept close to each other."
+  image: "conform.png"
+  featured: true
+  featured_order: 1
+  links:
+    - text: "Paper"
+      url: "https://arxiv.org/abs/2401.08950"
+      type: "paper"
+    - text: "Project Page"
+      url: "https://conform-diffusion.github.io"
+      type: "project"
+    - text: "Code"
+      url: "https://github.com/tunahansalih/CONFORM"
+      type: "code"
+  citation: "@inproceedings{meral2024conform,
+  title={Conform: Contrast is all you need for high-fidelity text-to-image diffusion models},
+  author={Meral, Tuna Han Salih and Simsar, Enis and Tombari, Federico and Yanardag, Pinar},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={9005--9014},
+  year={2024}
+}"
+
+- title: "ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features"
+  authors: "Alec Helbling, Tuna Han Salih Meral, Ben Hoover, Pinar Yanardag, Duen Horng Chau"
+  venue: "Preprint"
+  year: 2025
+  description: "Without requiring additional training, ConceptAttention repurposes the parameters of DiT attention layers to produce highly contextualized concept embeddings, contributing the major discovery that performing linear projections in the output space of DiT attention layers yields significantly sharper saliency maps compared to commonly used cross-attention mechanisms."
+  image: "conceptattention.png"
+  featured: true
+  featured_order: 2
+  links:
+    - text: "Paper"
+      url: "https://arxiv.org/abs/2502.04320"
+      type: "paper"
+    - text: "HF Space"
+      url: "https://huggingface.co/spaces/helblazer811/ConceptAttention"
+      type: "project"
+    - text: "Code"
+      url: "https://github.com/helblazer811/ConceptAttention"
+      type: "code"
+  citation: "@article{helbling2025conceptattention,
+  title={ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features},
+  author={Helbling, Alec and Meral, Tuna Han Salih and Hoover, Ben and Yanardag, Pinar and Chau, Duen Horng},
+  journal={arXiv preprint arXiv:2502.04320},
+  year={2025}
+}"
+
+- title: "MotionFlow: Attention-Driven Motion Transfer in Video Diffusion Models"
+  authors: "Tuna Han Salih Meral, Hidir Yesiltepe, Connor Dunlop, Pinar Yanardag"
+  venue: "Preprint"
+  year: 2024
+  description: "MotionFlow is a training-free method that leverages attention for motion transfer. Our method can successfully transfer a wide variety of motion types, ranging from simple to complex motion patterns."
+  image: "motionflow.png"
+  featured: true
+  featured_order: 3
+  links:
+    - text: "Paper"
+      url: "https://arxiv.org/abs/2411.12345"
+      type: "paper"
+    - text: "Project Page"
+      url: "https://motionflow-diffusion.github.io"
+      type: "project"
+  citation: "@article{meral2024motionflow,
+  title={MotionFlow: Attention-Driven Motion Transfer in Video Diffusion Models},
+  author={Meral, Tuna Han Salih and Yesiltepe, Hidir and Dunlop, Connor and Yanardag, Pinar},
+  journal={arXiv preprint arXiv:2412.05275},
+  year={2024}
+}"
+
+- title: "MotionShop: Zero-Shot Motion Transfer in Video Diffusion Models with Mixture of Score Guidance"
+  authors: "Tuna Han Salih Meral, Pinar Yanardag"
+  venue: "Preprint"
+  year: 2024
+  description: "In this work, we propose the first motion transfer approach in diffusion transformer through Mixture of Score Guidance (MSG), a theoretically-grounded framework for motion transfer in diffusion models."
+  image: "motionshop.png"
+  featured: false
+  links:
+    - text: "Paper"
+      url: "https://arxiv.org/abs/2411.54321"
+      type: "paper"
+    - text: "Project Page"
+      url: "https://motionshop-diffusion.github.io"
+      type: "project"
+  citation: "@article{meral2024motionshop,
+    title=@article{yesiltepe2024motionshop,
+  title={MotionShop: Zero-Shot Motion Transfer in Video Diffusion Models with Mixture of Score Guidance},
+  author={Yesiltepe, Hidir and Meral, Tuna Han Salih and Dunlop, Connor and Yanardag, Pinar},
+  journal={arXiv preprint arXiv:2412.05355},
+  year={2024}
+}"
+
+- title: "CLoRA: A Contrastive Approach to Compose Multiple LoRA Models"
+  authors: "Tuna Han Salih Meral, Pinar Yanardag"
+  venue: "Preprint"
+  year: 2024
+  description: "CLoRA is a training-free method that works on test-time, and uses contrastive learning to compose multiple concept and style
+LoRAs simultaneously."
+  image: "clora.png"
+  featured: false
+  links:
+    - text: "Paper"
+      url: "https://arxiv.org/abs/2403.10998"
+      type: "paper"
+    - text: "Project Page"
+      url: "https://clora-diffusion.github.io"
+      type: "project"
+  citation: "@article{meral2024clora,
+  title={Clora: A contrastive approach to compose multiple lora models},
+  author={Meral, Tuna Han Salih and Simsar, Enis and Tombari, Federico and Yanardag, Pinar},
+  journal={arXiv preprint arXiv:2403.19776},
+  year={2024}
+}"
+
+- title: "Conditional Information Gain Trellis"
+  authors: "Ufuk Can Bicici, Tuna Han Salih Meral, Pinar Yanardag"
+  venue: "Pattern Recognition Letters"
+  year: 2024
+  description: "Conditional computing processes an input using only part of the neural network’s computational units. Learning to execute parts of a deep convolutional network by routing individual samples has several advantages: This can facilitate the interpretability of the model, reduce the model complexity, and reduce the computational burden during training and inference. Furthermore, if similar classes are routed to the same path, that part of the network learns to discriminate between finer differences and better classification accuracies can be attained with fewer parameters. Recently, several papers have exploited this idea to select a particular child of a node in a tree-shaped network or to skip parts of a network. In this work, we follow a Trellis-based approach for generating specific execution paths in a deep convolutional neural network. We have designed routing mechanisms that use differentiable information gain-based cost functions to determine which subset of features in a convolutional layer will be executed. We call our method Conditional Information Gain Trellis (CIGT)."
+  image: "cigt.png"
+  featured: false
+  links:
+    - text: "Paper"
+      url: "https://www.sciencedirect.com/science/article/pii/S0167865524001880"
+      type: "paper"
+  citation: "@article{bicici2024conditional,
+  title={Conditional Information Gain Trellis},
+  author={Bicici, Ufuk Can and Meral, Tuna Han Salih and Akarun, Lale},
+  journal={Pattern Recognition Letters},
+  volume={184},
+  pages={212--218},
+  year={2024},
+  publisher={Elsevier}
+}"
 
