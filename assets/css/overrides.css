@@ -45,6 +45,43 @@ body {
   margin-right: 30px !important;
 }
 
+/* Fix social media icons in author bio */
+.social-icons {
+  margin-top: 15px !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 10px !important;
+}
+
+.article-author-side .author-social {
+  display: inline-flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 36px !important;
+  height: 36px !important;
+  margin: 0 !important;
+  font-size: 1rem !important;
+  color: #64b5f6 !important;
+  background-color: rgba(100, 181, 246, 0.1) !important;
+  border-radius: 50% !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.article-author-side .author-social:hover {
+  color: #fff !important;
+  background-color: #64b5f6 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Fix font icons */
+.fa, .fab, .fad, .fal, .far, .fas, .ai {
+  color: inherit !important;
+}
+
 /* Fix quote styling */
 .article-wrap > p:first-of-type {
   background-color: #1e1e1e !important;
@@ -53,6 +90,17 @@ body {
   margin-bottom: 30px !important;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
   border-left: 3px solid #ff5252 !important;
+}
+
+/* Ensure blockquotes are properly styled */
+blockquote {
+  background-color: #1e1e1e !important;
+  padding: 20px !important;
+  border-radius: 8px !important;
+  margin-bottom: 30px !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+  border-left: 3px solid #ff5252 !important;
+  color: #e0e0e0 !important;
 }
 
 /* Publication cards */
@@ -68,7 +116,8 @@ body {
 
 .dark-theme article.page, 
 .dark-theme .article-wrap > p:first-of-type,
-.dark-theme .publication-card {
+.dark-theme .publication-card,
+.dark-theme blockquote {
   background-color: #1e1e1e !important;
 }
 
@@ -79,6 +128,21 @@ body {
 .dark-theme h5,
 .dark-theme h6 {
   color: white !important;
+}
+
+/* Links in dark mode */
+.dark-theme a {
+  color: #64b5f6 !important;
+}
+
+.dark-theme a:hover {
+  color: #90caf9 !important;
+  text-decoration: underline !important;
+}
+
+/* Fix for academicons */
+.ai {
+  font-size: 1rem !important;
 }
 
 /* Mobile optimizations */
