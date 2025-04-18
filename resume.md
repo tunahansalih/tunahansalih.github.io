@@ -4,7 +4,7 @@ published: true
 title: Resumé
 ---
 
-# Tunahan Salih's Resumé
+# Tuna's Resumé
 
 <a href="https://drive.google.com/file/d/1RxtH5A56p0lZVManDSTV9uilSw3wbbzg/view?usp=sharing" class="download-button"><i class="fas fa-download"></i> Download PDF</a>
 
