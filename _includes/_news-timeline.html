@@ -1,0 +1,298 @@
+<!-- News Timeline Section -->
+<section class="news-timeline">
+  <h2>Personal News</h2>
+  <div class="timeline">
+    {% assign sorted_news = site.data.news | sort: 'date' | reverse %}
+    {% assign current_year = "" %}
+    
+    {% for item in sorted_news %}
+      {% assign news_year = item.date | date: "%Y" %}
+      
+      {% if current_year != news_year %}
+        <div class="timeline-year">
+          <span>{{ news_year }}</span>
+        </div>
+        {% assign current_year = news_year %}
+      {% endif %}
+      
+      <div class="timeline-item">
+        <div class="timeline-marker">
+          {% case item.type %}
+            {% when "publication" %}
+              <i class="fas fa-file-alt" title="Publication"></i>
+            {% when "grant" %}
+              <i class="fas fa-award" title="Grant"></i>
+            {% when "internship" %}
+              <i class="fas fa-briefcase" title="Internship"></i>
+            {% when "milestone" %}
+              <i class="fas fa-flag" title="Milestone"></i>
+            {% else %}
+              <i class="fas fa-calendar-day" title="Event"></i>
+          {% endcase %}
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-date">{{ item.date | date: "%b %Y" }}</div>
+          <div class="timeline-body">
+            {% if item.title %}
+              <h4>{{ item.title }}</h4>
+            {% endif %}
+            <p>
+              {{ item.description }}
+              {% if item.links %}
+                <div class="timeline-links">
+                  {% for link in item.links %}
+                    <a href="{{ link.url }}" class="timeline-link {% if link.type %}{{ link.type }}-link{% endif %}" target="_blank">
+                      {{ link.text }}
+                    </a>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+  .news-timeline {
+    margin: 3rem 0;
+  }
+  
+  .news-timeline h2 {
+    margin-bottom: 2rem;
+    color: var(--heading-color);
+    font-size: 1.8rem;
+  }
+  
+  .timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    width: 3px;
+    background-color: rgba(100, 181, 246, 0.3);
+    border-radius: 3px;
+  }
+  
+  .timeline-year {
+    position: relative;
+    margin: 2rem 0;
+    padding-left: 50px;
+  }
+  
+  .timeline-year span {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    background-color: #64b5f6;
+    color: white;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  
+  .timeline-item {
+    position: relative;
+    padding-left: 50px;
+    margin-bottom: 2rem;
+  }
+  
+  .timeline-marker {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #64b5f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.8rem;
+    border: 3px solid #121212;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 1;
+  }
+  
+  .timeline-content {
+    background-color: var(--card-bg-color);
+    padding: 1.2rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .timeline-content:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .timeline-date {
+    font-size: 0.8rem;
+    color: #64b5f6;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .timeline-body h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  
+  .timeline-body p {
+    margin: 0;
+    line-height: 1.6;
+  }
+  
+  .timeline-links {
+    margin-top: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .timeline-link {
+    display: inline-block;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  
+  .paper-link {
+    background-color: rgba(25, 118, 210, 0.1);
+    color: #64b5f6;
+  }
+  
+  .paper-link:hover {
+    background-color: rgba(25, 118, 210, 0.2);
+    color: #90caf9;
+  }
+  
+  .code-link {
+    background-color: rgba(46, 125, 50, 0.1);
+    color: #4caf50;
+  }
+  
+  .code-link:hover {
+    background-color: rgba(46, 125, 50, 0.2);
+    color: #81c784;
+  }
+  
+  .project-link {
+    background-color: rgba(230, 81, 0, 0.1);
+    color: #ff9800;
+  }
+  
+  .project-link:hover {
+    background-color: rgba(230, 81, 0, 0.2);
+    color: #ffb74d;
+  }
+  
+  /* Animation classes */
+  .timeline-item.in-view .timeline-marker {
+    transform: scale(1.3);
+    background-color: #ff5252;
+  }
+  
+  .timeline-item.in-view .timeline-content {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Dark theme styles */
+  .dark-theme .timeline::before {
+    background-color: rgba(100, 181, 246, 0.2);
+  }
+  
+  .dark-theme .timeline-marker {
+    border-color: #121212;
+  }
+  
+  .dark-theme .timeline-content {
+    background-color: #1e1e1e;
+  }
+  
+  /* Publication type colors */
+  .timeline-item[data-type="publication"] .timeline-marker {
+    background-color: #2196f3;
+  }
+  
+  .timeline-item[data-type="grant"] .timeline-marker {
+    background-color: #ffc107;
+  }
+  
+  .timeline-item[data-type="internship"] .timeline-marker {
+    background-color: #4caf50;
+  }
+  
+  .timeline-item[data-type="milestone"] .timeline-marker {
+    background-color: #9c27b0;
+  }
+  
+  @media (max-width: 768px) {
+    .timeline-item {
+      padding-left: 40px;
+    }
+    
+    .timeline::before {
+      left: 15px;
+    }
+    
+    .timeline-marker {
+      left: 5px;
+    }
+    
+    .timeline-year {
+      padding-left: 40px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Add data-type attribute to timeline items for styling
+    document.querySelectorAll('.timeline-item').forEach(function(item) {
+      const markerIcon = item.querySelector('.timeline-marker i');
+      if (markerIcon) {
+        const type = markerIcon.getAttribute('title').toLowerCase();
+        item.setAttribute('data-type', type);
+      }
+    });
+    
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5
+    };
+    
+    const observer = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        } else {
+          entry.target.classList.remove('in-view');
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.timeline-item').forEach(item => {
+      observer.observe(item);
+    });
+  });
+</script> 

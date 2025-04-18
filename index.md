@@ -8,30 +8,23 @@ published: true
 > Now I am working on images making sense._
 
 # About Me
-I am Tuna ([tu-nah]), a PhD student in Computer Science at Virginia Tech, affiliated with the Computer Science Department and The Sanghani Center for Artificial Intelligence and Data Analytics. My research focuses on image and video diffusion models, driven by a passion for advancing generative AI techniques. Since 2023, I have been working with [Prof. Pinar Yanardag](https://pinguar.org/) and previously, I was supervised by [Prof. Lale Akarun](https://scholar.google.com/citations?user=MybhMyUAAAAJ&hl=en) during my M.Sc. at [Bogazici University](https://bogazici.edu.tr/en_us).
 
-Before coming to the US for my Ph.D., I worked as a Machine Learning Engineer at [Lyrebird Studio](https://lyrebirdstudio.net/) and [Vispera](https://vispera.co/). You can find more about my work accomplishments on my [resumé](https://tunahansalih.github.io/resume/) page and download my resume from [here](https://drive.google.com/file/d/1RxtH5A56p0lZVManDSTV9uilSw3wbbzg/view).
+I am Tuna ([tu-nah]), a Ph.D. student in Computer Science at **Virginia Tech**, advised by [Dr. Pinar Yanardag Delul](https://pinguar.org/), and a member of the [GemLab](https://gemlab-vt.github.io/).
 
-## Current Interests:
-- Image and Video Diffusion Models
-- Representation Learning
-- Few-Shot Learning
+My research focuses on developing **controllable** and **interpretable** generative models across **images**, **video**, and **language**. I design alignment objectives for **diffusion** and **autoregressive** architectures to enable efficient, user-aligned generation without post-hoc tuning.
+
+Before joining VT, I worked across startups and industry labs, building real-time image generation services and scalable ML systems in production. This mix of applied and theoretical experience enables me to create generative models that are both research-grade and deployable.
+
+At the core of my work is a belief that generative AI should not only create high-quality content, but do so transparently and in alignment with user goals.
 
 
-## Personal News
-- Feb 2025  -  My new preprint [**ConceptAttention**](https://arxiv.org/pdf/2502.04320) is available at arXiv.
-- Nov 2024  -  My new preprint [**MotionFlow**](https://motionflow-diffusion.github.io) is available at arXiv.
-- Nov 2024  -  My new preprint [**MotionShop**](https://motionshop-diffusion.github.io) is available at arXiv.
-- Oct 2024  -  I have been awarded a research grant from **Deloitte** to work on mechanistic interpretability for large language models.
-- Oct 2024  -  I completed my internship at **Adobe**, where I worked on Video Diffusion Transformers models, focusing on instruction-based video editing.
-- Jun 2024  -  I started my research internship at **Adobe** in the Summer 2024.
-- Jun 2024  -  My paper, [Conditional Information Gain Trellis](https://www.sciencedirect.com/science/article/pii/S0167865524001880) has been accepted to **Pattern Recognition Letters**.
-- May 2024  -  My paper, [**CONFORM**](https://conform-diffusion.github.io), has been accepted to **CVPR 2024**.
-- Mar 2024  -  My new preprint [**CLoRA**](https://clora-diffusion.github.io) is available at arXiv.
-- Jan 2024  -  Open-sourced the code for my paper: [**CONFORM**](https://conform-diffusion.github.io).
-- Dec 2023  -  My new preprint [**CONFORM**](https://conform-diffusion.github.io) is available at arXiv.
-- Aug 2023  -  I started my PhD in Computer Science with [Pinar Yanardag Delul](https://pinguar.org/).
+## Current Interests
 
-## Publications
+- Controllable generation in diffusion and autoregressive models 
+- Token-level interpretability in transformers (image/video/LLM)
+- Steering of foundation models  
+- Zero-shot image/video editing  
+
+{% include _news-timeline.html %}
 
 {% include _publications.html %}

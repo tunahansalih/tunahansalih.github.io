@@ -7,6 +7,7 @@ body {
   margin: 0 !important;
   padding: 0 !important;
   overflow-x: hidden !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
 }
 
 /* Fix navigation styling */
@@ -80,6 +81,14 @@ body {
 /* Fix font icons */
 .fa, .fab, .fad, .fal, .far, .fas, .ai {
   color: inherit !important;
+  font-size: 1rem !important;
+}
+
+/* Specific for academic icons */
+.ai {
+  font-size: 1rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 /* Fix quote styling */
@@ -106,6 +115,16 @@ blockquote {
 /* Publication cards */
 .publications-grid {
   width: 100% !important;
+}
+
+/* Publications heading */
+.publications h2 {
+  margin-top: 2rem !important;
+  font-size: 1.8rem !important;
+  color: #ffffff !important;
+  border-bottom: 2px solid #ff5252 !important;
+  padding-bottom: 0.5rem !important;
+  margin-bottom: 1.5rem !important;
 }
 
 /* Ensure dark theme applies correctly */
@@ -143,6 +162,11 @@ blockquote {
 /* Fix for academicons */
 .ai {
   font-size: 1rem !important;
+}
+
+/* Make sure publication buttons are visible */
+.dark-theme .pub-link {
+  text-decoration: none !important;
 }
 
 /* Mobile optimizations */

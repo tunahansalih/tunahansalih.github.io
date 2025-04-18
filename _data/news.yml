@@ -1,0 +1,82 @@
+- date: 2025-02-01
+  type: publication
+  description: "My new preprint <strong>ConceptAttention</strong> is available at arXiv."
+  links:
+    - text: Paper
+      url: https://arxiv.org/pdf/2502.04320
+      type: paper
+
+- date: 2024-11-15
+  type: publication
+  description: "My new preprint <strong>MotionFlow</strong> is available at arXiv."
+  links:
+    - text: Project Page
+      url: https://motionflow-diffusion.github.io
+      type: project
+
+- date: 2024-11-01
+  type: publication
+  description: "My new preprint <strong>MotionShop</strong> is available at arXiv."
+  links:
+    - text: Project Page
+      url: https://motionshop-diffusion.github.io
+      type: project
+
+- date: 2024-10-15
+  type: grant
+  description: "I have been awarded a research grant from <strong>Deloitte</strong> to work on mechanistic interpretability for large language models."
+
+- date: 2024-10-01
+  type: internship
+  description: "I completed my internship at <strong>Adobe</strong>, where I worked on Video Diffusion Transformers models, focusing on instruction-based video editing."
+
+- date: 2024-06-15
+  type: internship
+  description: "I started my research internship at <strong>Adobe</strong> in the Summer 2024."
+
+- date: 2024-06-01
+  type: publication
+  description: "My paper, Conditional Information Gain Trellis has been accepted to <strong>Pattern Recognition Letters</strong>."
+  links:
+    - text: Paper
+      url: https://www.sciencedirect.com/science/article/pii/S0167865524001880
+      type: paper
+
+- date: 2024-05-15
+  type: publication
+  description: "My paper, <strong>CONFORM</strong>, has been accepted to <strong>CVPR 2024</strong>."
+  links:
+    - text: Project Page
+      url: https://conform-diffusion.github.io
+      type: project
+
+- date: 2024-03-01
+  type: publication
+  description: "My new preprint <strong>CLoRA</strong> is available at arXiv."
+  links:
+    - text: Project Page
+      url: https://clora-diffusion.github.io
+      type: project
+
+- date: 2024-01-15
+  type: milestone
+  description: "Open-sourced the code for my paper: <strong>CONFORM</strong>."
+  links:
+    - text: Code
+      url: https://github.com/tunahansalih/CONFORM
+      type: code
+    - text: Project Page
+      url: https://conform-diffusion.github.io
+      type: project
+
+- date: 2023-12-01
+  type: publication
+  description: "My new preprint <strong>CONFORM</strong> is available at arXiv."
+  links:
+    - text: Project Page
+      url: https://conform-diffusion.github.io
+      type: project
+
+- date: 2023-08-15
+  type: milestone
+  description: "I started my PhD in Computer Science with <a href='https://pinguar.org/' target='_blank'>Pinar Yanardag Delul</a>." 
