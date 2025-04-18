@@ -1,0 +1,200 @@
+<!-- Publications Cards Section -->
+<section id="publications" class="publications">
+  <h2>Publications</h2>
+  <div class="publications-grid">
+    {% for pub in site.data.publications %}
+    <div class="publication-card">
+      <div class="publication-image">
+        {% if pub.image %}
+          <img src="{{ site.url }}/{{ pub.image }}" alt="{{ pub.title }}" onerror="this.src='{{ site.url }}/images/publications/placeholder.jpg'">
+        {% else %}
+          <img src="{{ site.url }}/images/publications/placeholder.jpg" alt="{{ pub.title }}">
+        {% endif %}
+      </div>
+      <div class="publication-content">
+        <h3 class="publication-title">{{ pub.title }}</h3>
+        <p class="publication-authors">{{ pub.authors }}</p>
+        <p class="publication-venue"><em>{{ pub.venue }}</em>, {{ pub.year }}</p>
+        <p class="publication-description">{{ pub.description }}</p>
+        <div class="publication-links">
+          {% if pub.url %}
+            <a href="{{ pub.url }}" class="pub-link paper-link" target="_blank">Paper</a>
+          {% endif %}
+          
+          {% if pub.code_url and pub.code_url != "" %}
+            <a href="{{ pub.code_url }}" class="pub-link code-link" target="_blank">Code</a>
+          {% endif %}
+          
+          {% if pub.project_url and pub.project_url != "" %}
+            <a href="{{ pub.project_url }}" class="pub-link project-link" target="_blank">Project Page</a>
+          {% endif %}
+          
+          <button class="pub-link citation-btn" onclick="toggleCitation('citation-{{ forloop.index }}')">Cite</button>
+          <div id="citation-{{ forloop.index }}" class="citation-text" style="display: none;">
+            @article{{{ pub.title | downcase | replace: ' ', '_' }}_{{ pub.year }},
+              title={ {{ pub.title }} },
+              author={ {{ pub.authors }} },
+              journal={ {{ pub.venue }} },
+              year={ {{ pub.year }} }
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<script>
+  function toggleCitation(citationId) {
+    var citation = document.getElementById(citationId);
+    if (citation.style.display === "none") {
+      citation.style.display = "block";
+    } else {
+      citation.style.display = "none";
+    }
+  }
+</script>
+
+<style>
+  .publications {
+    margin: 2rem 0;
+  }
+  
+  .publications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+  }
+  
+  .publication-card {
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+  }
+  
+  .publication-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .publication-image {
+    height: 180px;
+    overflow: hidden;
+  }
+  
+  .publication-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .publication-card:hover .publication-image img {
+    transform: scale(1.05);
+  }
+  
+  .publication-content {
+    padding: 1.5rem;
+  }
+  
+  .publication-title {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .publication-authors {
+    font-size: 0.9rem;
+    margin: 0 0 0.5rem 0;
+    color: #444;
+  }
+  
+  .publication-venue {
+    font-size: 0.85rem;
+    margin: 0 0 1rem 0;
+    color: #666;
+  }
+  
+  .publication-description {
+    font-size: 0.9rem;
+    margin: 0 0 1.25rem 0;
+    color: #333;
+    line-height: 1.4;
+  }
+  
+  .publication-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .pub-link {
+    display: inline-block;
+    padding: 0.4rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .paper-link {
+    background-color: #e3f2fd;
+    color: #1976d2;
+  }
+  
+  .paper-link:hover {
+    background-color: #bbdefb;
+  }
+  
+  .code-link {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+  }
+  
+  .code-link:hover {
+    background-color: #c8e6c9;
+  }
+  
+  .project-link {
+    background-color: #fff3e0;
+    color: #e65100;
+  }
+  
+  .project-link:hover {
+    background-color: #ffe0b2;
+  }
+  
+  .citation-btn {
+    background-color: #f3e5f5;
+    color: #7b1fa2;
+    border: none;
+  }
+  
+  .citation-btn:hover {
+    background-color: #e1bee7;
+  }
+  
+  .citation-text {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    white-space: pre-wrap;
+    width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    .publications-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style> 

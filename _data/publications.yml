@@ -1,0 +1,60 @@
+- title: "ConceptAttention"
+  authors: "Alec Helbling,Tuna Meral et al."
+  venue: "arXiv preprint"
+  year: 2025
+  url: "https://arxiv.org/pdf/2502.04320"
+  code_url: "https://github.com/helblazer811/ConceptAttention"
+  project_url: "https://huggingface.co/spaces/helblazer811/ConceptAttention"
+  image: "images/publications/conceptattention.png"
+  description: "Preprint on ConceptAttention"
+
+- title: "MotionFlow"
+  authors: "Tuna Meral et al."
+  venue: "arXiv preprint"
+  year: 2024
+  url: "https://arxiv.org/abs/2411.xxxxx"
+  code_url: ""
+  project_url: "https://motionflow-diffusion.github.io"
+  image: "images/publications/motionflow.png"
+  description: "A novel approach for video diffusion models"
+
+- title: "MotionShop"
+  authors: "Tuna Meral et al."
+  venue: "arXiv preprint"
+  year: 2024
+  url: "https://arxiv.org/pdf/2412.05355"
+  code_url: ""
+  project_url: ""
+  image: "images/publications/motionshop.png"
+  description: "Video editing with diffusion models"
+
+- title: "Conditional Information Gain Trellis"
+  authors: "Ufuk Bicici, Tuna Meral et al."
+  venue: "Pattern Recognition Letters"
+  year: 2024
+  url: "https://www.sciencedirect.com/science/article/pii/S0167865524001880"
+  code_url: ""
+  project_url: ""
+  image: "images/publications/cigt.png"
+  description: "Novel approach for conditional information gain"
+
+- title: "CLoRA"
+  authors: "Tuna Meral et al."
+  venue: "arXiv preprint"
+  year: 2024
+  url: "https://arxiv.org/abs/2403.19776"
+  code_url: ""
+  project_url: "https://clora-diffusion.github.io"
+  image: "images/publications/clora.png"
+  description: "A Contrastive Approach to Compose Multiple LoRA Models" 
+
+- title: "CONFORM"
+  authors: "Tuna Meral et al."
+  venue: "CVPR 2024"
+  year: 2024
+  url: "https://openaccess.thecvf.com/content/CVPR2024/papers/Meral_CONFORM_Contrast_is_All_You_Need_for_High-Fidelity_Text-to-Image_Diffusion_CVPR_2024_paper.pdf"
+  code_url: "https://github.com/tunahansalih/CONFORM"
+  project_url: "https://conform-diffusion.github.io"
+  image: "images/publications/conform.png"
+  description: "Contrast is All You Need For High-Fidelity Text-to-Image Diffusion Models"
+

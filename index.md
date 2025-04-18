@@ -31,3 +31,5 @@ Before coming to the US for my Ph.D., I worked as a Machine Learning Engineer at
 - Jan 2024  -  Open-sourced the code for my paper: [**CONFORM**](https://conform-diffusion.github.io).
 - Dec 2023  -  My new preprint [**CONFORM**](https://conform-diffusion.github.io) is available at arXiv.
 - Aug 2023  -  I started my PhD in Computer Science with [Pinar Yanardag Delul](https://pinguar.org/).
+
+{% include _publications.html %}
