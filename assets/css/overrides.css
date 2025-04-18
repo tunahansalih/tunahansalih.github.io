@@ -1,0 +1,94 @@
+/* Overrides to fix specific layout issues */
+
+/* Fix the page width issues */
+body {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden !important;
+}
+
+/* Fix navigation styling */
+.navigation-wrapper {
+  width: 100% !important;
+  margin: 0 !important;
+  background-color: #121212 !important;
+}
+
+.dark-theme .navigation-wrapper {
+  background-color: #121212 !important;
+}
+
+.site-name {
+  padding-left: 20px !important;
+}
+
+.top-navigation {
+  padding-right: 20px !important;
+}
+
+/* Fix main content layout */
+#main {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  width: calc(100% - 40px) !important;
+  box-sizing: border-box !important;
+  padding: 20px !important;
+  margin: 0 auto !important;
+  max-width: 1200px !important;
+}
+
+/* Fix author bio section */
+.article-author-side {
+  text-align: center !important;
+  margin-right: 30px !important;
+}
+
+/* Fix quote styling */
+.article-wrap > p:first-of-type {
+  background-color: #1e1e1e !important;
+  padding: 20px !important;
+  border-radius: 8px !important;
+  margin-bottom: 30px !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+  border-left: 3px solid #ff5252 !important;
+}
+
+/* Publication cards */
+.publications-grid {
+  width: 100% !important;
+}
+
+/* Ensure dark theme applies correctly */
+.dark-theme {
+  background-color: #121212 !important;
+  color: #e0e0e0 !important;
+}
+
+.dark-theme article.page, 
+.dark-theme .article-wrap > p:first-of-type,
+.dark-theme .publication-card {
+  background-color: #1e1e1e !important;
+}
+
+.dark-theme h1,
+.dark-theme h2,
+.dark-theme h3,
+.dark-theme h4,
+.dark-theme h5,
+.dark-theme h6 {
+  color: white !important;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .article-author-side {
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+  
+  article.page {
+    width: 100% !important;
+  }
+} 

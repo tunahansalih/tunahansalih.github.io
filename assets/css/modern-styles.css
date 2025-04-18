@@ -43,6 +43,10 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.6;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 /* Typography */
@@ -66,6 +70,9 @@ a:hover {
   background-color: var(--nav-bg-color);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  position: relative;
+  z-index: 10;
 }
 
 .site-nav {
@@ -73,6 +80,8 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .site-nav ul {
@@ -105,37 +114,24 @@ a:hover {
 
 /* Main Content */
 #main {
-  /* Preserve the original layout for compatibility */
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* Fix for the author bio and article layout */
 .article-author-side {
-  float: left;
-  margin-right: 2rem;
+  width: 250px;
+  padding-right: 30px;
   margin-bottom: 2rem;
-  width: auto;
-  max-width: 250px;
 }
 
-.article-wrap {
-  overflow: hidden;
-}
-
-@media (max-width: 992px) {
-  .article-author-side {
-    float: none;
-    margin-right: 0;
-    width: 100%;
-    max-width: 100%;
-    text-align: center;
-  }
-}
-
-/* Article */
-article {
+article.page {
+  flex: 1;
+  min-width: 0;
   background-color: var(--card-bg-color);
   border-radius: 8px;
   box-shadow: var(--card-shadow);
@@ -144,11 +140,39 @@ article {
   margin-bottom: 2rem;
 }
 
+.article-wrap {
+  width: 100%;
+}
+
+/* Fix for the author bio layout in mobile */
+@media (max-width: 992px) {
+  #main {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .article-author-side {
+    width: 100%;
+    padding-right: 0;
+    text-align: center;
+    order: 1;
+  }
+  
+  article.page {
+    order: 2;
+    width: 100%;
+  }
+}
+
 /* Author bio styles */
 .bio-photo {
   border-radius: 50%;
   border: 3px solid var(--highlight-color);
   transition: border-color 0.3s ease;
+  max-width: 200px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
 }
 
 /* Footer */
@@ -159,6 +183,18 @@ article {
   margin-top: 2rem;
   text-align: center;
   transition: background-color 0.3s ease, color 0.3s ease;
+  width: 100%;
+}
+
+/* Quote styling */
+blockquote, .article-wrap > p:first-of-type {
+  background-color: var(--card-bg-color);
+  border-left: 3px solid var(--highlight-color);
+  margin: 0 0 1.5rem 0;
+  padding: 1rem 1.5rem;
+  font-style: italic;
+  border-radius: 4px;
+  box-shadow: var(--card-shadow);
 }
 
 /* Publications - enhancing existing styles */
@@ -167,6 +203,7 @@ article {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
+  width: 100%;
 }
 
 .publication-card {
@@ -223,16 +260,6 @@ th, td {
 thead {
   background-color: var(--code-bg-color);
   transition: background-color 0.3s ease;
-}
-
-/* Other elements */
-blockquote {
-  border-left: 3px solid var(--highlight-color);
-  margin-left: 0;
-  padding-left: 1rem;
-  color: var(--text-color);
-  opacity: 0.9;
-  transition: border-color 0.3s ease, color 0.3s ease;
 }
 
 /* Print styles */

@@ -19,8 +19,8 @@
   }
 
   #dark-mode-toggle-btn {
-    background-color: var(--card-bg-color, #ffffff);
-    border: 1px solid var(--border-color, #e0e0e0);
+    background-color: #2d2d2d;
+    border: 1px solid #444444;
     cursor: pointer;
     padding: 8px;
     border-radius: 50%;
@@ -28,18 +28,19 @@
     justify-content: center;
     align-items: center;
     transition: background-color 0.3s, box-shadow 0.3s;
-    width: 44px;
-    height: 44px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 48px;
+    height: 48px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   }
 
   #dark-mode-toggle-btn:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
   }
 
   .dark-theme #dark-mode-toggle-btn {
-    background-color: var(--nav-bg-color, #1a1a1a);
-    border-color: var(--border-color, #333333);
+    background-color: #444444;
+    border-color: #666666;
   }
 
   .sun-icon, .moon-icon {
@@ -49,11 +50,11 @@
   }
 
   .sun-icon path {
-    fill: #f39c12;
+    fill: #f9a825;
   }
 
   .moon-icon path {
-    fill: #2980b9;
+    fill: #90caf9;
   }
 
   .moon-icon {
@@ -74,8 +75,8 @@
 
   @media (max-width: 768px) {
     .dark-mode-toggle {
-      bottom: 10px;
-      right: 10px;
+      bottom: 15px;
+      right: 15px;
     }
 
     #dark-mode-toggle-btn {
@@ -94,10 +95,9 @@
     const currentTheme = localStorage.getItem('theme') || 
                          (prefersDarkScheme.matches ? 'dark' : 'light');
     
-    // Set initial theme
-    if (currentTheme === 'dark') {
-      document.body.classList.add('dark-theme');
-    }
+    // Set initial theme - force dark theme by default
+    document.body.classList.add('dark-theme');
+    localStorage.setItem('theme', 'dark');
     
     // Toggle theme when button is clicked
     darkModeToggle.addEventListener('click', () => {

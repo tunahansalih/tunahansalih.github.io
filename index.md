@@ -4,8 +4,8 @@ excerpt: About Me...
 published: true
 ---
 
-_I worked on making sense of images,\
-Now I am working on images making sense._
+> _I worked on making sense of images,\
+> Now I am working on images making sense._
 
 # About Me
 I am Tuna ([tu-nah]), a PhD student in Computer Science at Virginia Tech, affiliated with the Computer Science Department and The Sanghani Center for Artificial Intelligence and Data Analytics. My research focuses on image and video diffusion models, driven by a passion for advancing generative AI techniques. Since 2023, I have been working with [Prof. Pinar Yanardag](https://pinguar.org/) and previously, I was supervised by [Prof. Lale Akarun](https://scholar.google.com/citations?user=MybhMyUAAAAJ&hl=en) during my M.Sc. at [Bogazici University](https://bogazici.edu.tr/en_us).
@@ -31,5 +31,7 @@ Before coming to the US for my Ph.D., I worked as a Machine Learning Engineer at
 - Jan 2024  -  Open-sourced the code for my paper: [**CONFORM**](https://conform-diffusion.github.io).
 - Dec 2023  -  My new preprint [**CONFORM**](https://conform-diffusion.github.io) is available at arXiv.
 - Aug 2023  -  I started my PhD in Computer Science with [Pinar Yanardag Delul](https://pinguar.org/).
+
+## Publications
 
 {% include _publications.html %}
