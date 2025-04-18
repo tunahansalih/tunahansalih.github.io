@@ -1,25 +1,307 @@
-<div class="navigation-wrapper">
-	<div class="site-name">
-		{% if site.logo %}
-		<a href="{{ site.github.url }}/"><img src="{{ site.github.url }}/images/{{ site.logo }}" alt="{{ site.title }}"></a>
-		{% else %}
-		<a href="{{ site.github.url }}/">{{ site.title }}</a>
-		{% endif %}
-	</div><!-- /.site-name -->
-	<div class="top-navigation">
-		<nav role="navigation" class="site-nav">
-			{% include _mobile-nav.html %}
-		    <ul>
-		        {% for link in site.data.navigation %}
-				    {% if link.url contains 'http' %}
-				        {% assign domain = '' %}
-				        {% else %}
-				        {% assign domain = site.github.url %}
-				    {% endif %}
-				    <li><a href="{{ domain }}{{ link.url }}" {% if link.url contains 'http' %}target="_blank"{% endif %}>{{ link.title }}</a></li>
-				{% endfor %}
-		    </ul>
-		</nav>
-	</div><!-- /.top-navigation -->
-</div><!-- /.navigation-wrapper -->
-{% include _dark-mode-toggle.html %}
+<!-- Modern Navigation Header -->
+<header class="main-header">
+	<div class="navigation-wrapper">
+		<div class="site-name">
+			<a href="{{ site.github.url }}/" class="site-title">{{ site.title }}</a>
+		</div>
+		
+		<div class="nav-controls">
+			<nav role="navigation" class="site-nav">
+				<button class="nav-toggle" aria-label="Toggle navigation menu">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="3" y1="12" x2="21" y2="12"></line>
+						<line x1="3" y1="6" x2="21" y2="6"></line>
+						<line x1="3" y1="18" x2="21" y2="18"></line>
+					</svg>
+				</button>
+				
+				<ul class="nav-menu">
+					{% for link in site.data.navigation %}
+						{% if link.url contains 'http' %}
+							{% assign domain = '' %}
+						{% else %}
+							{% assign domain = site.github.url %}
+						{% endif %}
+						<li class="nav-item{% if page.url contains link.url %} active{% endif %}">
+							<a href="{{ domain }}{{ link.url }}" {% if link.url contains 'http' %}target="_blank" rel="noopener"{% endif %} class="nav-link">
+								{{ link.title }}
+							</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</nav>
+			
+			<button class="dark-mode-toggle" aria-label="Toggle dark mode">
+				<svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+				</svg>
+				<svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<circle cx="12" cy="12" r="5"></circle>
+					<line x1="12" y1="1" x2="12" y2="3"></line>
+					<line x1="12" y1="21" x2="12" y2="23"></line>
+					<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+					<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+					<line x1="1" y1="12" x2="3" y2="12"></line>
+					<line x1="21" y1="12" x2="23" y2="12"></line>
+					<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+					<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+				</svg>
+			</button>
+		</div>
+	</div>
+	<div class="header-separator"></div>
+</header>
+
+<style>
+	.main-header {
+		width: 100%;
+		background-color: var(--background-color);
+		position: sticky;
+		top: 0;
+		z-index: 1000;
+		transition: background-color 0.3s ease, box-shadow 0.3s ease;
+	}
+	
+	.dark-theme .main-header {
+		background-color: #121212;
+	}
+	
+	.navigation-wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1rem 2rem;
+		max-width: 1200px;
+		margin: 0 auto;
+		width: 100%;
+		box-sizing: border-box;
+	}
+	
+	.site-name {
+		flex: 0 0 auto;
+	}
+	
+	.site-title {
+		font-size: 1.5rem;
+		font-weight: 700;
+		color: var(--heading-color);
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+	
+	.site-title:hover {
+		color: var(--link-hover-color);
+	}
+	
+	.nav-controls {
+		display: flex;
+		align-items: center;
+	}
+	
+	.site-nav {
+		margin-right: 1rem;
+	}
+	
+	.nav-toggle {
+		display: none;
+		background: none;
+		border: none;
+		color: var(--text-color);
+		cursor: pointer;
+		padding: 8px;
+		margin-right: 10px;
+		transition: transform 0.3s ease;
+	}
+	
+	.nav-menu {
+		display: flex;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	
+	.nav-item {
+		margin: 0 0.8rem;
+	}
+	
+	.nav-item.active .nav-link {
+		color: var(--link-color);
+	}
+	
+	.nav-item.active .nav-link::after {
+		width: 100%;
+	}
+	
+	.nav-link {
+		color: var(--text-color);
+		font-weight: 500;
+		text-decoration: none;
+		padding: 0.5rem 0.2rem;
+		position: relative;
+		transition: color 0.2s ease;
+	}
+	
+	.nav-link:hover {
+		color: var(--link-hover-color);
+	}
+	
+	.nav-link::after {
+		content: '';
+		position: absolute;
+		width: 0;
+		height: 2px;
+		bottom: 0;
+		left: 0;
+		background-color: var(--link-color);
+		transition: width 0.3s ease;
+	}
+	
+	.nav-link:hover::after {
+		width: 100%;
+	}
+	
+	.dark-mode-toggle {
+		background: none;
+		border: none;
+		cursor: pointer;
+		color: var(--text-color);
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: background-color 0.3s ease;
+	}
+	
+	.dark-mode-toggle:hover {
+		background-color: rgba(0,0,0,0.1);
+	}
+	
+	.dark-theme .dark-mode-toggle:hover {
+		background-color: rgba(255,255,255,0.1);
+	}
+	
+	.moon-icon {
+		display: block;
+	}
+	
+	.sun-icon {
+		display: none;
+	}
+	
+	.dark-theme .moon-icon {
+		display: none;
+	}
+	
+	.dark-theme .sun-icon {
+		display: block;
+	}
+	
+	.header-separator {
+		height: 3px;
+		background-color: var(--highlight-color, #CC0000);
+		width: 100%;
+	}
+	
+	@media (max-width: 768px) {
+		.navigation-wrapper {
+			padding: 0.75rem 1rem;
+		}
+		
+		.nav-toggle {
+			display: block;
+		}
+		
+		.nav-menu {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			flex-direction: column;
+			background-color: var(--background-color);
+			box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.3s ease;
+			z-index: 1000;
+		}
+		
+		.dark-theme .nav-menu {
+			background-color: #121212;
+			box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+		}
+		
+		.nav-menu.active {
+			max-height: 300px;
+		}
+		
+		.nav-item {
+			margin: 0;
+			width: 100%;
+			text-align: center;
+		}
+		
+		.nav-link {
+			display: block;
+			padding: 1rem;
+		}
+		
+		.nav-link::after {
+			display: none;
+		}
+	}
+</style>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		// Mobile menu toggle
+		const navToggle = document.querySelector('.nav-toggle');
+		const navMenu = document.querySelector('.nav-menu');
+		
+		if (navToggle && navMenu) {
+			navToggle.addEventListener('click', function() {
+				navMenu.classList.toggle('active');
+			});
+			
+			// Close menu when clicking outside
+			document.addEventListener('click', function(e) {
+				if (!e.target.closest('.site-nav') && navMenu.classList.contains('active')) {
+					navMenu.classList.remove('active');
+				}
+			});
+			
+			// Close menu when clicking a link
+			const navLinks = document.querySelectorAll('.nav-link');
+			navLinks.forEach(link => {
+				link.addEventListener('click', function() {
+					navMenu.classList.remove('active');
+				});
+			});
+		}
+		
+		// Dark mode toggle
+		const darkModeToggle = document.querySelector('.dark-mode-toggle');
+		
+		if (darkModeToggle) {
+			darkModeToggle.addEventListener('click', function() {
+				document.body.classList.toggle('dark-theme');
+				
+				// Save preference to local storage
+				if (document.body.classList.contains('dark-theme')) {
+					localStorage.setItem('theme', 'dark');
+				} else {
+					localStorage.setItem('theme', 'light');
+				}
+			});
+			
+			// Check for saved preference
+			const savedTheme = localStorage.getItem('theme');
+			if (savedTheme === 'dark') {
+				document.body.classList.add('dark-theme');
+			} else if (savedTheme === 'light') {
+				document.body.classList.remove('dark-theme');
+			}
+		}
+	});
+</script>
