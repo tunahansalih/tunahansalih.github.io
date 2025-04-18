@@ -13,31 +13,33 @@
 <style>
   .dark-mode-toggle {
     position: fixed;
-    top: 20px;
+    bottom: 20px;
     right: 20px;
     z-index: 1000;
   }
 
   #dark-mode-toggle-btn {
-    background: transparent;
-    border: none;
+    background-color: var(--card-bg-color, #ffffff);
+    border: 1px solid var(--border-color, #e0e0e0);
     cursor: pointer;
     padding: 8px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background-color 0.3s;
-    width: 40px;
-    height: 40px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    width: 44px;
+    height: 44px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
 
   #dark-mode-toggle-btn:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 
-  .dark-theme #dark-mode-toggle-btn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+  .dark-theme #dark-mode-toggle-btn {
+    background-color: var(--nav-bg-color, #1a1a1a);
+    border-color: var(--border-color, #333333);
   }
 
   .sun-icon, .moon-icon {
@@ -46,9 +48,12 @@
     transition: opacity 0.3s, transform 0.3s;
   }
 
-  .sun-icon path, .moon-icon path {
-    fill: var(--text-color);
-    transition: fill 0.3s;
+  .sun-icon path {
+    fill: #f39c12;
+  }
+
+  .moon-icon path {
+    fill: #2980b9;
   }
 
   .moon-icon {
@@ -69,13 +74,13 @@
 
   @media (max-width: 768px) {
     .dark-mode-toggle {
-      top: 10px;
+      bottom: 10px;
       right: 10px;
     }
 
     #dark-mode-toggle-btn {
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
     }
   }
 </style>

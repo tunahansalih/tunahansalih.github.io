@@ -7,13 +7,76 @@
   </svg>
 </button>
 
+<style>
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-color, #333);
+    cursor: pointer;
+    padding: 8px;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .nav-toggle:hover {
+    transform: scale(1.1);
+  }
+  
+  @media (max-width: 768px) {
+    .nav-toggle {
+      display: block;
+    }
+    
+    .top-navigation {
+      display: flex;
+      align-items: center;
+    }
+    
+    .site-nav {
+      width: 100%;
+    }
+    
+    .site-nav ul {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      left: 0;
+      background-color: var(--nav-bg-color, #fff);
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      z-index: 100;
+      padding: 10px 0;
+      margin: 0;
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .site-nav ul.active {
+      display: flex;
+    }
+    
+    .site-nav li {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .site-nav a {
+      display: block;
+      padding: 12px 20px;
+    }
+  }
+</style>
+
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const navToggle = document.querySelector('.nav-toggle');
     const siteNavUl = document.querySelector('.site-nav ul');
     
     if (navToggle && siteNavUl) {
-      navToggle.addEventListener('click', () => {
+      navToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         siteNavUl.classList.toggle('active');
       });
       
@@ -30,6 +93,13 @@
         link.addEventListener('click', () => {
           siteNavUl.classList.remove('active');
         });
+      });
+      
+      // Close the menu when pressing Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && siteNavUl.classList.contains('active')) {
+          siteNavUl.classList.remove('active');
+        }
       });
     }
   });
