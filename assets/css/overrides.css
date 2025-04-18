@@ -12,9 +12,14 @@ body {
 
 /* Fix navigation styling */
 .navigation-wrapper {
-  width: 100% !important;
-  margin: 0 !important;
-  background-color: #121212 !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .dark-theme .navigation-wrapper {
@@ -22,11 +27,53 @@ body {
 }
 
 .site-name {
-  padding-left: 20px !important;
+  flex: 0 0 auto;
+  margin-bottom: 0;
+  margin-right: 2rem;
 }
 
 .top-navigation {
-  padding-right: 20px !important;
+  flex: 1 1 auto;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.site-nav ul {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.site-nav li {
+  margin: 0 0.8rem;
+}
+
+.site-nav li a {
+  color: var(--text-color);
+  font-weight: 500;
+  transition: color 0.2s ease, transform 0.2s ease;
+  padding: 0.5rem 0.2rem;
+  position: relative;
+}
+
+.site-nav li a:hover {
+  color: #64b5f6;
+}
+
+.site-nav li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #64b5f6;
+  transition: width 0.3s ease;
+}
+
+.site-nav li a:hover::after {
+  width: 100%;
 }
 
 /* Fix main content layout */
@@ -38,6 +85,8 @@ body {
   padding: 20px !important;
   margin: 0 auto !important;
   max-width: 1200px !important;
+  padding-top: 1rem;
+  border-top-width: 1px;
 }
 
 /* Fix author bio section */
@@ -48,34 +97,35 @@ body {
 
 /* Fix social media icons in author bio */
 .social-icons {
-  margin-top: 15px !important;
-  text-align: center !important;
-  display: flex !important;
-  flex-wrap: wrap !important;
-  justify-content: center !important;
-  gap: 10px !important;
+  margin-top: 1rem;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.article-author-side .author-social {
-  display: inline-flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  width: 36px !important;
-  height: 36px !important;
-  margin: 0 !important;
-  font-size: 1rem !important;
-  color: #64b5f6 !important;
-  background-color: rgba(100, 181, 246, 0.1) !important;
-  border-radius: 50% !important;
-  text-decoration: none !important;
-  transition: all 0.3s ease !important;
+.author-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 0.3rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--text-color);
+  transition: all 0.3s ease;
 }
 
-.article-author-side .author-social:hover {
-  color: #fff !important;
-  background-color: #64b5f6 !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+.author-social:hover {
+  transform: translateY(-3px);
+  background-color: #64b5f6;
+  color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme .author-social {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Fix font icons */
@@ -119,12 +169,8 @@ blockquote {
 
 /* Publications heading */
 .publications h2 {
-  margin-top: 2rem !important;
-  font-size: 1.8rem !important;
-  color: #ffffff !important;
-  border-bottom: 2px solid #ff5252 !important;
-  padding-bottom: 0.5rem !important;
-  margin-bottom: 1.5rem !important;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 /* Ensure dark theme applies correctly */
@@ -170,7 +216,19 @@ blockquote {
 }
 
 /* Mobile optimizations */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
+  .navigation-wrapper {
+    padding: 1rem;
+  }
+  
+  .site-name {
+    margin-right: 1rem;
+  }
+  
+  .site-nav ul.active {
+    top: 70px;
+  }
+  
   .article-author-side {
     margin-right: 0 !important;
     width: 100% !important;
