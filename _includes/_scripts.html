@@ -21,3 +21,64 @@
 {% if page.comments %}
   {% include _disqus_comments.html %}
 {% endif %}
+
+<!-- Back to top button -->
+<button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Back to top functionality
+    const backToTopButton = document.getElementById('backToTop');
+    
+    // Show/hide the button based on scroll position
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    });
+    
+    // Scroll to top when clicked
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // Add active class to current navigation links
+    highlightCurrentPage();
+    
+    function highlightCurrentPage() {
+      const currentPath = window.location.pathname;
+      const navLinks = document.querySelectorAll('.top-navigation li a');
+      
+      navLinks.forEach(link => {
+        const linkPath = link.getAttribute('href');
+        
+        // Handle home page
+        if (currentPath === '/' && (linkPath === '/' || linkPath === '/index.html')) {
+          link.classList.add('active');
+        }
+        // Handle other pages
+        else if (currentPath.includes(linkPath) && linkPath !== '/' && linkPath !== '/index.html') {
+          link.classList.add('active');
+        }
+      });
+    }
+    
+    // Add parallax effect to header images
+    const headerImages = document.querySelectorAll('.image-wrap img');
+    if (headerImages.length > 0) {
+      window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        headerImages.forEach(img => {
+          img.style.transform = `translateY(${scrolled * 0.3}px)`;
+        });
+      });
+    }
+  });
+</script>

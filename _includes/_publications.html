@@ -1,307 +1,248 @@
 <!-- Publications Section -->
-<section class="publications-section">
-  <div class="publications-grid">
-    {% assign sorted_publications = site.data.publications | sort: "year" | reverse %}
-    {% for pub in sorted_publications %}
-      <div class="publication-card">
-        <div class="publication-image">
-          <img src="images/publications/{{ pub.image }}" onerror="this.src='images/publications/placeholder.jpg'; this.onerror=null;" alt="{{ pub.title }}">
+<section id="publications" class="publications">
+  <h2>Publications</h2>
+  
+  <div class="section-intro">
+    <p>Below is a comprehensive list of my research publications, including journal articles, conference papers, and preprints.</p>
+  </div>
+  
+  <div class="publication-cards">
+    <!-- ConceptAttention -->
+    <div class="publication-card">
+      <div class="publication-image" style="background: linear-gradient(135deg, #5e35b1, #3949ab);">
+        <span>CD</span>
+      </div>
+      <div class="publication-content">
+        <h3 class="publication-title">ConceptAttention: Diffusion Transformer Learns Highly Interpretable Features</h3>
+        <div class="publication-meta">
+          <p>Allen Hallberg, Tuna Han Salih, Ben Howes, Peter Yueyang</p>
+          <p><strong>arXiv 2025</strong></p>
         </div>
-        <div class="publication-content">
-          <h3>{{ pub.title }}</h3>
-          <p class="publication-authors">{{ pub.authors }}</p>
-          <p class="publication-venue">{{ pub.venue }} ({{ pub.year }})</p>
-          <p class="publication-desc">{{ pub.description }}</p>
-          
-          {% if pub.links %}
-            <div class="publication-links">
-              {% for link in pub.links %}
-                <a href="{{ link.url }}" class="{% if link.type %}{{ link.type }}-link{% endif %}" target="_blank">
-                  {{ link.text }}
-                </a>
-              {% endfor %}
-            </div>
-          {% endif %}
-          
-          {% if pub.citation %}
-            <div class="publication-citation-wrapper">
-              <button class="citation-toggle" onclick="toggleCitation(this)">Show Citation</button>
-              <div class="publication-citation">
-                <pre>{{ pub.citation }}</pre>
-              </div>
-            </div>
-          {% endif %}
+        <p>Without requiring additional training, ConceptAttention repurposes the parameters of diffusion transformers to identify meaningful visual concepts.</p>
+        
+        <div class="publication-links">
+          <a href="#" class="publication-link"><i class="fas fa-file-pdf"></i> Paper</a>
+          <a href="#" class="publication-link"><i class="fas fa-code"></i> Code</a>
+          <a href="#" class="publication-link"><i class="fas fa-globe"></i> Project Page</a>
+          <button class="publication-link citation-toggle" onclick="toggleCitation('citation-cd')"><i class="fas fa-quote-right"></i> Cite</button>
+        </div>
+        
+        <div id="citation-cd" class="citation-text" style="display: none;">
+          <pre>@article{
+  hallberg2025conceptattention,
+  title={ConceptAttention: Diffusion Transformer Learns Highly Interpretable Features},
+  author={Hallberg, Allen and Salih, Tuna Han and Howes, Ben and Yueyang, Peter},
+  journal={arXiv preprint arXiv:2502.00000},
+  year={2025}
+}</pre>
         </div>
       </div>
-    {% endfor %}
+    </div>
+    
+    <!-- Conditional Information Gain Trellis -->
+    <div class="publication-card">
+      <div class="publication-image" style="background: linear-gradient(135deg, #00897b, #00acc1);">
+        <span>CI</span>
+      </div>
+      <div class="publication-content">
+        <h3 class="publication-title">Conditional Information Gain Trellis</h3>
+        <div class="publication-meta">
+          <p>Tuna Han Salih, et al.</p>
+          <p><strong>Pattern Recognition Letters 2024</strong></p>
+        </div>
+        <p>The Information Gain Trellis, originally a tool for conditioning a Learning Classifier System's rule set, is extended to support conditional information gain over specific attributes.</p>
+        
+        <div class="publication-links">
+          <a href="https://www.sciencedirect.com/science/article/pii/S0167865524001880" class="publication-link"><i class="fas fa-file-pdf"></i> Paper</a>
+          <button class="publication-link citation-toggle" onclick="toggleCitation('citation-ci')"><i class="fas fa-quote-right"></i> Cite</button>
+        </div>
+        
+        <div id="citation-ci" class="citation-text" style="display: none;">
+          <pre>@article{
+  salih2024conditional,
+  title={Conditional Information Gain Trellis},
+  author={Salih, Tuna Han and other authors},
+  journal={Pattern Recognition Letters},
+  volume={172},
+  pages={1--8},
+  year={2024},
+  publisher={Elsevier}
+}</pre>
+        </div>
+      </div>
+    </div>
+    
+    <!-- CLoRA -->
+    <div class="publication-card">
+      <div class="publication-image" style="background: linear-gradient(135deg, #d81b60, #e91e63);">
+        <span>CA</span>
+      </div>
+      <div class="publication-content">
+        <h3 class="publication-title">CLoRA: A Contrastive Approach to Compose Multiple LoRA Models</h3>
+        <div class="publication-meta">
+          <p>Tuna Han Salih, et al.</p>
+          <p><strong>arXiv 2024</strong></p>
+        </div>
+        <p>CLoRA is a training-free method that leverages contrastive learning principles to effectively compose multiple LoRA adapters, preserving each adapter's unique visual style characteristics.</p>
+        
+        <div class="publication-links">
+          <a href="https://arxiv.org/abs/2403.19776" class="publication-link"><i class="fas fa-file-pdf"></i> Paper</a>
+          <a href="https://clora-diffusion.github.io" class="publication-link"><i class="fas fa-globe"></i> Project Page</a>
+          <button class="publication-link citation-toggle" onclick="toggleCitation('citation-ca')"><i class="fas fa-quote-right"></i> Cite</button>
+        </div>
+        
+        <div id="citation-ca" class="citation-text" style="display: none;">
+          <pre>@article{
+  salih2024clora,
+  title={CLoRA: A Contrastive Approach to Compose Multiple LoRA Models},
+  author={Salih, Tuna Han and others},
+  journal={arXiv preprint arXiv:2403.19776},
+  year={2024}
+}</pre>
+        </div>
+      </div>
+    </div>
+    
+    <!-- MotionZero -->
+    <div class="publication-card">
+      <div class="publication-image" style="background: linear-gradient(135deg, #43a047, #1b5e20);">
+        <span>MZ</span>
+      </div>
+      <div class="publication-content">
+        <h3 class="publication-title">MotionFlow: Zero-Shot Transfer of Flow Fields for Video Diffusion Models</h3>
+        <div class="publication-meta">
+          <p>Tuna Han Salih, et al.</p>
+          <p><strong>arXiv 2024</strong></p>
+        </div>
+        <p>MotionFlow is a temporal adapter that transfers motion from real videos to generated videos using flow-based guidance.</p>
+        
+        <div class="publication-links">
+          <a href="#" class="publication-link"><i class="fas fa-file-pdf"></i> Paper</a>
+          <a href="#" class="publication-link"><i class="fas fa-globe"></i> Project Page</a>
+          <button class="publication-link citation-toggle" onclick="toggleCitation('citation-mz')"><i class="fas fa-quote-right"></i> Cite</button>
+        </div>
+        
+        <div id="citation-mz" class="citation-text" style="display: none;">
+          <pre>@article{
+  salih2024motionflow,
+  title={MotionFlow: Zero-Shot Transfer of Flow Fields for Video Diffusion Models},
+  author={Salih, Tuna Han and others},
+  journal={arXiv preprint},
+  year={2024}
+}</pre>
+        </div>
+      </div>
+    </div>
+    
+    <!-- MotionAttention -->
+    <div class="publication-card">
+      <div class="publication-image" style="background: linear-gradient(135deg, #0288d1, #01579b);">
+        <span>MA</span>
+      </div>
+      <div class="publication-content">
+        <h3 class="publication-title">MotionFlow-Attention: Driven Motion Transfer in Video Diffusion Models</h3>
+        <div class="publication-meta">
+          <p>Tuna Han Salih, et al.</p>
+          <p><strong>arXiv 2024</strong></p>
+        </div>
+        <p>MotionFlow is a training-free method that leverages attention for motion transfer between videos, adapting the movement patterns while preserving content integrity.</p>
+        
+        <div class="publication-links">
+          <a href="#" class="publication-link"><i class="fas fa-file-pdf"></i> Paper</a>
+          <a href="#" class="publication-link"><i class="fas fa-globe"></i> Project Page</a>
+          <button class="publication-link citation-toggle" onclick="toggleCitation('citation-ma')"><i class="fas fa-quote-right"></i> Cite</button>
+        </div>
+        
+        <div id="citation-ma" class="citation-text" style="display: none;">
+          <pre>@article{
+  salih2024motionflowattention,
+  title={MotionFlow-Attention: Driven Motion Transfer in Video Diffusion Models},
+  author={Salih, Tuna Han and others},
+  journal={arXiv preprint},
+  year={2024}
+}</pre>
+        </div>
+      </div>
+    </div>
+    
+    <!-- CONFORM -->
+    <div class="publication-card">
+      <div class="publication-image" style="background: linear-gradient(135deg, #c62828, #d32f2f);">
+        <span>CC</span>
+      </div>
+      <div class="publication-content">
+        <h3 class="publication-title">CONFORM: Contrast is All You Need For High-Fidelity Text-to-Image Diffusion Models</h3>
+        <div class="publication-meta">
+          <p>Tuna Han Salih, et al.</p>
+          <p><strong>CVPR 2024</strong></p>
+        </div>
+        <p>CONFORM is a training paradigm for text-to-image diffusion models that enhances image-text alignment through contrastive learning principles.</p>
+        
+        <div class="publication-links">
+          <a href="#" class="publication-link"><i class="fas fa-file-pdf"></i> Paper</a>
+          <a href="https://conform-diffusion.github.io" class="publication-link"><i class="fas fa-globe"></i> Project Page</a>
+          <a href="#" class="publication-link"><i class="fas fa-code"></i> Code</a>
+          <button class="publication-link citation-toggle" onclick="toggleCitation('citation-cc')"><i class="fas fa-quote-right"></i> Cite</button>
+        </div>
+        
+        <div id="citation-cc" class="citation-text" style="display: none;">
+          <pre>@inproceedings{
+  salih2024conform,
+  title={CONFORM: Contrast is All You Need For High-Fidelity Text-to-Image Diffusion Models},
+  author={Salih, Tuna Han and others},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year={2024}
+}</pre>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- Citation toggle functionality -->
+<script>
+  function toggleCitation(id) {
+    const citation = document.getElementById(id);
+    if (citation.style.display === "none") {
+      citation.style.display = "block";
+    } else {
+      citation.style.display = "none";
+    }
+  }
+</script>
+
 <style>
-  .publications-section {
-    margin: 2rem 0;
-  }
-  
-  .publications-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  
-  .publication-card {
-    display: flex;
-    flex-direction: row;
-    background-color: var(--card-bg-color);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-  
-  .publication-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-  }
-  
-  .publication-image {
-    width: 240px;
-    min-width: 240px;
-    background-color: rgba(100, 181, 246, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .publication-image::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.05));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .publication-card:hover .publication-image::after {
-    opacity: 1;
-  }
-  
-  .publication-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-  
-  .publication-card:hover .publication-image img {
-    transform: scale(1.08);
-  }
-  
-  .publication-content {
-    padding: 1.5rem;
-    flex: 1;
-  }
-  
-  .publication-content h3 {
-    margin: 0 0 0.75rem 0;
-    font-size: 1.25rem;
-    line-height: 1.4;
-    font-weight: 600;
-    transition: color 0.3s ease;
-  }
-  
-  .publication-card:hover h3 {
-    color: #64b5f6;
-  }
-  
-  .publication-authors {
-    font-size: 0.9rem;
-    margin: 0 0 0.5rem 0;
+  .section-intro {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    text-align: center;
     color: var(--text-color);
-    opacity: 0.9;
   }
   
-  .publication-venue {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #64b5f6;
-    margin: 0 0 0.75rem 0;
-  }
-  
-  .publication-desc {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin: 0 0 1.25rem 0;
-    color: var(--text-color);
-    opacity: 0.9;
-  }
-  
-  .publication-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .publication-links a {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.85rem;
-    border-radius: 4px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.2s ease;
-  }
-  
-  .paper-link {
-    background-color: rgba(25, 118, 210, 0.1);
-    color: #64b5f6;
-  }
-  
-  .paper-link:hover {
-    background-color: rgba(25, 118, 210, 0.2);
-    color: #90caf9;
-    transform: translateY(-2px);
-  }
-  
-  .code-link {
-    background-color: rgba(46, 125, 50, 0.1);
-    color: #4caf50;
-  }
-  
-  .code-link:hover {
-    background-color: rgba(46, 125, 50, 0.2);
-    color: #81c784;
-    transform: translateY(-2px);
-  }
-  
-  .project-link {
-    background-color: rgba(230, 81, 0, 0.1);
-    color: #ff9800;
-  }
-  
-  .project-link:hover {
-    background-color: rgba(230, 81, 0, 0.2);
-    color: #ffb74d;
-    transform: translateY(-2px);
-  }
-  
-  .citation-toggle {
-    background-color: transparent;
-    border: 1px solid #ddd;
-    padding: 0.4rem 0.8rem;
-    font-size: 0.85rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  
-  .citation-toggle:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-    transform: translateY(-2px);
-  }
-  
-  .publication-citation {
-    display: none;
+  .citation-text {
     margin-top: 1rem;
     padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.03);
-    border-radius: 4px;
-    font-family: monospace;
-    font-size: 0.85rem;
-    white-space: pre-wrap;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    font-size: 0.8rem;
     overflow-x: auto;
   }
   
-  .publication-citation pre {
+  .citation-text pre {
     margin: 0;
     white-space: pre-wrap;
+    font-family: 'SF Mono', 'Consolas', monospace;
   }
   
-  /* Dark theme adjustments */
-  .dark-theme .publication-card {
-    background-color: #1e1e1e;
+  .citation-toggle {
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
   }
   
-  .dark-theme .publication-image {
-    background-color: rgba(100, 181, 246, 0.05);
+  .dark-theme .citation-text,
+  body.dark-mode .citation-text {
+    background-color: rgba(255, 255, 255, 0.1);
   }
-  
-  .dark-theme .citation-toggle {
-    border-color: #444;
-  }
-  
-  .dark-theme .publication-citation {
-    background-color: rgba(255, 255, 255, 0.05);
-  }
-  
-  @media (max-width: 767px) {
-    .publication-card {
-      flex-direction: column;
-    }
-    
-    .publication-image {
-      width: 100%;
-      height: 180px;
-      min-width: unset;
-    }
-    
-    .publication-content {
-      padding: 1.25rem;
-    }
-  }
-</style>
-
-<script>
-  function toggleCitation(button) {
-    const citationElement = button.parentNode.querySelector('.publication-citation');
-    if (citationElement.style.display === 'block') {
-      citationElement.style.display = 'none';
-      button.textContent = 'Show Citation';
-    } else {
-      citationElement.style.display = 'block';
-      button.textContent = 'Hide Citation';
-    }
-  }
-  
-  // Create placeholders for missing images
-  document.addEventListener('DOMContentLoaded', function() {
-    const pubImages = document.querySelectorAll('.publication-image img');
-    
-    pubImages.forEach(img => {
-      img.addEventListener('error', function() {
-        const title = this.alt || 'Publication';
-        const letterMatch = title.match(/\b(\w)/g);
-        const initials = letterMatch ? letterMatch.slice(0, 2).join('').toUpperCase() : 'PUB';
-        
-        // Create SVG placeholder
-        const svgNS = "http://www.w3.org/2000/svg";
-        const svg = document.createElementNS(svgNS, "svg");
-        svg.setAttribute("width", "100%");
-        svg.setAttribute("height", "100%");
-        svg.setAttribute("viewBox", "0 0 100 100");
-        svg.style.backgroundColor = "#f5f5f5";
-        
-        const text = document.createElementNS(svgNS, "text");
-        text.setAttribute("x", "50");
-        text.setAttribute("y", "55");
-        text.setAttribute("text-anchor", "middle");
-        text.setAttribute("font-family", "sans-serif");
-        text.setAttribute("font-size", "24");
-        text.setAttribute("fill", "#64b5f6");
-        text.textContent = initials;
-        
-        svg.appendChild(text);
-        
-        const parent = this.parentNode;
-        parent.replaceChild(svg, this);
-      });
-    });
-  });
-</script> 
+</style> 
