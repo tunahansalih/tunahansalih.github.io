@@ -1,3 +1,21 @@
+
+
+- date: 2025-05-01
+  type: publication
+  description: "Our work <strong>ConceptAttention</strong> has been accepted to ICML 2025 as a spotlight (top 2.6% of all submissions)"
+  links:
+    - text: Paper
+      url: https://arxiv.org/pdf/2502.04320
+      type: paper
+
+- date: 2025-04-19
+  type: milestone
+  description: "Our proposal for 'Personalization in Generative AI Workshop' at ICCV 2025 has been accepted."
+  links:
+    - text: Website
+      url: https://p13n-workshop.github.io/
+      type: project
+      
 - date: 2025-02-01
   type: publication
   description: "My new preprint <strong>ConceptAttention</strong> is available at arXiv."
