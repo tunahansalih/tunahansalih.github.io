@@ -4,8 +4,7 @@ published: true
 title: Resumé
 ---
 
-# Tuna Han Salih MERAL
-<tmeral@vt.edu> | +1 540 577 9370 | [GitHub: tmeral](https://github.com/tmeral) | [LinkedIn: tunahansalih](https://www.linkedin.com/in/tunahansalih) | [Website](https://tunahansalih.github.io)
+# Resumé
 
 <a href="https://drive.google.com/file/d/1RxtH5A56p0lZVManDSTV9uilSw3wbbzg/view?usp=sharing" class="download-button"><i class="fas fa-download"></i> Download PDF</a>
 
