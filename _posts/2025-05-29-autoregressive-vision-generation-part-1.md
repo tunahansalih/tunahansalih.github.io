@@ -30,11 +30,11 @@ You have already seen "auto-regressive" models in action even if you didn't call
 
 Think about how you type on your phone. When you write "the weather is ...", the keyboard will suggest completions based on the words you entered such as "sunny", "rainy", "perfect for AI research" (maybe not that last one). That's an auto-regressive model in action for language!
 
-**Mathematically**, for a sequence $\(x_1, x_2, ..., x_T\)$, an autoregressive model learns:
+**Mathematically**, for a sequence \(x_1, x_2, ..., x_T\), an autoregressive model learns:
 
-$$
+\[
 P(x_1, x_2, ..., x_T) = P(x_1) \cdot P(x_2|x_1) \cdot P(x_3|x_1, x_2) \cdot ... \cdot P(x_T|x_1, ..., x_{T-1})
-$$
+\]
 
 This is just the **chain rule of probability**! Each new element depends on all the previous ones.
 
