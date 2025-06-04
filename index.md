@@ -17,7 +17,6 @@ Before joining VT, I worked across startups and industry labs, building real-tim
 
 At the core of my work is a belief that generative AI should not only create high-quality content, but do so transparently and in alignment with user goals.
 
-
 ## Current Interests
 
 - Controllable generation in diffusion and autoregressive models
@@ -25,10 +24,14 @@ At the core of my work is a belief that generative AI should not only create hig
 - Steering of foundation models  
 - Zero-shot image/video editing  
 
-## Recent News
-
 {% include _news-recent.html %}
 
-## Publications
+## Latest Blog Posts
+
+{% for post in site.posts limit:3 %}
+<div class="latest-post">
+  <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+</div>
+{% endfor %}
 
 {% include _publications-featured.html %}

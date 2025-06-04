@@ -1,69 +1,37 @@
 # Site wide configuration
-
 title: Tuna Meral
 locale: en_US
-logo: # filename of a logo image that has been placed into your images directory
 
-# Enter the following platform usernames if you would like for them to appear on your site.
+# Site owner information
 owner:
   name: Tuna Meral
   avatar: bio-avatar.jpg
-  bio: "PhD Student @ VT • Generative AI, Diffusion & Autoregressive Models • Video + Multimodal Generation"
+  bio: "PhD Student @ VT • Vision Generative AI, Diffusion & Autoregressive Models"
   email: tunahansmeral at gmail dot com
-  # Do not include the @ symbol in your Twitter username
   twitter: tunahansalih
   linkedin: tmeral
   github: tunahansalih
-  orcid: # ID Number (ex. 0000-0000-0000-0000)
-  researchgate: #username
-  mendeley: #username
-  google:
-    plus: #username
-    analytics:
-    verify:
-    scholar: 5ZAhf5IAAAAJ #id
-  facebook: #username
   instagram: howtunasees
-  bing-verify:
+  google:
+    scholar: 5ZAhf5IAAAAJ
   stackoverflow: 2959389/tuna-meral
-  xing: #username
-  lastfm: #username
-  tumblr: #username
-  pinterest: #username
-  foursquare: #username
-  steam: #username
-  dribbble: #username
-  youtube: #username
-  soundcloud: #username
-  weibo: #username
-  flickr: #username
-  codepen: #username
-  disqus-shortname:
 
-# The following adjust the accents for your site. If you would like to further edit colors, fonts, font sizes, etc.
-# you may do so in _sass/variables.scss
+# Theme colors
 highlight-color: '#CC0000'
 lowlight-color: '#000'
 
-  # NOTE: If you would like your site to be licensed under a creative commons license, uncomment the 'yes' next to the type of license you wish to use.
-creative-commons:
-  cc-by: #yes
-  cc-by-nc: #yes
-
-#DO NOT EDIT BEYOND THIS POINT
 # Jekyll configuration
-
-permalink:   /:categories/:title/
-markdown:    kramdown
+permalink: /:categories/:title/
+markdown: kramdown
 highlighter: rouge
-sass:
-  sass_dir: _sass
-  style: compressed
+
+# Plugins
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
   - jemoji
 
+# Markdown settings
 kramdown:
   auto_ids: true
   footnote_nr: 1
@@ -71,6 +39,14 @@ kramdown:
   toc_levels: 1..6
   enable_coderay: false
 
+# Build settings
+sass:
+  sass_dir: _sass
+  style: compressed
 
-include: [".htaccess"]
-exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]
+# Exclude files from processing
+exclude: [
+  "lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb",
+  "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec",
+  "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"
+]

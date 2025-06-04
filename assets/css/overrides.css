@@ -126,22 +126,31 @@ a:hover {
 
 /* Fix main content layout */
 #main {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
   margin-bottom: 2rem;
   min-height: 70vh;
   /* Ensure minimum content height */
-  display: flex;
-  flex-wrap: wrap;
 }
 
 /* Author sidebar adjustments */
 .article-author-side {
-  width: var(--sidebar-width);
+  width: 320px;
+  min-width: 220px;
+  max-width: 350px;
+  flex-shrink: 0;
   padding-right: 1rem;
   position: sticky;
   top: 1rem;
   height: fit-content;
   margin-left: -0.5rem;
   /* Move sidebar more to left */
+}
+
+#index {
+  flex: 1;
+  min-width: 0;
 }
 
 article.page,
@@ -723,7 +732,8 @@ blockquote {
 .blog-post-title {
   font-size: 1.75rem;
   margin-bottom: 1rem;
-  color: var(--heading-color);
+  color: var(--primary-light);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .blog-post-meta {
@@ -758,16 +768,14 @@ blockquote {
 
   .article-author-side {
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
     position: static;
     padding-right: 0;
     margin-left: 0;
   }
 
-  article.page,
-  #index,
-  .resume,
-  .publications,
-  .timeline-section {
+  #index {
     width: 100%;
     padding-left: 0;
   }
@@ -932,3 +940,45 @@ body.dark-mode code {
 }
 
 /* Make sure this file is loaded after the main theme CSS files */
+.dark-theme .blog-post-title,
+body.dark-mode .blog-post-title {
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(25, 118, 210, 0.5), 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.latest-post {
+  background: var(--card-bg-color);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+  margin-bottom: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  transition: box-shadow 0.3s;
+}
+
+.latest-post h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.latest-post a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.latest-post a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+.dark-theme .latest-post,
+body.dark-mode .latest-post {
+  background: #23272e;
+  box-shadow: 0 2px 12px rgba(100, 181, 246, 0.12);
+}
+
+.dark-theme .latest-post h3,
+body.dark-mode .latest-post h3 {
+  color: #fff;
+}
