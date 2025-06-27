@@ -59,7 +59,7 @@
   featured_order: 3
   links:
     - text: "Paper"
-      url: "https://arxiv.org/abs/2411.12345"
+      url: "https://arxiv.org/abs/2412.05275"
       type: "paper"
     - text: "Project Page"
       url: "https://motionflow-diffusion.github.io"
@@ -80,7 +80,7 @@
   featured: false
   links:
     - text: "Paper"
-      url: "https://arxiv.org/abs/2411.54321"
+      url: "https://arxiv.org/abs/2412.05355"
       type: "paper"
     - text: "Project Page"
       url: "https://motionshop-diffusion.github.io"
@@ -103,7 +103,7 @@ LoRAs simultaneously."
   featured: false
   links:
     - text: "Paper"
-      url: "https://arxiv.org/abs/2403.10998"
+      url: "https://arxiv.org/abs/2403.19776"
       type: "paper"
     - text: "Project Page"
       url: "https://clora-diffusion.github.io"
