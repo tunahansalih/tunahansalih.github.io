@@ -1,6 +1,6 @@
 - date: 2025-06-25
   type: publication
-  description: "Our work <strong>CLoRA</strong> has been accepted to ICCV 2025"
+  description: "Our work <strong>CLoRA</strong> has been accepted to <strong>ICCV 2025</strong>"
   links:
     - text: Paper
       url: https://arxiv.org/abs/2403.19776
