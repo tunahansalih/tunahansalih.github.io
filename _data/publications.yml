@@ -8,7 +8,7 @@
   featured_order: 1
   links:
     - text: "Paper"
-      url: "https://arxiv.org/abs/2401.08950"
+      url: "https://arxiv.org/abs/2312.06059"
       type: "paper"
     - text: "Project Page"
       url: "https://conform-diffusion.github.io"
