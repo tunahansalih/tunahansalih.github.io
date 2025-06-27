@@ -1,10 +1,18 @@
+- date: 2025-06-25
+  type: publication
+  description: "Our work <strong>CLoRA</strong> has been accepted to ICCV 2025"
+  links:
+    - text: Paper
+      url: https://arxiv.org/abs/2403.19776
+      type: paper
+
 - date: 2025-05-19
   type: milestone
   description: "I started Amazon AGI as an Applied Scientist Intern in San Francisco to work on Video Foundational Models"
 
 - date: 2025-05-01
   type: publication
-  description: "Our work <strong>ConceptAttention</strong> has been accepted to ICML 2025 as a spotlight (top 2.6% of all submissions)"
+  description: "Our work <strong>ConceptAttention</strong> has been accepted to ICML 2025 as a <strong>Oral Paper</strong>"
   links:
     - text: Paper
       url: https://arxiv.org/pdf/2502.04320
