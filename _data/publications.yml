@@ -55,8 +55,7 @@
   year: 2024
   description: "MotionFlow is a training-free method that leverages attention for motion transfer. Our method can successfully transfer a wide variety of motion types, ranging from simple to complex motion patterns."
   image: "motionflow.png"
-  featured: true
-  featured_order: 3
+  featured: false
   links:
     - text: "Paper"
       url: "https://arxiv.org/abs/2412.05275"
