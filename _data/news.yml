@@ -6,6 +6,14 @@
       url: https://arxiv.org/abs/2403.19776
       type: paper
 
+- date: 2025-05-01
+  type: publication
+  description: "Our work <strong>ConceptAttention</strong> received <strong>Best Paper Award</strong> in Second Workshop on Visual Concepts at <strong>CVPR 2025</strong>"
+  links:
+    - text: Paper
+      url: https://arxiv.org/pdf/2502.04320
+      type: paper
+
 - date: 2025-06-25
   type: publication
   description: "Our work <strong>CLoRA</strong> has been accepted to <strong>ICCV 2025</strong>"
