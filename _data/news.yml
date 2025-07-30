@@ -1,3 +1,11 @@
+- date: 2025-07-25
+  type: publication
+  description: "Our work <strong>CLoRA</strong> has awarded <strong>Highlight</strong> at <strong>ICCV 2025</strong>"
+  links:
+    - text: Paper
+      url: https://arxiv.org/abs/2403.19776
+      type: paper
+
 - date: 2025-06-25
   type: publication
   description: "Our work <strong>CLoRA</strong> has been accepted to <strong>ICCV 2025</strong>"
