@@ -13,6 +13,9 @@
     - text: "Project Page"
       url: "https://clora-diffusion.github.io"
       type: "project"
+    - text: "Code"
+      url: "https://github.com/gemlab-vt/clora"
+      type: "code"
   citation: "@article{meral2024clora,
   title={Clora: A contrastive approach to compose multiple lora models},
   author={Meral, Tuna Han Salih and Simsar, Enis and Tombari, Federico and Yanardag, Pinar},
