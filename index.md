@@ -13,7 +13,7 @@ I research **generative AI** at Virginia Tech, mainly figuring out how to tell i
 * **CVPR 2024**, **ICML 2025 (oral)**, and **ICCV 2025 (highlight)** papers that tinker with diffusion models, personalization and interpretability.
 * Internships with **Amazon AGI** and **Adobe FireFly**, plus fun collabs with **Google**.  
 * Co-organizer of the **P13N workshop on Personalization in Generative AI at ICCV 2025**.  
-* Once deploying image-generation services that millions of people actually used—without it catching fire.
+* Once deploying image-generation services that millions of people actually used, without it catching fire.
 
 ### Why I do this
 
@@ -21,7 +21,7 @@ I want creators to treat generative models like trusty sidekicks, not black boxe
 
 ### Outside the lab
 
-You’ll occasionally find fresh paper notes and open-source snippets on my blog or Twitter. Offline, I’m usually looking at my monitor—coffee in hand—while stress-testing newly trained models.
+You’ll occasionally find fresh paper notes and open-source snippets on my blog or Twitter. Offline, I’m usually looking at my monitor, coffee in hand, while stress-testing newly trained models.
 
 ### Let's chat
 
