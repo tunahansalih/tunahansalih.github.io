@@ -26,7 +26,7 @@
 
 - title: "ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features"
   authors: "Alec Helbling, Tuna Han Salih Meral, Ben Hoover, Pinar Yanardag, Duen Horng Chau"
-  venue: "ICML 2025 (Spotlight)"
+  venue: "ICML 2025 (Oral)"
   year: 2025
   description: "Without requiring additional training, ConceptAttention repurposes the parameters of DiT attention layers to produce highly contextualized concept embeddings, contributing the major discovery that performing linear projections in the output space of DiT attention layers yields significantly sharper saliency maps compared to commonly used cross-attention mechanisms."
   image: "conceptattention.png"
