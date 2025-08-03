@@ -2,24 +2,47 @@
 
 /* =========== CSS Variables for consistent theming =========== */
 :root {
-  /* Primary colors */
-  --background-color: #ffffff;
-  --text-color: #333333;
-  --heading-color: #212121;
-  --subheading-color: #424242;
+  /* Typography fonts */
+  --heading-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --body-font: 'Crimson Text', Georgia, serif;
+  --mono-font: 'JetBrains Mono', 'SF Mono', monospace;
 
-  /* Accent colors */
-  --primary-color: #1976d2;
-  --primary-light: #4dabf5;
-  --primary-dark: #1565c0;
+  /* Academic color palette */
+  --primary-color: #1e40af;
+  /* Academic blue */
+  --primary-light: #3b82f6;
+  /* Bright blue */
+  --primary-dark: #1e3a8a;
+  /* Deep blue */
+
+  /* Refined grays */
+  --background-color: #ffffff;
+  --text-color: #374151;
+  /* Warm dark gray */
+  --text-light: #6b7280;
+  /* Medium gray */
+  --text-lighter: #9ca3af;
+  /* Light gray */
+  --heading-color: #1f2937;
+  /* Near black */
+  --subheading-color: #374151;
+
+  /* Background refinements */
+  --card-bg-color: #ffffff;
+  --card-border-color: #e5e7eb;
+  --subtle-bg: #f9fafb;
+  --hover-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+
+  /* Academic accent colors */
+  --accent-gold: #d97706;
+  /* For highlights */
+  --accent-green: #059669;
+  /* For success states */
+  --accent-red: #dc2626;
+  /* For emphasis */
   --secondary-color: #e91e63;
   --secondary-light: #f48fb1;
   --secondary-dark: #c2185b;
-
-  /* UI Colors */
-  --card-bg-color: #ffffff;
-  --card-border-color: #e0e0e0;
-  --hover-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 
   /* Text on background */
   --text-on-primary: #ffffff;
@@ -39,43 +62,54 @@
 
 .dark-theme,
 body.dark-mode {
-  /* Primary colors */
-  --background-color: #121212;
-  --text-color: #e0e0e0;
-  --heading-color: #ffffff;
-  --subheading-color: #e0e0e0;
+  /* Academic dark palette */
+  --background-color: #0f172a;
+  --text-color: #e2e8f0;
+  --text-light: #94a3b8;
+  --text-lighter: #64748b;
+  --heading-color: #f1f5f9;
+  --subheading-color: #e2e8f0;
 
-  /* Accent colors */
-  --primary-color: #64b5f6;
-  --primary-light: #90caf9;
-  --primary-dark: #42a5f5;
-  --secondary-color: #f06292;
-  --secondary-light: #f48fb1;
-  --secondary-dark: #ec407a;
+  /* Dark mode colors */
+  --primary-color: #60a5fa;
+  --primary-light: #93c5fd;
+  --primary-dark: #3b82f6;
+  --secondary-color: #f472b6;
+  --secondary-light: #f9a8d4;
+  --secondary-dark: #ec4899;
 
   /* UI Colors */
-  --card-bg-color: #1e1e1e;
-  --card-border-color: #333333;
-  --hover-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  --card-bg-color: #1e293b;
+  --card-border-color: #334155;
+  --subtle-bg: #1e293b;
+  --hover-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+
+  /* Academic accent colors */
+  --accent-gold: #fbbf24;
+  --accent-green: #34d399;
+  --accent-red: #f87171;
 
   /* Text on background */
-  --text-on-primary: #121212;
-  --text-on-secondary: #121212;
+  --text-on-primary: #0f172a;
+  --text-on-secondary: #0f172a;
 
   /* Gradients */
-  --header-gradient: linear-gradient(135deg, #2c3e50 0%, #1a202c 100%);
-  --card-gradient: linear-gradient(to bottom, #1e1e1e, #252525);
+  --header-gradient: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  --card-gradient: linear-gradient(to bottom, #1e293b, #0f172a);
 }
 
 /* =========== Typography =========== */
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--body-font);
+  font-size: 18px;
+  line-height: 1.7;
   max-width: 90rem;
   margin: 0 auto;
   padding: 0 1rem;
   color: var(--text-color);
   background-color: var(--background-color);
-  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
   transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
@@ -85,26 +119,34 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: var(--heading-font);
   color: var(--heading-color);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.3;
   margin-top: 2rem;
   margin-bottom: 1rem;
+  letter-spacing: -0.02em;
   transition: color var(--transition-speed) ease;
 }
 
 h1 {
-  font-size: 2.5rem;
-  letter-spacing: -0.02em;
+  font-size: 2.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 h2 {
-  font-size: 2rem;
-  letter-spacing: -0.01em;
+  font-size: 2.25rem;
+  font-weight: 600;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
+  font-weight: 600;
 }
 
 p,
@@ -122,6 +164,68 @@ a {
 a:hover {
   color: var(--primary-light);
   text-decoration: underline;
+}
+
+/* Enhanced Typography Classes */
+.lead-text {
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+}
+
+/* Hero Quote Styling */
+.hero-quote {
+  background: linear-gradient(135deg, var(--subtle-bg) 0%, var(--card-bg-color) 100%);
+  border-left: 4px solid var(--primary-color);
+  padding: 2rem;
+  margin: 2rem 0 3rem 0;
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.hero-quote blockquote {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-color);
+  text-align: center;
+  border: none;
+  background: none;
+  padding: 0;
+  box-shadow: none;
+}
+
+/* Research Interests Enhancement */
+.research-interests {
+  background: var(--subtle-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border: 1px solid var(--card-border-color);
+}
+
+.research-interests ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.research-interests li {
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 1.5rem;
+  line-height: 1.6;
+}
+
+.research-interests li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: bold;
 }
 
 /* Fix main content layout */
@@ -161,6 +265,42 @@ article.page,
   width: var(--content-width);
   padding-left: 1.5rem;
   box-sizing: border-box;
+}
+
+/* Enhanced Navigation Styling */
+.site-title {
+  font-size: 1.75rem !important;
+  font-weight: 700 !important;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-light)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.site-title:hover {
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-color)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  transform: scale(1.02) !important;
+}
+
+.nav-link {
+  font-weight: 500 !important;
+  font-size: 0.95rem !important;
+  letter-spacing: 0.02em !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+  font-family: var(--heading-font) !important;
+}
+
+.nav-link:hover {
+  background-color: rgba(59, 130, 246, 0.1) !important;
+  color: var(--primary-color) !important;
+  transform: translateY(-1px) !important;
 }
 
 /* Header and Navigation */
@@ -360,29 +500,40 @@ blockquote {
 .publication-card {
   border: 1px solid var(--card-border-color);
   border-radius: 12px;
+  background: var(--card-bg-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
-  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-  background: var(--card-gradient);
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .publication-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--hover-shadow);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: var(--primary-light);
 }
 
 .publication-image {
-  height: 200px;
+  height: 180px;
   overflow: hidden;
-  background-color: var(--primary-light);
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: var(--text-on-primary);
+  position: relative;
+}
+
+.publication-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.publication-card:hover .publication-image img {
+  transform: scale(1.05);
 }
 
 .publication-content {
@@ -392,42 +543,69 @@ blockquote {
   flex-direction: column;
 }
 
+.publication-venue {
+  display: inline-block;
+  background: var(--primary-color);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-family: var(--heading-font);
+}
+
 .publication-title {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
   color: var(--heading-color);
+  font-family: var(--heading-font);
+  line-height: 1.3;
 }
 
-.publication-meta {
+.publication-authors {
   font-size: 0.9rem;
-  color: var(--text-color);
-  opacity: 0.8;
+  color: var(--text-light);
   margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.publication-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  flex: 1;
 }
 
 .publication-links {
-  margin-top: auto;
   display: flex;
   gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: auto;
 }
 
 .publication-link {
   display: inline-flex;
   align-items: center;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: 6px;
   background-color: var(--primary-color);
-  color: var(--text-on-primary);
+  color: white;
   font-size: 0.875rem;
   font-weight: 500;
-  transition: all var(--transition-speed) ease;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-family: var(--heading-font);
 }
 
 .publication-link:hover {
   background-color: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+  color: white;
   text-decoration: none;
-  transform: translateY(-2px);
 }
 
 .publication-link i {

@@ -4,12 +4,16 @@ excerpt: About Me...
 published: true
 ---
 
-> _I worked on making sense of images,\
-> Now I am working on images making sense._
+<div class="hero-quote">
+> <em>I worked on making sense of images,<br>
+> Now I am working on images making sense.</em>
+</div>
 
 # About Me
 
-I am Tuna ([tu-nah]), a Ph.D. student in Computer Science at **Virginia Tech**, advised by [Dr. Pinar Yanardag Delul](https://pinguar.org/), and a member of the [GemLab](https://gemlab-vt.github.io/).
+<div class="lead-text">
+I am Tuna ([tu-nah]), a Ph.D. student in Computer Science at <strong>Virginia Tech</strong>, advised by <a href="https://pinguar.org/">Dr. Pinar Yanardag Delul</a>, and a member of the <a href="https://gemlab-vt.github.io/">GemLab</a>.
+</div>
 
 My research focuses on developing **controllable** and **interpretable** generative models across **images**, **video**, and **language**. I design alignment objectives for **diffusion** and **autoregressive** architectures to enable efficient, user-aligned generation without post-hoc tuning.
 
@@ -17,12 +21,16 @@ Before joining VT, I worked across startups and industry labs, building real-tim
 
 At the core of my work is a belief that generative AI should not only create high-quality content, but do so transparently and in alignment with user goals.
 
-## Current Interests
+## Current Research Interests
 
-- Controllable generation in diffusion and autoregressive models
-- Token-level interpretability in transformers (image/video/LLM)
-- Steering of foundation models  
-- Zero-shot image/video editing  
+<div class="research-interests">
+<ul>
+<li><strong>Autoregressive models</strong> for image, and video generation</li>
+<li><strong>Controllable generation</strong> in diffusion and autoregressive models</li>
+<li><strong>Token-level interpretability</strong> in transformers (image/video/LLM)</li>
+<li><strong>Zero-shot image/video editing</strong></li>
+</ul>
+</div>  
 
 {% include _news-recent.html %}
 
