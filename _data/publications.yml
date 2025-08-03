@@ -1,3 +1,25 @@
+- title: "CLoRA: A Contrastive Approach to Compose Multiple LoRA Models"
+  authors: "Tuna Han Salih Meral, Pinar Yanardag"
+  venue: "ICCV 2025 (Highlight)"
+  year: 2025
+  description: "CLoRA is a training-free method that works on test-time, and uses contrastive learning to compose multiple concept and style LoRAs simultaneously."
+  image: "clora.png"
+  featured: true
+  featured_order: 1
+  links:
+    - text: "Paper"
+      url: "https://arxiv.org/abs/2403.19776"
+      type: "paper"
+    - text: "Project Page"
+      url: "https://clora-diffusion.github.io"
+      type: "project"
+  citation: "@article{meral2024clora,
+  title={Clora: A contrastive approach to compose multiple lora models},
+  author={Meral, Tuna Han Salih and Simsar, Enis and Tombari, Federico and Yanardag, Pinar},
+  journal={arXiv preprint arXiv:2403.19776},
+  year={2024}
+}"
+
 - title: "CONFORM: Contrast is All You Need For High-Fidelity Text-to-Image Diffusion Models"
   authors: "Tuna Han Salih Meral, Enis Simsar, Federico Tombari, Pinar Yanardag"
   venue: "CVPR 2024"
@@ -16,7 +38,7 @@
     - text: "Code"
       url: "https://github.com/tunahansalih/CONFORM"
       type: "code"
-  citation: "@inproceedings{meral2024conform,
+  citation: "{@inproceedings{meral2024conform,
   title={Conform: Contrast is all you need for high-fidelity text-to-image diffusion models},
   author={Meral, Tuna Han Salih and Simsar, Enis and Tombari, Federico and Yanardag, Pinar},
   booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
@@ -42,10 +64,10 @@
     - text: "Code"
       url: "https://github.com/helblazer811/ConceptAttention"
       type: "code"
-  citation: "@article{helbling2025conceptattention,
+  citation: "@inproceedings{helbling2025conceptattention,
   title={ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features},
-  author={Helbling, Alec and Meral, Tuna Han Salih and Hoover, Ben and Yanardag, Pinar and Chau, Duen Horng},
-  journal={arXiv preprint arXiv:2502.04320},
+  author={Helbling, Alec and Meral, Tuna and Hoover, Benjamin and Yanardag, Pinar and Chau, Polo},
+  booktitle={International Conference on Machine Learning},
   year={2025}
 }"
 
@@ -92,28 +114,7 @@
   year={2024}
 }"
 
-- title: "CLoRA: A Contrastive Approach to Compose Multiple LoRA Models"
-  authors: "Tuna Han Salih Meral, Pinar Yanardag"
-  venue: "ICCV 2025 (Highlight)"
-  year: 2025
-  description: "CLoRA is a training-free method that works on test-time, and uses contrastive learning to compose multiple concept and style
-LoRAs simultaneously."
-  image: "clora.png"
-  featured: true
-  featured_order: 1
-  links:
-    - text: "Paper"
-      url: "https://arxiv.org/abs/2403.19776"
-      type: "paper"
-    - text: "Project Page"
-      url: "https://clora-diffusion.github.io"
-      type: "project"
-  citation: "@article{meral2024clora,
-  title={Clora: A contrastive approach to compose multiple lora models},
-  author={Meral, Tuna Han Salih and Simsar, Enis and Tombari, Federico and Yanardag, Pinar},
-  journal={arXiv preprint arXiv:2403.19776},
-  year={2024}
-}"
+
 
 - title: "Conditional Information Gain Trellis"
   authors: "Ufuk Can Bicici, Tuna Han Salih Meral, Pinar Yanardag"
