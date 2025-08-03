@@ -285,12 +285,12 @@ a:hover {
 }
 
 /* Hide sidebar on homepage for clean academic look */
-body.page .article-author-side {
+/* body.page .article-author-side {
   display: none;
-}
+} */
 
 /* Make homepage content full width when sidebar is hidden */
-body.page #main {
+/* body.page #main {
   display: block;
   max-width: 1200px;
   margin: 0 auto;
@@ -302,7 +302,7 @@ body.page article.page {
   max-width: none;
   padding: 0;
   margin: 0;
-}
+} */
 
 /* Ensure academic content sections work properly on homepage */
 body.page .academic-bio,
