@@ -3,7 +3,6 @@
 	<div class="navigation-wrapper">
 		<div class="site-name">
 			<a href="{{ site.url | default: '' }}{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
-			<div class="site-subtitle">Computer Science Ph.D. Student</div>
 		</div>
 
 		<div class="nav-controls">
@@ -215,14 +214,7 @@
 		border-bottom: 1px solid var(--card-border-color);
 	}
 
-	.site-subtitle {
-		font-size: 0.85rem;
-		color: var(--text-light);
-		font-weight: 400;
-		margin-top: 0.25rem;
-		font-family: var(--heading-font);
-		letter-spacing: 0.02em;
-	}
+
 
 	@media (max-width: 768px) {
 		.navigation-wrapper {

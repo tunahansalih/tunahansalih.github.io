@@ -7,15 +7,23 @@
   --body-font: 'Source Serif Pro', 'Crimson Text', 'Charter', Georgia, serif;
   --mono-font: 'Source Code Pro', 'JetBrains Mono', 'SF Mono', monospace;
 
-  /* Academic color palette - more scholarly */
-  --primary-color: #1a365d;
-  /* Deep academic blue */
-  --primary-light: #2c5282;
-  /* Medium blue */
-  --primary-dark: #0f2027;
-  /* Very deep blue */
+  /* Navy and Burgundy Academic Palette */
+  --primary-color: #1e3a5f;
+  /* Deep navy blue */
+  --primary-light: #2d5aa0;
+  /* Medium navy */
+  --primary-dark: #0f1b2d;
+  /* Very deep navy */
 
-  /* Academic grays - warmer and more sophisticated */
+  /* Burgundy accent colors */
+  --secondary-color: #722f37;
+  /* Deep burgundy */
+  --secondary-light: #8b4049;
+  /* Medium burgundy */
+  --secondary-dark: #4a1e23;
+  /* Very deep burgundy */
+
+  /* Sophisticated grays */
   --background-color: #fefefe;
   --text-color: #2d3748;
   /* Professional dark gray */
@@ -30,8 +38,8 @@
   /* Background refinements */
   --card-bg-color: #ffffff;
   --card-border-color: #e5e7eb;
-  --subtle-bg: #f9fafb;
-  --hover-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  --subtle-bg: #f8f9fb;
+  --hover-shadow: 0 8px 25px rgba(30, 58, 95, 0.15);
 
   /* Academic accent colors */
   --accent-gold: #d97706;
@@ -40,16 +48,13 @@
   /* For success states */
   --accent-red: #dc2626;
   /* For emphasis */
-  --secondary-color: #e91e63;
-  --secondary-light: #f48fb1;
-  --secondary-dark: #c2185b;
 
   /* Text on background */
   --text-on-primary: #ffffff;
   --text-on-secondary: #ffffff;
 
   /* Gradients */
-  --header-gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  --header-gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
   --card-gradient: linear-gradient(to bottom, #ffffff, #f9f9f9);
 
   /* Animations */
@@ -70,13 +75,13 @@ body.dark-mode {
   --heading-color: #f1f5f9;
   --subheading-color: #e2e8f0;
 
-  /* Dark mode colors */
-  --primary-color: #60a5fa;
-  --primary-light: #93c5fd;
-  --primary-dark: #3b82f6;
-  --secondary-color: #f472b6;
-  --secondary-light: #f9a8d4;
-  --secondary-dark: #ec4899;
+  /* Dark mode navy and burgundy colors */
+  --primary-color: #4a90e2;
+  --primary-light: #6ba3f0;
+  --primary-dark: #2d5aa0;
+  --secondary-color: #d4637a;
+  --secondary-light: #e07a94;
+  --secondary-dark: #b84c67;
 
   /* UI Colors */
   --card-bg-color: #1e293b;
@@ -159,20 +164,23 @@ h2 {
   font-size: 2rem;
   font-weight: 600;
   margin-top: 3rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--primary-color);
+  margin-bottom: 1.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid transparent;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)) 0 100% / 100% 2px no-repeat;
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 h2::before {
   content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 50px;
-  height: 2px;
-  background: var(--primary-light);
+  width: 5px;
+  height: 2rem;
+  background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+  border-radius: 2.5px;
+  box-shadow: 0 2px 6px rgba(30, 58, 95, 0.2);
 }
 
 h3 {
@@ -439,7 +447,7 @@ article.page,
   width: 100%;
 }
 
-/* Fix author bio section */
+/* Legacy author bio styles - keeping for compatibility but academic-author-card takes precedence */
 .author-container {
   display: flex;
   flex-direction: column;
@@ -447,7 +455,7 @@ article.page,
   text-align: center;
   margin-bottom: 2rem;
   transition: all var(--transition-speed) ease;
-  max-width: 200px;
+  max-width: 300px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -455,21 +463,22 @@ article.page,
 .bio-photo {
   width: 140px;
   height: 140px;
-  border-radius: 50%;
-  border: 3px solid var(--primary-light);
+  border-radius: 12px;
+  border: 3px solid var(--primary-color);
   margin-bottom: 1rem;
   object-fit: cover;
   transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 15px rgba(30, 58, 95, 0.2);
 }
 
 .bio-photo:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 25px rgba(30, 58, 95, 0.3);
 }
 
 .author-info {
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .author-name {
@@ -477,6 +486,7 @@ article.page,
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--heading-color);
+  text-align: center;
 }
 
 .author-bio {
@@ -484,28 +494,34 @@ article.page,
   font-size: 0.9rem;
   line-height: 1.5;
   color: var(--text-color);
+  text-align: center;
 }
 
-/* Social icons styling */
+/* Legacy social icons styling - academic-author-card styles take precedence */
 .social-icons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   gap: 0.75rem;
   margin-top: 1rem;
+  width: 100%;
 }
 
+/* Legacy author-social styles for compatibility */
 .author-social {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: rgba(240, 247, 255, 0.9);
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background-color: rgba(30, 58, 95, 0.08);
   color: var(--primary-color);
   transition: all var(--transition-speed) ease;
   position: relative;
+  text-decoration: none;
+  border: 1px solid rgba(30, 58, 95, 0.12);
 }
 
 .author-social i,
@@ -518,37 +534,39 @@ article.page,
   display: flex !important;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
   margin: 0 !important;
   padding: 0 !important;
+  position: relative;
+  z-index: 1;
 }
 
 .author-social:hover {
   background-color: var(--primary-color);
   color: #ffffff;
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(30, 58, 95, 0.25);
+  border-color: transparent;
 }
 
 /* Tooltips for social icons */
 .author-social:before {
   content: attr(title);
   position: absolute;
-  top: -35px;
+  top: -40px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 5px 10px;
-  border-radius: 4px;
+  padding: 6px 12px;
+  border-radius: 6px;
   background-color: var(--card-bg-color);
   color: var(--text-color);
   font-size: 0.75rem;
   white-space: nowrap;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   opacity: 0;
   visibility: hidden;
   transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
   z-index: 10;
+  border: 1px solid var(--card-border-color);
 }
 
 .author-social:hover:before {
@@ -711,8 +729,9 @@ blockquote {
   left: 0;
   top: 0;
   bottom: 0;
-  width: 2px;
+  width: 3px;
   background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+  border-radius: 1.5px;
 }
 
 .timeline-item {
@@ -752,13 +771,11 @@ blockquote {
 }
 
 .timeline-item[data-type="internship"]::before {
-  background-color: #4caf50;
-  /* Green */
+  background-color: var(--secondary-light);
 }
 
 .timeline-item[data-type="milestone"]::before {
-  background-color: #ff9800;
-  /* Orange */
+  background-color: var(--accent-gold);
 }
 
 .timeline-date {
@@ -1047,6 +1064,7 @@ blockquote {
   .author-container {
     max-width: 100%;
     padding: 0 1rem;
+    text-align: center;
   }
 
   .timeline {
@@ -1118,19 +1136,22 @@ blockquote {
 /* Dark mode specific adjustments */
 .dark-theme .bio-photo,
 body.dark-mode .bio-photo {
-  border-color: var(--primary-dark);
+  border-color: var(--primary-color);
+  box-shadow: 0 5px 15px rgba(74, 144, 226, 0.2);
 }
 
 .dark-theme .author-social,
 body.dark-mode .author-social {
-  background-color: rgba(50, 50, 50, 0.9);
+  background-color: rgba(74, 144, 226, 0.12);
   color: var(--primary-color);
+  border-color: rgba(74, 144, 226, 0.2);
 }
 
 .dark-theme .author-social:hover,
 body.dark-mode .author-social:hover {
   background-color: var(--primary-color);
-  color: #ffffff;
+  color: var(--background-color);
+  box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
 }
 
 .dark-theme .timeline::before,
@@ -1375,22 +1396,31 @@ body.dark-mode .latest-post h3 {
 
 /* Academic section headers */
 .academic-section {
-  margin: 3rem 0 2rem 0;
+  margin: 3.5rem 0 2.5rem 0;
 }
 
 .academic-section h2 {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  font-size: 1.85rem;
+  font-weight: 600;
+  color: var(--heading-color);
+  text-align: left;
+  position: relative;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid transparent;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)) 0 100% / 100% 2px no-repeat;
 }
 
 .academic-section h2::before {
   content: '';
-  width: 4px;
-  height: 2rem;
-  background: linear-gradient(to bottom, var(--primary-color), var(--primary-light));
-  border-radius: 2px;
+  width: 6px;
+  height: 2.2rem;
+  background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+  border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(30, 58, 95, 0.2);
 }
 
 /* Enhanced publication styling for academic journals */
