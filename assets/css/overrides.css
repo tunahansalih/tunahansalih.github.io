@@ -532,8 +532,10 @@ article.page,
 .author-social .ai {
   font-size: 18px !important;
   display: flex !important;
-  align-items: center;
-  justify-content: center;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
   position: relative;
