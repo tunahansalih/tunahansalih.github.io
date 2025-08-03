@@ -1,200 +1,66 @@
 <!-- Publications Section -->
 <section id="publications" class="publications">
   <div class="section-intro">
-    <p>Below is a comprehensive list of my research publications, including journal articles, conference papers, and preprints.</p>
+    <p>Below is a comprehensive list of my research publications, including journal articles, conference papers, and
+      preprints.</p>
   </div>
-  
+
   <div class="publication-cards">
-    <!-- ConceptAttention -->
+    {% assign featured_pubs = site.data.publications | where: "featured", true | sort: "featured_order" %}
+    {% assign other_pubs = site.data.publications | where: "featured", false %}
+    {% assign all_pubs = featured_pubs | concat: other_pubs %}
+
+    {% for pub in all_pubs %}
     <div class="publication-card">
-      <div class="publication-image" style="background: linear-gradient(135deg, #5e35b1, #3949ab);">
-        <span>CD</span>
-      </div>
-      <div class="publication-content">
-        <h3 class="publication-title">ConceptAttention: Diffusion Transformer Learns Highly Interpretable Features</h3>
-        <div class="publication-meta">
-          <p>Allen Hallberg, Tuna Han Salih, Ben Howes, Peter Yueyang</p>
-          <p><strong>arXiv 2025</strong></p>
-        </div>
-        <p>Without requiring additional training, ConceptAttention repurposes the parameters of diffusion transformers to identify meaningful visual concepts.</p>
-        
-        <div class="publication-links">
-          <a href="#" class="publication-link"><i class="fas fa-file-pdf"></i> Paper</a>
-          <a href="#" class="publication-link"><i class="fas fa-code"></i> Code</a>
-          <a href="#" class="publication-link"><i class="fas fa-globe"></i> Project Page</a>
-          <button class="publication-link citation-toggle" onclick="toggleCitation('citation-cd')"><i class="fas fa-quote-right"></i> Cite</button>
-        </div>
-        
-        <div id="citation-cd" class="citation-text" style="display: none;">
-          <pre>@article{
-  hallberg2025conceptattention,
-  title={ConceptAttention: Diffusion Transformer Learns Highly Interpretable Features},
-  author={Hallberg, Allen and Salih, Tuna Han and Howes, Ben and Yueyang, Peter},
-  journal={arXiv preprint arXiv:2502.00000},
-  year={2025}
-}</pre>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Conditional Information Gain Trellis -->
-    <div class="publication-card">
-      <div class="publication-image" style="background: linear-gradient(135deg, #00897b, #00acc1);">
-        <span>CI</span>
-      </div>
-      <div class="publication-content">
-        <h3 class="publication-title">Conditional Information Gain Trellis</h3>
-        <div class="publication-meta">
-          <p>Tuna Han Salih, et al.</p>
-          <p><strong>Pattern Recognition Letters 2024</strong></p>
-        </div>
-        <p>The Information Gain Trellis, originally a tool for conditioning a Learning Classifier System's rule set, is extended to support conditional information gain over specific attributes.</p>
-        
-        <div class="publication-links">
-          <a href="https://www.sciencedirect.com/science/article/pii/S0167865524001880" class="publication-link"><i class="fas fa-file-pdf"></i> Paper</a>
-          <button class="publication-link citation-toggle" onclick="toggleCitation('citation-ci')"><i class="fas fa-quote-right"></i> Cite</button>
-        </div>
-        
-        <div id="citation-ci" class="citation-text" style="display: none;">
-          <pre>@article{
-  salih2024conditional,
-  title={Conditional Information Gain Trellis},
-  author={Salih, Tuna Han and other authors},
-  journal={Pattern Recognition Letters},
-  volume={172},
-  pages={1--8},
-  year={2024},
-  publisher={Elsevier}
-}</pre>
-        </div>
-      </div>
-    </div>
-    
-    <!-- CLoRA -->
-    <div class="publication-card">
+      {% assign gradient_index = forloop.index0 | modulo: 6 %}
+      {% if gradient_index == 0 %}
       <div class="publication-image" style="background: linear-gradient(135deg, #d81b60, #e91e63);">
-        <span>CA</span>
-      </div>
-      <div class="publication-content">
-        <h3 class="publication-title">CLoRA: A Contrastive Approach to Compose Multiple LoRA Models</h3>
-        <div class="publication-meta">
-          <p>Tuna Han Salih, et al.</p>
-          <p><strong>arXiv 2024</strong></p>
-        </div>
-        <p>CLoRA is a training-free method that leverages contrastive learning principles to effectively compose multiple LoRA adapters, preserving each adapter's unique visual style characteristics.</p>
-        
-        <div class="publication-links">
-          <a href="https://arxiv.org/abs/2403.19776" class="publication-link"><i class="fas fa-file-pdf"></i> Paper</a>
-          <a href="https://clora-diffusion.github.io" class="publication-link"><i class="fas fa-globe"></i> Project Page</a>
-          <button class="publication-link citation-toggle" onclick="toggleCitation('citation-ca')"><i class="fas fa-quote-right"></i> Cite</button>
-        </div>
-        
-        <div id="citation-ca" class="citation-text" style="display: none;">
-          <pre>@article{
-  salih2024clora,
-  title={CLoRA: A Contrastive Approach to Compose Multiple LoRA Models},
-  author={Salih, Tuna Han and others},
-  journal={arXiv preprint arXiv:2403.19776},
-  year={2024}
-}</pre>
-        </div>
-      </div>
-    </div>
-    
-    <!-- MotionZero -->
-    <div class="publication-card">
-      <div class="publication-image" style="background: linear-gradient(135deg, #43a047, #1b5e20);">
-        <span>MZ</span>
-      </div>
-      <div class="publication-content">
-        <h3 class="publication-title">MotionFlow: Zero-Shot Transfer of Flow Fields for Video Diffusion Models</h3>
-        <div class="publication-meta">
-          <p>Tuna Han Salih, et al.</p>
-          <p><strong>arXiv 2024</strong></p>
-        </div>
-        <p>MotionFlow is a temporal adapter that transfers motion from real videos to generated videos using flow-based guidance.</p>
-        
-        <div class="publication-links">
-          <a href="#" class="publication-link"><i class="fas fa-file-pdf"></i> Paper</a>
-          <a href="#" class="publication-link"><i class="fas fa-globe"></i> Project Page</a>
-          <button class="publication-link citation-toggle" onclick="toggleCitation('citation-mz')"><i class="fas fa-quote-right"></i> Cite</button>
-        </div>
-        
-        <div id="citation-mz" class="citation-text" style="display: none;">
-          <pre>@article{
-  salih2024motionflow,
-  title={MotionFlow: Zero-Shot Transfer of Flow Fields for Video Diffusion Models},
-  author={Salih, Tuna Han and others},
-  journal={arXiv preprint},
-  year={2024}
-}</pre>
-        </div>
-      </div>
-    </div>
-    
-    <!-- MotionAttention -->
-    <div class="publication-card">
-      <div class="publication-image" style="background: linear-gradient(135deg, #0288d1, #01579b);">
-        <span>MA</span>
-      </div>
-      <div class="publication-content">
-        <h3 class="publication-title">MotionFlow-Attention: Driven Motion Transfer in Video Diffusion Models</h3>
-        <div class="publication-meta">
-          <p>Tuna Han Salih, et al.</p>
-          <p><strong>arXiv 2024</strong></p>
-        </div>
-        <p>MotionFlow is a training-free method that leverages attention for motion transfer between videos, adapting the movement patterns while preserving content integrity.</p>
-        
-        <div class="publication-links">
-          <a href="#" class="publication-link"><i class="fas fa-file-pdf"></i> Paper</a>
-          <a href="#" class="publication-link"><i class="fas fa-globe"></i> Project Page</a>
-          <button class="publication-link citation-toggle" onclick="toggleCitation('citation-ma')"><i class="fas fa-quote-right"></i> Cite</button>
-        </div>
-        
-        <div id="citation-ma" class="citation-text" style="display: none;">
-          <pre>@article{
-  salih2024motionflowattention,
-  title={MotionFlow-Attention: Driven Motion Transfer in Video Diffusion Models},
-  author={Salih, Tuna Han and others},
-  journal={arXiv preprint},
-  year={2024}
-}</pre>
-        </div>
-      </div>
-    </div>
-    
-    <!-- CONFORM -->
-    <div class="publication-card">
-      <div class="publication-image" style="background: linear-gradient(135deg, #c62828, #d32f2f);">
-        <span>CC</span>
-      </div>
-      <div class="publication-content">
-        <h3 class="publication-title">CONFORM: Contrast is All You Need For High-Fidelity Text-to-Image Diffusion Models</h3>
-        <div class="publication-meta">
-          <p>Tuna Han Salih, et al.</p>
-          <p><strong>CVPR 2024</strong></p>
-        </div>
-        <p>CONFORM is a training paradigm for text-to-image diffusion models that enhances image-text alignment through contrastive learning principles.</p>
-        
-        <div class="publication-links">
-          <a href="#" class="publication-link"><i class="fas fa-file-pdf"></i> Paper</a>
-          <a href="https://conform-diffusion.github.io" class="publication-link"><i class="fas fa-globe"></i> Project Page</a>
-          <a href="#" class="publication-link"><i class="fas fa-code"></i> Code</a>
-          <button class="publication-link citation-toggle" onclick="toggleCitation('citation-cc')"><i class="fas fa-quote-right"></i> Cite</button>
-        </div>
-        
-        <div id="citation-cc" class="citation-text" style="display: none;">
-          <pre>@inproceedings{
-  salih2024conform,
-  title={CONFORM: Contrast is All You Need For High-Fidelity Text-to-Image Diffusion Models},
-  author={Salih, Tuna Han and others},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  year={2024}
-}</pre>
-        </div>
-      </div>
-    </div>
-  </div>
+        {% elsif gradient_index == 1 %}
+        <div class="publication-image" style="background: linear-gradient(135deg, #5e35b1, #3949ab);">
+          {% elsif gradient_index == 2 %}
+          <div class="publication-image" style="background: linear-gradient(135deg, #c62828, #d32f2f);">
+            {% elsif gradient_index == 3 %}
+            <div class="publication-image" style="background: linear-gradient(135deg, #43a047, #1b5e20);">
+              {% elsif gradient_index == 4 %}
+              <div class="publication-image" style="background: linear-gradient(135deg, #0288d1, #01579b);">
+                {% else %}
+                <div class="publication-image" style="background: linear-gradient(135deg, #00897b, #00acc1);">
+                  {% endif %}
+                  <span>{{ pub.title | truncate: 2, "" | upcase }}</span>
+                </div>
+                <div class="publication-content">
+                  <h3 class="publication-title">{{ pub.title }}</h3>
+                  <div class="publication-meta">
+                    <p>{{ pub.authors }}</p>
+                    <p><strong>{{ pub.venue }} {{ pub.year }}</strong></p>
+                  </div>
+                  <p>{{ pub.description }}</p>
+
+                  <div class="publication-links">
+                    {% for link in pub.links %}
+                    {% if link.type == "paper" %}
+                    <a href="{{ link.url }}" class="publication-link"><i class="fas fa-file-pdf"></i> {{ link.text
+                      }}</a>
+                    {% elsif link.type == "code" %}
+                    <a href="{{ link.url }}" class="publication-link"><i class="fas fa-code"></i> {{ link.text }}</a>
+                    {% elsif link.type == "project" %}
+                    <a href="{{ link.url }}" class="publication-link"><i class="fas fa-globe"></i> {{ link.text }}</a>
+                    {% else %}
+                    <a href="{{ link.url }}" class="publication-link"><i class="fas fa-link"></i> {{ link.text }}</a>
+                    {% endif %}
+                    {% endfor %}
+                    <button class="publication-link citation-toggle"
+                      onclick="toggleCitation('citation-{{ forloop.index }}')"><i class="fas fa-quote-right"></i>
+                      Cite</button>
+                  </div>
+
+                  <div id="citation-{{ forloop.index }}" class="citation-text" style="display: none;">
+                    <pre>{{ pub.citation }}</pre>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
 </section>
 
 <!-- Citation toggle functionality -->
@@ -216,7 +82,7 @@
     text-align: center;
     color: var(--text-color);
   }
-  
+
   .citation-text {
     margin-top: 1rem;
     padding: 1rem;
@@ -225,22 +91,22 @@
     font-size: 0.8rem;
     overflow-x: auto;
   }
-  
+
   .citation-text pre {
     margin: 0;
     white-space: pre-wrap;
     font-family: 'SF Mono', 'Consolas', monospace;
   }
-  
+
   .citation-toggle {
     cursor: pointer;
     border: none;
     font-family: inherit;
     font-size: inherit;
   }
-  
+
   .dark-theme .citation-text,
   body.dark-mode .citation-text {
     background-color: rgba(255, 255, 255, 0.1);
   }
-</style> 
+</style>
