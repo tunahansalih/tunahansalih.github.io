@@ -1,7 +1,4 @@
----
-sitemap: false
----
-
+--- sitemap: false ---
 /*
  *
  *  Minimal Mistakes
@@ -12,8 +9,21 @@ sitemap: false
 */
 
 // Partials
-$highlightcolor: {{ site.highlight-color }};
-$lowlightcolor: {{ site.lowlight-color }};
+$highlightcolor: {
+        {
+        site.highlight-color
+    }
+}
+
+;
+
+$lowlightcolor: {
+        {
+        site.lowlight-color
+    }
+}
+
+;
 @import "variables";
 @import "grid";
 @import "mixins";
@@ -27,5 +37,5 @@ $lowlightcolor: {{ site.lowlight-color }};
 @import "page";
 @import "vendor/font-awesome/font-awesome";
 @import "vendor/magnific-popup/magnific-popup";
-//@import "vendor/google/fonts";
+@import "vendor/google/fonts";
 @import "print";
