@@ -27,7 +27,7 @@ published: false
 Embodied AI is a fascinating subfield of artificial intelligence research. The aim is to create intelligent agents that can interact with the physical world in a human-like way. The main challenge in Embodied AI is to develop models that can understand and reason about the visual, linguistic, or sensory information that they receive from their surroundings and use this information to perform tasks in static or dynamic environments.
 
 <figure style="text-align:center;">
-  <img src="{{ site.github.url }}/images/blog/embodied-ai-intelligent-agent.png" width="50%" heighth="50%">
+  <img src="{{ site.url | default: '' }}{{ site.baseurl }}/images/blog/embodied-ai-intelligent-agent.png" width="50%" heighth="50%">
 </figure>
 
 In this blog post, I will talk about a paper titled ["Simple but Effective: CLIP Embeddings for Embodied AI"](https://arxiv.org/abs/2111.09888)[^1] by [Khandelwal](https://apoorvkh.com/) et al which is a recent work that uses CLIP embeddings to perform various Embodied AI tasks. The work was published in the CVPR 2022.
@@ -49,7 +49,7 @@ However, recent advancements in computer vision research have led to the develop
 OpenAI introduced CLIP (Contrastive Language–Image Pre-training)[^2] in PRML on 2021. They show that scaling a simple pre-training task is powerful enough to achieve competitive zero-shot results on various image classification benchmarks. They use the texts paired with images from the internet as the training data. 
 
 <figure style="text-align:center;">
-  <img src="{{ site.github.url }}/images/blog/clip.png">
+  <img src="{{ site.url | default: '' }}{{ site.baseurl }}/images/blog/clip.png">
   <figcaption> Source of image: https://openai.com/research/clip </figcaption>
 </figure>
 
@@ -65,7 +65,7 @@ While it usually performs well in recognizing regular objects, it has difficulty
 Although CLIP is a simple model, this visual backbone can be used to perform Embodied AI tasks. The authors of the paper show that CLIP embeddings can be used to perform Embodied AI tasks such as object goal navigation, point goal navigation, and room rearrangement. They show that CLIP embeddings can be used as a substitute for visual encoders used to solve these challenges.
 
 <figure style="text-align:center;">
-  <img src="{{ site.github.url }}/images/blog/high-level-clip-embodied-ai.png" width="50%" height="50%">
+  <img src="{{ site.url | default: '' }}{{ site.baseurl }}/images/blog/high-level-clip-embodied-ai.png" width="50%" height="50%">
   <figcaption> Source of image: Khandelwal et al, 2022 </figcaption>
 </figure>
 
@@ -79,18 +79,18 @@ This simple architecture achieves SOTA or near-SOTA approaches on most of the ch
 <table cellspacing="10px" cellpadding="10px" style="text-align:center;">
     <tr>
         <td style="text-align: center;">
-          <img src="{{ site.github.url }}/images/blog/embodied-ai-robothor-objectnav.png">
+          <img src="{{ site.url | default: '' }}{{ site.baseurl }}/images/blog/embodied-ai-robothor-objectnav.png">
         </td>
         <td style="text-align: center;">
-            <img src="{{ site.github.url }}/images/blog/embodied-ai-ithor-rearrangement.png">
+            <img src="{{ site.url | default: '' }}{{ site.baseurl }}/images/blog/embodied-ai-ithor-rearrangement.png">
         </td>
     </tr>
     <tr>
         <td style="text-align: center;">
-          <img src="{{ site.github.url }}/images/blog/embodied-ai-habitat-objectnav.png">
+          <img src="{{ site.url | default: '' }}{{ site.baseurl }}/images/blog/embodied-ai-habitat-objectnav.png">
         </td>
         <td style="text-align: center;">
-          <img src="{{ site.github.url }}/images/blog/embodied-ai-habitat-pointnav.png">
+          <img src="{{ site.url | default: '' }}{{ site.baseurl }}/images/blog/embodied-ai-habitat-pointnav.png">
         </td>
     </tr>
     <caption style="caption-side:bottom">Several Benchmark Results. Source: Khandelwal et al, 2022</caption>
@@ -99,7 +99,7 @@ This simple architecture achieves SOTA or near-SOTA approaches on most of the ch
 Additionally, the authors investigated CLIP performance on sub-tasks in some designated experiments to support the hypothesis that CLIP features natively embed visual information that is relevant to navigational and similar embodied tasks. The experiments show that CLIP embeddings represent the primitives of the physical world in tasks such as object presence, object localization, free space, and reachability.
 
 <figure style="text-align:center;">
-  <img src="{{ site.github.url }}/images/blog/embodied-ai-visual-encoder-evaluations.png">
+  <img src="{{ site.url | default: '' }}{{ site.baseurl }}/images/blog/embodied-ai-visual-encoder-evaluations.png">
   <figcaption> Examples of visual encoder evaluation tasks. Source: Khandelwal et al, 2022 </figcaption>
 </figure>
 
@@ -112,7 +112,7 @@ In the object presence evaluation, they train the models to predict whether a pa
 In the free space evaluation, they train the models to predict the amount of free space available in front of the agent.
 
 <figure style="text-align: center;">
-  <img src="{{ site.github.url }}/images/blog/embodied-ai-visual-encoder-evaluations-table.png" width="50%" height="50%">
+  <img src="{{ site.url | default: '' }}{{ site.baseurl }}/images/blog/embodied-ai-visual-encoder-evaluations-table.png" width="50%" height="50%">
   <figcaption> Results of visual encoder evaluation tasks. Source: Khandelwal et al, 2022 </figcaption>
 </figure>
 
