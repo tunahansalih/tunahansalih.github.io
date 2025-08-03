@@ -5,7 +5,7 @@ published: true
 ---
 
 <div class="academic-bio">
-  <img src="/images/bio-photo.jpg" alt="Tuna Han Salih Meral" class="bio-photo">
+  <img src="/images/bio-avatar.jpg" alt="Tuna Han Salih Meral" class="bio-photo">
   <div class="academic-bio-content">
     <h1>Tuna Han Salih Meral</h1>
     <div class="title">Ph.D. Student in Computer Science</div>

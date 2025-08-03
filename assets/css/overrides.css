@@ -284,6 +284,69 @@ a:hover {
   /* Move sidebar more to left */
 }
 
+/* Hide sidebar on homepage for clean academic look */
+body.page .article-author-side {
+  display: none;
+}
+
+/* Make homepage content full width when sidebar is hidden */
+body.page #main {
+  display: block;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+body.page article.page {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Ensure academic content sections work properly on homepage */
+body.page .academic-bio,
+body.page .academic-contact,
+body.page .academic-section {
+  width: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Override any h1 styling for academic bio on homepage */
+body.page .academic-bio-content h1 {
+  font-size: 2.25rem !important;
+  margin-bottom: 0.5rem !important;
+  border: none !important;
+  text-align: left !important;
+  padding: 0 !important;
+  color: var(--heading-color) !important;
+}
+
+body.page .academic-bio-content h1::after {
+  display: none !important;
+}
+
+/* Ensure other page h1s still get academic treatment */
+body.page article.page h1:not(.academic-bio-content h1) {
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid var(--primary-color);
+  position: relative;
+}
+
+body.page article.page h1:not(.academic-bio-content h1)::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+}
+
 #index {
   flex: 1;
   min-width: 0;
@@ -1027,6 +1090,33 @@ blockquote {
   .back-to-top {
     bottom: 1rem;
     right: 1rem;
+  }
+
+  /* Mobile academic homepage adjustments */
+  body.page #main {
+    padding: 1rem;
+  }
+
+  body.page .academic-bio {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  body.page .academic-bio .bio-photo {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto;
+  }
+
+  body.page .academic-contact {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  body.page .research-interests-academic {
+    grid-template-columns: 1fr;
   }
 }
 
