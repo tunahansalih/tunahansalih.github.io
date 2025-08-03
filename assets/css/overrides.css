@@ -307,11 +307,12 @@ body.page article.page {
 /* Ensure academic content sections work properly on homepage */
 body.page .academic-bio,
 body.page .academic-contact,
-body.page .academic-section {
+body.page .academic-section,
+body.page .recent-news,
+body.page .featured-publications {
   width: 100%;
   max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 2rem auto;
 }
 
 /* Override any h1 styling for academic bio on homepage */
@@ -328,23 +329,17 @@ body.page .academic-bio-content h1::after {
   display: none !important;
 }
 
-/* Ensure other page h1s still get academic treatment */
-body.page article.page h1:not(.academic-bio-content h1) {
-  text-align: center;
-  padding-bottom: 1rem;
-  border-bottom: 3px solid var(--primary-color);
-  position: relative;
+/* Hide page title for homepage */
+body.page article.page h1:first-child {
+  display: none;
 }
 
-body.page article.page h1:not(.academic-bio-content h1)::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+/* Ensure proper spacing between sections */
+body.page .academic-section,
+body.page .recent-news,
+body.page .featured-publications {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 #index {

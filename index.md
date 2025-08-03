@@ -66,10 +66,7 @@ At the core of my work is a belief that generative AI should not only create hig
   </div>
 </div>  
 
-<div class="academic-section">
-  <h2>Recent Updates</h2>
-  {% include _news-recent.html %}
-</div>
+{% include _news-recent.html %}
 
 <div class="academic-section">
   <h2>Latest Blog Posts</h2>
@@ -80,7 +77,4 @@ At the core of my work is a belief that generative AI should not only create hig
   {% endfor %}
 </div>
 
-<div class="academic-section">
-  <h2>Featured Publications</h2>
-  {% include _publications-featured.html %}
-</div>
+{% include _publications-featured.html %}
