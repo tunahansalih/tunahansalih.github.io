@@ -13,7 +13,7 @@ I research **generative AI** at Virginia Tech, mainly figuring out how to tell i
 * **CVPR 2024**, **ICML 2025 (oral)**, and **ICCV 2025 (highlight)** papers that tinker with diffusion models, personalization and interpretability.
 * Internships with **Amazon AGI** and **Adobe FireFly**, plus fun collabs with **Google**.  
 * Co-organizer of the **P13N workshop on Personalization in Generative AI at ICCV 2025**.  
-* Once deployed an image-generation services that millions of people actually used—without it catching fire.
+* Once deploying image-generation services that millions of people actually used—without it catching fire.
 
 ### Why I do this
 
