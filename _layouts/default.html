@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en" class="no-js">
+
 <head>
   {% include _head.html %}
 </head>
@@ -12,8 +13,22 @@
   <!-- Dark mode toggle button -->
   <button id="darkModeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
     <div class="icon-container">
-      <svg xmlns="http://www.w3.org/2000/svg" class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-      <svg xmlns="http://www.w3.org/2000/svg" class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
     </div>
   </button>
 
@@ -28,7 +43,7 @@
       border-radius: 50%;
       background: var(--card-bg-color);
       border: none;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -36,22 +51,22 @@
       transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       overflow: hidden;
     }
-    
+
     #darkModeToggle:hover {
       transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
-    
+
     #darkModeToggle:active {
       transform: translateY(-2px);
     }
-    
+
     #darkModeToggle .icon-container {
       position: relative;
       width: 24px;
       height: 24px;
     }
-    
+
     #darkModeToggle svg {
       position: absolute;
       top: 0;
@@ -59,34 +74,34 @@
       width: 24px;
       height: 24px;
       color: var(--text-color);
-      transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), 
-                  opacity 0.3s ease;
+      transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+        opacity 0.3s ease;
     }
-    
+
     #darkModeToggle .sun-icon {
       opacity: 0;
       transform: rotate(-90deg) scale(0.5);
     }
-    
+
     #darkModeToggle .moon-icon {
       opacity: 1;
       transform: rotate(0) scale(1);
     }
-    
+
     body.dark-mode #darkModeToggle {
       background-color: var(--card-bg-color);
     }
-    
+
     body.dark-mode #darkModeToggle .sun-icon {
       opacity: 1;
       transform: rotate(0) scale(1);
     }
-    
+
     body.dark-mode #darkModeToggle .moon-icon {
       opacity: 0;
       transform: rotate(90deg) scale(0.5);
     }
-    
+
     @media (max-width: 768px) {
       #darkModeToggle {
         bottom: 15px;
@@ -99,17 +114,11 @@
 
   {% if page.image.feature %}
   <div class="image-wrap">
-    <img src=
-    {% if page.image.feature contains 'http://' %}
-      "{{ page.image.feature }}"
-    {% elsif page.image.feature contains 'https://' %}
-      "{{ page.image.feature }}"
-    {% else %}
-      "{{ site.url }}/images/{{ page.image.feature }}"
-    {% endif %}
-    alt="{{ page.title }} feature image">
+    <img src={% if page.image.feature contains 'http://' %} "{{ page.image.feature }}" {% elsif page.image.feature
+      contains 'https://' %} "{{ page.image.feature }}" {% else %} "{{ site.url }}/images/{{ page.image.feature }}" {%
+      endif %} alt="{{ page.title }} feature image">
     {% if page.image.credit %}
-      <span class="image-credit">Photo Credit: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a></span>
+    <span class="image-credit">Photo Credit: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a></span>
     {% endif %}
   </div><!-- /.image-wrap -->
   {% endif %}
@@ -128,32 +137,31 @@
 
   <script>
     // Dark mode toggle functionality
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       const darkModeToggle = document.getElementById('darkModeToggle');
       const body = document.body;
       const html = document.documentElement;
-      
-      // Check for saved theme preference or use user's system preference
+
+      // Check for saved theme preference - default to dark mode
       const savedTheme = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      
-      // Apply dark mode if saved or preferred
-      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+
+      // Apply dark mode by default, only switch to light if explicitly set
+      if (savedTheme !== 'light') {
         body.classList.add('dark-mode');
         html.classList.add('dark-theme');
       }
-      
+
       // Toggle dark mode on button click
-      darkModeToggle.addEventListener('click', function() {
+      darkModeToggle.addEventListener('click', function () {
         body.classList.toggle('dark-mode');
         html.classList.toggle('dark-theme');
-        
+
         // Add a pulse animation
         this.classList.add('pulse');
         setTimeout(() => {
           this.classList.remove('pulse');
         }, 500);
-        
+
         // Save preference to localStorage
         if (body.classList.contains('dark-mode')) {
           localStorage.setItem('theme', 'dark');
@@ -165,4 +173,5 @@
   </script>
 
 </body>
-</html> 
+
+</html>

@@ -1,8 +1,9 @@
-<!-- Modern Navigation Header -->
-<header class="main-header">
+<!-- Academic Navigation Header -->
+<header class="main-header academic-header">
 	<div class="navigation-wrapper">
 		<div class="site-name">
 			<a href="{{ site.url | default: '' }}{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
+			<div class="site-subtitle">Computer Science Ph.D. Student</div>
 		</div>
 
 		<div class="nav-controls">
@@ -204,8 +205,23 @@
 
 	.header-separator {
 		height: 3px;
-		background-color: var(--highlight-color, #CC0000);
+		background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
 		width: 100%;
+	}
+
+	/* Academic header enhancements */
+	.academic-header {
+		background: linear-gradient(135deg, rgba(26, 54, 93, 0.03) 0%, rgba(44, 82, 130, 0.03) 100%);
+		border-bottom: 1px solid var(--card-border-color);
+	}
+
+	.site-subtitle {
+		font-size: 0.85rem;
+		color: var(--text-light);
+		font-weight: 400;
+		margin-top: 0.25rem;
+		font-family: var(--heading-font);
+		letter-spacing: 0.02em;
 	}
 
 	@media (max-width: 768px) {
@@ -299,11 +315,11 @@
 				}
 			});
 
-			// Check for saved preference
+			// Check for saved preference - default to dark mode
 			const savedTheme = localStorage.getItem('theme');
-			if (savedTheme === 'dark') {
+			if (savedTheme !== 'light') {
 				document.body.classList.add('dark-theme');
-			} else if (savedTheme === 'light') {
+			} else {
 				document.body.classList.remove('dark-theme');
 			}
 		}

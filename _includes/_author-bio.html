@@ -2,13 +2,17 @@
 {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.owner %}
 {% endif %}
 
-<div class="author-container">
-  <img src="{{ site.url | default: '' }}{{ site.baseurl }}/images/{{ author.avatar }}" class="bio-photo"
-    alt="{{ author.name }} bio photo">
+<div class="academic-author-card">
+  <div class="author-photo-section">
+    <img src="{{ site.url | default: '' }}{{ site.baseurl }}/images/{{ author.avatar }}" class="academic-bio-photo"
+      alt="{{ author.name }} bio photo">
+  </div>
 
-  <div class="author-info">
-    <h3 class="author-name">{{ author.name }}</h3>
-    <p class="author-bio">{{ author.bio }}</p>
+  <div class="author-details">
+    <h3 class="academic-author-name">{{ author.name }}</h3>
+    <div class="academic-title">Ph.D. Student in Computer Science</div>
+    <div class="academic-affiliation">Virginia Tech</div>
+    <p class="academic-author-bio">{{ author.bio }}</p>
   </div>
 
   <div class="social-icons">
@@ -48,52 +52,73 @@
 </div>
 
 <style>
-  .author-container {
+  .academic-author-card {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: linear-gradient(135deg, var(--subtle-bg, #f9fafb) 0%, var(--card-bg-color, #fff) 100%);
+    border-radius: 16px;
+    padding: 2rem;
     margin-bottom: 2rem;
+    border: 1px solid var(--card-border-color, #e5e7eb);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
   }
 
-  .author-avatar {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-bottom: 1rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    border: 3px solid var(--background-color, #fff);
+  .author-photo-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .academic-bio-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 3px solid var(--primary-color, #1a365d);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .author-avatar:hover {
+  .academic-bio-photo:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
   }
 
-  .bio-photo {
+  .author-details {
+    margin-bottom: 1.5rem;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 
-  .author-info {
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  .author-name {
+  .academic-author-name {
     margin: 0 0 0.5rem 0;
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--heading-color, #212121);
+    color: var(--heading-color, #1a202c);
+    font-family: var(--heading-font, 'Source Sans Pro', sans-serif);
   }
 
-  .author-title {
-    margin: 0;
+  .academic-title {
+    font-size: 1rem;
+    color: var(--primary-color, #1a365d);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    font-family: var(--heading-font, 'Source Sans Pro', sans-serif);
+  }
+
+  .academic-affiliation {
     font-size: 0.9rem;
-    opacity: 0.8;
-    color: var(--text-color, #333);
+    color: var(--text-light, #4a5568);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .academic-author-bio {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-color, #2d3748);
+    margin: 0;
+    max-width: 280px;
+    margin: 0 auto;
   }
 
   .social-icons {
@@ -108,44 +133,77 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background-color: rgba(100, 181, 246, 0.1);
-    color: var(--link-color, #1976d2);
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background-color: rgba(26, 54, 93, 0.08);
+    color: var(--primary-color, #1a365d);
     transition: all 0.3s ease;
     text-decoration: none;
+    border: 1px solid rgba(26, 54, 93, 0.1);
   }
 
   .author-social i {
-    font-size: 1rem;
+    font-size: 1.1rem;
     line-height: 1;
   }
 
   .author-social:hover {
     transform: translateY(-3px);
-    background-color: var(--link-color, #1976d2);
+    background-color: var(--primary-color, #1a365d);
     color: white;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(26, 54, 93, 0.25);
+    border-color: var(--primary-color, #1a365d);
   }
 
-  .dark-theme .author-avatar {
-    border-color: #121212;
+  /* Dark theme adjustments */
+  .dark-theme .academic-author-card,
+  body.dark-mode .academic-author-card {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.4) 0%, var(--card-bg-color, #1e293b) 100%);
+    border-color: var(--card-border-color, #334155);
   }
 
-  .dark-theme .author-social {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--link-color, #64b5f6);
+  .dark-theme .academic-bio-photo,
+  body.dark-mode .academic-bio-photo {
+    border-color: var(--primary-color, #60a5fa);
   }
 
-  .dark-theme .author-social:hover {
-    background-color: var(--link-color, #64b5f6);
-    color: #121212;
+  .dark-theme .author-social,
+  body.dark-mode .author-social {
+    background-color: rgba(96, 165, 250, 0.1);
+    color: var(--primary-color, #60a5fa);
+    border-color: rgba(96, 165, 250, 0.2);
+  }
+
+  .dark-theme .author-social:hover,
+  body.dark-mode .author-social:hover {
+    background-color: var(--primary-color, #60a5fa);
+    color: var(--background-color, #0f172a);
+    border-color: var(--primary-color, #60a5fa);
   }
 
   @media (max-width: 768px) {
-    .author-container {
-      width: 100%;
+    .academic-author-card {
+      padding: 1.5rem;
+      margin: 0 0 1.5rem 0;
+    }
+
+    .academic-bio-photo {
+      width: 120px;
+      height: 120px;
+    }
+
+    .academic-author-name {
+      font-size: 1.3rem;
+    }
+
+    .social-icons {
+      gap: 0.5rem;
+    }
+
+    .author-social {
+      width: 38px;
+      height: 38px;
     }
   }
 </style>

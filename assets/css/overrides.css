@@ -1,31 +1,31 @@
 /* Overrides to fix specific layout issues */
 
-/* =========== CSS Variables for consistent theming =========== */
+/* =========== CSS Variables for enhanced academic theming =========== */
 :root {
-  /* Typography fonts */
-  --heading-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --body-font: 'Crimson Text', Georgia, serif;
-  --mono-font: 'JetBrains Mono', 'SF Mono', monospace;
+  /* Academic Typography - more scholarly fonts */
+  --heading-font: 'Source Sans Pro', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --body-font: 'Source Serif Pro', 'Crimson Text', 'Charter', Georgia, serif;
+  --mono-font: 'Source Code Pro', 'JetBrains Mono', 'SF Mono', monospace;
 
-  /* Academic color palette */
-  --primary-color: #1e40af;
-  /* Academic blue */
-  --primary-light: #3b82f6;
-  /* Bright blue */
-  --primary-dark: #1e3a8a;
-  /* Deep blue */
+  /* Academic color palette - more scholarly */
+  --primary-color: #1a365d;
+  /* Deep academic blue */
+  --primary-light: #2c5282;
+  /* Medium blue */
+  --primary-dark: #0f2027;
+  /* Very deep blue */
 
-  /* Refined grays */
-  --background-color: #ffffff;
-  --text-color: #374151;
-  /* Warm dark gray */
-  --text-light: #6b7280;
+  /* Academic grays - warmer and more sophisticated */
+  --background-color: #fefefe;
+  --text-color: #2d3748;
+  /* Professional dark gray */
+  --text-light: #4a5568;
   /* Medium gray */
-  --text-lighter: #9ca3af;
+  --text-lighter: #718096;
   /* Light gray */
-  --heading-color: #1f2937;
-  /* Near black */
-  --subheading-color: #374151;
+  --heading-color: #1a202c;
+  /* Deep charcoal */
+  --subheading-color: #2d3748;
 
   /* Background refinements */
   --card-bg-color: #ffffff;
@@ -98,18 +98,21 @@ body.dark-mode {
   --card-gradient: linear-gradient(to bottom, #1e293b, #0f172a);
 }
 
-/* =========== Typography =========== */
+/* =========== Enhanced Academic Typography =========== */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Source+Serif+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Source+Code+Pro:wght@300;400;500&display=swap');
+
 body {
   font-family: var(--body-font);
-  font-size: 18px;
-  line-height: 1.7;
-  max-width: 90rem;
+  font-size: 19px;
+  line-height: 1.75;
+  max-width: 88rem;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
   color: var(--text-color);
   background-color: var(--background-color);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
@@ -122,31 +125,60 @@ h6 {
   font-family: var(--heading-font);
   color: var(--heading-color);
   font-weight: 600;
-  line-height: 1.3;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  letter-spacing: -0.02em;
+  line-height: 1.35;
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.015em;
   transition: color var(--transition-speed) ease;
 }
 
 h1 {
-  font-size: 2.75rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  line-height: 1.2;
-  margin-top: 3rem;
-  margin-bottom: 1.5rem;
+  line-height: 1.25;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid var(--primary-color);
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
 }
 
 h2 {
-  font-size: 2.25rem;
+  font-size: 2rem;
   font-weight: 600;
   margin-top: 3rem;
   margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--primary-color);
+  position: relative;
+}
+
+h2::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: var(--primary-light);
 }
 
 h3 {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 600;
+  color: var(--primary-color);
 }
 
 p,
@@ -267,24 +299,20 @@ article.page,
   box-sizing: border-box;
 }
 
-/* Enhanced Navigation Styling */
+/* Enhanced Academic Navigation Styling */
 .site-title {
-  font-size: 1.75rem !important;
+  font-size: 1.8rem !important;
   font-weight: 700 !important;
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-light)) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
+  color: var(--primary-color) !important;
   text-decoration: none !important;
   transition: all 0.3s ease !important;
+  font-family: var(--heading-font) !important;
+  letter-spacing: -0.02em !important;
 }
 
 .site-title:hover {
-  background: linear-gradient(135deg, var(--primary-light), var(--primary-color)) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-  transform: scale(1.02) !important;
+  color: var(--primary-light) !important;
+  transform: translateY(-1px) !important;
 }
 
 .nav-link {
@@ -1159,4 +1187,285 @@ body.dark-mode .latest-post {
 .dark-theme .latest-post h3,
 body.dark-mode .latest-post h3 {
   color: #fff;
+}
+
+/* =========== Enhanced Academic Content Styling =========== */
+
+/* Academic page layout */
+.academic-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  background: var(--card-bg-color);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  margin-top: 2rem;
+}
+
+/* Enhanced author bio for academic presentation */
+.academic-bio {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--subtle-bg) 0%, var(--card-bg-color) 100%);
+  border-radius: 16px;
+  border: 1px solid var(--card-border-color);
+}
+
+.academic-bio .bio-photo {
+  width: 160px;
+  height: 160px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 3px solid var(--primary-color);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.academic-bio-content {
+  flex: 1;
+}
+
+.academic-bio-content h1 {
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
+  border: none;
+  text-align: left;
+  padding: 0;
+}
+
+.academic-bio-content h1::after {
+  display: none;
+}
+
+.academic-bio-content .title {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-family: var(--heading-font);
+}
+
+.academic-bio-content .affiliation {
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+}
+
+/* Academic contact information */
+.academic-contact {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--card-bg-color);
+  border-radius: 12px;
+  border-left: 4px solid var(--primary-color);
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--text-color);
+}
+
+.contact-item i {
+  color: var(--primary-color);
+  width: 18px;
+  text-align: center;
+}
+
+.contact-item a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.contact-item a:hover {
+  color: var(--primary-color);
+}
+
+/* Academic section headers */
+.academic-section {
+  margin: 3rem 0 2rem 0;
+}
+
+.academic-section h2 {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.academic-section h2::before {
+  content: '';
+  width: 4px;
+  height: 2rem;
+  background: linear-gradient(to bottom, var(--primary-color), var(--primary-light));
+  border-radius: 2px;
+}
+
+/* Enhanced publication styling for academic journals */
+.academic-publications {
+  margin: 2rem 0;
+}
+
+.academic-publication {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--card-bg-color);
+  border: 1px solid var(--card-border-color);
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.academic-publication:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.publication-year {
+  display: inline-block;
+  background: var(--primary-color);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-family: var(--mono-font);
+}
+
+.publication-title-academic {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.publication-authors-academic {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.publication-venue-academic {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.publication-links-academic {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.academic-link {
+  padding: 0.35rem 0.75rem;
+  background: rgba(26, 54, 93, 0.1);
+  color: var(--primary-color);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.academic-link:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Academic research interests */
+.research-interests-academic {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.research-interest-card {
+  padding: 1.5rem;
+  background: var(--card-bg-color);
+  border: 1px solid var(--card-border-color);
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.research-interest-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.research-interest-card h4 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.research-interest-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Academic news/updates */
+.academic-news {
+  background: var(--subtle-bg);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.news-item-academic {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--card-bg-color);
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-color);
+}
+
+.news-date-academic {
+  font-family: var(--mono-font);
+  font-size: 0.85rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  min-width: 80px;
+}
+
+.news-content-academic {
+  flex: 1;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .academic-bio {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .academic-contact {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .research-interests-academic {
+    grid-template-columns: 1fr;
+  }
+
+  .academic-bio-content h1 {
+    font-size: 1.75rem;
+  }
 }

@@ -1,69 +1,49 @@
-<!-- Publications Section -->
-<section id="publications" class="publications">
-  <div class="section-intro">
-    <p>Below is a comprehensive list of my research publications, including journal articles, conference papers, and
-      preprints.</p>
-  </div>
-
-  <div class="publication-cards">
+<!-- Academic Publications Section -->
+<section id="publications" class="academic-publications-list">
+  <div class="academic-publications-container">
     {% assign featured_pubs = site.data.publications | where: "featured", true | sort: "featured_order" %}
     {% assign other_pubs = site.data.publications | where: "featured", false %}
     {% assign all_pubs = featured_pubs | concat: other_pubs %}
 
     {% for pub in all_pubs %}
-    <div class="publication-card">
-      {% assign gradient_index = forloop.index0 | modulo: 6 %}
-      {% if gradient_index == 0 %}
-      <div class="publication-image" style="background: linear-gradient(135deg, #d81b60, #e91e63);">
-        {% elsif gradient_index == 1 %}
-        <div class="publication-image" style="background: linear-gradient(135deg, #5e35b1, #3949ab);">
-          {% elsif gradient_index == 2 %}
-          <div class="publication-image" style="background: linear-gradient(135deg, #c62828, #d32f2f);">
-            {% elsif gradient_index == 3 %}
-            <div class="publication-image" style="background: linear-gradient(135deg, #43a047, #1b5e20);">
-              {% elsif gradient_index == 4 %}
-              <div class="publication-image" style="background: linear-gradient(135deg, #0288d1, #01579b);">
-                {% else %}
-                <div class="publication-image" style="background: linear-gradient(135deg, #00897b, #00acc1);">
-                  {% endif %}
-                  <span>{{ pub.title | truncate: 2, "" | upcase }}</span>
-                </div>
-                <div class="publication-content">
-                  <h3 class="publication-title">{{ pub.title }}</h3>
-                  <div class="publication-meta">
-                    <p>{{ pub.authors }}</p>
-                    <p><strong>{{ pub.venue }} {{ pub.year }}</strong></p>
-                  </div>
-                  <p>{{ pub.description }}</p>
+    <div class="academic-publication">
+      <div class="publication-year">{{ pub.year }}</div>
+      <div class="publication-content-academic">
+        <h3 class="publication-title-academic">{{ pub.title }}</h3>
+        <div class="publication-authors-academic">{{ pub.authors }}</div>
+        <div class="publication-venue-academic">{{ pub.venue }}</div>
+        <p class="publication-description-academic">{{ pub.description }}</p>
 
-                  <div class="publication-links">
-                    {% for link in pub.links %}
-                    {% if link.type == "paper" %}
-                    <a href="{{ link.url }}" class="publication-link"><i class="fas fa-file-pdf"></i> {{ link.text
-                      }}</a>
-                    {% elsif link.type == "code" %}
-                    <a href="{{ link.url }}" class="publication-link"><i class="fas fa-code"></i> {{ link.text }}</a>
-                    {% elsif link.type == "project" %}
-                    <a href="{{ link.url }}" class="publication-link"><i class="fas fa-globe"></i> {{ link.text }}</a>
-                    {% else %}
-                    <a href="{{ link.url }}" class="publication-link"><i class="fas fa-link"></i> {{ link.text }}</a>
-                    {% endif %}
-                    {% endfor %}
-                    <button class="publication-link citation-toggle"
-                      onclick="toggleCitation('citation-{{ forloop.index }}')"><i class="fas fa-quote-right"></i>
-                      Cite</button>
-                  </div>
+        <div class="publication-links-academic">
+          {% for link in pub.links %}
+          {% if link.type == "paper" %}
+          <a href="{{ link.url }}" class="academic-link"><i class="fas fa-file-pdf"></i> {{ link.text }}</a>
+          {% elsif link.type == "code" %}
+          <a href="{{ link.url }}" class="academic-link"><i class="fas fa-code"></i> {{ link.text }}</a>
+          {% elsif link.type == "project" %}
+          <a href="{{ link.url }}" class="academic-link"><i class="fas fa-globe"></i> {{ link.text }}</a>
+          {% else %}
+          <a href="{{ link.url }}" class="academic-link"><i class="fas fa-link"></i> {{ link.text }}</a>
+          {% endif %}
+          {% endfor %}
+          <button class="academic-link citation-toggle" onclick="toggleCitation('citation-{{ forloop.index }}')">
+            <i class="fas fa-quote-right"></i> Cite
+          </button>
+          <button class="academic-link copy-citation" onclick="copyCitation('citation-{{ forloop.index }}')">
+            <i class="fas fa-copy"></i> Copy
+          </button>
+        </div>
 
-                  <div id="citation-{{ forloop.index }}" class="citation-text" style="display: none;">
-                    <pre>{{ pub.citation }}</pre>
-                  </div>
-                </div>
-              </div>
-              {% endfor %}
-            </div>
+        <div id="citation-{{ forloop.index }}" class="citation-text-academic" style="display: none;">
+          <pre>{{ pub.citation }}</pre>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 </section>
 
-<!-- Citation toggle functionality -->
+<!-- Citation functionality -->
 <script>
   function toggleCitation(id) {
     const citation = document.getElementById(id);
@@ -73,40 +53,171 @@
       citation.style.display = "none";
     }
   }
+
+  function copyCitation(id) {
+    const citation = document.getElementById(id);
+    const text = citation.querySelector('pre').textContent;
+
+    navigator.clipboard.writeText(text).then(function () {
+      // Show temporary feedback
+      const button = event.target.closest('.copy-citation');
+      const originalText = button.innerHTML;
+      button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+      button.style.backgroundColor = 'var(--accent-green, #059669)';
+
+      setTimeout(() => {
+        button.innerHTML = originalText;
+        button.style.backgroundColor = '';
+      }, 2000);
+    }).catch(function (err) {
+      console.error('Could not copy text: ', err);
+    });
+  }
 </script>
 
 <style>
-  .section-intro {
-    max-width: 800px;
-    margin: 0 auto 2rem;
-    text-align: center;
-    color: var(--text-color);
+  .academic-publications-list {
+    margin: 2rem 0;
   }
 
-  .citation-text {
+  .academic-publications-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .academic-publication {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--card-bg-color);
+    border: 1px solid var(--card-border-color);
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .academic-publication:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .publication-year {
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    font-family: var(--mono-font);
+  }
+
+  .publication-title-academic {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--heading-color);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .publication-authors-academic {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    font-style: italic;
+  }
+
+  .publication-venue-academic {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .publication-description-academic {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+  }
+
+  .publication-links-academic {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+
+  .academic-link {
+    padding: 0.35rem 0.75rem;
+    background: rgba(26, 54, 93, 0.1);
+    color: var(--primary-color);
+    border-radius: 4px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .academic-link:hover {
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+  }
+
+  .academic-link i {
+    margin-right: 0.35rem;
+  }
+
+  .citation-text-academic {
     margin-top: 1rem;
     padding: 1rem;
     background-color: rgba(0, 0, 0, 0.05);
     border-radius: 8px;
     font-size: 0.8rem;
     overflow-x: auto;
+    border-left: 4px solid var(--primary-color);
   }
 
-  .citation-text pre {
+  .citation-text-academic pre {
     margin: 0;
     white-space: pre-wrap;
-    font-family: 'SF Mono', 'Consolas', monospace;
+    font-family: var(--mono-font);
+    line-height: 1.4;
   }
 
-  .citation-toggle {
-    cursor: pointer;
-    border: none;
-    font-family: inherit;
-    font-size: inherit;
-  }
-
-  .dark-theme .citation-text,
-  body.dark-mode .citation-text {
+  /* Dark theme adjustments */
+  .dark-theme .citation-text-academic,
+  body.dark-mode .citation-text-academic {
     background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .dark-theme .academic-link,
+  body.dark-mode .academic-link {
+    background: rgba(96, 165, 250, 0.1);
+    color: var(--primary-color);
+  }
+
+  .dark-theme .academic-link:hover,
+  body.dark-mode .academic-link:hover {
+    background: var(--primary-color);
+    color: var(--background-color);
+  }
+
+  @media (max-width: 768px) {
+    .academic-publication {
+      padding: 1rem;
+    }
+
+    .publication-links-academic {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .academic-link {
+      text-align: center;
+    }
   }
 </style>
