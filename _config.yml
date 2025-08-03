@@ -1,6 +1,8 @@
 # Site wide configuration
 title: Tuna Meral
 locale: en_US
+url: "https://tmeral.com"
+baseurl: ""
 
 # Site owner information
 owner:
