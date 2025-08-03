@@ -4,40 +4,6 @@ excerpt: About Me...
 published: true
 ---
 
-<div class="academic-bio">
-  <img src="/images/bio-avatar.jpg" alt="Tuna Han Salih Meral" class="bio-photo">
-  <div class="academic-bio-content">
-    <h1>Tuna Han Salih Meral</h1>
-    <div class="title">Ph.D. Student in Computer Science</div>
-    <div class="affiliation">
-      <strong>Virginia Tech</strong> | Advised by <a href="https://pinguar.org/">Dr. Pinar Yanardag Delul</a> | <a href="https://gemlab-vt.github.io/">GemLab</a>
-    </div>
-  </div>
-</div>
-
-<div class="academic-contact">
-  <div class="contact-item">
-    <i class="fas fa-envelope"></i>
-    <a href="mailto:tunameral@vt.edu">tunameral@vt.edu</a>
-  </div>
-  <div class="contact-item">
-    <i class="fas fa-file-pdf"></i>
-    <a href="/resume/">Resume</a>
-  </div>
-  <div class="contact-item">
-    <i class="fas fa-download"></i>
-    <a href="/images/CV.pdf" download>Download CV</a>
-  </div>
-  <div class="contact-item">
-    <i class="fab fa-linkedin"></i>
-    <a href="https://linkedin.com/in/tmeral" target="_blank">LinkedIn</a>
-  </div>
-  <div class="contact-item">
-    <i class="fab fa-github"></i>
-    <a href="https://github.com/tunahansalih" target="_blank">GitHub</a>
-  </div>
-</div>
-
 My research focuses on developing **controllable** and **interpretable** generative models across **images**, **video**, and **language**. I design alignment objectives for **diffusion** and **autoregressive** architectures to enable efficient, user-aligned generation without post-hoc tuning.
 
 Before joining VT, I worked across startups and industry labs, building real-time image generation services and scalable ML systems in production. This mix of applied and theoretical experience enables me to create generative models that are both research-grade and deployable.
