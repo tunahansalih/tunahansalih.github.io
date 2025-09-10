@@ -1,5 +1,5 @@
 - title: "CLoRA: A Contrastive Approach to Compose Multiple LoRA Models"
-  authors: "Tuna Han Salih Meral, Pinar Yanardag"
+  authors: "Tuna Han Salih Meral, Enis Simsar, Federico Tombari, Pinar Yanardag"
   venue: "ICCV 2025 (Highlight)"
   year: 2025
   description: "CLoRA is a training-free method that works on test-time, and uses contrastive learning to compose multiple concept and style LoRAs simultaneously."
@@ -96,7 +96,7 @@
 }"
 
 - title: "MotionShop: Zero-Shot Motion Transfer in Video Diffusion Models with Mixture of Score Guidance"
-  authors: "Tuna Han Salih Meral, Pinar Yanardag"
+  authors: "Hidir Yesiltepe, Tuna Han Salih Meral, Pinar Yanardag"
   venue: "Preprint"
   year: 2024
   description: "In this work, we propose the first motion transfer approach in diffusion transformer through Mixture of Score Guidance (MSG), a theoretically-grounded framework for motion transfer in diffusion models."
@@ -120,7 +120,7 @@
 
 
 - title: "Conditional Information Gain Trellis"
-  authors: "Ufuk Can Bicici, Tuna Han Salih Meral, Pinar Yanardag"
+  authors: "Ufuk Can Bicici, Tuna Han Salih Meral, Lale Akarun"
   venue: "Pattern Recognition Letters"
   year: 2024
   description: "Conditional computing processes an input using only part of the neural network’s computational units. Learning to execute parts of a deep convolutional network by routing individual samples has several advantages: This can facilitate the interpretability of the model, reduce the model complexity, and reduce the computational burden during training and inference. Furthermore, if similar classes are routed to the same path, that part of the network learns to discriminate between finer differences and better classification accuracies can be attained with fewer parameters. Recently, several papers have exploited this idea to select a particular child of a node in a tree-shaped network or to skip parts of a network. In this work, we follow a Trellis-based approach for generating specific execution paths in a deep convolutional neural network. We have designed routing mechanisms that use differentiable information gain-based cost functions to determine which subset of features in a convolutional layer will be executed. We call our method Conditional Information Gain Trellis (CIGT)."
