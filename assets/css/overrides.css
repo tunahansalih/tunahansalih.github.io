@@ -61,7 +61,6 @@
   --transition-speed: 0.3s;
 
   /* Layout */
-  --sidebar-width: 22%;
   --content-width: 76%;
 }
 
@@ -270,6 +269,7 @@ a:hover {
 
 /* Fix main content layout */
 #main {
+  --sidebar-width: 320px; /* width of author sidebar */
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -280,7 +280,7 @@ a:hover {
 
 /* Author sidebar adjustments */
 .article-author-side {
-  width: 320px;
+  width: var(--sidebar-width);
   min-width: 220px;
   max-width: 350px;
   flex-shrink: 0;
@@ -353,10 +353,13 @@ body.page .featured-publications {
 #index {
   flex: 1;
   min-width: 0;
+  width: calc(100% - var(--sidebar-width));
+  max-width: var(--content-width);
+  padding-left: 1.5rem;
+  box-sizing: border-box;
 }
 
 article.page,
-#index,
 .resume,
 .publications,
 .timeline-section {
