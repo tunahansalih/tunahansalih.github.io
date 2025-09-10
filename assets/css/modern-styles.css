@@ -140,6 +140,11 @@ article.page {
   margin-bottom: 2rem;
 }
 
+article.post {
+  flex: 1;
+  min-width: 0;
+}
+
 .article-wrap {
   width: 100%;
 }
@@ -158,7 +163,8 @@ article.page {
     order: 1;
   }
   
-  article.page {
+  article.page,
+  article.post {
     order: 2;
     width: 100%;
   }
