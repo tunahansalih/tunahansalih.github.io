@@ -9,7 +9,7 @@ title: Resumé
 <a href="https://drive.google.com/file/d/1RxtH5A56p0lZVManDSTV9uilSw3wbbzg/view?usp=sharing" class="download-button"><i class="fas fa-download"></i> Download PDF</a>
 
 ## RESEARCH STATEMENT
-Advancing the generative AI through innovative approaches to generative models, with a focus on motion transfer in video generation, interpretability, and personalization techniques. My research aims to develop more controllable, interpretable, and efficient generative models that can bridge the gap between user intent and model output while maintaining high fidelity.
+Computer Science Ph.D. candidate specializing in generative AI with publications at top-tier conferences including CVPR 2024, ICML 2025 (Oral), and ICCV 2025 (Highlight). My research enhances image and video generative models with greater control and interpretability. **I am seeking a Research Scientist internship for Summer & Fall 2026** to contribute to building the next generation of efficient and controllable generative AI tools.
 
 ## EDUCATION
 `AUG 2023 - MAY 2027`
@@ -27,8 +27,13 @@ B.S. in Computer Engineering
 ## PUBLICATIONS
 
 `2025`
+__CLoRA: A Contrastive Approach to Compose Multiple LoRA Models__
+*ICCV 2025, Highlight*
+[Project Page](https://clora-diffusion.github.io)
+
+`2025`
 __ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features__
-*ICML 2025*
+*ICML 2025, Oral Presentation*
 [arXiv](https://arxiv.org/abs/2502.04320)
 
 `2024`
@@ -40,11 +45,6 @@ __MotionFlow: Attention-Driven Motion Transfer in Video Diffusion Models__
 __MotionShop: Zero-Shot Motion Transfer in Video Diffusion Models with Mixture of Score Guidance__
 *arXiv preprint arXiv:2412.05355*
 [Project Page](https://motionshop-diffusion.github.io/)
-
-`2024`
-__CLORA: A Contrastive Approach to Compose Multiple LORA Models__
-*arXiv preprint arXiv:2403.19776*
-[Project Page](https://clora-diffusion.github.io)
 
 `2024`
 __Conform: Contrast is all you need for high-fidelity text-to-image diffusion models__
@@ -69,55 +69,56 @@ __Privacy-Preserving Intersection Management for Autonomous Vehicles__
 *Proceedings of the Tenth International Workshop on Agents in Traffic and Transportation (ATT 2018) (pp. 49-56)*
 
 ## RESEARCH EXPERIENCE
-`MAY 2025 - UPCOMING`
-__Amazon__
+`MAY 2025 - AUG 2025`
+__Amazon AGI Foundations__
 Applied Scientist Intern
-- Will join Amazon's AGI team working on auto-regressive generative model.
+- Contributed to a research project on next-scale prediction-based autoregressive generative models for high-fidelity image and video generation.
+- Developed novel training-free and training-based methods to scale autoregressive models at inference time, enabling higher-quality generation without full retraining.
 
 `AUG 2023 - CURRENT`
 __Virginia Tech__
 Research Assistant and Lab Lead
-- Lead research efforts on generative models, focusing on enhancing diffusion-based text-to-image, text-to-video models and interpretability methods.
-- Collaborate with **Google** to implement research findings in closed-source diffusion-based image generation models. The work has been published at **CVPR 2024** and subsequent work submitted to **SIGGRAPH 2025**.
-- Awarded **Deloitte Research Fellowship** to work on mechanistic interpretability of large language models by learning steering vectors in an unsupervised way.
-- Research on video diffusion models to efficiently transfer motion from real videos to generated videos.
+- Awarded **FAL.ai** research fellowship to work on image and video generation models.
+- Collaborate with **Google** to implement research findings in closed-source diffusion-based image generation models, leading to publications at **CVPR 2024** and **ICCV 2025**.
+- Awarded **Deloitte Research Fellowship** to investigate mechanistic interpretability of LLMs; developed a method to discover and control implicit model behaviors by learning steering vectors that modify internal activations.
+- Led research on generative models, enhancing diffusion text-to-image, text-to-video, and interpretability methods.
 
 `MAY 2024 - AUG 2024`
 __Adobe__
 Research Intern in Video Generative AI
-- Developed and refined instruction-based video editing methods using advanced video diffusion transformers and multi-modal image-text datasets.
-- Designed and implemented methods to leverage temporal capabilities of video models for enhancing video editing workflows.
+- Engineered a data pipeline to leverage existing image-editing and synthetic datasets for training video models, overcoming the scarcity of labeled video data.
+- Enabled a state-of-the-art video model to perform complex semantic edits by successfully adapting image-based training techniques for video generation tasks.
 
 ## PROFESSIONAL EXPERIENCE
-`Nov 2022 - AUG 2023`
+`NOV 2022 - AUG 2023`
 __Lyrebird Studio__
 Machine Learning Engineer
 - Developed and maintained image generation ML services handling 5 million daily requests.
-- Architected robust machine learning CI/CD pipelines using GitHub Actions and utilized AWS CDK for building architecture as code, enabling seamless deployment of research team outputs as production-ready services.
+- Architected CI/CD pipelines (GitHub Actions, AWS CDK) to deploy research models to production, serving thousands of daily requests on GPU instances.
 - Led the design and deployment of diffusion-based model training and image generation services, effectively handling thousands of daily requests on GPU-accelerated instances with high performance and stability.
-- Integrated Generative AI solutions into applications, enhancing user experience.
+- Pioneered the mobile integration of state-of-the-art diffusion-based image generation and a novel personalization service, driving organic user adoption.
 
-`AUG 2021 - Nov 2022`
+`AUG 2021 - NOV 2022`
 __Vispera__
 Machine Learning Engineer
 - Spearheaded the automation of deep learning model training using Python and TypeScript, resulting in a tenfold increase in daily model deployments, significantly reducing development time and costs.
 - Launched a user-friendly VueJS front-end service empowering researchers to train and deploy new models by providing real-time monitoring of online and offline metrics, enhancing model observability and productivity.
 - Worked as a full-stack machine learning engineer, using VueJS in frontend services; Python in machine learning services; TypeScript, NodeJS, Go, PostgreSQL, and MongoDB in backend services.
 
-`Oct 2019 - AUG 2021`
+`OCT 2019 - AUG 2021`
 __Vispera__
 Computer Vision Research Engineer
 - Led research and development for deep learning image recognition models, utilizing Python, TensorFlow, and OpenCV, to solve challenging problems related to out-of-distribution recognition and hierarchical classification.
 - Pioneered the formulation and implementation of a novel zero-shot learning-based image recognition model using PyTorch, which significantly reduced image annotation time by four times. This innovative approach recommends best matches without annotated data, optimizing the model development process.
 
-`AUG 2017 - Oct 2019`
+`AUG 2017 - OCT 2019`
 __Idea Technology Solutions__
 Computer Vision Research Engineer
 - Developed novel tree-based deep learning architectures, improving performance in object detection.
 
 ## HONORS & AWARDS
 `2025`
-(IN PROGRESS) FINALIST, Qualcomm Innovation Fellowship
+FINALIST, Qualcomm Innovation Fellowship
 
 `2020`
 RUNNER-UP, Kaggle Anadolu Sigorta Datathon Challenge
@@ -135,10 +136,10 @@ WINNER, Mercedes-Benz Hackathon
 WINNER, BSH Analytics for Production Excellence Hackathon
 
 ## WORKSHOPS & OUTREACH
-`Oct 2025`
+`OCT 2025`
 __ICCV 2025 - Personalization in Generative Models__
 Organizer
-- Leading organization efforts for an international workshop focused on personalization techniques in generative AI.
+- Co-organizing an international workshop and competition on personalization in generative AI at ICCV 2025.
 
 `JUN 2021`
 __inzva - METU ImageLab AI Labs Joint Program__
@@ -148,7 +149,7 @@ Guide
 `JUL 2018 - DEC 2020`
 __Boğaziçi University Autonomous Vehicle Team__
 Founder
-- Founded a team and laboratory for building an electric autonomous vehicle, creating autonomous driving R&D opportunities at Bogazici University.
+- Founded and led Boğaziçi University's first R&D team and lab for autonomous vehicle development.
 
 <!-- ### Footer
 
