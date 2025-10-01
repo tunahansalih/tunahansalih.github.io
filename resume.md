@@ -9,7 +9,7 @@ title: Resumé
 <a href="https://drive.google.com/file/d/1RxtH5A56p0lZVManDSTV9uilSw3wbbzg/view?usp=sharing" class="download-button"><i class="fas fa-download"></i> Download PDF</a>
 
 ## RESEARCH STATEMENT
-Computer Science Ph.D. candidate specializing in generative AI with publications at top-tier conferences including CVPR 2024, ICML 2025 (Oral), and ICCV 2025 (Highlight). My research enhances image and video generative models with greater control and interpretability. **I am seeking a Research Scientist internship for Summer & Fall 2026** to contribute to building the next generation of efficient and controllable generative AI tools.
+Computer Science Ph.D. candidate specializing in generative AI with publications at top-tier conferences including CVPR 2024, ICML 2025 Oral, and ICCV 2025 Highlight papers. My research enhances image and video generative models with greater control and interpretability. **I am seeking a Research Scientist internship for Summer & Fall 2026** to contribute to building the next generation of efficient and controllable generative AI tools.
 
 ## EDUCATION
 `AUG 2023 - MAY 2027`
@@ -28,7 +28,7 @@ B.S. in Computer Engineering
 
 `2025`
 __CLoRA: A Contrastive Approach to Compose Multiple LoRA Models__
-*ICCV 2025, Highlight*
+*In Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV 2025, Highlight)*
 [Project Page](https://clora-diffusion.github.io)
 
 `2025`
@@ -48,12 +48,12 @@ __MotionShop: Zero-Shot Motion Transfer in Video Diffusion Models with Mixture o
 
 `2024`
 __Conform: Contrast is all you need for high-fidelity text-to-image diffusion models__
-*CVPR 2024*
+*In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR 2024)*
 [Project Page](https://conform-diffusion.github.io)
 
 `2024`
 __Conditional Information Gain Trellis__
-*Pattern Recognition Letters, 184, 212-218*
+*Pattern Recognition Letters, 184, 212–218*
 [Publication Link](https://doi.org/10.1016/j.patrec.2024.06.018)
 
 `2022`
@@ -78,7 +78,7 @@ Applied Scientist Intern
 `AUG 2023 - CURRENT`
 __Virginia Tech__
 Research Assistant and Lab Lead
-- Awarded **FAL.ai** research fellowship to work on image and video generation models.
+- Awarded **FAL.ai** research fellowship to work on efficient video diffusion models and distillation.
 - Collaborate with **Google** to implement research findings in closed-source diffusion-based image generation models, leading to publications at **CVPR 2024** and **ICCV 2025**.
 - Awarded **Deloitte Research Fellowship** to investigate mechanistic interpretability of LLMs; developed a method to discover and control implicit model behaviors by learning steering vectors that modify internal activations.
 - Led research on generative models, enhancing diffusion text-to-image, text-to-video, and interpretability methods.
