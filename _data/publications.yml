@@ -1,8 +1,8 @@
 - title: "CLoRA: A Contrastive Approach to Compose Multiple LoRA Models"
-  authors: "Tuna Han Salih Meral, Enis Simsar, Federico Tombari, Pinar Yanardag"
+  authors: "Tuna Han Salih Meral<sup>*</sup>, Enis Simsar<sup>*</sup>, Federico Tombari, Pinar Yanardag"
   venue: "ICCV 2025 (Highlight)"
   year: 2025
-  description: "CLoRA is a training-free method that works on test-time, and uses contrastive learning to compose multiple concept and style LoRAs simultaneously."
+  description: "CLoRA is a training-free method that works on test-time, and uses contrastive learning to compose multiple concept and style LoRAs simultaneously. <sup>*</sup> denotes equal contribution."
   image: "clora.png"
   featured: true
   featured_order: 1
