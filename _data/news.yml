@@ -1,17 +1,28 @@
+- date: 2025-11-07
+  type: publication
+  description: "Our work <strong>MotionFlow</strong> has been accepted to the <strong>AAAI 2026 Main Technical Track</strong>."
+  links:
+    - text: Paper
+      url: https://arxiv.org/abs/2412.05275
+      type: paper
+    - text: Project Page
+      url: https://motionflow-diffusion.github.io
+      type: project
+
+- date: 2025-08-23
+  type: grant
+  description: "I received the <strong>FAL Fellowship</strong> from <a href='https://fal.ai' target='_blank'><strong>FAL</strong></a> for the Fall 2025 and Spring 2026 terms to support my research on efficient and controllable vision generative models."
+  links:
+    - text: FAL Fellowship
+      url: https://fal.ai
+      type: project
+
 - date: 2025-07-25
   type: publication
   description: "Our work <strong>CLoRA</strong> has been awarded as <strong>Highlight Paper</strong> at <strong>ICCV 2025</strong>"
   links:
     - text: Paper
       url: https://arxiv.org/abs/2403.19776
-      type: paper
-
-- date: 2025-05-01
-  type: publication
-  description: "Our work <strong>ConceptAttention</strong> received <strong>Best Paper Award</strong> in Second Workshop on Visual Concepts at <strong>CVPR 2025</strong>"
-  links:
-    - text: Paper
-      url: https://arxiv.org/pdf/2502.04320
       type: paper
 
 - date: 2025-06-25
@@ -25,6 +36,14 @@
 - date: 2025-05-19
   type: milestone
   description: "I started Amazon AGI as an Applied Scientist Intern in San Francisco to work on Video Foundational Models"
+
+- date: 2025-05-01
+  type: publication
+  description: "Our work <strong>ConceptAttention</strong> received <strong>Best Paper Award</strong> in Second Workshop on Visual Concepts at <strong>CVPR 2025</strong>"
+  links:
+    - text: Paper
+      url: https://arxiv.org/pdf/2502.04320
+      type: paper
 
 - date: 2025-05-01
   type: publication
@@ -123,4 +142,4 @@
 
 - date: 2023-08-15
   type: milestone
-  description: "I started my PhD in Computer Science with <a href='https://pinguar.org/' target='_blank'>Pinar Yanardag Delul</a>." 
+  description: "I started my PhD in Computer Science with <a href='https://pinguar.org/' target='_blank'>Pinar Yanardag Delul</a>."

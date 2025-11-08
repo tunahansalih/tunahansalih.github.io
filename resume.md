@@ -26,6 +26,11 @@ B.S. in Computer Engineering
 
 ## PUBLICATIONS
 
+`2026`
+__MotionFlow: Attention-Driven Motion Transfer in Video Diffusion Models__
+*AAAI 2026, Main Technical Track*
+[Project Page](https://motionflow-diffusion.github.io/)
+
 `2025`
 __CLoRA: A Contrastive Approach to Compose Multiple LoRA Models__
 *In Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV 2025, Highlight)*
@@ -35,11 +40,6 @@ __CLoRA: A Contrastive Approach to Compose Multiple LoRA Models__
 __ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features__
 *ICML 2025, Oral Presentation*
 [arXiv](https://arxiv.org/abs/2502.04320)
-
-`2024`
-__MotionFlow: Attention-Driven Motion Transfer in Video Diffusion Models__
-*arXiv preprint arXiv:2412.05275*
-[Project Page](https://motionflow-diffusion.github.io/)
 
 `2024`
 __MotionShop: Zero-Shot Motion Transfer in Video Diffusion Models with Mixture of Score Guidance__
@@ -78,7 +78,7 @@ Applied Scientist Intern
 `AUG 2023 - CURRENT`
 __Virginia Tech__
 Research Assistant and Lab Lead
-- Awarded **FAL.ai** research fellowship to work on efficient video diffusion models and distillation.
+- Awarded the **FAL Fellowship** for Fall 2025–Spring 2026 to advance efficient and controllable vision generative models.
 - Collaborate with **Google** to implement research findings in closed-source diffusion-based image generation models, leading to publications at **CVPR 2024** and **ICCV 2025**.
 - Awarded **Deloitte Research Fellowship** to investigate mechanistic interpretability of LLMs; developed a method to discover and control implicit model behaviors by learning steering vectors that modify internal activations.
 - Led research on generative models, enhancing diffusion text-to-image, text-to-video, and interpretability methods.
