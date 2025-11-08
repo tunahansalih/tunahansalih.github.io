@@ -76,9 +76,9 @@
 
 - title: "MotionFlow: Attention-Driven Motion Transfer in Video Diffusion Models"
   authors: "Tuna Han Salih Meral, Hidir Yesiltepe, Connor Dunlop, Pinar Yanardag"
-  venue: "Preprint"
-  year: 2024
-  description: "MotionFlow is a training-free method that leverages attention for motion transfer. Our method can successfully transfer a wide variety of motion types, ranging from simple to complex motion patterns."
+  venue: "AAAI 2026 (Main Technical Track)"
+  year: 2026
+  description: "MotionFlow is a training-free method that leverages attention for motion transfer. Our method has been accepted to the AAAI 2026 Main Technical Track and can successfully transfer a wide variety of motion types, ranging from simple to complex motion patterns."
   image: "motionflow.png"
   featured: false
   links:
