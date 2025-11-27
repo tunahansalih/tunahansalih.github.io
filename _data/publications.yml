@@ -23,6 +23,26 @@
   year={2024}
 }"
 
+- title: "∞-RoPE: Action-Controllable Infinite Video Generation Emerges From Autoregressive Self-Rollout"
+  authors: "Hidir Yesiltepe, Tuna Han Salih Meral, Adil Kaan Akan, Kaan Oktay, Pinar Yanardag"
+  venue: "Preprint"
+  year: 2025
+  description: "∞-RoPE enables effectively infinite-horizon video generation with plug-and-play inference techniques. Block-Relativistic RoPE extends temporal reach, KV Flush enables prompt-reactive action control, and RoPE Cut supports cinematic scene transitions—all without retraining the base model."
+  featured: false
+  links:
+    - text: "Paper"
+      url: "https://arxiv.org/abs/2511.20649"
+      type: "paper"
+    - text: "Project Page"
+      url: "https://infinity-rope.github.io"
+      type: "project"
+  citation: "@article{yesiltepe2025infinityrope,
+  title={{∞}-RoPE: Action-Controllable Infinite Video Generation Emerges From Autoregressive Self-Rollout},
+  author={Yesiltepe, Hidir and Meral, Tuna Han Salih and Akan, Adil Kaan and Oktay, Kaan and Yanardag, Pinar},
+  journal={arXiv preprint arXiv:2511.20649},
+  year={2025}
+}"
+
 - title: "CONFORM: Contrast is All You Need For High-Fidelity Text-to-Image Diffusion Models"
   authors: "Tuna Han Salih Meral, Enis Simsar, Federico Tombari, Pinar Yanardag"
   venue: "CVPR 2024"
