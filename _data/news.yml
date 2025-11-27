@@ -1,3 +1,14 @@
+- date: 2025-11-26
+  type: publication
+  description: "Our new preprint <strong>∞-RoPE: Action-Controllable Infinite Video Generation Emerges From Autoregressive Self-Rollout</strong> is now available on arXiv."
+  links:
+    - text: Paper
+      url: https://arxiv.org/abs/2511.20649
+      type: paper
+    - text: Project Page
+      url: https://infinity-rope.github.io
+      type: project
+
 - date: 2025-11-07
   type: publication
   description: "Our work <strong>MotionFlow</strong> has been accepted to the <strong>AAAI 2026 Main Technical Track</strong>."
