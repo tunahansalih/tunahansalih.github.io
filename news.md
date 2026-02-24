@@ -1,9 +1,9 @@
 ---
 layout: page
-title: News & Updates
+title: News
 permalink: /news/
 ---
 
-Stay up-to-date with my latest research, publications, and academic activities.
+Recent papers, milestones, and awards.
 
 {% include _news-timeline.html %} 

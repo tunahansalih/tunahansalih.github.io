@@ -1,166 +1,28 @@
-<!-- News Timeline Section -->
 <section id="news" class="timeline-section">
-  <div class="section-intro">
-    <p>Stay up-to-date with my latest research publications, grants, and academic activities.</p>
-  </div>
-
   <div class="timeline">
     {% assign news_by_year = site.data.news | group_by_exp: "item", "item.date | date: '%Y'" %}
     {% assign sorted_years = news_by_year | sort: "name" | reverse %}
-    
+
     {% for year in sorted_years %}
-      <div class="timeline-year">{{ year.name }}</div>
-      
+      <h3 class="timeline-year">{{ year.name }}</h3>
+
       {% assign sorted_items = year.items | sort: "date" | reverse %}
       {% for news in sorted_items %}
-        <div class="timeline-item" data-type="{{ news.type }}">
-          <div class="timeline-date">{{ news.date | date: "%b %Y" }}</div>
-          <div class="timeline-title">
-            {% case news.type %}
-              {% when "publication" %}
-                <i class="fas fa-file-alt timeline-type-icon" title="Publication"></i>
-              {% when "grant" %}
-                <i class="fas fa-award timeline-type-icon" title="Grant"></i>
-              {% when "internship" %}
-                <i class="fas fa-briefcase timeline-type-icon" title="Internship"></i>
-              {% when "milestone" %}
-                <i class="fas fa-flag timeline-type-icon" title="Milestone"></i>
-              {% else %}
-                <i class="fas fa-bullhorn timeline-type-icon" title="News"></i>
-            {% endcase %}
-            {{ news.title }}
-          </div>
-          
+        <article class="timeline-item" data-type="{{ news.type }}">
+          <p class="timeline-date">{{ news.date | date: "%b %Y" }}</p>
           <div class="timeline-content">
             {{ news.description }}
           </div>
-          
+
           {% if news.links %}
             <div class="timeline-links">
               {% for link in news.links %}
-                <a href="{{ link.url }}" class="timeline-link" target="_blank">
-                  {% case link.type %}
-                    {% when "paper" %}
-                      <i class="fas fa-file-pdf"></i>
-                    {% when "code" %}
-                      <i class="fas fa-code"></i>
-                    {% when "project" %}
-                      <i class="fas fa-globe"></i>
-                    {% when "video" %}
-                      <i class="fas fa-video"></i>
-                    {% when "slides" %}
-                      <i class="fas fa-presentation"></i>
-                    {% else %}
-                      <i class="fas fa-link"></i>
-                  {% endcase %}
-                  {{ link.text }}
-                </a>
+                <a href="{{ link.url }}" class="timeline-link" target="_blank" rel="noopener">{{ link.text }}</a>
               {% endfor %}
             </div>
           {% endif %}
-        </div>
+        </article>
       {% endfor %}
     {% endfor %}
   </div>
 </section>
-
-<style>
-  .section-title {
-    text-align: center;
-    margin-bottom: 0.5rem;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--heading-color);
-  }
-  
-  .timeline-section {
-    margin: 3rem 0;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .timeline-type-icon {
-    margin-right: 0.5rem;
-    opacity: 0.8;
-  }
-  
-  /* Type-specific colors */
-  .timeline-item[data-type="publication"] {
-    border-left: 3px solid var(--primary-color);
-  }
-  
-  .timeline-item[data-type="grant"] {
-    border-left: 3px solid var(--secondary-color);
-  }
-  
-  .timeline-item[data-type="internship"] {
-    border-left: 3px solid #4caf50;
-  }
-  
-  .timeline-item[data-type="milestone"] {
-    border-left: 3px solid #ff9800;
-  }
-  
-  /* Type-specific date badge colors */
-  .timeline-item[data-type="publication"] .timeline-date {
-    background-color: var(--primary-color);
-  }
-  
-  .timeline-item[data-type="grant"] .timeline-date {
-    background-color: var(--secondary-color);
-  }
-  
-  .timeline-item[data-type="internship"] .timeline-date {
-    background-color: #4caf50;
-  }
-  
-  .timeline-item[data-type="milestone"] .timeline-date {
-    background-color: #ff9800;
-  }
-  
-  /* Type-specific icons */
-  .timeline-item[data-type="publication"] .timeline-type-icon {
-    color: var(--primary-color);
-  }
-  
-  .timeline-item[data-type="grant"] .timeline-type-icon {
-    color: var(--secondary-color);
-  }
-  
-  .timeline-item[data-type="internship"] .timeline-type-icon {
-    color: #4caf50;
-  }
-  
-  .timeline-item[data-type="milestone"] .timeline-type-icon {
-    color: #ff9800;
-  }
-  
-  /* Animation for timeline items */
-  @keyframes fadeInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  
-  .timeline-item {
-    animation: fadeInLeft 0.5s ease forwards;
-    animation-delay: calc(var(--index, 0) * 0.1s);
-    opacity: 0;
-  }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Set animation delay for timeline items
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    timelineItems.forEach((item, index) => {
-      item.style.setProperty('--index', index);
-    });
-  });
-</script> 

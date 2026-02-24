@@ -1,94 +1,50 @@
 <meta charset="utf-8">
 
-
 <title>{% if page.title %}{{ page.title }} &#8211; {% endif %}{{ site.title }}</title>
 {% if page.excerpt %}
-<meta name="description" content="{{ page.excerpt | strip_html }}">{% endif %}
+  <meta name="description" content="{{ page.excerpt | strip_html }}">
+{% endif %}
 <meta name="keywords" content="{{ page.tags | join: ', ' }}">
 {% if page.author %}
-{% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.owner %}
+  {% assign author = site.data.authors[page.author] %}
+{% else %}
+  {% assign author = site.owner %}
 {% endif %}
 
 {% include _open-graph.html %}
 
-{% if site.owner.google.verify %}<!-- Webmaster Tools verfication -->
-<meta name="google-site-verification" content="{{ site.owner.google.verify }}">{% endif %}
+{% if site.owner.google.verify %}
+  <meta name="google-site-verification" content="{{ site.owner.google.verify }}">
+{% endif %}
 {% if site.owner.bing-verify %}
-<meta name="msvalidate.01" content="{{ site.owner.bing-verify }}">{% endif %}
+  <meta name="msvalidate.01" content="{{ site.owner.bing-verify }}">
+{% endif %}
 
-{% capture canonical %}{{ site.url | default: '' }}{{ site.baseurl }}{% if site.permalink contains '.html' %}{{ page.url
-}}{% else %}{{ page.url
-| remove:'index.html' | strip_slash }}{% endif %}{% endcapture %}
+{% capture canonical %}{{ site.url | default: '' }}{{ site.baseurl }}{% if site.permalink contains '.html' %}{{ page.url }}{% else %}{{ page.url | remove:'index.html' | strip_slash }}{% endif %}{% endcapture %}
 <link rel="canonical" href="{{ canonical }}">
-<link href="{{ site.url | default: '' }}{{ site.baseurl }}/feed.xml" type="application/atom+xml" rel="alternate"
-  title="{{ site.title }} Feed">
+<link href="{{ '/feed.xml' | relative_url }}" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
 
-<!-- https://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- Font Awesome Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-  crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-<!-- Academic Icons -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap"
-  rel="stylesheet">
-
-<!-- For all browsers -->
-<link rel="stylesheet" href="{{ site.url | default: '' }}{{ site.baseurl }}/assets/css/main.css">
-<link rel="stylesheet" href="{{ site.url | default: '' }}{{ site.baseurl }}/assets/css/modern-styles.css">
-<link rel="stylesheet" href="{{ site.url | default: '' }}{{ site.baseurl }}/assets/css/overrides.css">
-
-
 <meta http-equiv="cleartype" content="on">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+  crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
-<!-- Modernizr -->
-<script src="{{ site.url | default: '' }}{{ site.baseurl }}/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+<link rel="stylesheet" href="{{ '/assets/css/academic-refresh.css' | relative_url }}">
 
+<script src="{{ '/assets/js/vendor/modernizr-2.7.1.custom.min.js' | relative_url }}"></script>
 
-<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic&display=swap'
-  rel='stylesheet' type='text/css'>
-<link rel="stylesheet"
-  href="{{ site.url | default: '' }}{{ site.baseurl }}/assets/css/academicons/css/academicons.css" />
-<!-- Icons -->
-<!-- 16x16 -->
-<link rel="shortcut icon" href="{{ site.url | default: '' }}{{ site.baseurl }}/favicon.ico">
-<!-- 32x32 -->
-<link rel="shortcut icon" href="{{ site.url | default: '' }}{{ site.baseurl }}/favicon.png">
-<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<link rel="apple-touch-icon-precomposed"
-  href="{{ site.url | default: '' }}{{ site.baseurl }}/images/apple-touch-icon-precomposed.png">
-<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72"
-  href="{{ site.url | default: '' }}{{ site.baseurl }}/images/apple-touch-icon-72x72-precomposed.png">
-<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114"
-  href="{{ site.url | default: '' }}{{ site.baseurl }}/images/apple-touch-icon-114x114-precomposed.png">
-<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144"
-  href="{{ site.url | default: '' }}{{ site.baseurl }}/images/apple-touch-icon-144x144-precomposed.png">
+<link rel="stylesheet" href="{{ '/assets/css/academicons/css/academicons.css' | relative_url }}">
+<link rel="shortcut icon" href="{{ '/favicon.ico' | relative_url }}">
+<link rel="shortcut icon" href="{{ '/favicon.png' | relative_url }}">
+<link rel="apple-touch-icon-precomposed" href="{{ '/images/apple-touch-icon-precomposed.png' | relative_url }}">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ '/images/apple-touch-icon-72x72-precomposed.png' | relative_url }}">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ '/images/apple-touch-icon-114x114-precomposed.png' | relative_url }}">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ '/images/apple-touch-icon-144x144-precomposed.png' | relative_url }}">
 
-<!-- Preload fonts for better performance -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<!--Jekyll-seo plugin-->
 {% seo %}
-
-{% comment %}
-Include MathJax support.
-Make sure to have _includes/mathjax_support.html with the MathJax configuration.
-This can be loaded conditionally if preferred: {% if page.use_math or layout.use_math %}{% include mathjax_support.html
-%}{% endif %}
-{% endcomment %}
 {% include mathjax_support.html %}

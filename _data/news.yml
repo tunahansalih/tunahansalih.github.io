@@ -1,6 +1,10 @@
-- date: 2025-11-26
+- date: 2026-02-13
+  type: milestone
+  description: "Passed the Ph.D. preliminary exam on February 13, 2026 and advanced to Ph.D. candidacy."
+
+- date: 2026-02-01
   type: publication
-  description: "Our new preprint <strong>∞-RoPE: Action-Controllable Infinite Video Generation Emerges From Autoregressive Self-Rollout</strong> is now available on arXiv."
+  description: "Infinity-RoPE was accepted to CVPR 2026."
   links:
     - text: Paper
       url: https://arxiv.org/abs/2511.20649
@@ -9,9 +13,28 @@
       url: https://infinity-rope.github.io
       type: project
 
+- date: 2025-11-26
+  type: publication
+  description: "Released the Infinity-RoPE preprint on arXiv."
+  links:
+    - text: Paper
+      url: https://arxiv.org/abs/2511.20649
+      type: paper
+    - text: Project Page
+      url: https://infinity-rope.github.io
+      type: project
+
+- date: 2025-12-01
+  type: milestone
+  description: "The CVPR 2026 Personalization in Generative AI (P13N) workshop proposal was accepted in December. This is the second workshop edition."
+  links:
+    - text: Website
+      url: https://p13n-workshop.github.io/
+      type: project
+
 - date: 2025-11-07
   type: publication
-  description: "Our work <strong>MotionFlow</strong> has been accepted to the <strong>AAAI 2026 Main Technical Track</strong>."
+  description: "MotionFlow was accepted to AAAI 2026 (Main Technical Track)."
   links:
     - text: Paper
       url: https://arxiv.org/abs/2412.05275
@@ -22,7 +45,7 @@
 
 - date: 2025-08-23
   type: grant
-  description: "I received the <strong>FAL Fellowship</strong> from <a href='https://fal.ai' target='_blank'><strong>FAL</strong></a> for the Fall 2025 and Spring 2026 terms to support my research on efficient and controllable vision generative models."
+  description: "Received the FAL Fellowship for Fall 2025-Spring 2026 to support research on controllable and efficient vision generation."
   links:
     - text: FAL Fellowship
       url: https://fal.ai
@@ -30,7 +53,7 @@
 
 - date: 2025-07-25
   type: publication
-  description: "Our work <strong>CLoRA</strong> has been awarded as <strong>Highlight Paper</strong> at <strong>ICCV 2025</strong>"
+  description: "CLoRA was selected as a Highlight Paper at ICCV 2025."
   links:
     - text: Paper
       url: https://arxiv.org/abs/2403.19776
@@ -38,7 +61,7 @@
 
 - date: 2025-06-25
   type: publication
-  description: "Our work <strong>CLoRA</strong> has been accepted to <strong>ICCV 2025</strong>"
+  description: "CLoRA was accepted to ICCV 2025."
   links:
     - text: Paper
       url: https://arxiv.org/abs/2403.19776
@@ -46,11 +69,11 @@
 
 - date: 2025-05-19
   type: milestone
-  description: "I started Amazon AGI as an Applied Scientist Intern in San Francisco to work on Video Foundational Models"
+  description: "Started at Amazon AGI Foundations as an Applied Scientist Intern in San Francisco, working on video foundation models."
 
 - date: 2025-05-01
   type: publication
-  description: "Our work <strong>ConceptAttention</strong> received <strong>Best Paper Award</strong> in Second Workshop on Visual Concepts at <strong>CVPR 2025</strong>"
+  description: "ConceptAttention received the Best Paper Award at the 2nd Workshop on Visual Concepts (CVPR 2025)."
   links:
     - text: Paper
       url: https://arxiv.org/pdf/2502.04320
@@ -58,7 +81,7 @@
 
 - date: 2025-05-01
   type: publication
-  description: "Our work <strong>ConceptAttention</strong> has been accepted to ICML 2025 as a <strong>Oral Paper</strong>"
+  description: "ConceptAttention was accepted to ICML 2025 as an Oral."
   links:
     - text: Paper
       url: https://arxiv.org/pdf/2502.04320
@@ -66,15 +89,15 @@
 
 - date: 2025-04-19
   type: milestone
-  description: "Our proposal for 'Personalization in Generative AI Workshop' at ICCV 2025 has been accepted."
+  description: "The ICCV 2025 Personalization in Generative AI workshop proposal was accepted."
   links:
     - text: Website
       url: https://p13n-workshop.github.io/
       type: project
-      
+
 - date: 2025-02-01
   type: publication
-  description: "My new preprint <strong>ConceptAttention</strong> is available at arXiv."
+  description: "Released the ConceptAttention preprint on arXiv."
   links:
     - text: Paper
       url: https://arxiv.org/pdf/2502.04320
@@ -82,7 +105,7 @@
 
 - date: 2024-11-15
   type: publication
-  description: "My new preprint <strong>MotionFlow</strong> is available at arXiv."
+  description: "Released the MotionFlow preprint on arXiv."
   links:
     - text: Project Page
       url: https://motionflow-diffusion.github.io
@@ -90,7 +113,7 @@
 
 - date: 2024-11-01
   type: publication
-  description: "My new preprint <strong>MotionShop</strong> is available at arXiv."
+  description: "Released the MotionShop preprint on arXiv."
   links:
     - text: Project Page
       url: https://motionshop-diffusion.github.io
@@ -98,19 +121,19 @@
 
 - date: 2024-10-15
   type: grant
-  description: "I have been awarded a research grant from <strong>Deloitte</strong> to work on mechanistic interpretability for large language models."
+  description: "Received a Deloitte research grant at Virginia Tech for mechanistic interpretability research on large language models."
 
 - date: 2024-10-01
   type: internship
-  description: "I completed my internship at <strong>Adobe</strong>, where I worked on Video Diffusion Transformers models, focusing on instruction-based video editing."
+  description: "Completed a research internship at Adobe, focusing on instruction-based video editing with diffusion transformers."
 
 - date: 2024-06-15
   type: internship
-  description: "I started my research internship at <strong>Adobe</strong> in the Summer 2024."
+  description: "Started a Summer 2024 research internship at Adobe."
 
 - date: 2024-06-01
   type: publication
-  description: "My paper, Conditional Information Gain Trellis has been accepted to <strong>Pattern Recognition Letters</strong>."
+  description: "Conditional Information Gain Trellis was accepted to Pattern Recognition Letters."
   links:
     - text: Paper
       url: https://www.sciencedirect.com/science/article/pii/S0167865524001880
@@ -118,7 +141,7 @@
 
 - date: 2024-05-15
   type: publication
-  description: "My paper, <strong>CONFORM</strong>, has been accepted to <strong>CVPR 2024</strong>."
+  description: "CONFORM was accepted to CVPR 2024."
   links:
     - text: Project Page
       url: https://conform-diffusion.github.io
@@ -126,7 +149,7 @@
 
 - date: 2024-03-01
   type: publication
-  description: "My new preprint <strong>CLoRA</strong> is available at arXiv."
+  description: "Released the CLoRA preprint on arXiv."
   links:
     - text: Project Page
       url: https://clora-diffusion.github.io
@@ -134,7 +157,7 @@
 
 - date: 2024-01-15
   type: milestone
-  description: "Open-sourced the code for my paper: <strong>CONFORM</strong>."
+  description: "Open-sourced the code for CONFORM."
   links:
     - text: Code
       url: https://github.com/tunahansalih/CONFORM
@@ -145,7 +168,7 @@
 
 - date: 2023-12-01
   type: publication
-  description: "My new preprint <strong>CONFORM</strong> is available at arXiv."
+  description: "Released the CONFORM preprint on arXiv."
   links:
     - text: Project Page
       url: https://conform-diffusion.github.io
@@ -153,4 +176,4 @@
 
 - date: 2023-08-15
   type: milestone
-  description: "I started my PhD in Computer Science with <a href='https://pinguar.org/' target='_blank'>Pinar Yanardag Delul</a>."
+  description: "Started the Ph.D. in Computer Science at Virginia Tech, advised by Pinar Yanardag."

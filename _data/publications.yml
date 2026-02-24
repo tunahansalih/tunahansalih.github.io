@@ -2,10 +2,11 @@
   authors: "Tuna Han Salih Meral<sup>*</sup>, Enis Simsar<sup>*</sup>, Federico Tombari, Pinar Yanardag"
   venue: "ICCV 2025 (Highlight)"
   year: 2025
-  description: "CLoRA is a training-free method that works on test-time, and uses contrastive learning to compose multiple concept and style LoRAs simultaneously. <sup>*</sup> denotes equal contribution."
+  date: 2025-07-25
+  description: "CLoRA composes multiple concept and style LoRAs at test time using a contrastive objective. <sup>*</sup> denotes equal contribution."
   image: "clora.png"
   featured: true
-  featured_order: 1
+  featured_order: 3
   links:
     - text: "Paper"
       url: "https://arxiv.org/abs/2403.19776"
@@ -16,67 +17,23 @@
     - text: "Code"
       url: "https://github.com/gemlab-vt/clora"
       type: "code"
-  citation: "@article{meral2024clora,
-  title={Clora: A contrastive approach to compose multiple lora models},
-  author={Meral, Tuna Han Salih and Simsar, Enis and Tombari, Federico and Yanardag, Pinar},
-  journal={arXiv preprint arXiv:2403.19776},
-  year={2024}
-}"
-
-- title: "∞-RoPE: Action-Controllable Infinite Video Generation Emerges From Autoregressive Self-Rollout"
-  authors: "Hidir Yesiltepe, Tuna Han Salih Meral, Adil Kaan Akan, Kaan Oktay, Pinar Yanardag"
-  venue: "Preprint"
-  year: 2025
-  description: "∞-RoPE enables effectively infinite-horizon video generation with plug-and-play inference techniques. Block-Relativistic RoPE extends temporal reach, KV Flush enables prompt-reactive action control, and RoPE Cut supports cinematic scene transitions—all without retraining the base model."
-  featured: false
-  links:
-    - text: "Paper"
-      url: "https://arxiv.org/abs/2511.20649"
-      type: "paper"
-    - text: "Project Page"
-      url: "https://infinity-rope.github.io"
-      type: "project"
-  citation: "@article{yesiltepe2025infinityrope,
-  title={{∞}-RoPE: Action-Controllable Infinite Video Generation Emerges From Autoregressive Self-Rollout},
-  author={Yesiltepe, Hidir and Meral, Tuna Han Salih and Akan, Adil Kaan and Oktay, Kaan and Yanardag, Pinar},
-  journal={arXiv preprint arXiv:2511.20649},
-  year={2025}
-}"
-
-- title: "CONFORM: Contrast is All You Need For High-Fidelity Text-to-Image Diffusion Models"
-  authors: "Tuna Han Salih Meral, Enis Simsar, Federico Tombari, Pinar Yanardag"
-  venue: "CVPR 2024"
-  year: 2024
-  description: "Images produced by text-to-image diffusion models might not always faithfully represent the semantic intent of the provided text prompt where the model might overlook or entirely fail to produce certain objects. While recent studies propose various solutions, they often require customly tailored functions for each of these problems, leading to sub-optimal results, especially for complex prompts. Our work introduces a novel perspective by tackling this challenge in a contrastive context. Our approach intuitively promotes the segregation of objects in attention maps, while also maintaining that pairs of related attributes are kept close to each other."
-  image: "conform.png"
-  featured: true
-  featured_order: 3
-  links:
-    - text: "Paper"
-      url: "https://arxiv.org/abs/2312.06059"
-      type: "paper"
-    - text: "Project Page"
-      url: "https://conform-diffusion.github.io"
-      type: "project"
-    - text: "Code"
-      url: "https://github.com/tunahansalih/CONFORM"
-      type: "code"
-  citation: "{@inproceedings{meral2024conform,
-  title={Conform: Contrast is all you need for high-fidelity text-to-image diffusion models},
-  author={Meral, Tuna Han Salih and Simsar, Enis and Tombari, Federico and Yanardag, Pinar},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages={9005--9014},
-  year={2024}
-}"
+  citation: |
+    @article{meral2024clora,
+      title={CLoRA: A Contrastive Approach to Compose Multiple LoRA Models},
+      author={Meral, Tuna Han Salih and Simsar, Enis and Tombari, Federico and Yanardag, Pinar},
+      journal={arXiv preprint arXiv:2403.19776},
+      year={2024}
+    }
 
 - title: "ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features"
   authors: "Alec Helbling, Tuna Han Salih Meral, Ben Hoover, Pinar Yanardag, Duen Horng Chau"
   venue: "ICML 2025 (Oral)"
   year: 2025
-  description: "Without requiring additional training, ConceptAttention repurposes the parameters of DiT attention layers to produce highly contextualized concept embeddings, contributing the major discovery that performing linear projections in the output space of DiT attention layers yields significantly sharper saliency maps compared to commonly used cross-attention mechanisms."
+  date: 2025-05-01
+  description: "ConceptAttention reuses DiT attention parameters to produce contextualized concept embeddings and sharper saliency maps without extra training."
   image: "conceptattention.png"
   featured: true
-  featured_order: 2
+  featured_order: 4
   links:
     - text: "Paper"
       url: "https://arxiv.org/abs/2502.04320"
@@ -87,20 +44,51 @@
     - text: "Code"
       url: "https://github.com/helblazer811/ConceptAttention"
       type: "code"
-  citation: "@inproceedings{helbling2025conceptattention,
-  title={ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features},
-  author={Helbling, Alec and Meral, Tuna and Hoover, Benjamin and Yanardag, Pinar and Chau, Polo},
-  booktitle={International Conference on Machine Learning},
-  year={2025}
-}"
+  citation: |
+    @inproceedings{helbling2025conceptattention,
+      title={ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features},
+      author={Helbling, Alec and Meral, Tuna Han Salih and Hoover, Benjamin and Yanardag, Pinar and Chau, Duen Horng},
+      booktitle={International Conference on Machine Learning},
+      year={2025}
+    }
+
+- title: "CONFORM: Contrast is All You Need for High-Fidelity Text-to-Image Diffusion Models"
+  authors: "Tuna Han Salih Meral, Enis Simsar, Federico Tombari, Pinar Yanardag"
+  venue: "CVPR 2024"
+  year: 2024
+  date: 2024-05-15
+  description: "CONFORM improves text-to-image faithfulness with a contrastive objective for stronger object-attribute grounding."
+  image: "conform.png"
+  featured: true
+  featured_order: 5
+  links:
+    - text: "Paper"
+      url: "https://arxiv.org/abs/2312.06059"
+      type: "paper"
+    - text: "Project Page"
+      url: "https://conform-diffusion.github.io"
+      type: "project"
+    - text: "Code"
+      url: "https://github.com/tunahansalih/CONFORM"
+      type: "code"
+  citation: |
+    @inproceedings{meral2024conform,
+      title={CONFORM: Contrast is All You Need for High-Fidelity Text-to-Image Diffusion Models},
+      author={Meral, Tuna Han Salih and Simsar, Enis and Tombari, Federico and Yanardag, Pinar},
+      booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+      pages={9005--9014},
+      year={2024}
+    }
 
 - title: "MotionFlow: Attention-Driven Motion Transfer in Video Diffusion Models"
   authors: "Tuna Han Salih Meral, Hidir Yesiltepe, Connor Dunlop, Pinar Yanardag"
   venue: "AAAI 2026 (Main Technical Track)"
   year: 2026
-  description: "MotionFlow is a training-free method that leverages attention for motion transfer. Our method has been accepted to the AAAI 2026 Main Technical Track and can successfully transfer a wide variety of motion types, ranging from simple to complex motion patterns."
+  date: 2026-02-01
+  description: "MotionFlow is a training-free, attention-driven method for motion transfer in video diffusion models."
   image: "motionflow.png"
-  featured: false
+  featured: true
+  featured_order: 2
   links:
     - text: "Paper"
       url: "https://arxiv.org/abs/2412.05275"
@@ -108,18 +96,52 @@
     - text: "Project Page"
       url: "https://motionflow-diffusion.github.io"
       type: "project"
-  citation: "@article{meral2024motionflow,
-  title={MotionFlow: Attention-Driven Motion Transfer in Video Diffusion Models},
-  author={Meral, Tuna Han Salih and Yesiltepe, Hidir and Dunlop, Connor and Yanardag, Pinar},
-  journal={arXiv preprint arXiv:2412.05275},
-  year={2024}
-}"
+  citation: |
+    @article{meral2024motionflow,
+      title={MotionFlow: Attention-Driven Motion Transfer in Video Diffusion Models},
+      author={Meral, Tuna Han Salih and Yesiltepe, Hidir and Dunlop, Connor and Yanardag, Pinar},
+      journal={arXiv preprint arXiv:2412.05275},
+      year={2024}
+    }
+
+- title: "Infinity-RoPE: Action-Controllable Infinite Video Generation Emerges from Autoregressive Self-Rollout"
+  authors: "Hidir Yesiltepe, Tuna Han Salih Meral, Adil Kaan Akan, Kaan Oktay, Pinar Yanardag"
+  venue: "CVPR 2026"
+  year: 2026
+  date: 2026-06-01
+  description: "Infinity-RoPE provides plug-and-play inference strategies for long-horizon video generation with action control and scene transitions."
+  image: "infinity-rope.png"
+  featured: true
+  featured_order: 1
+  links:
+    - text: "Paper"
+      url: "https://arxiv.org/abs/2511.20649"
+      type: "paper"
+    - text: "Project Page"
+      url: "https://infinity-rope.github.io"
+      type: "project"
+  citation: |
+    @article{yesiltepe2025infinityrope,
+      title={Infinity-RoPE: Action-Controllable Infinite Video Generation Emerges From Autoregressive Self-Rollout},
+      author={Yesiltepe, Hidir and Meral, Tuna Han Salih and Akan, Adil Kaan and Oktay, Kaan and Yanardag, Pinar},
+      journal={arXiv preprint arXiv:2511.20649},
+      year={2025}
+    }
+
+- title: "MITHRIL: Playing Tabletop Games with Generative Policies"
+  authors: "Michael Atkins, William Denman, Tuna Han Salih Meral, Mustafa Doga Dogan, Pinar Yanardag"
+  venue: "NeurIPS 2025 GenProCC Workshop"
+  year: 2025
+  date: 2025-12-01
+  description: "Workshop paper on generative policies for tabletop gameplay."
+  featured: false
 
 - title: "MotionShop: Zero-Shot Motion Transfer in Video Diffusion Models with Mixture of Score Guidance"
-  authors: "Hidir Yesiltepe, Tuna Han Salih Meral, Pinar Yanardag"
+  authors: "Hidir Yesiltepe, Tuna Han Salih Meral, Connor Dunlop, Pinar Yanardag"
   venue: "Preprint"
   year: 2024
-  description: "In this work, we propose the first motion transfer approach in diffusion transformer through Mixture of Score Guidance (MSG), a theoretically-grounded framework for motion transfer in diffusion models."
+  date: 2024-11-01
+  description: "MotionShop proposes Mixture of Score Guidance (MSG), a method for motion transfer in video diffusion models."
   image: "motionshop.png"
   featured: false
   links:
@@ -129,34 +151,57 @@
     - text: "Project Page"
       url: "https://motionshop-diffusion.github.io"
       type: "project"
-  citation: "@article{meral2024motionshop,
-    title=@article{yesiltepe2024motionshop,
-  title={MotionShop: Zero-Shot Motion Transfer in Video Diffusion Models with Mixture of Score Guidance},
-  author={Yesiltepe, Hidir and Meral, Tuna Han Salih and Dunlop, Connor and Yanardag, Pinar},
-  journal={arXiv preprint arXiv:2412.05355},
-  year={2024}
-}"
-
-
+  citation: |
+    @article{yesiltepe2024motionshop,
+      title={MotionShop: Zero-Shot Motion Transfer in Video Diffusion Models with Mixture of Score Guidance},
+      author={Yesiltepe, Hidir and Meral, Tuna Han Salih and Dunlop, Connor and Yanardag, Pinar},
+      journal={arXiv preprint arXiv:2412.05355},
+      year={2024}
+    }
 
 - title: "Conditional Information Gain Trellis"
   authors: "Ufuk Can Bicici, Tuna Han Salih Meral, Lale Akarun"
   venue: "Pattern Recognition Letters"
   year: 2024
-  description: "Conditional computing processes an input using only part of the neural network’s computational units. Learning to execute parts of a deep convolutional network by routing individual samples has several advantages: This can facilitate the interpretability of the model, reduce the model complexity, and reduce the computational burden during training and inference. Furthermore, if similar classes are routed to the same path, that part of the network learns to discriminate between finer differences and better classification accuracies can be attained with fewer parameters. Recently, several papers have exploited this idea to select a particular child of a node in a tree-shaped network or to skip parts of a network. In this work, we follow a Trellis-based approach for generating specific execution paths in a deep convolutional neural network. We have designed routing mechanisms that use differentiable information gain-based cost functions to determine which subset of features in a convolutional layer will be executed. We call our method Conditional Information Gain Trellis (CIGT)."
+  date: 2024-06-01
+  description: "Conditional Information Gain Trellis (CIGT) learns differentiable routing paths in deep convolutional networks to improve efficiency and interpretability."
   image: "cigt.png"
   featured: false
   links:
     - text: "Paper"
       url: "https://www.sciencedirect.com/science/article/pii/S0167865524001880"
       type: "paper"
-  citation: "@article{bicici2024conditional,
-  title={Conditional Information Gain Trellis},
-  author={Bicici, Ufuk Can and Meral, Tuna Han Salih and Akarun, Lale},
-  journal={Pattern Recognition Letters},
-  volume={184},
-  pages={212--218},
-  year={2024},
-  publisher={Elsevier}
-}"
+  citation: |
+    @article{bicici2024conditional,
+      title={Conditional Information Gain Trellis},
+      author={Bicici, Ufuk Can and Meral, Tuna Han Salih and Akarun, Lale},
+      journal={Pattern Recognition Letters},
+      volume={184},
+      pages={212--218},
+      year={2024},
+      publisher={Elsevier}
+    }
 
+- title: "Unsupervised Routing Strategies for Conditional Deep Neural Networks"
+  authors: "Tuna Han Salih Meral"
+  venue: "M.S. Thesis, Bogazici University"
+  year: 2022
+  date: 2022-01-01
+  description: "Master's thesis on routing strategies for conditional deep neural networks."
+  featured: false
+
+- title: "BURST: Software and Simulation Solutions of an Autonomous Vehicle"
+  authors: "Fatih Kose, Ibrahim Ozcan, Melih Dal, Metehan Yildirim, Kadir Turksoy, Kerem Zaman, Tuna Han Salih Meral, Sinan Oncu"
+  venue: "SIU 2020"
+  year: 2020
+  date: 2020-09-01
+  description: "Software and simulation framework contributions for autonomous vehicle development."
+  featured: false
+
+- title: "Privacy-Preserving Intersection Management for Autonomous Vehicles"
+  authors: "Nadin Kokciyan, Mustafa Erdogan, Tuna Han Salih Meral, Pinar Yolum"
+  venue: "International Workshop on Agents in Traffic and Transportation (ATT 2018)"
+  year: 2018
+  date: 2018-07-01
+  description: "Approaches for privacy-aware autonomous vehicle coordination at intersections."
+  featured: false

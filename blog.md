@@ -1,6 +1,6 @@
 ---
 layout: post-index
-title: All Blog Posts
+title: Blog
 ---
 
-Be patient, blog posts are cooking...
+Technical notes on generative modeling, implementation details, and research experiments.

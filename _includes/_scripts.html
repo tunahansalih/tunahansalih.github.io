@@ -1,6 +1,6 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="{{ site.url | default: '' }}{{ site.baseurl }}/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-<script src="{{ site.url | default: '' }}{{ site.baseurl }}/assets/js/scripts.min.js"></script>
+<script>window.jQuery || document.write('<script src="{{ '/assets/js/vendor/jquery-1.9.1.min.js' | relative_url }}"><\/script>')</script>
+<script src="{{ '/assets/js/scripts.min.js' | relative_url }}"></script>
 {% if site.owner.google.analytics %}
 <!-- Asynchronous Google Analytics snippet -->
 <script>
@@ -29,11 +29,12 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    // Back to top functionality
     const backToTopButton = document.getElementById('backToTop');
+    if (!backToTopButton) {
+      return;
+    }
 
-    // Show/hide the button based on scroll position
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', function () {
       if (window.scrollY > 300) {
         backToTopButton.classList.add('visible');
       } else {
@@ -41,44 +42,11 @@
       }
     });
 
-    // Scroll to top when clicked
-    backToTopButton.addEventListener('click', () => {
+    backToTopButton.addEventListener('click', function () {
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
       });
     });
-
-    // Add active class to current navigation links
-    highlightCurrentPage();
-
-    function highlightCurrentPage() {
-      const currentPath = window.location.pathname;
-      const navLinks = document.querySelectorAll('.top-navigation li a');
-
-      navLinks.forEach(link => {
-        const linkPath = link.getAttribute('href');
-
-        // Handle home page
-        if (currentPath === '/' && (linkPath === '/' || linkPath === '/index.html')) {
-          link.classList.add('active');
-        }
-        // Handle other pages
-        else if (currentPath.includes(linkPath) && linkPath !== '/' && linkPath !== '/index.html') {
-          link.classList.add('active');
-        }
-      });
-    }
-
-    // Add parallax effect to header images
-    const headerImages = document.querySelectorAll('.image-wrap img');
-    if (headerImages.length > 0) {
-      window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        headerImages.forEach(img => {
-          img.style.transform = `translateY(${scrolled * 0.3}px)`;
-        });
-      });
-    }
   });
 </script>

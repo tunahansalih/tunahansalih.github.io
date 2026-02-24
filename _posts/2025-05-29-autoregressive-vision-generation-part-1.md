@@ -15,13 +15,12 @@ published: true
 
 ## Your First Autoregressive Image Generation Model
 
-We'll build a basic autoregressive model using a simple MLP to generate images ofhandwritten digits, focusing on understanding the core concept of predicting the next pixel based on its predecessors. It's a hands-on exploration of fundamental generative AI, showing some of the core concepts using a pretty simple model. The model we will train will be far away from the state-of-the-art, but it will be a good starting point to understand the core concepts of autoregressive models.
+This post builds a simple autoregressive model with an MLP on handwritten digits. The goal is not state-of-the-art
+performance; it is to make the core mechanics explicit: predict the next pixel from previous pixels, then sample an
+image token by token.
 
-Welcome, I am glad you are here!
-
-I'm [Tuna](https://tunahansalih.github.io). My world is pretty much all about image and video generation. It is what I focus on in my PhD and during my internships at places like Adobe (working on Firefly!) and Amazon AGI. For a while, I have been working with diffusion-based models, and I know that they are incredibly powerful.
-
-But the landscape of generative modeling is always growing, and I want to explore other types of generative models. Right now, I am diving into autoregressive models. I always find the best way to learn a topic is by trying to teach it to others. So, this blog post series is an attempt to teach myself the basics of autoregressive models, hoping you can learn something from it, too. I'll start with the basics and try to understand how these models work piece by piece.
+I am [Tuna](https://tunahansalih.github.io), and I work mostly on image and video generation. I have spent most of my
+recent projects on diffusion models, but this series focuses on autoregressive modeling from first principles.
 
 ## What Makes a Model "Autoregressive"?
 

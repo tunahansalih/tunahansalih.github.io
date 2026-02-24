@@ -4,6 +4,6 @@ title: Publications
 permalink: /publications/
 ---
 
-Below is a comprehensive list of my research publications, including journal articles, conference papers, and preprints.
+Papers and preprints, ordered from most recent to earliest.
 
 {% include _publications.html %} 
