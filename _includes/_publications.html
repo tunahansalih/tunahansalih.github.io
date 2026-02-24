@@ -1,8 +1,13 @@
 <section id="publications" class="academic-publications-list">
   <div class="academic-publications-container">
     {% assign all_pubs = site.data.publications | sort: "date" | reverse %}
+    {% assign shown_earlier = false %}
 
     {% for pub in all_pubs %}
+      {% if pub.pre_phd and shown_earlier == false %}
+        {% assign shown_earlier = true %}
+        <h3 class="publications-section-divider">Earlier Work</h3>
+      {% endif %}
       {% assign paper_link = nil %}
       {% if pub.links %}
         {% assign paper_link = pub.links | where: "type", "paper" | first %}
@@ -25,6 +30,9 @@
         </h3>
         <p class="publication-venue-academic">{{ pub.venue }}</p>
         <p class="publication-authors-academic">{{ pub.authors }}</p>
+        {% if pub.description %}
+          <p class="publication-description-academic">{{ pub.description }}</p>
+        {% endif %}
 
         {% if pub.links %}
           <div class="publication-links-academic">

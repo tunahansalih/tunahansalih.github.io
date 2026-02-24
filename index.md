@@ -17,8 +17,16 @@ published: true
   </p>
   <p class="home-hero__summary">
     My papers have appeared at CVPR, ICCV, ICML, and AAAI. Before my PhD, I spent several years building production
-    machine learning systems. I have also interned at Adobe and Amazon during my PhD.
+    machine learning systems. I have also interned at Waymo, Amazon, and Adobe during my PhD.
   </p>
+  <div class="research-interests">
+    <span class="research-tag">Diffusion Models</span>
+    <span class="research-tag">Video Generation</span>
+    <span class="research-tag">Controllable Generation</span>
+    <span class="research-tag">Mechanistic Interpretability</span>
+    <span class="research-tag">Model Distillation</span>
+    <span class="research-tag">Flow Matching</span>
+  </div>
 </div>
 
 ## Selected Highlights
@@ -36,7 +44,7 @@ published: true
   <li><strong>Amazon</strong> - Applied Scientist Intern (May 2025 - Aug 2025)</li>
   <li><strong>Adobe</strong> - Research Intern, Video Generative AI (May 2024 - Aug 2024)</li>
   <li><strong>Lyrebird Studio</strong> - Machine Learning Engineer (Nov 2022 - Aug 2023)</li>
-  <li><strong>Vispera</strong> - Computer Vision Research Engineer (Aug 2018 - Oct 2022)</li>
+  <li><strong>Vispera</strong> - Computer Vision Research Engineer (Oct 2019 - Nov 2022)</li>
 </ul>
 
 <section class="home-writing">

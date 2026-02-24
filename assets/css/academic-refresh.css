@@ -586,6 +586,26 @@ article.page ol {
   margin-top: 0.62rem;
 }
 
+.research-interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.75rem;
+}
+
+.research-tag {
+  display: inline-block;
+  padding: 0.12rem 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+  background: var(--surface-alt);
+  line-height: 1.45;
+}
+
 .home-link-list {
   margin-top: 0.72rem;
   display: flex;
@@ -998,6 +1018,24 @@ article.page ol {
   letter-spacing: 0;
   text-transform: none;
   color: var(--ink-muted);
+}
+
+.publication-description-academic {
+  margin: 0.25rem 0 0;
+  font-size: 0.93rem;
+  line-height: 1.4;
+  color: var(--ink-muted);
+}
+
+.publications-section-divider {
+  margin: 2.2rem 0 0.6rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+  letter-spacing: 0.03em;
 }
 
 .publication-links-academic,

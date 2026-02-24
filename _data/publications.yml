@@ -1,5 +1,5 @@
 - title: "CLoRA: A Contrastive Approach to Compose Multiple LoRA Models"
-  authors: "Tuna Han Salih Meral<sup>*</sup>, Enis Simsar<sup>*</sup>, Federico Tombari, Pinar Yanardag"
+  authors: "<strong>Tuna Han Salih Meral</strong><sup>*</sup>, Enis Simsar<sup>*</sup>, Federico Tombari, Pinar Yanardag"
   venue: "ICCV 2025 (Highlight)"
   year: 2025
   date: 2025-07-25
@@ -26,7 +26,7 @@
     }
 
 - title: "ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features"
-  authors: "Alec Helbling, Tuna Han Salih Meral, Ben Hoover, Pinar Yanardag, Duen Horng Chau"
+  authors: "Alec Helbling, <strong>Tuna Han Salih Meral</strong>, Ben Hoover, Pinar Yanardag, Duen Horng Chau"
   venue: "ICML 2025 (Oral)"
   year: 2025
   date: 2025-05-01
@@ -53,7 +53,7 @@
     }
 
 - title: "CONFORM: Contrast is All You Need for High-Fidelity Text-to-Image Diffusion Models"
-  authors: "Tuna Han Salih Meral, Enis Simsar, Federico Tombari, Pinar Yanardag"
+  authors: "<strong>Tuna Han Salih Meral</strong>, Enis Simsar, Federico Tombari, Pinar Yanardag"
   venue: "CVPR 2024"
   year: 2024
   date: 2024-05-15
@@ -81,7 +81,7 @@
     }
 
 - title: "MotionFlow: Attention-Driven Motion Transfer in Video Diffusion Models"
-  authors: "Tuna Han Salih Meral, Hidir Yesiltepe, Connor Dunlop, Pinar Yanardag"
+  authors: "<strong>Tuna Han Salih Meral</strong>, Hidir Yesiltepe, Connor Dunlop, Pinar Yanardag"
   venue: "AAAI 2026 (Main Technical Track)"
   year: 2026
   date: 2026-02-01
@@ -104,8 +104,16 @@
       year={2024}
     }
 
+- title: "SteerCLR: A Contrastive Learning Approach for Unsupervised Discovery of Interpretable Steering Vectors in Large Language Models"
+  authors: "<strong>Tuna Han Salih Meral</strong>, Connor Dunlop, Sanmitra Bhattacharya, Balaji Veeramani, Stephen Adams, Edward Bowen, Pinar Yanardag"
+  venue: "Under review"
+  year: 2025
+  date: 2025-05-01
+  description: "SteerCLR discovers interpretable steering vectors for controlling implicit LLM behaviors by learning contrastive representations of internal activations."
+  featured: false
+
 - title: "Infinity-RoPE: Action-Controllable Infinite Video Generation Emerges from Autoregressive Self-Rollout"
-  authors: "Hidir Yesiltepe, Tuna Han Salih Meral, Adil Kaan Akan, Kaan Oktay, Pinar Yanardag"
+  authors: "Hidir Yesiltepe, <strong>Tuna Han Salih Meral</strong>, Adil Kaan Akan, Kaan Oktay, Pinar Yanardag"
   venue: "CVPR 2026"
   year: 2026
   date: 2026-06-01
@@ -129,15 +137,19 @@
     }
 
 - title: "MITHRIL: Playing Tabletop Games with Generative Policies"
-  authors: "Michael Atkins, William Denman, Tuna Han Salih Meral, Mustafa Doga Dogan, Pinar Yanardag"
+  authors: "Michael Atkins, William Denman, <strong>Tuna Han Salih Meral</strong>, Mustafa Doga Dogan, Pinar Yanardag"
   venue: "NeurIPS 2025 GenProCC Workshop"
   year: 2025
   date: 2025-12-01
   description: "Workshop paper on generative policies for tabletop gameplay."
   featured: false
+  links:
+    - text: "Paper"
+      url: "https://openreview.net/pdf?id=EKZV46BGsS"
+      type: "paper"
 
 - title: "MotionShop: Zero-Shot Motion Transfer in Video Diffusion Models with Mixture of Score Guidance"
-  authors: "Hidir Yesiltepe, Tuna Han Salih Meral, Connor Dunlop, Pinar Yanardag"
+  authors: "Hidir Yesiltepe, <strong>Tuna Han Salih Meral</strong>, Connor Dunlop, Pinar Yanardag"
   venue: "Preprint"
   year: 2024
   date: 2024-11-01
@@ -160,7 +172,7 @@
     }
 
 - title: "Conditional Information Gain Trellis"
-  authors: "Ufuk Can Bicici, Tuna Han Salih Meral, Lale Akarun"
+  authors: "Ufuk Can Bicici, <strong>Tuna Han Salih Meral</strong>, Lale Akarun"
   venue: "Pattern Recognition Letters"
   year: 2024
   date: 2024-06-01
@@ -183,25 +195,28 @@
     }
 
 - title: "Unsupervised Routing Strategies for Conditional Deep Neural Networks"
-  authors: "Tuna Han Salih Meral"
+  authors: "<strong>Tuna Han Salih Meral</strong>"
   venue: "M.S. Thesis, Bogazici University"
   year: 2022
   date: 2022-01-01
   description: "Master's thesis on routing strategies for conditional deep neural networks."
   featured: false
+  pre_phd: true
 
 - title: "BURST: Software and Simulation Solutions of an Autonomous Vehicle"
-  authors: "Fatih Kose, Ibrahim Ozcan, Melih Dal, Metehan Yildirim, Kadir Turksoy, Kerem Zaman, Tuna Han Salih Meral, Sinan Oncu"
+  authors: "Fatih Kose, Ibrahim Ozcan, Melih Dal, Metehan Yildirim, Kadir Turksoy, Kerem Zaman, <strong>Tuna Han Salih Meral</strong>, Sinan Oncu"
   venue: "SIU 2020"
   year: 2020
   date: 2020-09-01
   description: "Software and simulation framework contributions for autonomous vehicle development."
   featured: false
+  pre_phd: true
 
 - title: "Privacy-Preserving Intersection Management for Autonomous Vehicles"
-  authors: "Nadin Kokciyan, Mustafa Erdogan, Tuna Han Salih Meral, Pinar Yolum"
+  authors: "Nadin Kokciyan, Mustafa Erdogan, <strong>Tuna Han Salih Meral</strong>, Pinar Yolum"
   venue: "International Workshop on Agents in Traffic and Transportation (ATT 2018)"
   year: 2018
   date: 2018-07-01
   description: "Approaches for privacy-aware autonomous vehicle coordination at intersections."
   featured: false
+  pre_phd: true

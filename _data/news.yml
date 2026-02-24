@@ -1,6 +1,6 @@
 - date: 2026-02-13
   type: milestone
-  description: "Passed the Ph.D. preliminary exam on February 13, 2026 and advanced to Ph.D. candidacy."
+  description: "Passed the Ph.D. preliminary exam and advanced to candidacy. Dissertation: <em>Representation Steering as a Control Surface for Generative Foundation Models</em>."
 
 - date: 2026-02-01
   type: publication
@@ -49,6 +49,14 @@
   links:
     - text: FAL Fellowship
       url: https://fal.ai
+      type: project
+
+- date: 2025-08-01
+  type: milestone
+  description: "Selected as a finalist for the Qualcomm Innovation Fellowship."
+  links:
+    - text: Finalists
+      url: https://www.qualcomm.com/research/university-relations/innovation-fellowship/finalists
       type: project
 
 - date: 2025-07-25
