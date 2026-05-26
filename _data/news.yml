@@ -13,6 +13,10 @@
   type: milestone
   description: "Selected as an Outstanding Reviewer at CVPR 2026."
 
+- date: 2026-05-18
+  type: internship
+  description: "Started a research internship at Waymo."
+
 - date: 2026-02-13
   type: milestone
   description: "Passed the Ph.D. preliminary exam and advanced to candidacy. Dissertation: <em>Representation Steering as a Control Surface for Generative Foundation Models</em>."

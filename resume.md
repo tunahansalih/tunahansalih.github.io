@@ -82,7 +82,7 @@ __SteerCLR: A Contrastive Learning Approach for Unsupervised Discovery of Interp
 *Under review*
 
 ## Research Experience
-`Summer 2026 (Incoming)`
+`May 2026 - Present`
 __Waymo__
 Research Intern
 
