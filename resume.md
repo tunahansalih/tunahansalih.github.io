@@ -23,11 +23,18 @@ __Bogazici University, Istanbul, Turkey__
 B.S. in Computer Engineering
 
 ## Honors and Awards
+`2026` Outstanding Reviewer, CVPR 2026\
 `2025` FAL.AI Research Fellowship\
 `2025` Finalist, Qualcomm Innovation Fellowship (competitive national fellowship for graduate research)\
 `2024` Deloitte Research Fellowship, Virginia Tech
 
 ## Selected Publications
+`2026`
+__Aligning Latent Geometry for Spherical Flow Matching in Image Generation__
+**Tuna Han Salih Meral**, Kaan Oktay, Hidir Yesiltepe, Adil Kaan Akan, Pinar Yanardag
+*arXiv preprint*
+[Paper](https://arxiv.org/abs/2605.15193) · [Project Page](https://aligning-latent-geometry.github.io)
+
 `2026`
 __Infinity-RoPE: Action-Controllable Infinite Video Generation Emerges from Autoregressive Self-Rollout__
 Hidir Yesiltepe, **Tuna Han Salih Meral**, Adil Kaan Akan, Kaan Oktay, Pinar Yanardag
