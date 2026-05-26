@@ -1,3 +1,27 @@
+- title: "Aligning Latent Geometry for Spherical Flow Matching in Image Generation"
+  authors: "<strong>Tuna Han Salih Meral</strong>, Kaan Oktay, Hidir Yesiltepe, Adil Kaan Akan, Pinar Yanardag"
+  venue: "arXiv preprint"
+  year: 2026
+  date: 2026-05-25
+  description: "Projects VAE tokens and Gaussian noise onto a fixed-radius shell and trains flow matching along spherical (slerp) arcs, cutting FID by up to 50% on common tokenizers without changing the diffusion architecture."
+  image: "aligning-latent-geometry.png"
+  featured: true
+  featured_order: 1
+  links:
+    - text: "Paper"
+      url: "https://arxiv.org/abs/2605.15193"
+      type: "paper"
+    - text: "Project Page"
+      url: "https://aligning-latent-geometry.github.io"
+      type: "project"
+  citation: |
+    @article{meral2026aligning,
+      title={Aligning Latent Geometry for Spherical Flow Matching in Image Generation},
+      author={Meral, Tuna Han Salih and Oktay, Kaan and Yesiltepe, Hidir and Akan, Adil Kaan and Yanardag, Pinar},
+      journal={arXiv preprint arXiv:2605.15193},
+      year={2026}
+    }
+
 - title: "CLoRA: A Contrastive Approach to Compose Multiple LoRA Models"
   authors: "<strong>Tuna Han Salih Meral</strong><sup>*</sup>, Enis Simsar<sup>*</sup>, Federico Tombari, Pinar Yanardag"
   venue: "ICCV 2025 (Highlight)"
@@ -6,7 +30,7 @@
   description: "CLoRA composes multiple concept and style LoRAs at test time using a contrastive objective. <sup>*</sup> denotes equal contribution."
   image: "clora.png"
   featured: true
-  featured_order: 3
+  featured_order: 4
   links:
     - text: "Paper"
       url: "https://arxiv.org/abs/2403.19776"
@@ -33,7 +57,7 @@
   description: "ConceptAttention reuses DiT attention parameters to produce contextualized concept embeddings and sharper saliency maps without extra training."
   image: "conceptattention.png"
   featured: true
-  featured_order: 4
+  featured_order: 5
   links:
     - text: "Paper"
       url: "https://arxiv.org/abs/2502.04320"
@@ -60,7 +84,7 @@
   description: "CONFORM improves text-to-image faithfulness with a contrastive objective for stronger object-attribute grounding."
   image: "conform.png"
   featured: true
-  featured_order: 5
+  featured_order: 6
   links:
     - text: "Paper"
       url: "https://arxiv.org/abs/2312.06059"
@@ -88,7 +112,7 @@
   description: "MotionFlow is a training-free, attention-driven method for motion transfer in video diffusion models."
   image: "motionflow.png"
   featured: true
-  featured_order: 2
+  featured_order: 3
   links:
     - text: "Paper"
       url: "https://arxiv.org/abs/2412.05275"
@@ -120,7 +144,7 @@
   description: "Infinity-RoPE provides plug-and-play inference strategies for long-horizon video generation with action control and scene transitions."
   image: "infinity-rope.png"
   featured: true
-  featured_order: 1
+  featured_order: 2
   links:
     - text: "Paper"
       url: "https://arxiv.org/abs/2511.20649"
