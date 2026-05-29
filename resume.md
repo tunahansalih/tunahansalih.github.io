@@ -94,7 +94,7 @@ Applied Scientist Intern
 
 `Aug 2023 - Present`
 __Virginia Tech__
-Research Assistant and Lab Lead
+Research Assistant
 - Dissertation topic: *Representation Steering as a Control Surface for Generative Foundation Models*.
 - Awarded the FAL.ai research fellowship to develop efficient and long-horizon video diffusion models and distillation techniques.
 - Collaborated with Google on high-fidelity image generation and multi-subject personalization of diffusion models, leading to publications at CVPR 2024 and ICCV 2025.

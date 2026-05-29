@@ -40,7 +40,7 @@ published: true
 ## Current and Recent Roles
 <ul class="home-highlights">
   <li><strong>Waymo</strong> - Research Intern (May 2026 - Present)</li>
-  <li><strong>Virginia Tech</strong> - Research Assistant and Lab Lead (Aug 2023 - Present)</li>
+  <li><strong>Virginia Tech</strong> - Research Assistant (Aug 2023 - Present)</li>
   <li><strong>Amazon</strong> - Applied Scientist Intern (May 2025 - Aug 2025)</li>
   <li><strong>Adobe</strong> - Research Intern, Video Generative AI (May 2024 - Aug 2024)</li>
   <li><strong>Lyrebird Studio</strong> - Machine Learning Engineer (Nov 2022 - Aug 2023)</li>
