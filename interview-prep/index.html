@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Interview Prep — Command Center</title>
+<title>Research Scientist Interview Prep</title>
 <style>
   :root{
     --bg:#ffffff; --panel:#ffffff; --panel2:#fafafa; --line:#e6e6e6;
@@ -16,9 +16,9 @@
     background:var(--bg);color:var(--ink);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
   a{color:var(--accent);text-decoration:none}
   a:hover{text-decoration:underline}
-  header{padding:20px 26px 0;border-bottom:1px solid var(--line);position:sticky;top:0;
+  header{padding:18px 26px 0;border-bottom:1px solid var(--line);position:sticky;top:0;
     background:rgba(255,255,255,.94);backdrop-filter:blur(6px);z-index:20}
-  .htop{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;justify-content:space-between}
+  .htop{display:flex;flex-wrap:wrap;align-items:center;gap:16px;justify-content:space-between}
   h1{font-size:20px;margin:0;font-weight:700;letter-spacing:-.01em}
   h1 small{display:block;font-size:12.5px;color:var(--mut);font-weight:400;margin-top:3px}
   .meta{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
@@ -28,16 +28,17 @@
   .overall{flex:1;min-width:200px}
   .bar{height:6px;background:var(--chip);border-radius:99px;overflow:hidden}
   .bar > i{display:block;height:100%;background:var(--accent);width:0;transition:width .4s}
-  nav{display:flex;gap:2px;flex-wrap:wrap;margin-top:14px}
+  nav{display:flex;gap:2px;overflow-x:auto;margin-top:12px;scrollbar-width:thin}
   nav button{background:transparent;border:none;border-bottom:2px solid transparent;color:var(--mut);
-    padding:9px 14px;cursor:pointer;font-size:14px;font-weight:600;margin-bottom:-1px}
+    padding:9px 12px;cursor:pointer;font-size:13px;font-weight:600;margin-bottom:-1px;white-space:nowrap}
   nav button:hover{color:var(--ink)}
   nav button.on{color:var(--accent);border-bottom-color:var(--accent)}
   nav button .b{display:inline-block;min-width:18px;font-size:11px;color:var(--mut);margin-left:6px;font-weight:500}
-  main{padding:24px 26px 80px;max-width:880px;margin:0 auto}
+  main{padding:24px 26px 80px;max-width:1080px;margin:0 auto}
   .view{display:none}
   .view.on{display:block}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;margin-bottom:14px}
+  .table-card{overflow-x:auto}
   .card h3{margin:0 0 4px;font-size:15px;font-weight:700}
   .grid{display:grid;gap:14px}
   @media(min-width:760px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}}
@@ -85,11 +86,13 @@
   .sectionhdr{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);
     margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
   .sectionhdr:first-child{margin-top:4px}
-  .kpi{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:6px}
-  .kpi .card{flex:0 1 auto;min-width:0;margin:0;text-align:left;border:none;padding:0}
+  .kpi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:14px}
+  .kpi .card{min-width:0;margin:0;text-align:left;padding:14px 16px}
   .kpi b{font-size:22px;display:block;font-weight:700}
   .kpi .card span{font-size:11.5px;color:var(--mut)}
   .note{font-size:12.5px;color:var(--mut);background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--accent);padding:9px 12px;border-radius:0 6px 6px 0;margin:8px 0}
+  .quick-actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 2px}
+  .empty{padding:34px 20px;text-align:center;color:var(--mut)}
   .toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
   .toolbar .sp{flex:1}
   .savedtag{font-size:12px;color:var(--good);opacity:0;transition:opacity .3s}
@@ -111,10 +114,12 @@
   #v-settings input,#v-settings select{width:100%;background:#fff;border:1px solid var(--line);color:var(--ink);
     border-radius:6px;padding:9px 10px;font-size:13.5px;font-family:inherit}
   .overlay{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;background:#fafafa}
-  .authcard{width:100%;max-width:360px;background:#fff;border:1px solid var(--line);border-radius:12px;
+  .authcard{width:100%;max-width:430px;background:#fff;border:1px solid var(--line);border-radius:12px;
     padding:28px 26px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
   .authcard h2{margin:0 0 4px;font-size:20px;font-weight:700}
   .authcard p.sub{margin:0 0 18px;color:var(--mut);font-size:13px}
+  .authfeatures{margin:0 0 20px;padding:0;display:grid;gap:7px;color:var(--mut);font-size:12.5px;list-style:none}
+  .authfeatures li::before{content:"✓";color:var(--good);font-weight:700;margin-right:8px}
   .gbtn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;color:#1a1a1a;
     border:1px solid var(--line);border-radius:8px;padding:11px;font-size:14px;font-weight:600;cursor:pointer}
   .gbtn:hover{background:#f7f7f7}
@@ -129,30 +134,58 @@
   #cfgnote{display:none;background:var(--panel2);border-left:3px solid var(--warn);border-radius:0 6px 6px 0;
     padding:10px 12px;font-size:12.5px;color:var(--mut);margin-top:8px}
   .authmini{color:var(--mut);font-size:11.5px;text-align:center;margin-top:14px}
+  .authlinks{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:12px}
+  .linkbtn{border:0;background:none;color:var(--accent);font:inherit;padding:0;cursor:pointer}
+  .linkbtn:hover{text-decoration:underline}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .page-foot{color:var(--mut);font-size:12px;text-align:center;margin-top:28px}
+  @media(max-width:700px){
+    header{padding:14px 16px 0}
+    main{padding:18px 14px 64px}
+    .meta{width:100%}.overall{width:100%}
+    .kpi{grid-template-columns:1fr}
+    nav{margin-left:-16px;margin-right:-16px;padding:0 8px}
+    nav button{padding:9px 10px}
+    .storagebar .muted{max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .storagebar .sp{display:none}
+    .authcard{padding:24px 20px}
+    th,td{min-width:105px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{scroll-behavior:auto!important;transition:none!important}
+  }
 </style>
 </head>
 <body>
 <div class="overlay" id="loginoverlay">
   <div class="authcard">
-    <h2>Interview Prep</h2>
-    <p class="sub">Sign in to sync your progress across all your devices.</p>
+    <h2>Research Scientist Interview Prep</h2>
+    <p class="sub">A structured plan for ML coding, research depth, mock interviews, and the job-search pipeline.</p>
+    <ul class="authfeatures">
+      <li>Fourteen-week guided preparation plan</li>
+      <li>Topic mastery, coding, mock, and story trackers</li>
+      <li>Private progress synchronized across devices</li>
+    </ul>
     <div id="authforms">
-      <button class="gbtn" id="g-signin">
+      <button class="gbtn" id="g-signin" type="button">
         <svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.4 29.3 35 24 35c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 5.1 29.5 3 24 3 12.4 3 3 12.4 3 24s9.4 21 21 21 21-9.4 21-21c0-1.2-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 13 24 13c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 5.1 29.5 3 24 3 16 3 9.1 7.6 6.3 14.7z"/><path fill="#4CAF50" d="M24 45c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 36 26.7 37 24 37c-5.3 0-9.7-2.6-11.3-7l-6.5 5C9 40.3 15.9 45 24 45z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.1-4.1 5.6l6.2 5.2C40.9 35.7 45 30.4 45 24c0-1.2-.1-2.3-.4-3.5z"/></svg>
         Continue with Google
       </button>
       <div class="divider">or</div>
+      <label class="sr-only" for="auth-email">Email address</label>
       <input id="auth-email" type="email" placeholder="you@example.com" autocomplete="username">
+      <label class="sr-only" for="auth-pass">Password</label>
       <input id="auth-pass" type="password" placeholder="Password" autocomplete="current-password">
       <div class="row">
-        <button class="btn accent" id="e-signin">Sign in</button>
-        <button class="btn" id="e-register">Create account</button>
+        <button class="btn accent" id="e-signin" type="button">Sign in</button>
+        <button class="btn" id="e-register" type="button">Create account</button>
       </div>
-      <div id="autherr"></div>
+      <div class="authlinks"><button class="linkbtn" id="e-reset" type="button">Forgot password?</button></div>
+      <div id="autherr" role="status" aria-live="polite"></div>
     </div>
-    <div id="cfgnote">Add your Firebase config to <b>index.html</b> (see SETUP_GUIDE.md) to enable sign-in. Until then, use the app on this device below.</div>
-    <p class="authmini">Your data is stored privately in your own Firebase project.</p>
-    <p class="authmini"><a href="#" id="skip-auth" class="tlink">Continue on this device only →</a></p>
+    <div id="cfgnote">Sign-in is not configured for this deployment.</div>
+    <p class="authmini">Your progress is stored in this app's Firebase project and is restricted to your account.</p>
+    <p class="authmini">Inspired by <a href="https://alisawuffles.github.io/blog/job-search/" target="_blank" rel="noopener">Alisa Liu's industry job-search guide</a>.</p>
   </div>
 </div>
 <header>
@@ -167,10 +200,18 @@
       </div>
     </div>
   </div>
+  <nav id="nav" aria-label="Interview preparation sections"></nav>
   <div id="storagebar" class="storagebar"></div>
 </header>
 <main>
-  <section class="view on" id="v-plan"></section>
+  <section class="view on" id="v-dash"></section>
+  <section class="view" id="v-plan"></section>
+  <section class="view" id="v-topics"></section>
+  <section class="view" id="v-leet"></section>
+  <section class="view" id="v-mocks"></section>
+  <section class="view" id="v-pipe"></section>
+  <section class="view" id="v-story"></section>
+  <section class="view" id="v-res"></section>
   <section class="view" id="v-settings"></section>
 </main>
 
@@ -182,18 +223,149 @@ function getTarget(){const v=(typeof S!=='undefined'&&S.settings&&S.settings.tar
 function fmtD(d){return d.toLocaleDateString(undefined,{month:'short',day:'numeric'});}
 function weekDateLabel(i){const a=new Date(getStart());a.setDate(a.getDate()+i*7);const b=new Date(a);b.setDate(b.getDate()+6);return fmtD(a)+' – '+fmtD(b);}
 
-/* ---------- plan content (loaded from Firestore after login; NOT shipped in this file) ---------- */
+/* ---------- plan content (loaded from Firestore after login; refined locally for realistic pacing) ---------- */
 let WEEKS=[], PHASES={}, TOPICS=[], STORY_CATS=[], RESOURCES=[];
-const PLANKEY='ipcc_plan_v1';
+let activeUid=null, activeEmail='', activeKey=null;
+const PLANKEY='ipcc_plan_v2';
+const planKeyForUid=uid=>PLANKEY+':'+uid;
 let planError='';
-function setPlan(p){ if(!p) return; WEEKS=Array.isArray(p.weeks)?p.weeks:[]; PHASES=p.phases||{}; TOPICS=p.topics||[]; STORY_CATS=p.stories||[]; RESOURCES=p.resources||[]; planError=''; try{localStorage.setItem(PLANKEY,JSON.stringify(p));}catch(e){} }
+const PLAN_REFINEMENT_VERSION=2;
+const PROJECT_NAMES=[
+  /ConceptAttention/i, /\bCLoRA\b/i, /\bCONFORM\b/, /\bMotionFlow\b/i, /\bMotionShop\b/i,
+  /\bSteerCLR\b/i, /\bInfinity[- ]RoPE\b/i, /\bMITHRIL\b/i,
+  /Conditional Information Gain Trellis/i, /\bCIGT\b/, /Aligning Latent Geometry/i,
+  /Spherical Flow Matching/i
+];
+const LINEAR_ALGEBRA_REVIEWS=[
+  'Linear algebra review (45 min): vectors, matrix shapes, inner products, norms, and geometric interpretations. Work 2 short examples and write a 5-line summary.',
+  'Linear algebra review (45 min): eigendecomposition, SVD, PCA, and when each is useful in ML. Work through one small matrix example.',
+  'Linear algebra review (45 min): rank, projections, least squares, conditioning, and positive semidefinite matrices. Solve 2 short derivations.',
+  'Linear algebra review (45 min): gradients with vectors and matrices, Jacobians, the chain rule, and trace notation. Derive 2 common ML gradients.'
+];
+const LAMBERT_RL_TASK='RL / post-training review (45 min): use Nathan Lambert’s RLHF Book to review the RL setup, rewards, policies, and the canonical post-training pipeline. Write a one-page concept map; do not try to finish the book.';
+const LAMBERT_RL_RESOURCE={
+  t:'Nathan Lambert — Reinforcement Learning from Human Feedback',
+  u:'https://rlhfbook.com/',
+  d:'Use selectively: start with the RL primer and canonical RLHF pipeline, then revisit reward modeling or policy optimization as needed.',
+  s:false
+};
+function projectSpecificTask(t){return PROJECT_NAMES.some(r=>r.test(t||''))}
+function generalizeProjectTask(t){
+  if(/\b(present|presentation|pitch|talk|explain|whiteboard)\b/i.test(t))
+    return 'Choose one representative project from your portfolio and practice a 3-minute explanation: problem, key idea, evidence, limitations, and your exact contribution.';
+  if(/\b(read|review|paper|code|repo|implementation)\b/i.test(t))
+    return 'Review one representative project from your portfolio: problem, key idea, strongest evidence, limitation, and one credible follow-up experiment.';
+  return 'Use one representative project from your portfolio to practice discussing the main technical decision, alternatives considered, evidence, and limitations.';
+}
+function realisticCodingTask(t){
+  const text=t||'';
+  const learningPattern=/(?:learn|study|new|introduc\w*)[^.]{0,80}pattern|pattern[^.]{0,80}(?:learn|study|new)/i.test(text);
+  const twoOrMore=/\b(?:2|3|4|5|6|two|three|four|five|six)\b(?:\s+\w+){0,4}\s+(?:LeetCode\s+)?(?:problems?|questions?)/i.test(text);
+  const fourOrMore=/\b(?:4|5|6|four|five|six)\b(?:\s+\w+){0,4}\s+(?:LeetCode\s+)?(?:problems?|questions?)/i.test(text);
+  if(learningPattern&&twoOrMore)
+    return 'Learn one coding pattern (45 min): study one worked example, then solve 1 problem untimed. If time remains, outline or revisit a second problem.';
+  if(fourOrMore&&/\b(?:LeetCode|problems?|questions?|solve)\b/i.test(text))
+    return 'Coding practice (45 min): solve 1 interview-style problem with a 30–35 minute cap, then review the solution and record one takeaway. A second problem is optional.';
+  return text;
+}
+function realisticStudyTask(t){
+  const text=t||'';
+  const severalPapers=/\b(?:3|4|5|6|three|four|five|six)\b(?:\s+\w+){0,3}\s+papers?\b/i.test(text);
+  const fullBuild=/\b(?:implement|build|reproduce)\b[^.]{0,100}\b(?:from scratch|end[- ]to[- ]end|full|complete)\b/i.test(text);
+  if(severalPapers)
+    return 'Paper review (45 min): read one paper strategically—abstract, method figure, main result, and limitations—then write 5 interview-ready bullets. Additional papers are optional.';
+  if(fullBuild)
+    return 'Implementation practice (45 min): build one minimal, testable component and explain its inputs, outputs, shapes, and failure modes. Continue the full implementation in a later block.';
+  return text;
+}
+function taskText(t){
+  const text=typeof t==='string'?t:(t&&typeof t.text==='string'?t.text:'');
+  let refined=projectSpecificTask(text)?generalizeProjectTask(text):text;
+  refined=realisticCodingTask(refined);
+  refined=realisticStudyTask(refined);
+  if(typeof t==='string')return refined;
+  return t&&typeof t==='object'?Object.assign({},t,{text:refined}):t;
+}
+function replaceReviewSlot(weeks,weekIndex,preferredSession,content){
+  const existing=[];
+  weeks.forEach((week,wi)=>(week.sessions||[]).forEach((session,si)=>(session.x||[]).forEach((task,ti)=>{
+    const text=typeof task==='string'?task:(task&&task.text)||'';
+    if(text===content)existing.push({week,wi,si,ti});
+  })));
+  if(existing.length){
+    const hit=existing[0];
+    return hit.week.id+'s'+hit.si+'#'+hit.ti;
+  }
+  const w=weeks[weekIndex];if(!w||!Array.isArray(w.sessions))return '';
+  let si=preferredSession;
+  if(!w.sessions[si])si=w.sessions.findIndex(s=>/\b(math|review|lecture|watch)\b/i.test(s.t||''));
+  const session=w.sessions[si];if(!session||!Array.isArray(session.x))return '';
+  const ti=session.x.length?session.x.length-1:0;
+  if(session.x.length)session.x[ti]=content;
+  else session.x.push(content);
+  return w.id+'s'+si+'#'+ti;
+}
+function refinePlan(raw){
+  if(!raw)return raw;
+  const p=JSON.parse(JSON.stringify(raw));
+  if(p.clientRefinementVersion===PLAN_REFINEMENT_VERSION)return p;
+  const weeks=Array.isArray(p.weeks)?p.weeks:[];
+  weeks.forEach(w=>(w.sessions||[]).forEach(s=>{if(Array.isArray(s.x))s.x=s.x.map(taskText)}));
+
+  // Replace an existing review task rather than increasing the weekly workload.
+  const replacedKeys=[];
+  [0,3,6,9].forEach((wi,i)=>replacedKeys.push(replaceReviewSlot(weeks,wi,5,LINEAR_ALGEBRA_REVIEWS[i])));
+  replacedKeys.push(replaceReviewSlot(weeks,11,0,LAMBERT_RL_TASK));
+
+  const topics=Array.isArray(p.topics)?p.topics:(p.topics=[]);
+  const topicNames=topics.map(tp=>(Array.isArray(tp)?tp[1]:tp&&tp.n)||'').join(' ').toLowerCase();
+  [
+    ['Linear Algebra','Vectors, matrix shapes, inner products, and norms'],
+    ['Linear Algebra','Eigendecomposition, SVD, and PCA'],
+    ['Linear Algebra','Rank, projections, least squares, and conditioning'],
+    ['Linear Algebra','Matrix calculus, Jacobians, and the chain rule'],
+    ['RL & Post-training','Policies, rewards, policy gradients, RLHF, and direct alignment']
+  ].forEach(tp=>{if(!topicNames.includes(tp[1].toLowerCase()))topics.push(tp)});
+
+  const resources=Array.isArray(p.resources)?p.resources:(p.resources=[]);
+  const rlGroup=resources.find(g=>/\b(RL|reinforcement|alignment|post-training)\b/i.test(g.g||''));
+  const hasLambert=resources.some(g=>(g.items||[]).some(it=>/rlhfbook\.com|Nathan Lambert/i.test((it.u||'')+' '+(it.t||''))));
+  if(!hasLambert){
+    if(rlGroup){if(!Array.isArray(rlGroup.items))rlGroup.items=[];rlGroup.items.push(LAMBERT_RL_RESOURCE)}
+    else resources.push({g:'Reinforcement Learning & Post-training',items:[LAMBERT_RL_RESOURCE]});
+  }
+  p.clientReplacedTaskKeys=replacedKeys.filter(Boolean);
+  p.clientRefinementVersion=PLAN_REFINEMENT_VERSION;
+  return p;
+}
+let REPLACED_TASK_KEYS=[];
+function migratePlanProgress(){
+  if(typeof S==='undefined'||!S||S.planRefinementVersion>=PLAN_REFINEMENT_VERSION)return false;
+  if(!S.weekTasks||typeof S.weekTasks!=='object')S.weekTasks={};
+  REPLACED_TASK_KEYS.forEach(key=>delete S.weekTasks[key]);
+  S.planRefinementVersion=PLAN_REFINEMENT_VERSION;
+  return true;
+}
+function setPlan(raw){
+  if(!raw)return;
+  const p=refinePlan(raw);
+  WEEKS=Array.isArray(p.weeks)?p.weeks:[];PHASES=p.phases||{};TOPICS=p.topics||[];
+  STORY_CATS=p.stories||[];RESOURCES=p.resources||[];REPLACED_TASK_KEYS=p.clientReplacedTaskKeys||[];
+  planError='';const migrated=migratePlanProgress();
+  try{
+    if(activeUid)localStorage.setItem(planKeyForUid(activeUid),JSON.stringify(p));
+    if(migrated&&activeKey)localStorage.setItem(activeKey,JSON.stringify(S));
+  }catch(e){}
+}
 window.__applyPlan=function(p){ setPlan(p); if(typeof renderAllViews==='function') renderAllViews(); };
-window.__planMissing=function(){ planError="Your plan isn't in the database yet \u2014 run the seeder once (see SETUP_GUIDE.md)."; if(typeof renderPlan==='function') renderPlan(); };
-try{ const __cp=JSON.parse(localStorage.getItem(PLANKEY)); if(__cp) setPlan(__cp); }catch(e){}
+window.__hasPlan=()=>WEEKS.length>0;
+window.__planMissing=function(){ planError="The preparation plan could not be loaded. Please refresh or contact the site owner."; if(typeof renderAllViews==='function') renderAllViews(); };
 
 /* ---------- state ---------- */
-const KEY='ipcc_v1';
+const KEY='ipcc_v2';
 const DEFAULT={
+  schemaVersion:2,
+  planRefinementVersion:0,
   weekTasks:{},        // "w1#0": true
   topics:{},           // idx: {explain:bool, implement:bool, status:''}
   storyReady:{},       // cat: bool
@@ -204,28 +376,43 @@ const DEFAULT={
   pipe:[],             // {company,role,priority,stage,recruiter,referral,applied,next,status,notes}
   settings:{startDate:'2026-06-29',targetDate:'2026-10-05',days:['Mon','Tue','Wed','Thu','Sat','Sun'],name:''},
 };
+function freshState(){return JSON.parse(JSON.stringify(DEFAULT))}
 function normSettings(o){const d={startDate:DEF_START,targetDate:DEF_TARGET,days:['Mon','Tue','Wed','Thu','Sat','Sun'],name:''};
   const s=Object.assign({},d,o||{}); if(!Array.isArray(s.days)||s.days.length!==6)s.days=d.days.slice(); return s;}
-let S=load();
-function load(){try{const r=JSON.parse(localStorage.getItem(KEY));const m=Object.assign(JSON.parse(JSON.stringify(DEFAULT)),r||{});m.settings=normSettings(m.settings);return m;}catch(e){return JSON.parse(JSON.stringify(DEFAULT))}}
+let S=freshState();
+function normalizeState(raw){const m=Object.assign(freshState(),raw||{});m.schemaVersion=2;m.settings=normSettings(m.settings);return m}
+function loadForUser(uid){
+  activeUid=uid;activeKey=KEY+':'+uid;
+  WEEKS=[];PHASES={};TOPICS=[];STORY_CATS=[];RESOURCES=[];planError='';
+  try{S=normalizeState(JSON.parse(localStorage.getItem(activeKey)))}catch(e){S=freshState()}
+  try{const cp=JSON.parse(localStorage.getItem(planKeyForUid(uid)));if(cp)setPlan(cp)}catch(e){}
+}
 let saveTimer;
-function save(){clearTimeout(saveTimer);saveTimer=setTimeout(()=>{localStorage.setItem(KEY,JSON.stringify(S));flashSaved();scheduleFileWrite();scheduleServerSave();if(window.__cloudSave)window.__cloudSave(S);},150)}
-function flashSaved(){const t=document.getElementById('savedtag');if(t){t.classList.add('show');setTimeout(()=>t.classList.remove('show'),900)}}
+function save(){clearTimeout(saveTimer);saveTimer=setTimeout(()=>{if(activeKey)localStorage.setItem(activeKey,JSON.stringify(S));flashSaved();scheduleFileWrite();scheduleServerSave();if(window.__cloudSave)window.__cloudSave(S);},150)}
+function flashSaved(){document.querySelectorAll('.savedtag').forEach(t=>{t.classList.add('show');setTimeout(()=>t.classList.remove('show'),900)})}
 
 /* ---------- cloud mode (Firebase) — local helper disabled in the deployed app ---------- */
 const CLOUD = true;
 window.__getState=()=>S;
-window.__applyRemote=function(data){ if(data&&Object.keys(data).length){ S=Object.assign(JSON.parse(JSON.stringify(DEFAULT)),data); S.settings=normSettings(S.settings); localStorage.setItem(KEY,JSON.stringify(S)); renderAllViews(); } };
-window.__onLogin=function(email){ window.__user=email; const o=document.getElementById('loginoverlay'); if(o)o.style.display='none'; renderStorageBar(); renderAllViews(); };
-window.__onLogout=function(){ window.__user=null; const o=document.getElementById('loginoverlay'); if(o)o.style.display='flex'; const e=document.getElementById('autherr'); if(e)e.textContent=''; };
+window.__prepareUser=function(uid,email){loadForUser(uid);activeEmail=email||'(signed in)';window.__user=activeEmail;renderAllViews();};
+window.__applyRemote=function(data){ if(data&&Object.keys(data).length){ S=normalizeState(data);const migrated=migratePlanProgress();if(activeKey)localStorage.setItem(activeKey,JSON.stringify(S));renderAllViews();if(migrated)save(); } };
+window.__onLogin=function(){ const o=document.getElementById('loginoverlay'); if(o)o.style.display='none'; renderStorageBar(); renderAllViews(); };
+window.__onLogout=function(){
+  window.__user=null;activeUid=null;activeEmail='';activeKey=null;S=freshState();
+  WEEKS=[];PHASES={};TOPICS=[];STORY_CATS=[];RESOURCES=[];planError='';
+  renderAllViews();renderStorageBar();
+  const o=document.getElementById('loginoverlay'); if(o)o.style.display='flex';
+  const e=document.getElementById('autherr'); if(e)e.textContent='';
+};
 window.__authError=function(msg){ const e=document.getElementById('autherr'); if(e)e.textContent=msg||'Something went wrong. Try again.'; };
+window.__syncState=function(state){window.__syncStatus=state;renderStorageBar();};
 window.__needConfig=function(){ const c=document.getElementById('cfgnote'); if(c)c.style.display='block'; const f=document.getElementById('authforms'); if(f)f.style.display='none'; };
 const SERVER = false;
 let serverTimer, serverOK=false;
 async function serverPing(){try{const r=await fetch('/ping',{cache:'no-store'});serverOK=r.ok;}catch(e){serverOK=false;}return serverOK;}
 async function serverLoad(){
   try{const r=await fetch('/load',{cache:'no-store'});if(r.ok){const j=await r.json();serverOK=true;
-    if(j&&Object.keys(j).length){S=Object.assign(JSON.parse(JSON.stringify(DEFAULT)),j);localStorage.setItem(KEY,JSON.stringify(S));}}}
+    if(j&&Object.keys(j).length){S=normalizeState(j);if(activeKey)localStorage.setItem(activeKey,JSON.stringify(S));}}}
   catch(e){serverOK=false;}
 }
 function scheduleServerSave(){if(!SERVER)return;clearTimeout(serverTimer);serverTimer=setTimeout(serverSave,350)}
@@ -253,7 +440,7 @@ async function connectFile(){
     try{const f=await h.getFile();const txt=await f.text();if(txt.trim())existing=JSON.parse(txt)}catch(e){}
     if(existing&&Object.keys(existing).length){
       if(confirm('This file already has saved progress.\n\nOK = load it into the app.\nCancel = overwrite it with your current progress.')){
-        S=Object.assign(JSON.parse(JSON.stringify(DEFAULT)),existing);localStorage.setItem(KEY,JSON.stringify(S));
+        S=normalizeState(existing);if(activeKey)localStorage.setItem(activeKey,JSON.stringify(S));
       }
     }
     fileHandle=h;fileName=h.name;await idbSet('handle',h);
@@ -274,7 +461,7 @@ async function writeFile(){
 }
 async function loadFromFile(){
   try{const f=await fileHandle.getFile();const txt=await f.text();
-    if(txt.trim()){S=Object.assign(JSON.parse(JSON.stringify(DEFAULT)),JSON.parse(txt));localStorage.setItem(KEY,JSON.stringify(S));renderAllViews()}}catch(e){}
+    if(txt.trim()){S=normalizeState(JSON.parse(txt));if(activeKey)localStorage.setItem(activeKey,JSON.stringify(S));renderAllViews()}}catch(e){}
 }
 async function tryReconnect(){
   if(!fsaSupported())return;
@@ -293,11 +480,14 @@ function renderStorageBar(needReconnect){
   let html;
   if(CLOUD){
     if(window.__user){
-      bar.innerHTML=`<span class="dot good"></span><span class="muted">Synced · <b>${window.__user}</b></span><span class="sp"></span><button class="btn sm" id="sb-set">⚙ Settings</button><button class="btn sm" id="sb-out">Sign out</button>`;
+      const status=window.__syncStatus||'synced';
+      const dot=status==='error'?'bad':status==='saving'?'warn':'good';
+      const label=status==='error'?'Sync failed — progress is safe on this device':status==='saving'?'Saving…':'Synced';
+      bar.innerHTML=`<span class="dot ${dot}"></span><span class="muted">${label} · <b id="sync-user"></b></span><span class="sp"></span><button class="btn sm" id="sb-set">Settings</button><button class="btn sm" id="sb-out">Sign out</button>`;
+      const u=document.getElementById('sync-user');if(u)u.textContent=window.__user;
       const o=document.getElementById('sb-out'); if(o)o.onclick=()=>{window.__signOut&&window.__signOut()};
     } else {
-      bar.innerHTML=`<span class="dot warn"></span><span class="muted">Not signed in — changes stay on this device.</span><span class="sp"></span><button class="btn sm" id="sb-set">⚙ Settings</button><button class="btn sm accent" id="sb-in">Sign in</button>`;
-      const i=document.getElementById('sb-in'); if(i)i.onclick=()=>window.__showLogin&&window.__showLogin();
+      bar.innerHTML='<span class="dot warn"></span><span class="muted">Sign in to load your plan and progress.</span>';
     }
     const g=document.getElementById('sb-set'); if(g)g.onclick=()=>show('settings');
     return;
@@ -320,7 +510,10 @@ function renderStorageBar(needReconnect){
   if(g('sb-disc'))g('sb-disc').onclick=disconnectFile;
   if(g('sb-recon'))g('sb-recon').onclick=grantReconnect;
 }
-function renderAllViews(){renderPlan();renderSettings();refreshHeader()}
+function renderAllViews(){
+  renderDash();renderPlan();renderTopics();renderLeet();renderMocks();renderPipe();renderStory();renderRes();renderSettings();
+  refreshHeader();updateBadges();
+}
 
 /* ---------- helpers ---------- */
 const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
@@ -349,16 +542,31 @@ function refreshHeader(){
   const now=new Date();const st=getStart();
   const wk = now<st ? ('Starts '+fmtD(st)) : ('Week '+(currentWeekIdx()+1)+' of '+(WEEKS.length||14));
   const wl=document.getElementById('kWeekLabel'); if(wl)wl.textContent=wk;
-  const sub=document.getElementById('sub'); if(sub&&S.settings&&S.settings.name)sub.textContent=S.settings.name;
-  const p=planPct();
+  const sub=document.getElementById('sub'); if(sub)sub.textContent=(S.settings&&S.settings.name)||'Research Scientist · Generative Vision / Multimodal';
+  const p=overallPct();
   const kp=document.getElementById('kPct'); if(kp)kp.textContent=pct(p)+' complete';
   const kb=document.getElementById('kBar'); if(kb)kb.style.width=pct(p);
 }
 
-/* ---------- view switching (checklist + settings only) ---------- */
+/* ---------- navigation ---------- */
+const TABS=[['dash','Today'],['plan','Plan'],['topics','Topics'],['leet','Coding'],
+  ['mocks','Mocks'],['pipe','Companies'],['story','Stories'],['res','Resources']];
+function buildNav(){
+  const nav=document.getElementById('nav');if(!nav)return;nav.innerHTML='';
+  TABS.forEach(([id,label])=>{
+    const b=el('button',null,label+'<span class="b" id="badge-'+id+'"></span>');
+    b.type='button';b.id='tab-'+id;b.onclick=()=>show(id);nav.appendChild(b);
+  });
+}
 function show(id){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
-  const v=document.getElementById('v-'+id); if(v)v.classList.add('on');
+  document.querySelectorAll('#nav button').forEach(b=>b.classList.remove('on'));
+  const v=document.getElementById('v-'+id);
+  if(!v)return;
+  v.classList.add('on');
+  const tab=document.getElementById('tab-'+id);if(tab)tab.classList.add('on');
+  if(tab)tab.scrollIntoView({block:'nearest',inline:'center'});
+  if(id!=='settings')history.replaceState(null,'','#'+id);
   window.scrollTo(0,0);
 }
 
@@ -370,30 +578,33 @@ function renderDash(){
   v.appendChild(el('div','kpi',`
     <div class="card"><b>${daysBetween(now,getTarget())>0?daysBetween(now,getTarget()):0}</b><span class="muted">days to target (${fmtD(getTarget())})</span></div>
     <div class="card"><b>${now<st?'Pre':('W'+(ci+1))}</b><span class="muted">${now<st?('starts '+fmtD(st)):WEEKS[ci].theme}</span></div>
-    <div class="card"><b>${pct(overallPct())}</b><span class="muted">overall progress</span></div>
+    <div class="card"><b>${pct(overallPct())}</b><span class="muted">readiness score</span></div>
   `));
-  const segs=[['14-Week Plan',planPct(),'plan'],['Topic mastery',topicsPct(),'topics'],
-    ['Behavioral stories',storyPct(),'story'],['Resources reviewed',resPct(),'res']];
-  const c=el('div','card');c.appendChild(el('h3',null,'Progress by area'));
-  segs.forEach(([n,p,go])=>{
-    const r=el('div',null,`<div style="display:flex;justify-content:space-between;font-size:13px;margin:10px 0 4px">
-      <span>${n}</span><span class="muted">${pct(p)}</span></div><div class="bar"><i style="width:${pct(p)}"></i></div>`);
-    c.appendChild(r);
+  const w=WEEKS[ci];const done=weekDone(ci);const tot=weekTotal(ci);
+  const focus=el('div','card now');
+  focus.appendChild(el('div',null,`<div class="wkhead"><h3>${now<st?'Start here':'Today'} · ${w.label} — ${w.theme}</h3>
+    <span class="pill p${w.phase}">${PHASES[w.phase]}</span></div>
+    <div class="pr">${weekDateLabel(ci)} · ${done}/${tot} tasks complete</div><div class="mini"><i style="width:${tot?Math.round(done/tot*100):0}%"></i></div>`));
+  const today=now.toLocaleDateString('en-US',{weekday:'short'});
+  let si=now<st?-1:(S.settings.days||[]).indexOf(today);
+  if(si<0||sessDone(w,si)===w.sessions[si].x.length)si=w.sessions.findIndex((_,idx)=>sessDone(w,idx)<w.sessions[idx].x.length);
+  if(si<0)focus.appendChild(el('div','empty','This week is complete. Use the extra time for a mock interview or targeted review.'));
+  else renderSession(focus,w,si);
+  const qa=el('div','quick-actions');
+  [['Open full plan','plan'],['Review topic mastery','topics'],['Log a mock','mocks'],['Update companies','pipe']].forEach(([label,id])=>{
+    const b=el('button','btn sm',label);b.type='button';b.onclick=()=>show(id);qa.appendChild(b);
+  });
+  focus.appendChild(qa);v.appendChild(focus);
+
+  const c=el('div','card');c.appendChild(el('h3',null,'Readiness by area'));
+  [['Plan execution',planPct()],['Topic mastery',topicsPct()],['Behavioral stories',storyPct()],
+    ['Resources reviewed',resPct()]].forEach(([n,p])=>{
+    c.appendChild(el('div',null,`<div style="display:flex;justify-content:space-between;font-size:13px;margin:10px 0 4px">
+      <span>${n}</span><span class="muted">${pct(p)}</span></div><div class="bar"><i style="width:${pct(p)}"></i></div>`));
   });
   v.appendChild(c);
-
-  // this week
-  if(now>=st){
-    const w=WEEKS[ci];const done=weekDone(ci);const tot=weekTotal(ci);
-    const wc=el('div','card now');
-    wc.appendChild(el('div',null,`<div class="wkhead"><h3>This week · ${w.label} — ${w.theme}</h3>
-      <span class="pill p${w.phase}">${PHASES[w.phase]}</span></div>
-      <div class="pr">${weekDateLabel(ci)} · ${w.sessions.length} sessions · ${done}/${tot} tasks</div><div class="mini"><i style="width:${tot?Math.round(done/tot*100):0}%"></i></div>`));
-    w.sessions.forEach((s,si)=>renderSession(wc,w,si));
-    v.appendChild(wc);
-  }
-  // quick guidance
-  v.appendChild(el('div','note','Built around a full-time job: 4 weeknight sessions (~45m) + two weekend blocks ≈ <strong>6–7 hrs/week</strong>. Each task says exactly what to do, what to use, and when it\'s done — do the sessions top to bottom and don\'t go looking for extra material; that\'s the thing that pulls you off the plan. If a weeknight slips, move it to the weekend rather than skipping. Link a progress file (bar at the top) so nothing is ever lost.'));
+  v.appendChild(el('div','note','Aim for consistent execution, not perfect completion. If a session slips, move it to the nearest open block and preserve the weekly build or mock.'));
+  v.appendChild(el('p','page-foot','Methodology inspired by <a href="https://alisawuffles.github.io/blog/job-search/" target="_blank" rel="noopener">Alisa Liu’s notes on the industry job search</a>, adapted for research scientist roles in generative vision and multimodal ML.'));
   updateBadges();
 }
 function sessionParts(si,rawTitle){
@@ -416,7 +627,8 @@ function taskRow(w,si,ti,t){
   const cb=el('input');cb.type='checkbox';cb.checked=on;
   cb.onchange=()=>{S.weekTasks[key]=cb.checked;save();refreshAll()};
   lab.appendChild(cb);
-  const span=el('span',null,t);
+  const text=typeof t==='string'?t:(t&&t.text)||'';
+  const span=el('span',null,text);
   span.querySelectorAll('a').forEach(an=>{an.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();window.open(an.href,'_blank','noopener')});});
   lab.appendChild(span);
   return lab;
@@ -426,6 +638,7 @@ function taskRow(w,si,ti,t){
 function renderPlan(){
   const v=document.getElementById('v-plan');if(!v)return;v.innerHTML='';
   if(!WEEKS.length){ v.appendChild(el('div','note',planError||(window.__user?'Loading your plan…':'Sign in to load your plan.'))); return; }
+  v.appendChild(el('div','note','Weeknight tasks are sized for one focused block: learn <strong>or</strong> drill, not both at high volume. For a new coding pattern, one worked example plus one problem is a complete session.'));
   const ci=currentWeekIdx();const started=new Date()>=getStart();
   let curPhase=0;
   WEEKS.forEach((w,i)=>{
@@ -443,14 +656,14 @@ function renderPlan(){
 /* ---------- render: topics ---------- */
 function renderTopics(){
   const v=document.getElementById('v-topics');v.innerHTML='';
-  v.appendChild(el('div','note','Two boxes per topic: can you <strong>explain</strong> it cold, and can you <strong>implement</strong> it from a blank file? Both ticked = owned.'));
+  v.appendChild(el('div','note','Two boxes per topic: can you <strong>explain</strong> it cold, and can you <strong>apply</strong> it in a derivation, design discussion, or small implementation? Both ticked = owned.'));
   let cur='';
   let tbl,tb;
   TOPICS.forEach((tp,i)=>{
     const cat=Array.isArray(tp)?tp[0]:tp.c, name=Array.isArray(tp)?tp[1]:tp.n;
     if(cat!==cur){cur=cat;
-      const card=el('div','card');card.appendChild(el('h3',null,cat));
-      tbl=el('table',null,'<thead><tr><th>Topic</th><th style="width:90px">Explain</th><th style="width:90px">Implement</th><th>Notes</th></tr></thead>');
+      const card=el('div','card table-card');card.appendChild(el('h3',null,cat));
+      tbl=el('table',null,'<thead><tr><th>Topic</th><th style="width:90px">Explain</th><th style="width:90px">Apply</th><th>Notes</th></tr></thead>');
       tb=el('tbody');tbl.appendChild(tb);card.appendChild(tbl);v.appendChild(card);}
     const o=S.topics[i]||(S.topics[i]={explain:false,implement:false,notes:''});
     const tr=el('tr');
@@ -472,7 +685,7 @@ function logToolbar(label){
   const sp=el('div','sp');
   const exp=el('button','btn sm','⤓ Export');
   const imp=el('button','btn sm','⤒ Import');
-  const saved=el('span','savedtag','saved ✓');saved.id='savedtag';
+  const saved=el('span','savedtag','saved ✓');
   exp.onclick=exportData;imp.onclick=importData;
   t.append(add,sp,saved,exp,imp);
   return {bar:t,add};
@@ -492,7 +705,8 @@ function importData(){
 function renderLeet(){
   const v=document.getElementById('v-leet');v.innerHTML='';
   const {bar,add}=logToolbar();v.appendChild(el('h3',null,'LeetCode Log'));v.appendChild(bar);
-  const card=el('div','card');
+  v.appendChild(el('div','note','A realistic 45-minute session is one new pattern plus one untimed problem, or one familiar problem under interview conditions. Track quality and revisits instead of maximizing problem count.'));
+  const card=el('div','card table-card');
   const tbl=el('table',null,'<thead><tr><th>Date</th><th>Problem</th><th>Pattern</th><th>Diff</th><th>Unaided</th><th>Min</th><th>Revisit</th><th>Notes</th><th></th></tr></thead>');
   const tb=el('tbody');tbl.appendChild(tb);card.appendChild(tbl);v.appendChild(card);
   function rowEl(r,idx){
@@ -522,7 +736,7 @@ function renderLeet(){
 function renderMocks(){
   const v=document.getElementById('v-mocks');v.innerHTML='';
   const {bar,add}=logToolbar();v.appendChild(el('h3',null,'Mock Interview Log'));v.appendChild(bar);
-  const card=el('div','card');
+  const card=el('div','card table-card');
   const tbl=el('table',null,'<thead><tr><th>Date</th><th>Type</th><th>With</th><th>Score</th><th>Went well</th><th>To fix</th><th></th></tr></thead>');
   const tb=el('tbody');tbl.appendChild(tb);card.appendChild(tbl);v.appendChild(card);
   const types=['','ML coding','General coding','Technical discussion','Research discussion','Behavioral','Math','Job talk'];
@@ -550,7 +764,7 @@ function renderPipe(){
   const v=document.getElementById('v-pipe');v.innerHTML='';
   const {bar,add}=logToolbar();v.appendChild(el('h3',null,'Company Pipeline'));v.appendChild(bar);
   v.appendChild(el('div','note','Sequence: 1–2 practice companies first, then cluster the ones you want so offers land together for negotiation — but watch your stamina. Always negotiate; initial offers leave room by design.'));
-  const card=el('div','card');
+  const card=el('div','card table-card');
   const tbl=el('table',null,'<thead><tr><th>Company</th><th>Role</th><th>Priority</th><th>Stage</th><th>Next step</th><th>Notes</th><th></th></tr></thead>');
   const tb=el('tbody');tbl.appendChild(tb);card.appendChild(tbl);v.appendChild(card);
   const stages=['','Networking','Applied','Recruiter call','Phone screen','Onsite/loop','Offer','Negotiating','Accepted','Withdrawn','Rejected','Ghosted'];
@@ -616,7 +830,7 @@ function renderRes(){
 function renderSettings(){
   const v=document.getElementById('v-settings');if(!v)return;v.innerHTML='';
   const s=S.settings;
-  const back=el('button','btn sm','← Back to checklist'); back.style.marginBottom='14px'; back.onclick=()=>show('plan'); v.appendChild(back);
+  const back=el('button','btn sm','← Back to Today'); back.style.marginBottom='14px'; back.onclick=()=>show('dash'); v.appendChild(back);
   v.appendChild(el('div','note','Changing the <strong>start date</strong> re-dates all 14 weeks; changing a <strong>day</strong> re-labels that session across the plan. Saved and synced with your progress.'));
 
   const c=el('div','card');c.appendChild(el('h3',null,'Your plan'));
@@ -650,12 +864,20 @@ function renderSettings(){
   const rb=el('button','btn sm','Reset dates & days to defaults');
   rb.onclick=()=>{s.startDate=DEF_START;s.targetDate=DEF_TARGET;s.days=['Mon','Tue','Wed','Thu','Sat','Sun'];save();renderAllViews();show('settings');};
   rc.appendChild(rb);v.appendChild(rc);
+
+  const data=el('div','card');data.appendChild(el('h3',null,'Data and privacy'));
+  const privacy=el('p','muted');privacy.textContent=`Signed in as ${activeEmail||'—'}. Progress is stored under your account and cached locally using an account-specific key.`;data.appendChild(privacy);
+  const actions=el('div','row-actions');
+  const exp=el('button','btn sm','Download backup');exp.type='button';exp.onclick=exportData;
+  const imp=el('button','btn sm','Import backup');imp.type='button';imp.onclick=importData;
+  actions.append(exp,imp);data.appendChild(actions);v.appendChild(data);
 }
 
 /* ---------- badges ---------- */
 function updateBadges(){
   const set=(id,txt)=>{const e=document.getElementById('badge-'+id);if(e)e.textContent=txt;};
   let pt=0,pd=0;WEEKS.forEach((w,i)=>{pt+=weekTotal(i);pd+=weekDone(i)});
+  const ci=currentWeekIdx();set('dash',WEEKS.length?(weekDone(ci)+'/'+weekTotal(ci)):'');
   set('plan',pd+'/'+pt);
   let tt=TOPICS.length,td=0;TOPICS.forEach((_,i)=>{const o=S.topics[i]||{};if(o.explain&&o.implement)td++});
   set('topics',td+'/'+tt);
@@ -668,15 +890,23 @@ function updateBadges(){
 }
 
 /* ---------- refresh ---------- */
-function refreshAll(){refreshHeader();
-  if(document.getElementById('v-plan').classList.contains('on'))renderPlan();
+function refreshAll(){
+  refreshHeader();updateBadges();
+  const active=document.querySelector('.view.on');
+  const id=active?active.id.replace('v-',''):'dash';
+  const renders={dash:renderDash,plan:renderPlan,topics:renderTopics,leet:renderLeet,mocks:renderMocks,
+    pipe:renderPipe,story:renderStory,res:renderRes,settings:renderSettings};
+  if(renders[id])renders[id]();
 }
 
 /* ---------- init ---------- */
-renderPlan();renderSettings();refreshHeader();renderStorageBar();
-(function(){const s=document.getElementById('skip-auth');if(s)s.onclick=(e)=>{e.preventDefault();const o=document.getElementById('loginoverlay');if(o)o.style.display='none';};})();
-window.__showLogin=function(){const o=document.getElementById('loginoverlay');if(o)o.style.display='flex';};
-show('plan');
+buildNav();renderAllViews();renderStorageBar();
+const initial=(location.hash||'#dash').slice(1);
+show(TABS.some(([id])=>id===initial)?initial:'dash');
+window.addEventListener('hashchange',()=>{
+  const id=(location.hash||'#dash').slice(1);
+  if(TABS.some(([tabId])=>tabId===id))show(id);
+});
 </script>
 
 <!-- ============================================================
@@ -688,7 +918,7 @@ show('plan');
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
   import { getAuth, setPersistence, browserLocalPersistence, onAuthStateChanged, GoogleAuthProvider,
-           signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut }
+           signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut }
            from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
   import { initializeFirestore, doc, getDoc, setDoc, onSnapshot }
            from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
@@ -710,6 +940,8 @@ show('plan');
     if(g('g-signin')) g('g-signin').onclick=()=>window.__signInGoogle&&window.__signInGoogle();
     if(g('e-signin')) g('e-signin').onclick=()=>window.__signInEmail&&window.__signInEmail();
     if(g('e-register')) g('e-register').onclick=()=>window.__registerEmail&&window.__registerEmail();
+    if(g('e-reset')) g('e-reset').onclick=()=>window.__resetPassword&&window.__resetPassword();
+    if(g('auth-pass'))g('auth-pass').onkeydown=e=>{if(e.key==='Enter')window.__signInEmail&&window.__signInEmail();};
   };
   wire();
 
@@ -722,9 +954,8 @@ show('plan');
     setPersistence(auth, browserLocalPersistence).catch(()=>{});
     let userRef=null, unsub=null, writeTimer=null;
     const friendly=(e)=>{const c=(e&&e.code)||'';
-      if(c.includes('invalid-credential')||c.includes('wrong-password')) return 'Wrong email or password (or no account yet — try "Create account").';
-      if(c.includes('user-not-found')) return 'No account with that email — click "Create account".';
-      if(c.includes('email-already-in-use')) return 'That email already has an account — use Sign in.';
+      if(c.includes('invalid-credential')||c.includes('wrong-password')||c.includes('user-not-found')) return 'Could not sign in with that email and password.';
+      if(c.includes('email-already-in-use')) return 'Could not create the account. Try signing in or resetting the password.';
       if(c.includes('weak-password')) return 'Password should be at least 6 characters.';
       if(c.includes('invalid-email')) return 'That doesn\'t look like a valid email.';
       if(c.includes('operation-not-allowed')) return 'Email/Password sign-in is OFF in Firebase → Authentication → Sign-in method. Enable it.';
@@ -739,29 +970,37 @@ show('plan');
       window.__authError(''); signInWithEmailAndPassword(auth,em,pw).catch(e=>window.__authError(friendly(e)));};
     window.__registerEmail=()=>{const em=document.getElementById('auth-email').value.trim(),pw=document.getElementById('auth-pass').value;
       window.__authError(''); createUserWithEmailAndPassword(auth,em,pw).catch(e=>window.__authError(friendly(e)));};
+    window.__resetPassword=()=>{const em=document.getElementById('auth-email').value.trim();
+      if(!em){window.__authError('Enter your email address first.');return}
+      window.__authError('');sendPasswordResetEmail(auth,em)
+        .then(()=>window.__authError('If an account exists for that address, a reset email has been sent.'))
+        .catch(e=>window.__authError(friendly(e)));};
     window.__signOut=()=>signOut(auth);
     window.__cloudSave=(state)=>{ if(!userRef)return; clearTimeout(writeTimer);
-      writeTimer=setTimeout(()=>{ setDoc(userRef,{state,updated:Date.now()},{merge:true}).catch(()=>{}); },300); };
+      window.__syncState('saving');
+      writeTimer=setTimeout(()=>{ setDoc(userRef,{state,updated:Date.now()},{merge:true})
+        .then(()=>window.__syncState('synced')).catch(()=>window.__syncState('error')); },300); };
 
     onAuthStateChanged(auth, async (user)=>{
       if(user){
         userRef=doc(db,'users',user.uid);
+        window.__prepareUser(user.uid,user.email || '(signed in)');
+        window.__onLogin();
         // 1) load the shared plan content (gated behind auth by security rules)
         try{ const pc=await getDoc(doc(db,'content','plan'));
           if(pc.exists()){ window.__applyPlan(pc.data()); } else { window.__planMissing(); } }
-        catch(e){ window.__planMissing(); }
+        catch(e){ if(!window.__hasPlan())window.__planMissing(); }
         // 2) load this user's progress
         try{
           const snap=await getDoc(userRef);
           if(snap.exists() && snap.data().state){ window.__applyRemote(snap.data().state); }
-          else { window.__cloudSave(window.__getState()); }   // first login: seed from this device
+          else { window.__cloudSave(window.__getState()); }
         }catch(e){ window.__authError(friendly(e)); }
-        window.__onLogin(user.email || '(signed in)');
         if(unsub)unsub();
         unsub=onSnapshot(userRef,(s)=>{ if(s.metadata.hasPendingWrites)return;
           const d=s.data(); if(d&&d.state) window.__applyRemote(d.state); });
       } else {
-        if(unsub){unsub();unsub=null;} userRef=null; window.__onLogout();
+        if(unsub){unsub();unsub=null;} userRef=null;window.__syncStatus='';window.__onLogout();
       }
     });
   }
