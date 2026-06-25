@@ -468,7 +468,8 @@ function renderTopics(){
   v.appendChild(el('div','note','Two boxes per topic: can you <strong>explain</strong> it cold, and can you <strong>implement</strong> it from a blank file? Both ticked = owned.'));
   let cur='';
   let tbl,tb;
-  TOPICS.forEach(([cat,name],i)=>{
+  TOPICS.forEach((tp,i)=>{
+    const cat=Array.isArray(tp)?tp[0]:tp.c, name=Array.isArray(tp)?tp[1]:tp.n;
     if(cat!==cur){cur=cat;
       const card=el('div','card');card.appendChild(el('h3',null,cat));
       tbl=el('table',null,'<thead><tr><th>Topic</th><th style="width:90px">Explain</th><th style="width:90px">Implement</th><th>Notes</th></tr></thead>');
@@ -719,12 +720,13 @@ show(TABS.some(t=>t[0]===start)?start:'dash');
 
   // ---------- PASTE YOUR FIREBASE CONFIG HERE ----------
   const firebaseConfig = {
-    apiKey: "PASTE_API_KEY",
-    authDomain: "PASTE_PROJECT.firebaseapp.com",
-    projectId: "PASTE_PROJECT_ID",
-    storageBucket: "PASTE_PROJECT.appspot.com",
-    messagingSenderId: "PASTE_SENDER_ID",
-    appId: "PASTE_APP_ID"
+    apiKey: "AIzaSyCPqPOeFJR6Fcdckh00EjQ-2jbJW8D_L5g",
+    authDomain: "rs-interview-prep.firebaseapp.com",
+    projectId: "rs-interview-prep",
+    storageBucket: "rs-interview-prep.firebasestorage.app",
+    messagingSenderId: "313793650421",
+    appId: "1:313793650421:web:32cc5f747cf39c88796fbc",
+    measurementId: "G-ZSLZ55E3MJ"
   };
   // -----------------------------------------------------
 
