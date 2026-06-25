@@ -715,7 +715,7 @@ show(TABS.some(t=>t[0]===start)?start:'dash');
   import { getAuth, setPersistence, browserLocalPersistence, onAuthStateChanged, GoogleAuthProvider,
            signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut }
            from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-  import { getFirestore, doc, getDoc, setDoc, onSnapshot }
+  import { initializeFirestore, doc, getDoc, setDoc, onSnapshot }
            from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
   // ---------- PASTE YOUR FIREBASE CONFIG HERE ----------
@@ -743,7 +743,7 @@ show(TABS.some(t=>t[0]===start)?start:'dash');
   } else {
     const app=initializeApp(firebaseConfig);
     const auth=getAuth(app);
-    const db=getFirestore(app);
+    const db=initializeFirestore(app,{experimentalAutoDetectLongPolling:true},'default');
     setPersistence(auth, browserLocalPersistence).catch(()=>{});
     let userRef=null, unsub=null, writeTimer=null;
     const friendly=(e)=>{const c=(e&&e.code)||'';
