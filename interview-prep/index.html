@@ -33,7 +33,6 @@
     padding:9px 12px;cursor:pointer;font-size:13px;font-weight:600;margin-bottom:-1px;white-space:nowrap}
   nav button:hover{color:var(--ink)}
   nav button.on{color:var(--accent);border-bottom-color:var(--accent)}
-  nav button .b{display:inline-block;min-width:18px;font-size:11px;color:var(--mut);margin-left:6px;font-weight:500}
   main{padding:24px 26px 80px;max-width:1080px;margin:0 auto}
   .view{display:none}
   .view.on{display:block}
@@ -92,7 +91,6 @@
   .kpi b{font-size:22px;display:block;font-weight:700}
   .kpi .card span{font-size:11.5px;color:var(--mut)}
   .note{font-size:12.5px;color:var(--mut);background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--accent);padding:9px 12px;border-radius:0 6px 6px 0;margin:8px 0}
-  .quick-actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 2px}
   .empty{padding:34px 20px;text-align:center;color:var(--mut)}
   .toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
   .toolbar .sp{flex:1}
@@ -452,7 +450,7 @@ function renderStorageBar(needReconnect){
 }
 function renderAllViews(){
   renderDash();renderPlan();renderTopics();renderLeet();renderMocks();renderPipe();renderStory();renderRes();renderSettings();
-  refreshHeader();updateBadges();
+  refreshHeader();
 }
 
 /* ---------- helpers ---------- */
@@ -494,7 +492,7 @@ const TABS=[['dash','Today'],['plan','Plan'],['topics','Topics'],['leet','Coding
 function buildNav(){
   const nav=document.getElementById('nav');if(!nav)return;nav.innerHTML='';
   TABS.forEach(([id,label])=>{
-    const b=el('button',null,label+'<span class="b" id="badge-'+id+'"></span>');
+    const b=el('button',null,label);
     b.type='button';b.id='tab-'+id;b.onclick=()=>show(id);nav.appendChild(b);
   });
 }
@@ -550,22 +548,9 @@ function renderDash(){
       }
     }
   }
-  const qa=el('div','quick-actions');
-  [['Open full plan','plan'],['Review topic mastery','topics'],['Log a mock','mocks'],['Update companies','pipe']].forEach(([label,id])=>{
-    const b=el('button','btn sm',label);b.type='button';b.onclick=()=>show(id);qa.appendChild(b);
-  });
-  focus.appendChild(qa);v.appendChild(focus);
-
-  const c=el('div','card');c.appendChild(el('h3',null,'Readiness by area'));
-  [['Plan execution',planPct()],['Topic mastery',topicsPct()],['Behavioral stories',storyPct()],
-    ['Resources reviewed',resPct()]].forEach(([n,p])=>{
-    c.appendChild(el('div',null,`<div style="display:flex;justify-content:space-between;font-size:13px;margin:10px 0 4px">
-      <span>${n}</span><span class="muted">${pct(p)}</span></div><div class="bar"><i style="width:${pct(p)}"></i></div>`));
-  });
-  v.appendChild(c);
+  v.appendChild(focus);
   v.appendChild(el('div','note','Aim for consistent execution, not perfect completion. If a session slips, move it to the nearest open block and preserve the weekly build or mock.'));
   v.appendChild(el('p','page-foot','Methodology inspired by <a href="https://alisawuffles.github.io/blog/job-search/" target="_blank" rel="noopener">Alisa Liu’s notes on the industry job search</a>, adapted for research scientist roles in generative vision and multimodal ML.'));
-  updateBadges();
 }
 function sessionParts(si,rawTitle){
   const bits=rawTitle.split(' · ');
@@ -881,25 +866,9 @@ function renderSettings(){
   actions.append(exp,imp);data.appendChild(actions);v.appendChild(data);
 }
 
-/* ---------- badges ---------- */
-function updateBadges(){
-  const set=(id,txt)=>{const e=document.getElementById('badge-'+id);if(e)e.textContent=txt;};
-  let pt=0,pd=0;WEEKS.forEach((w,i)=>{pt+=weekTotal(i);pd+=weekDone(i)});
-  const ci=currentWeekIdx();set('dash',WEEKS.length?(weekDone(ci)+'/'+weekTotal(ci)):'');
-  set('plan',pd+'/'+pt);
-  let tt=TOPICS.length,td=0;TOPICS.forEach((_,i)=>{const o=S.topics[i]||{};if(o.explain&&o.implement)td++});
-  set('topics',td+'/'+tt);
-  set('leet',leetCount());
-  set('mocks',S.mocks.filter(m=>m.type).length);
-  set('pipe',S.pipe.filter(p=>p.company).length||'');
-  let sd=0;STORY_CATS.forEach(c=>{if(S.storyReady[c])sd++});set('story',sd+'/'+STORY_CATS.length);
-  let rt=0,rd=0;RESOURCES.forEach((g,gi)=>g.items.forEach((_,ii)=>{rt++;if(S.resReviewed[gi+'#'+ii])rd++}));
-  set('res',rd+'/'+rt);
-}
-
 /* ---------- refresh ---------- */
 function refreshAll(){
-  refreshHeader();updateBadges();
+  refreshHeader();
   const active=document.querySelector('.view.on');
   const id=active?active.id.replace('v-',''):'dash';
   const renders={dash:renderDash,plan:renderPlan,topics:renderTopics,leet:renderLeet,mocks:renderMocks,
