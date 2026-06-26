@@ -162,7 +162,7 @@
     <h2>Research Scientist Interview Prep</h2>
     <p class="sub">A structured plan for ML coding, research depth, mock interviews, and the job-search pipeline.</p>
     <ul class="authfeatures">
-      <li>Fourteen-week guided preparation plan</li>
+      <li>Sixteen-week guided preparation plan with personalization</li>
       <li>Topic mastery, coding, mock, and story trackers</li>
       <li>Private progress synchronized across devices</li>
     </ul>
@@ -217,143 +217,74 @@
 
 <script>
 /* ---------- dates (user-configurable via Settings) ---------- */
-const DEF_START='2026-06-29', DEF_TARGET='2026-10-05';
+const DEF_START='2026-06-29', DEF_TARGET='2026-10-19';
 function getStart(){const v=(typeof S!=='undefined'&&S.settings&&S.settings.startDate)||DEF_START;return new Date(v+'T00:00:00');}
 function getTarget(){const v=(typeof S!=='undefined'&&S.settings&&S.settings.targetDate)||DEF_TARGET;return new Date(v+'T00:00:00');}
 function fmtD(d){return d.toLocaleDateString(undefined,{month:'short',day:'numeric'});}
 function weekDateLabel(i){const a=new Date(getStart());a.setDate(a.getDate()+i*7);const b=new Date(a);b.setDate(b.getDate()+6);return fmtD(a)+' – '+fmtD(b);}
 
-/* ---------- plan content (loaded from Firestore after login; refined locally for realistic pacing) ---------- */
-let WEEKS=[], PHASES={}, TOPICS=[], STORY_CATS=[], RESOURCES=[];
+/* ---------- plan content (loaded from Firestore after login; personalized at render time) ---------- */
+let WEEKS=[], PHASES={}, TOPICS=[], STORY_CATS=[], RESOURCES=[], PACING={};
+let PERSONALIZATION={vars:{},branches:{}};
+let RAW_PLAN=null;
 let activeUid=null, activeEmail='', activeKey=null;
 const PLANKEY='ipcc_plan_v2';
 const planKeyForUid=uid=>PLANKEY+':'+uid;
 let planError='';
-const PLAN_REFINEMENT_VERSION=2;
-const PROJECT_NAMES=[
-  /ConceptAttention/i, /\bCLoRA\b/i, /\bCONFORM\b/, /\bMotionFlow\b/i, /\bMotionShop\b/i,
-  /\bSteerCLR\b/i, /\bInfinity[- ]RoPE\b/i, /\bMITHRIL\b/i,
-  /Conditional Information Gain Trellis/i, /\bCIGT\b/, /Aligning Latent Geometry/i,
-  /Spherical Flow Matching/i
-];
-const LINEAR_ALGEBRA_REVIEWS=[
-  'Linear algebra review (45 min): vectors, matrix shapes, inner products, norms, and geometric interpretations. Work 2 short examples and write a 5-line summary.',
-  'Linear algebra review (45 min): eigendecomposition, SVD, PCA, and when each is useful in ML. Work through one small matrix example.',
-  'Linear algebra review (45 min): rank, projections, least squares, conditioning, and positive semidefinite matrices. Solve 2 short derivations.',
-  'Linear algebra review (45 min): gradients with vectors and matrices, Jacobians, the chain rule, and trace notation. Derive 2 common ML gradients.'
-];
-const LAMBERT_RL_TASK='RL / post-training review (45 min): use Nathan Lambert’s RLHF Book to review the RL setup, rewards, policies, and the canonical post-training pipeline. Write a one-page concept map; do not try to finish the book.';
-const LAMBERT_RL_RESOURCE={
-  t:'Nathan Lambert — Reinforcement Learning from Human Feedback',
-  u:'https://rlhfbook.com/',
-  d:'Use selectively: start with the RL primer and canonical RLHF pipeline, then revisit reward modeling or policy optimization as needed.',
-  s:false
-};
-function projectSpecificTask(t){return PROJECT_NAMES.some(r=>r.test(t||''))}
-function generalizeProjectTask(t){
-  if(/\b(present|presentation|pitch|talk|explain|whiteboard)\b/i.test(t))
-    return 'Choose one representative project from your portfolio and practice a 3-minute explanation: problem, key idea, evidence, limitations, and your exact contribution.';
-  if(/\b(read|review|paper|code|repo|implementation)\b/i.test(t))
-    return 'Review one representative project from your portfolio: problem, key idea, strongest evidence, limitation, and one credible follow-up experiment.';
-  return 'Use one representative project from your portfolio to practice discussing the main technical decision, alternatives considered, evidence, and limitations.';
-}
-function realisticCodingTask(t){
-  const text=t||'';
-  const learningPattern=/(?:learn|study|new|introduc\w*)[^.]{0,80}pattern|pattern[^.]{0,80}(?:learn|study|new)/i.test(text);
-  const twoOrMore=/\b(?:2|3|4|5|6|two|three|four|five|six)\b(?:\s+\w+){0,4}\s+(?:LeetCode\s+)?(?:problems?|questions?)/i.test(text);
-  const fourOrMore=/\b(?:4|5|6|four|five|six)\b(?:\s+\w+){0,4}\s+(?:LeetCode\s+)?(?:problems?|questions?)/i.test(text);
-  if(learningPattern&&twoOrMore)
-    return 'Learn one coding pattern (45 min): study one worked example, then solve 1 problem untimed. If time remains, outline or revisit a second problem.';
-  if(fourOrMore&&/\b(?:LeetCode|problems?|questions?|solve)\b/i.test(text))
-    return 'Coding practice (45 min): solve 1 interview-style problem with a 30–35 minute cap, then review the solution and record one takeaway. A second problem is optional.';
-  return text;
-}
-function realisticStudyTask(t){
-  const text=t||'';
-  const severalPapers=/\b(?:3|4|5|6|three|four|five|six)\b(?:\s+\w+){0,3}\s+papers?\b/i.test(text);
-  const fullBuild=/\b(?:implement|build|reproduce)\b[^.]{0,100}\b(?:from scratch|end[- ]to[- ]end|full|complete)\b/i.test(text);
-  if(severalPapers)
-    return 'Paper review (45 min): read one paper strategically—abstract, method figure, main result, and limitations—then write 5 interview-ready bullets. Additional papers are optional.';
-  if(fullBuild)
-    return 'Implementation practice (45 min): build one minimal, testable component and explain its inputs, outputs, shapes, and failure modes. Continue the full implementation in a later block.';
-  return text;
-}
-function taskText(t){
-  const text=typeof t==='string'?t:(t&&typeof t.text==='string'?t.text:'');
-  let refined=projectSpecificTask(text)?generalizeProjectTask(text):text;
-  refined=realisticCodingTask(refined);
-  refined=realisticStudyTask(refined);
-  if(typeof t==='string')return refined;
-  return t&&typeof t==='object'?Object.assign({},t,{text:refined}):t;
-}
-function replaceReviewSlot(weeks,weekIndex,preferredSession,content){
-  const existing=[];
-  weeks.forEach((week,wi)=>(week.sessions||[]).forEach((session,si)=>(session.x||[]).forEach((task,ti)=>{
-    const text=typeof task==='string'?task:(task&&task.text)||'';
-    if(text===content)existing.push({week,wi,si,ti});
-  })));
-  if(existing.length){
-    const hit=existing[0];
-    return hit.week.id+'s'+hit.si+'#'+hit.ti;
-  }
-  const w=weeks[weekIndex];if(!w||!Array.isArray(w.sessions))return '';
-  let si=preferredSession;
-  if(!w.sessions[si])si=w.sessions.findIndex(s=>/\b(math|review|lecture|watch)\b/i.test(s.t||''));
-  const session=w.sessions[si];if(!session||!Array.isArray(session.x))return '';
-  const ti=session.x.length?session.x.length-1:0;
-  if(session.x.length)session.x[ti]=content;
-  else session.x.push(content);
-  return w.id+'s'+si+'#'+ti;
-}
-function refinePlan(raw){
-  if(!raw)return raw;
-  const p=JSON.parse(JSON.stringify(raw));
-  if(p.clientRefinementVersion===PLAN_REFINEMENT_VERSION)return p;
-  const weeks=Array.isArray(p.weeks)?p.weeks:[];
-  weeks.forEach(w=>(w.sessions||[]).forEach(s=>{if(Array.isArray(s.x))s.x=s.x.map(taskText)}));
+const PLAN_REFINEMENT_VERSION=3;
 
-  // Replace an existing review task rather than increasing the weekly workload.
-  const replacedKeys=[];
-  [0,3,6,9].forEach((wi,i)=>replacedKeys.push(replaceReviewSlot(weeks,wi,5,LINEAR_ALGEBRA_REVIEWS[i])));
-  replacedKeys.push(replaceReviewSlot(weeks,11,0,LAMBERT_RL_TASK));
-
-  const topics=Array.isArray(p.topics)?p.topics:(p.topics=[]);
-  const topicNames=topics.map(tp=>(Array.isArray(tp)?tp[1]:tp&&tp.n)||'').join(' ').toLowerCase();
-  [
-    ['Linear Algebra','Vectors, matrix shapes, inner products, and norms'],
-    ['Linear Algebra','Eigendecomposition, SVD, and PCA'],
-    ['Linear Algebra','Rank, projections, least squares, and conditioning'],
-    ['Linear Algebra','Matrix calculus, Jacobians, and the chain rule'],
-    ['RL & Post-training','Policies, rewards, policy gradients, RLHF, and direct alignment']
-  ].forEach(tp=>{if(!topicNames.includes(tp[1].toLowerCase()))topics.push(tp)});
-
-  const resources=Array.isArray(p.resources)?p.resources:(p.resources=[]);
-  const rlGroup=resources.find(g=>/\b(RL|reinforcement|alignment|post-training)\b/i.test(g.g||''));
-  const hasLambert=resources.some(g=>(g.items||[]).some(it=>/rlhfbook\.com|Nathan Lambert/i.test((it.u||'')+' '+(it.t||''))));
-  if(!hasLambert){
-    if(rlGroup){if(!Array.isArray(rlGroup.items))rlGroup.items=[];rlGroup.items.push(LAMBERT_RL_RESOURCE)}
-    else resources.push({g:'Reinforcement Learning & Post-training',items:[LAMBERT_RL_RESOURCE]});
-  }
-  p.clientReplacedTaskKeys=replacedKeys.filter(Boolean);
-  p.clientRefinementVersion=PLAN_REFINEMENT_VERSION;
-  return p;
+function userVars(){
+  const vars={};
+  const cfg=(typeof S!=='undefined'&&S&&S.userConfig)||{};
+  const defs=PERSONALIZATION.vars||{};
+  Object.keys(defs).forEach(k=>{
+    const v=(cfg[k]||'').toString().trim();
+    vars[k]=v||(defs[k]&&defs[k].default)||k;
+  });
+  return vars;
 }
-let REPLACED_TASK_KEYS=[];
+function userBranchChoice(branchId){
+  const cfg=(typeof S!=='undefined'&&S&&S.userConfig)||{};
+  const defs=PERSONALIZATION.branches||{};
+  const def=defs[branchId];
+  const choice=(cfg.branches&&cfg.branches[branchId])||(def&&def.default);
+  return choice;
+}
+function substituteVars(text,vars){
+  if(typeof text!=='string')return text;
+  return text.replace(/\{\{(\w+)\}\}/g,(m,k)=>vars[k]!=null?vars[k]:m);
+}
+function applyTrackFilter(weeks){
+  return (weeks||[]).filter(w=>{
+    if(!w.track)return true;
+    const branchId=w.trackOf||'w9';
+    return userBranchChoice(branchId)===w.track;
+  });
+}
 function migratePlanProgress(){
   if(typeof S==='undefined'||!S||S.planRefinementVersion>=PLAN_REFINEMENT_VERSION)return false;
   if(!S.weekTasks||typeof S.weekTasks!=='object')S.weekTasks={};
-  REPLACED_TASK_KEYS.forEach(key=>delete S.weekTasks[key]);
+  if((S.planRefinementVersion||0)<3) S.weekTasks={};
   S.planRefinementVersion=PLAN_REFINEMENT_VERSION;
   return true;
 }
+function rebuildWeeks(){
+  if(!RAW_PLAN)return;
+  const allWeeks=Array.isArray(RAW_PLAN.weeks)?RAW_PLAN.weeks:[];
+  allWeeks.forEach(w=>{if(w.track&&!w.trackOf)w.trackOf='w9';});
+  WEEKS=applyTrackFilter(allWeeks);
+}
 function setPlan(raw){
   if(!raw)return;
-  const p=refinePlan(raw);
-  WEEKS=Array.isArray(p.weeks)?p.weeks:[];PHASES=p.phases||{};TOPICS=p.topics||[];
-  STORY_CATS=p.stories||[];RESOURCES=p.resources||[];REPLACED_TASK_KEYS=p.clientReplacedTaskKeys||[];
+  RAW_PLAN=raw;
+  PERSONALIZATION=raw.personalization||{vars:{},branches:{}};
+  PACING=raw.pacing||{};
+  rebuildWeeks();
+  PHASES=raw.phases||{};TOPICS=raw.topics||[];
+  STORY_CATS=raw.stories||[];RESOURCES=raw.resources||[];
   planError='';const migrated=migratePlanProgress();
   try{
-    if(activeUid)localStorage.setItem(planKeyForUid(activeUid),JSON.stringify(p));
+    if(activeUid)localStorage.setItem(planKeyForUid(activeUid),JSON.stringify(raw));
     if(migrated&&activeKey)localStorage.setItem(activeKey,JSON.stringify(S));
   }catch(e){}
 }
@@ -364,7 +295,7 @@ window.__planMissing=function(){ planError="The preparation plan could not be lo
 /* ---------- state ---------- */
 const KEY='ipcc_v2';
 const DEFAULT={
-  schemaVersion:2,
+  schemaVersion:3,
   planRefinementVersion:0,
   weekTasks:{},        // "w1#0": true
   topics:{},           // idx: {explain:bool, implement:bool, status:''}
@@ -374,13 +305,21 @@ const DEFAULT={
   leet:[],             // {date,problem,pattern,diff,unaided,min,revisit,notes}
   mocks:[],            // {date,type,who,score,well,fix,follow}
   pipe:[],             // {company,role,priority,stage,recruiter,referral,applied,next,status,notes}
-  settings:{startDate:'2026-06-29',targetDate:'2026-10-05',days:['Mon','Tue','Wed','Thu','Sat','Sun'],name:''},
+  settings:{startDate:'2026-06-29',targetDate:'2026-10-19',days:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],name:''},
+  userConfig:{projectA:'',projectB:'',projectC:'',primaryLane:'',adjacentLane:'',targetLabA:'',targetLabB:'',branches:{w9:'interp'}},
 };
 function freshState(){return JSON.parse(JSON.stringify(DEFAULT))}
-function normSettings(o){const d={startDate:DEF_START,targetDate:DEF_TARGET,days:['Mon','Tue','Wed','Thu','Sat','Sun'],name:''};
-  const s=Object.assign({},d,o||{}); if(!Array.isArray(s.days)||s.days.length!==6)s.days=d.days.slice(); return s;}
+function normSettings(o){const d={startDate:DEF_START,targetDate:DEF_TARGET,days:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],name:''};
+  const s=Object.assign({},d,o||{}); if(!Array.isArray(s.days)||s.days.length<6)s.days=d.days.slice(); return s;}
+function normUserConfig(o){
+  const d={projectA:'',projectB:'',projectC:'',primaryLane:'',adjacentLane:'',targetLabA:'',targetLabB:'',branches:{w9:'interp'}};
+  const u=Object.assign({},d,o||{});
+  if(!u.branches||typeof u.branches!=='object')u.branches=Object.assign({},d.branches);
+  else u.branches=Object.assign({},d.branches,u.branches);
+  return u;
+}
 let S=freshState();
-function normalizeState(raw){const m=Object.assign(freshState(),raw||{});m.schemaVersion=2;m.settings=normSettings(m.settings);return m}
+function normalizeState(raw){const m=Object.assign(freshState(),raw||{});m.schemaVersion=3;m.settings=normSettings(m.settings);m.userConfig=normUserConfig(m.userConfig);return m}
 function loadForUser(uid){
   activeUid=uid;activeKey=KEY+':'+uid;
   WEEKS=[];PHASES={};TOPICS=[];STORY_CATS=[];RESOURCES=[];planError='';
@@ -540,7 +479,7 @@ function pct(x){return Math.round(x*100)+'%'}
 /* ---------- header ---------- */
 function refreshHeader(){
   const now=new Date();const st=getStart();
-  const wk = now<st ? ('Starts '+fmtD(st)) : ('Week '+(currentWeekIdx()+1)+' of '+(WEEKS.length||14));
+  const wk = now<st ? ('Starts '+fmtD(st)) : ('Week '+(currentWeekIdx()+1)+' of '+(WEEKS.length||16));
   const wl=document.getElementById('kWeekLabel'); if(wl)wl.textContent=wk;
   const sub=document.getElementById('sub'); if(sub)sub.textContent=(S.settings&&S.settings.name)||'Research Scientist · Generative Vision / Multimodal';
   const p=overallPct();
@@ -563,6 +502,10 @@ function show(id){
   document.querySelectorAll('#nav button').forEach(b=>b.classList.remove('on'));
   const v=document.getElementById('v-'+id);
   if(!v)return;
+  // Re-render the target view so checkmark state set on other tabs propagates here.
+  const renders={dash:renderDash,plan:renderPlan,topics:renderTopics,leet:renderLeet,mocks:renderMocks,
+    pipe:renderPipe,story:renderStory,res:renderRes,settings:renderSettings};
+  if(renders[id])renders[id]();
   v.classList.add('on');
   const tab=document.getElementById('tab-'+id);if(tab)tab.classList.add('on');
   if(tab)tab.scrollIntoView({block:'nearest',inline:'center'});
@@ -586,10 +529,26 @@ function renderDash(){
     <span class="pill p${w.phase}">${PHASES[w.phase]}</span></div>
     <div class="pr">${weekDateLabel(ci)} · ${done}/${tot} tasks complete</div><div class="mini"><i style="width:${tot?Math.round(done/tot*100):0}%"></i></div>`));
   const today=now.toLocaleDateString('en-US',{weekday:'short'});
-  let si=now<st?-1:(S.settings.days||[]).indexOf(today);
-  if(si<0||sessDone(w,si)===w.sessions[si].x.length)si=w.sessions.findIndex((_,idx)=>sessDone(w,idx)<w.sessions[idx].x.length);
-  if(si<0)focus.appendChild(el('div','empty','This week is complete. Use the extra time for a mock interview or targeted review.'));
-  else renderSession(focus,w,si);
+  // Pick the session to focus on: pre-start → session 0 (a preview); otherwise the session mapped to today.
+  // Never auto-advance when the focused session becomes complete — that's what made tasks "disappear"
+  // after the user checked them. Show "Next up" below instead.
+  let si = now<st ? 0 : (S.settings.days||[]).indexOf(today);
+  // Bounds-check: slack weeks (W5, W10) have only 3 sessions so today's index may exceed sessions.length.
+  if(si<0||si>=w.sessions.length){
+    si = w.sessions.findIndex((_,idx)=>sessDone(w,idx)<w.sessions[idx].x.length);
+  }
+  if(si<0||si>=w.sessions.length){
+    focus.appendChild(el('div','empty','This week is complete. Use the extra time for a mock interview or targeted review.'));
+  } else {
+    renderSession(focus,w,si);
+    if(sessDone(w,si)===w.sessions[si].x.length){
+      const nextSi=w.sessions.findIndex((_,idx)=>idx!==si&&sessDone(w,idx)<w.sessions[idx].x.length);
+      if(nextSi>=0){
+        focus.appendChild(el('div','note','This session is complete. Next up:'));
+        renderSession(focus,w,nextSi);
+      }
+    }
+  }
   const qa=el('div','quick-actions');
   [['Open full plan','plan'],['Review topic mastery','topics'],['Log a mock','mocks'],['Update companies','pipe']].forEach(([label,id])=>{
     const b=el('button','btn sm',label);b.type='button';b.onclick=()=>show(id);qa.appendChild(b);
@@ -615,7 +574,7 @@ function sessionParts(si,rawTitle){
 }
 function renderSession(parent,w,si){
   const s=w.sessions[si];const d=sessDone(w,si);const done=d===s.x.length;
-  const p=sessionParts(si,s.t);
+  const p=sessionParts(si,substituteVars(s.t,userVars()));
   const box=el('div','sess'+(done?' sdone':''));
   box.appendChild(el('div','sesshead',`<span class="sday">${p.day}</span><span class="stitle">${p.content}</span><span class="sct">${d}/${s.x.length}</span>`));
   s.x.forEach((t,ti)=>box.appendChild(taskRow(w,si,ti,t)));
@@ -627,7 +586,8 @@ function taskRow(w,si,ti,t){
   const cb=el('input');cb.type='checkbox';cb.checked=on;
   cb.onchange=()=>{S.weekTasks[key]=cb.checked;save();refreshAll()};
   lab.appendChild(cb);
-  const text=typeof t==='string'?t:(t&&t.text)||'';
+  const raw=typeof t==='string'?t:(t&&t.text)||'';
+  const text=substituteVars(raw,userVars());
   const span=el('span',null,text);
   span.querySelectorAll('a').forEach(an=>{an.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();window.open(an.href,'_blank','noopener')});});
   lab.appendChild(span);
@@ -830,12 +790,14 @@ function renderRes(){
 function renderSettings(){
   const v=document.getElementById('v-settings');if(!v)return;v.innerHTML='';
   const s=S.settings;
+  if(!S.userConfig)S.userConfig=normUserConfig();
+  const cfg=S.userConfig;
   const back=el('button','btn sm','← Back to Today'); back.style.marginBottom='14px'; back.onclick=()=>show('dash'); v.appendChild(back);
-  v.appendChild(el('div','note','Changing the <strong>start date</strong> re-dates all 14 weeks; changing a <strong>day</strong> re-labels that session across the plan. Saved and synced with your progress.'));
+  v.appendChild(el('div','note','Changing the <strong>start date</strong> re-dates every week; changing a <strong>day</strong> re-labels that session across the plan. Personalization fields below are substituted into the task text so it reads as your plan.'));
 
   const c=el('div','card');c.appendChild(el('h3',null,'Your plan'));
   const nameW=el('div',null,'<label class="setlbl">Header label (shown under the title)</label>');
-  const name=el('input');name.type='text';name.value=s.name||'';name.placeholder='e.g. Tuna · RS / RE / MTS · Vision/ML';
+  const name=el('input');name.type='text';name.value=s.name||'';name.placeholder='e.g. Your name · RS / RE / MTS · Vision/ML';
   name.oninput=()=>{s.name=name.value;save();const sub=document.getElementById('sub');if(sub)sub.textContent=s.name||'Interview Prep';};
   nameW.appendChild(name);c.appendChild(nameW);
   const dRow=el('div','setrow');
@@ -846,12 +808,57 @@ function renderSettings(){
   dRow.appendChild(mkDate('Target interview date','targetDate'));
   c.appendChild(dRow);v.appendChild(c);
 
+  /* ---- Personalization: variable substitutions ---- */
+  const varDefs=(PERSONALIZATION&&PERSONALIZATION.vars)||{};
+  const varKeys=Object.keys(varDefs);
+  if(varKeys.length){
+    const pc=el('div','card');pc.appendChild(el('h3',null,'Personalize the plan'));
+    pc.appendChild(el('div',null,'<div class="muted" style="font-size:12.5px;margin-bottom:8px">Names and labels you enter here are substituted into every task. Leave a field blank to keep the generic label.</div>'));
+    const pRow=el('div','setrow');
+    varKeys.forEach(k=>{
+      const def=varDefs[k]||{};
+      const w=el('div');
+      w.innerHTML='<label class="setlbl">'+(def.label||k)+'</label>';
+      const inp=el('input');inp.type='text';inp.value=cfg[k]||'';inp.placeholder=def.default||'';
+      inp.oninput=()=>{cfg[k]=inp.value;save();refreshAll();};
+      w.appendChild(inp);pRow.appendChild(w);
+    });
+    pc.appendChild(pRow);v.appendChild(pc);
+  }
+
+  /* ---- Personalization: branchable weeks (e.g. W9 interp vs post-training) ---- */
+  const branchDefs=(PERSONALIZATION&&PERSONALIZATION.branches)||{};
+  const branchKeys=Object.keys(branchDefs);
+  if(branchKeys.length){
+    const bc=el('div','card');bc.appendChild(el('h3',null,'Weekly focus options'));
+    branchKeys.forEach(k=>{
+      const def=branchDefs[k]||{};
+      const w=el('div');
+      w.innerHTML='<label class="setlbl">'+(def.label||k)+'</label>'+(def.help?'<div class="muted" style="font-size:12px;margin:0 0 6px">'+def.help+'</div>':'');
+      const sel=el('select');
+      (def.options||[]).forEach(o=>{const op=el('option',null,o.label);op.value=o.id;sel.appendChild(op);});
+      if(!cfg.branches)cfg.branches={};
+      sel.value=cfg.branches[k]||def.default||'';
+      sel.onchange=()=>{cfg.branches[k]=sel.value;save();rebuildWeeks();renderAllViews();};
+      w.appendChild(sel);bc.appendChild(w);
+    });
+    v.appendChild(bc);
+  }
+
   const dc=el('div','card');dc.appendChild(el('h3',null,'Study days'));
-  dc.appendChild(el('div',null,'<div class="muted" style="font-size:12.5px;margin-bottom:8px">Set the weekday for each of your 6 weekly sessions. These labels appear on every week\'s cards.</div>'));
-  const slots=['Session 1 — lecture / watch','Session 2 — LeetCode','Session 3 — note / consolidate','Session 4 — read for the build','Session 5 — build (longer block)','Session 6 — math / review'];
+  dc.appendChild(el('div',null,'<div class="muted" style="font-size:12.5px;margin-bottom:8px">Each row sets the weekday for a session slot. The plan ships with Mon–Sun; remap if your study week is shifted (e.g., weekend off Wed/Thu).</div>'));
+  const slotLabels=[
+    'Slot 1 — weeknight (default Mon)',
+    'Slot 2 — weeknight LeetCode (default Tue)',
+    'Slot 3 — weeknight (default Wed)',
+    'Slot 4 — weeknight (default Thu)',
+    'Slot 5 — Friday rotation (default Fri)',
+    'Slot 6 — long block A (default Sat)',
+    'Slot 7 — long block B (default Sun)'
+  ];
   const DOW=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
   const grid=el('div','setdays');
-  slots.forEach((lbl,i)=>{
+  slotLabels.forEach((lbl,i)=>{
     const w=el('div');w.innerHTML='<label class="setlbl">'+lbl+'</label>';
     const sel=el('select');DOW.forEach(d=>{const o=el('option',null,d);o.value=d;sel.appendChild(o)});
     sel.value=s.days[i]||DOW[i];
@@ -862,7 +869,7 @@ function renderSettings(){
 
   const rc=el('div','card');
   const rb=el('button','btn sm','Reset dates & days to defaults');
-  rb.onclick=()=>{s.startDate=DEF_START;s.targetDate=DEF_TARGET;s.days=['Mon','Tue','Wed','Thu','Sat','Sun'];save();renderAllViews();show('settings');};
+  rb.onclick=()=>{s.startDate=DEF_START;s.targetDate=DEF_TARGET;s.days=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];save();renderAllViews();show('settings');};
   rc.appendChild(rb);v.appendChild(rc);
 
   const data=el('div','card');data.appendChild(el('h3',null,'Data and privacy'));
