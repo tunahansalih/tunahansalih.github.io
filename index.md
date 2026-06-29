@@ -15,10 +15,6 @@ published: true
     My recent work spans controllable generation, diffusion model distillation, and analysis of how generative models
     represent concepts internally. I want to understand why these systems behave the way they do, not just improve their outputs.
   </p>
-  <p class="home-hero__summary">
-    My papers have appeared at CVPR, ICCV, ICML, and AAAI. Before my PhD, I spent several years building production
-    machine learning systems. I have also interned at Waymo, Amazon, and Adobe during my PhD.
-  </p>
   <div class="research-interests">
     <span class="research-tag">Diffusion Models</span>
     <span class="research-tag">Video Generation</span>
@@ -27,6 +23,13 @@ published: true
     <span class="research-tag">Model Distillation</span>
     <span class="research-tag">Flow Matching</span>
   </div>
+  <nav class="home-link-list" aria-label="Profile links">
+    <a href="{{ '/resume/' | relative_url }}">Resume</a>
+    <a href="https://scholar.google.com/citations?user={{ site.owner.google.scholar }}" target="_blank" rel="noopener">Google Scholar</a>
+    <a href="https://linkedin.com/in/{{ site.owner.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:{{ site.owner.email }}">Email</a>
+    <a href="https://github.com/{{ site.owner.github }}" target="_blank" rel="noopener">GitHub</a>
+  </nav>
 </div>
 
 <section class="recruiter-callout" aria-label="Recruiting availability">
@@ -44,7 +47,7 @@ published: true
   </a>
 </section>
 
-## Selected Highlights
+## Highlights
 <ul class="home-highlights">
   <li>Publications at CVPR 2026, AAAI 2026, ICCV 2025 (Highlight), ICML 2025 (Oral), and CVPR 2024.</li>
   <li>Research internships at Waymo (2026), Amazon (2025), and Adobe (2024).</li>
@@ -52,7 +55,7 @@ published: true
   <li>Co-organizer of the ICCV 2025 and CVPR 2026 Personalization in Generative AI (P13N) workshops.</li>
 </ul>
 
-## Current and Recent Roles
+## Experience
 <ul class="home-highlights">
   <li><strong>Waymo</strong> - Research Intern (May 2026 - Present)</li>
   <li><strong>Virginia Tech</strong> - Research Assistant (Aug 2023 - Present)</li>

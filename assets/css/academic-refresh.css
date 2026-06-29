@@ -1,17 +1,17 @@
 :root {
-  --paper: #ffffff;
+  --paper: #fbfaf7;
   --paper-strong: #ffffff;
   --surface: #ffffff;
-  --surface-alt: #f8fafc;
+  --surface-alt: #f7f6f2;
   --ink: #1f2933;
-  --ink-muted: #4c5a67;
+  --ink-muted: #4b5563;
   --ink-soft: #626f7d;
-  --line: #d0d6de;
+  --line: #ded8d2;
   --line-strong: #c3cbd5;
-  --accent: #163a5f;
-  --accent-soft: #2a527c;
-  --accent-2: #7b3c24;
-  --accent-light: rgba(22, 58, 95, 0.08);
+  --accent: #1f4e79;
+  --accent-soft: #356f9f;
+  --accent-2: #8a4b2a;
+  --accent-light: rgba(31, 78, 121, 0.08);
   --code-surface: #f7f9fc;
   --code-line: #d8e0ea;
   --code-ink: #1b2b40;
@@ -610,14 +610,13 @@ article.page ol {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.85rem;
   max-width: var(--content-max);
-  margin: 1.15rem 0 1.65rem;
-  padding: 1rem 1.05rem;
-  border: 1px solid color-mix(in srgb, var(--accent) 34%, var(--line));
-  border-left: 4px solid var(--accent);
-  border-radius: 4px;
-  background: color-mix(in srgb, var(--accent) 6%, var(--surface));
+  margin: 1.1rem 0 2.2rem;
+  padding: 0.78rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: transparent;
 }
 
 .recruiter-callout__content {
@@ -626,9 +625,9 @@ article.page ol {
 
 .recruiter-callout__summary {
   margin: 0;
-  font-size: 1.01rem;
+  font-size: 0.98rem;
   line-height: 1.55;
-  color: var(--ink);
+  color: var(--ink-muted);
 }
 
 .recruiter-callout__button {
@@ -636,14 +635,14 @@ article.page ol {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 42px;
-  padding: 0.58rem 0.9rem;
-  border: 1px solid var(--accent);
-  border-radius: 4px;
-  background: var(--accent);
-  color: #fff;
+  min-height: 34px;
+  padding: 0.35rem 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--accent);
   font-family: var(--font-sans);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 700;
   line-height: 1.2;
   text-align: center;
@@ -652,10 +651,10 @@ article.page ol {
 
 .recruiter-callout__button:hover,
 .recruiter-callout__button:focus {
-  background: var(--accent-soft);
-  border-color: var(--accent-soft);
-  color: #fff;
-  text-decoration: none;
+  background: transparent;
+  border-color: transparent;
+  color: var(--accent-soft);
+  text-decoration: underline;
 }
 
 .home-link-list {
@@ -699,6 +698,10 @@ article.page ol {
   margin-bottom: 0.55rem;
   font-size: 1.01rem;
   line-height: 1.54;
+}
+
+.home-hero ~ h2 {
+  margin-top: 2.35rem;
 }
 
 .home-writing {
@@ -1415,7 +1418,7 @@ article.page,
   }
 
   .recruiter-callout__button {
-    width: 100%;
+    align-self: flex-start;
     white-space: normal;
   }
 
