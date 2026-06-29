@@ -80,6 +80,25 @@ a:focus {
   color: var(--accent);
 }
 
+.site-mark {
+  display: inline-flex;
+  align-items: center;
+  width: 34px;
+  height: 34px;
+}
+
+.site-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.site-mark:hover,
+.site-mark:focus {
+  text-decoration: none;
+}
+
 .nav-controls {
   display: flex;
   align-items: center;
