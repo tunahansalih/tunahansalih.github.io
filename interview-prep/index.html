@@ -231,7 +231,7 @@ const PLANKEY='ipcc_plan_v2';
 const planKeyForUid=uid=>PLANKEY+':'+uid;
 let planError='';
 const PLAN_REFINEMENT_VERSION=3;
-const PLAN_CONTENT_REFINEMENT_VERSION=2;
+const PLAN_CONTENT_REFINEMENT_VERSION=3;
 const SETUP_DEFERRAL_SOURCE_WEEKS=4;
 const TARGET_COMPANY_FIELDS=[
   ['targetCompanyA','Target company 1','e.g. OpenAI'],
@@ -282,13 +282,17 @@ function normalizePlanContent(raw){
   plan.clientRefinementVersion=PLAN_CONTENT_REFINEMENT_VERSION;
   return plan;
 }
-function isDeferredSetupTask(t){
-  const text=taskText(t).replace(/<[^>]*>/g,' ').toLowerCase();
+function isDeferredSetupTask(t,s){
+  const title=(s&&s.t)||'';
+  const text=(title+' '+taskText(t)).replace(/<[^>]*>/g,' ').toLowerCase();
   const mockSetup=/\b(mock|interview)\b/.test(text)&&/\b(partner|peer|interviewer|find|identify|line up|schedule|book|ask|source|sourcing)\b/.test(text);
   const companySetup=/\b(companies|company|target firm|target firms|employer|employers|pipeline)\b/.test(text)&&/\b(list|shortlist|draft|identify|choose|rank|prioritize|prioritise|map|research)\b/.test(text);
   const projectSelection=/\b(project|projects|portfolio)\b/.test(text)&&/\b(select|selection|choose|pick|scope|decide|identify|rank|prioritize|prioritise|shortlist)\b/.test(text);
+  const evidenceSelection=/\b(evidence|proof points?)\b/.test(text)&&/\b(select|selection|choose|pick|rank|prioritize|prioritise)\b/.test(text);
   const diagnosticSetup=/\b(diagnostic|diagnostics|baseline|self-assessment|self assessment|assessment|audit|gap analysis|benchmark)\b/.test(text);
-  return mockSetup||companySetup||projectSelection||diagnosticSetup;
+  const sourcingSetup=/\b(sourcing protocol|partner sourcing|mock sourcing)\b/.test(text);
+  const roleCalibration=/\b(target-role|target role|role calibration|target labs?|primary lane|settings)\b/.test(text);
+  return mockSetup||companySetup||projectSelection||evidenceSelection||diagnosticSetup||sourcingSetup||roleCalibration;
 }
 function deferredWeekIndexes(weeks){
   const sourceEnd=Math.min(SETUP_DEFERRAL_SOURCE_WEEKS,weeks.length);
@@ -302,21 +306,29 @@ function deferEarlySetupTasks(weeks){
   const moved=[];
   const sourceWeeks=Math.min(SETUP_DEFERRAL_SOURCE_WEEKS,weeks.length);
   for(let wi=0;wi<sourceWeeks;wi++){
+    const keptSessions=[];
     (weeks[wi].sessions||[]).forEach(s=>{
       const keep=[];
+      const defer=[];
       (Array.isArray(s.x)?s.x:[]).forEach(t=>{
-        if(isDeferredSetupTask(t))moved.push(t);else keep.push(t);
+        if(isDeferredSetupTask(t,s))defer.push(t);else keep.push(t);
       });
-      s.x=keep;
+      if(defer.length)moved.push(Object.assign({},s,{x:defer,_preserveDay:true}));
+      if(keep.length){
+        s.x=keep;
+        keptSessions.push(s);
+      }
     });
+    weeks[wi].sessions=keptSessions;
+    if(wi===0&&/calibration|diagnostic|sourcing|project selection/i.test(weeks[wi].theme||'')){
+      weeks[wi].theme='Research introduction and focused reps';
+    }
   }
   if(!moved.length)return weeks;
-  moved.forEach((t,i)=>{
+  moved.forEach((session,i)=>{
     const w=weeks[targets[i%targets.length]];
-    const sessions=(w.sessions||[]).filter(s=>Array.isArray(s.x));
-    if(!sessions.length)return;
-    const target=sessions.reduce((best,s)=>s.x.length<best.x.length?s:best,sessions[0]);
-    target.x.push(t);
+    if(!Array.isArray(w.sessions))w.sessions=[];
+    w.sessions.push(session);
   });
   return weeks;
 }
@@ -619,15 +631,16 @@ function renderDash(){
   v.appendChild(el('div','note','Aim for consistent execution, not perfect completion. If a session slips, move it to the nearest open block and preserve the weekly build or mock.'));
   v.appendChild(el('p','page-foot','Methodology inspired by <a href="https://alisawuffles.github.io/blog/job-search/" target="_blank" rel="noopener">Alisa Liu’s notes on the industry job search</a>, adapted for research scientist roles in generative vision and multimodal ML.'));
 }
-function sessionParts(si,rawTitle){
+function sessionParts(si,rawTitle,s){
   const bits=rawTitle.split(' · ');
-  const day=(S.settings&&S.settings.days&&S.settings.days[si])||bits[0];
+  const day=(s&&s._preserveDay?bits[0]:(S.settings&&S.settings.days&&S.settings.days[si]))||bits[0];
   const content=bits.length>1?bits.slice(1).join(' · '):rawTitle;
   return {day,content};
 }
 function renderSession(parent,w,si){
   const s=w.sessions[si];const d=sessDone(w,si);const done=d===s.x.length;
-  const p=sessionParts(si,substituteVars(s.t,userVars()));
+  if(!s.x.length)return;
+  const p=sessionParts(si,substituteVars(s.t,userVars()),s);
   const box=el('div','sess'+(done?' sdone':''));
   box.appendChild(el('div','sesshead',`<span class="sday">${p.day}</span><span class="stitle">${p.content}</span><span class="sct">${d}/${s.x.length}</span>`));
   s.x.forEach((t,ti)=>box.appendChild(taskRow(w,si,ti,t)));
