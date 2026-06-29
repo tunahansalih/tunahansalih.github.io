@@ -231,11 +231,22 @@ const PLANKEY='ipcc_plan_v2';
 const planKeyForUid=uid=>PLANKEY+':'+uid;
 let planError='';
 const PLAN_REFINEMENT_VERSION=3;
+const PLAN_CONTENT_REFINEMENT_VERSION=1;
+const SETUP_DEFERRAL_SOURCE_WEEKS=4;
+const TARGET_COMPANY_FIELDS=[
+  ['targetCompanyA','Target company 1','e.g. OpenAI'],
+  ['targetCompanyB','Target company 2','e.g. Anthropic'],
+  ['targetCompanyC','Target company 3','e.g. Google DeepMind']
+];
 
 function userVars(){
   const vars={};
   const cfg=(typeof S!=='undefined'&&S&&S.userConfig)||{};
   const defs=PERSONALIZATION.vars||{};
+  TARGET_COMPANY_FIELDS.forEach(([k,label])=>{
+    const v=(cfg[k]||'').toString().trim();
+    vars[k]=v||label.toLowerCase();
+  });
   Object.keys(defs).forEach(k=>{
     const v=(cfg[k]||'').toString().trim();
     vars[k]=v||(defs[k]&&defs[k].default)||k;
@@ -252,6 +263,65 @@ function userBranchChoice(branchId){
 function substituteVars(text,vars){
   if(typeof text!=='string')return text;
   return text.replace(/\{\{(\w+)\}\}/g,(m,k)=>vars[k]!=null?vars[k]:m);
+}
+function taskText(t){
+  return typeof t==='string'?t:(t&&t.text)||'';
+}
+function normalizePlanContent(raw){
+  const plan=JSON.parse(JSON.stringify(raw||{}));
+  const weeks=Array.isArray(plan.weeks)?plan.weeks:[];
+  weeks.forEach(w=>{
+    (w.sessions||[]).forEach((s,si)=>{
+      s.x=(Array.isArray(s.x)?s.x:[]).map((t,ti)=>{
+        const key=w.id+'s'+si+'#'+ti;
+        if(typeof t==='string')return {text:t,_key:key};
+        return Object.assign({},t||{},{_key:(t&&t._key)||key});
+      });
+    });
+  });
+  plan.clientRefinementVersion=PLAN_CONTENT_REFINEMENT_VERSION;
+  return plan;
+}
+function isDeferredSetupTask(t){
+  const text=taskText(t).replace(/<[^>]*>/g,' ').toLowerCase();
+  const mockSetup=/\b(mock|interview)\b/.test(text)&&/\b(partner|peer|interviewer|find|identify|line up|schedule|book|ask)\b/.test(text);
+  const companySetup=/\b(companies|company|target firm|target firms|employer|employers|pipeline)\b/.test(text)&&/\b(list|shortlist|draft|identify|choose|rank|prioritize|prioritise|map|research)\b/.test(text);
+  return mockSetup||companySetup;
+}
+function middleWeekIndexes(weeks){
+  const sourceEnd=Math.min(SETUP_DEFERRAL_SOURCE_WEEKS,weeks.length);
+  const mid=Math.floor((weeks.length-1)/2);
+  const start=Math.max(sourceEnd,mid-1);
+  const end=Math.min(weeks.length-1,mid+1);
+  const idx=[];
+  for(let i=start;i<=end;i++)if(weeks[i]&&Array.isArray(weeks[i].sessions)&&weeks[i].sessions.length)idx.push(i);
+  if(idx.length)return idx;
+  for(let i=sourceEnd;i<weeks.length;i++)if(weeks[i]&&Array.isArray(weeks[i].sessions)&&weeks[i].sessions.length)idx.push(i);
+  return idx;
+}
+function deferEarlySetupTasks(weeks){
+  const targets=middleWeekIndexes(weeks);
+  if(!targets.length)return weeks;
+  const moved=[];
+  const sourceWeeks=Math.min(SETUP_DEFERRAL_SOURCE_WEEKS,weeks.length);
+  for(let wi=0;wi<sourceWeeks;wi++){
+    (weeks[wi].sessions||[]).forEach(s=>{
+      const keep=[];
+      (Array.isArray(s.x)?s.x:[]).forEach(t=>{
+        if(isDeferredSetupTask(t))moved.push(t);else keep.push(t);
+      });
+      s.x=keep;
+    });
+  }
+  if(!moved.length)return weeks;
+  moved.forEach((t,i)=>{
+    const w=weeks[targets[i%targets.length]];
+    const sessions=(w.sessions||[]).filter(s=>Array.isArray(s.x));
+    if(!sessions.length)return;
+    const target=sessions.reduce((best,s)=>s.x.length<best.x.length?s:best,sessions[0]);
+    target.x.push(t);
+  });
+  return weeks;
 }
 function applyTrackFilter(weeks){
   return (weeks||[]).filter(w=>{
@@ -271,19 +341,19 @@ function rebuildWeeks(){
   if(!RAW_PLAN)return;
   const allWeeks=Array.isArray(RAW_PLAN.weeks)?RAW_PLAN.weeks:[];
   allWeeks.forEach(w=>{if(w.track&&!w.trackOf)w.trackOf='w9';});
-  WEEKS=applyTrackFilter(allWeeks);
+  WEEKS=deferEarlySetupTasks(JSON.parse(JSON.stringify(applyTrackFilter(allWeeks))));
 }
 function setPlan(raw){
   if(!raw)return;
-  RAW_PLAN=raw;
-  PERSONALIZATION=raw.personalization||{vars:{},branches:{}};
-  PACING=raw.pacing||{};
+  RAW_PLAN=normalizePlanContent(raw);
+  PERSONALIZATION=RAW_PLAN.personalization||{vars:{},branches:{}};
+  PACING=RAW_PLAN.pacing||{};
   rebuildWeeks();
-  PHASES=raw.phases||{};TOPICS=raw.topics||[];
-  STORY_CATS=raw.stories||[];RESOURCES=raw.resources||[];
+  PHASES=RAW_PLAN.phases||{};TOPICS=RAW_PLAN.topics||[];
+  STORY_CATS=RAW_PLAN.stories||[];RESOURCES=RAW_PLAN.resources||[];
   planError='';const migrated=migratePlanProgress();
   try{
-    if(activeUid)localStorage.setItem(planKeyForUid(activeUid),JSON.stringify(raw));
+    if(activeUid)localStorage.setItem(planKeyForUid(activeUid),JSON.stringify(RAW_PLAN));
     if(migrated&&activeKey)localStorage.setItem(activeKey,JSON.stringify(S));
   }catch(e){}
 }
@@ -305,13 +375,13 @@ const DEFAULT={
   mocks:[],            // {date,type,who,score,well,fix,follow}
   pipe:[],             // {company,role,priority,stage,recruiter,referral,applied,next,status,notes}
   settings:{startDate:'2026-06-29',targetDate:'2026-10-19',days:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],name:''},
-  userConfig:{projectA:'',projectB:'',projectC:'',primaryLane:'',adjacentLane:'',targetLabA:'',targetLabB:'',branches:{w9:'interp'}},
+  userConfig:{projectA:'',projectB:'',projectC:'',primaryLane:'',adjacentLane:'',targetLabA:'',targetLabB:'',targetCompanyA:'',targetCompanyB:'',targetCompanyC:'',branches:{w9:'interp'}},
 };
 function freshState(){return JSON.parse(JSON.stringify(DEFAULT))}
 function normSettings(o){const d={startDate:DEF_START,targetDate:DEF_TARGET,days:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],name:''};
   const s=Object.assign({},d,o||{}); if(!Array.isArray(s.days)||s.days.length<6)s.days=d.days.slice(); return s;}
 function normUserConfig(o){
-  const d={projectA:'',projectB:'',projectC:'',primaryLane:'',adjacentLane:'',targetLabA:'',targetLabB:'',branches:{w9:'interp'}};
+  const d={projectA:'',projectB:'',projectC:'',primaryLane:'',adjacentLane:'',targetLabA:'',targetLabB:'',targetCompanyA:'',targetCompanyB:'',targetCompanyC:'',branches:{w9:'interp'}};
   const u=Object.assign({},d,o||{});
   if(!u.branches||typeof u.branches!=='object')u.branches=Object.assign({},d.branches);
   else u.branches=Object.assign({},d.branches,u.branches);
@@ -459,10 +529,10 @@ function daysBetween(a,b){return Math.round((b-a)/86400000)}
 function currentWeekIdx(){if(!WEEKS.length)return 0;const now=new Date();const st=getStart();if(now<st)return 0;const w=Math.floor(daysBetween(st,now)/7);return Math.min(Math.max(w,0),WEEKS.length-1)}
 
 /* ---------- progress math ---------- */
-function tkey(w,si,ti){return w.id+'s'+si+'#'+ti}
+function tkey(w,si,ti,t){return (t&&t._key)||w.id+'s'+si+'#'+ti}
 function weekTotal(i){let t=0;WEEKS[i].sessions.forEach(s=>t+=s.x.length);return t}
-function weekDone(i){const w=WEEKS[i];let d=0;w.sessions.forEach((s,si)=>s.x.forEach((_,ti)=>{if(S.weekTasks[tkey(w,si,ti)])d++}));return d}
-function sessDone(w,si){let d=0;w.sessions[si].x.forEach((_,ti)=>{if(S.weekTasks[tkey(w,si,ti)])d++});return d}
+function weekDone(i){const w=WEEKS[i];let d=0;w.sessions.forEach((s,si)=>s.x.forEach((t,ti)=>{if(S.weekTasks[tkey(w,si,ti,t)])d++}));return d}
+function sessDone(w,si){let d=0;w.sessions[si].x.forEach((t,ti)=>{if(S.weekTasks[tkey(w,si,ti,t)])d++});return d}
 function planPct(){let t=0,d=0;WEEKS.forEach((w,i)=>{t+=weekTotal(i);d+=weekDone(i)});return t?d/t:0}
 function topicsPct(){let t=TOPICS.length*2,d=0;TOPICS.forEach((_,i)=>{const o=S.topics[i]||{};if(o.explain)d++;if(o.implement)d++});return t?d/t:0}
 function storyPct(){let d=0;STORY_CATS.forEach(c=>{if(S.storyReady[c])d++});return STORY_CATS.length?d/STORY_CATS.length:0}
@@ -567,12 +637,12 @@ function renderSession(parent,w,si){
   parent.appendChild(box);
 }
 function taskRow(w,si,ti,t){
-  const key=tkey(w,si,ti);const on=!!S.weekTasks[key];
+  const key=tkey(w,si,ti,t);const on=!!S.weekTasks[key];
   const lab=el('label','ck'+(on?' done':''));
   const cb=el('input');cb.type='checkbox';cb.checked=on;
   cb.onchange=()=>{S.weekTasks[key]=cb.checked;save();refreshAll()};
   lab.appendChild(cb);
-  const raw=typeof t==='string'?t:(t&&t.text)||'';
+  const raw=taskText(t);
   const text=substituteVars(raw,userVars());
   const span=el('span',null,text);
   span.querySelectorAll('a').forEach(an=>{an.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();window.open(an.href,'_blank','noopener')});});
@@ -794,9 +864,22 @@ function renderSettings(){
   dRow.appendChild(mkDate('Target interview date','targetDate'));
   c.appendChild(dRow);v.appendChild(c);
 
+  const tc=el('div','card');tc.appendChild(el('h3',null,'Target companies'));
+  tc.appendChild(el('div',null,'<div class="muted" style="font-size:12.5px;margin-bottom:8px">Use these for company-specific plan wording. Keep broader pipeline tracking in the Companies tab.</div>'));
+  const tcRow=el('div','setrow');
+  TARGET_COMPANY_FIELDS.forEach(([k,label,ph])=>{
+    const w=el('div');
+    w.innerHTML='<label class="setlbl">'+label+'</label>';
+    const inp=el('input');inp.type='text';inp.value=cfg[k]||'';inp.placeholder=ph||'';
+    inp.oninput=()=>{cfg[k]=inp.value;save();refreshAll();};
+    w.appendChild(inp);tcRow.appendChild(w);
+  });
+  tc.appendChild(tcRow);v.appendChild(tc);
+
   /* ---- Personalization: variable substitutions ---- */
   const varDefs=(PERSONALIZATION&&PERSONALIZATION.vars)||{};
-  const varKeys=Object.keys(varDefs);
+  const targetKeys=TARGET_COMPANY_FIELDS.map(f=>f[0]);
+  const varKeys=Object.keys(varDefs).filter(k=>!targetKeys.includes(k));
   if(varKeys.length){
     const pc=el('div','card');pc.appendChild(el('h3',null,'Personalize the plan'));
     pc.appendChild(el('div',null,'<div class="muted" style="font-size:12.5px;margin-bottom:8px">Names and labels you enter here are substituted into every task. Leave a field blank to keep the generic label.</div>'));
@@ -930,7 +1013,7 @@ window.addEventListener('hashchange',()=>{
     const db=initializeFirestore(app,{experimentalAutoDetectLongPolling:true},'default');
     setPersistence(auth, browserLocalPersistence).catch(()=>{});
     let userRef=null, unsub=null, writeTimer=null;
-    const friendly=(e)=>{const c=(e&&e.code)||'';
+    const friendly=(e)=>{const c=(e&&e.code)||'';const m=(e&&e.message)||'';
       if(c.includes('invalid-credential')||c.includes('wrong-password')||c.includes('user-not-found')) return 'Could not sign in with that email and password.';
       if(c.includes('email-already-in-use')) return 'Could not create the account. Try signing in or resetting the password.';
       if(c.includes('weak-password')) return 'Password should be at least 6 characters.';
@@ -939,8 +1022,9 @@ window.addEventListener('hashchange',()=>{
       if(c.includes('network-request-failed')) return 'Network/blocked request — check connection or an ad/script blocker.';
       if(c.includes('too-many-requests')) return 'Too many attempts — wait a minute and retry.';
       if(c.includes('popup-closed')||c.includes('cancelled-popup')||c.includes('popup-blocked')) return 'Google popup was blocked by the browser — use email/password instead.';
+      if(c.includes('web-storage-unsupported')||c.includes('missing-initial-state')||m.includes('missing initial state')) return 'Your browser blocked the Google sign-in handoff (common on iPhone Safari or private browsing). Use email/password to sign in instead.';
       if(c.includes('unauthorized-domain')) return 'This domain isn\'t authorized: add it in Firebase → Authentication → Settings → Authorized domains.';
-      return 'Sign-in failed: '+(c||(e&&e.message)||'unknown error');};
+      return 'Sign-in failed: '+(c||m||'unknown error');};
 
     window.__signInGoogle=()=>signInWithPopup(auth,new GoogleAuthProvider()).catch(e=>window.__authError(friendly(e)));
     window.__signInEmail=()=>{const em=document.getElementById('auth-email').value.trim(),pw=document.getElementById('auth-pass').value;

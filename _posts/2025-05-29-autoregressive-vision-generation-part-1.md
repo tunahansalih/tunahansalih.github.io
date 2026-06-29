@@ -10,7 +10,7 @@ tags:
   - tutorial
 comments: true
 category: blog
-published: true
+published: false
 ---
 
 ## Your First Autoregressive Image Generation Model

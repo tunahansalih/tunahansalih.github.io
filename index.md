@@ -47,22 +47,6 @@ published: true
   <li><strong>Vispera</strong> - Computer Vision Research Engineer (Oct 2019 - Nov 2022)</li>
 </ul>
 
-<section class="home-writing">
-  <h2>Blog</h2>
-  <div class="home-writing-list">
-    {% for post in site.posts limit:3 %}
-      <article class="home-writing-item">
-        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        <p class="home-writing-meta">{{ post.date | date: "%B %d, %Y" }}</p>
-        {% if post.excerpt %}
-          <p>{{ post.excerpt | strip_html | truncate: 190 }}</p>
-        {% endif %}
-      </article>
-    {% endfor %}
-  </div>
-  <p class="home-writing-cta"><a href="{{ '/blog' | relative_url }}">View all posts</a></p>
-</section>
-
 {% include _news-recent.html %}
 
 {% include _publications-featured.html %}
