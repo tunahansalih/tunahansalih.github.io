@@ -9,11 +9,11 @@ published: true
   <p class="home-hero__summary">
     I am a Ph.D. candidate at Virginia Tech, advised by <a href="https://pinguar.org/" target="_blank" rel="noopener">Prof. Pinar Yanardag</a>.
     I study the internal representations of generative models, how they encode meaning, structure, and style, to make
-    image and video generation more interpretable and controllable.
+    image and video generation easier to understand and control.
   </p>
   <p class="home-hero__summary">
-    My recent work spans controllable generation, diffusion model distillation, and mechanistic interpretability for
-    generative models. I want to understand why these systems behave the way they do, not just improve their outputs.
+    My recent work spans controllable generation, diffusion model distillation, and analysis of how generative models
+    represent concepts internally. I want to understand why these systems behave the way they do, not just improve their outputs.
   </p>
   <p class="home-hero__summary">
     My papers have appeared at CVPR, ICCV, ICML, and AAAI. Before my PhD, I spent several years building production
@@ -28,6 +28,20 @@ published: true
     <span class="research-tag">Flow Matching</span>
   </div>
 </div>
+
+<section class="recruiter-callout" aria-labelledby="recruiter-callout-title">
+  <div class="recruiter-callout__content">
+    <p class="recruiter-callout__eyebrow" id="recruiter-callout-title">Recruiting status</p>
+    <p class="recruiter-callout__headline">Expected Ph.D. graduation: Spring 2027</p>
+    <p class="recruiter-callout__summary">
+      I am seeking full-time Research Scientist / Applied Scientist roles in generative vision and multimodal ML,
+      especially work on understanding and controlling image/video generation models.
+    </p>
+  </div>
+  <a class="recruiter-callout__button" href="mailto:{{ site.owner.email }}?subject=Full-time%20Research%20Scientist%20%2F%20Applied%20Scientist%20role">
+    Email me about roles
+  </a>
+</section>
 
 ## Selected Highlights
 <ul class="home-highlights">
