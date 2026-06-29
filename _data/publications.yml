@@ -1,8 +1,8 @@
+# Publications in display order (top = shown first). Edit this order directly.
 - title: "Aligning Latent Geometry for Spherical Flow Matching in Image Generation"
   authors: "<strong>Tuna Han Salih Meral</strong>, Kaan Oktay, Hidir Yesiltepe, Adil Kaan Akan, Pinar Yanardag"
   venue: "arXiv preprint"
   year: 2026
-  date: 2026-05-25
   description: "Projects VAE tokens and Gaussian noise onto a fixed-radius shell and trains flow matching along spherical (slerp) arcs, cutting FID by up to 50% on common tokenizers without changing the diffusion architecture."
   image: "aligning-latent-geometry.png"
   featured: true
@@ -22,38 +22,51 @@
       year={2026}
     }
 
-- title: "CLoRA: A Contrastive Approach to Compose Multiple LoRA Models"
-  authors: "<strong>Tuna Han Salih Meral</strong><sup>*</sup>, Enis Simsar<sup>*</sup>, Federico Tombari, Pinar Yanardag"
-  venue: "ICCV 2025 (Highlight)"
-  year: 2025
-  date: 2025-07-25
-  description: "CLoRA composes multiple concept and style LoRAs at test time using a contrastive objective. <sup>*</sup> denotes equal contribution."
-  image: "clora.png"
-  featured: true
-  featured_order: 4
+- title: "VideoMLA: Low-Rank Latent KV Cache for Minute-Scale Autoregressive Video Diffusion"
+  authors: "Hidir Yesiltepe, Jiazhen Hu, <strong>Tuna Han Salih Meral</strong>, Adil Kaan Akan, Kaan Oktay, Hoda Eldardiry, Pinar Yanardag"
+  venue: "arXiv preprint"
+  year: 2026
+  description: "Introduces Multi-Head Latent Attention for autoregressive video diffusion, cutting KV-cache memory by ~93% through shared low-rank representations while preserving quality on minute-scale long-horizon generation."
+  featured: false
   links:
     - text: "Paper"
-      url: "https://arxiv.org/abs/2403.19776"
+      url: "https://arxiv.org/abs/2605.30351"
+      type: "paper"
+  citation: |
+    @article{yesiltepe2026videomla,
+      title={VideoMLA: Low-Rank Latent KV Cache for Minute-Scale Autoregressive Video Diffusion},
+      author={Yesiltepe, Hidir and Hu, Jiazhen and Meral, Tuna Han Salih and Akan, Adil Kaan and Oktay, Kaan and Eldardiry, Hoda and Yanardag, Pinar},
+      journal={arXiv preprint arXiv:2605.30351},
+      year={2026}
+    }
+
+- title: "Infinity-RoPE: Action-Controllable Infinite Video Generation Emerges from Autoregressive Self-Rollout"
+  authors: "Hidir Yesiltepe, <strong>Tuna Han Salih Meral</strong>, Adil Kaan Akan, Kaan Oktay, Pinar Yanardag"
+  venue: "CVPR 2026"
+  year: 2026
+  description: "Infinity-RoPE provides plug-and-play inference strategies for long-horizon video generation with action control and scene transitions."
+  image: "infinity-rope.png"
+  featured: true
+  featured_order: 2
+  links:
+    - text: "Paper"
+      url: "https://arxiv.org/abs/2511.20649"
       type: "paper"
     - text: "Project Page"
-      url: "https://clora-diffusion.github.io"
+      url: "https://infinity-rope.github.io"
       type: "project"
-    - text: "Code"
-      url: "https://github.com/gemlab-vt/clora"
-      type: "code"
   citation: |
-    @article{meral2024clora,
-      title={CLoRA: A Contrastive Approach to Compose Multiple LoRA Models},
-      author={Meral, Tuna Han Salih and Simsar, Enis and Tombari, Federico and Yanardag, Pinar},
-      journal={arXiv preprint arXiv:2403.19776},
-      year={2024}
+    @article{yesiltepe2025infinityrope,
+      title={Infinity-RoPE: Action-Controllable Infinite Video Generation Emerges From Autoregressive Self-Rollout},
+      author={Yesiltepe, Hidir and Meral, Tuna Han Salih and Akan, Adil Kaan and Oktay, Kaan and Yanardag, Pinar},
+      journal={arXiv preprint arXiv:2511.20649},
+      year={2025}
     }
 
 - title: "ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features"
   authors: "Alec Helbling, <strong>Tuna Han Salih Meral</strong>, Ben Hoover, Pinar Yanardag, Duen Horng Chau"
   venue: "ICML 2025 (Oral)"
   year: 2025
-  date: 2025-05-01
   description: "ConceptAttention reuses DiT attention parameters to produce contextualized concept embeddings and sharper saliency maps without extra training."
   image: "conceptattention.png"
   featured: true
@@ -76,11 +89,121 @@
       year={2025}
     }
 
+- title: "SteerCLR: A Contrastive Learning Approach for Unsupervised Discovery of Interpretable Steering Vectors in Large Language Models"
+  authors: "<strong>Tuna Han Salih Meral</strong>, Connor Dunlop, Sanmitra Bhattacharya, Balaji Veeramani, Stephen Adams, Edward Bowen, Pinar Yanardag"
+  venue: "Under review"
+  year: 2025
+  description: "SteerCLR discovers interpretable steering vectors for controlling implicit LLM behaviors by learning contrastive representations of internal activations."
+  featured: false
+
+- title: "MITHRIL: Playing Tabletop Games with Generative Policies"
+  authors: "Michael Atkins, William Denman, <strong>Tuna Han Salih Meral</strong>, Mustafa Doga Dogan, Pinar Yanardag"
+  venue: "NeurIPS 2025 GenProCC Workshop"
+  year: 2025
+  description: "Workshop paper on generative policies for tabletop gameplay."
+  featured: false
+  links:
+    - text: "Paper"
+      url: "https://openreview.net/pdf?id=EKZV46BGsS"
+      type: "paper"
+
+- title: "MotionFlow: Attention-Driven Motion Transfer in Video Diffusion Models"
+  authors: "<strong>Tuna Han Salih Meral</strong>, Hidir Yesiltepe, Connor Dunlop, Pinar Yanardag"
+  venue: "AAAI 2026 (Main Technical Track)"
+  year: 2026
+  description: "MotionFlow is a training-free, attention-driven method for motion transfer in video diffusion models."
+  image: "motionflow.png"
+  featured: true
+  featured_order: 3
+  links:
+    - text: "Paper"
+      url: "https://arxiv.org/abs/2412.05275"
+      type: "paper"
+    - text: "Project Page"
+      url: "https://motionflow-diffusion.github.io"
+      type: "project"
+  citation: |
+    @article{meral2024motionflow,
+      title={MotionFlow: Attention-Driven Motion Transfer in Video Diffusion Models},
+      author={Meral, Tuna Han Salih and Yesiltepe, Hidir and Dunlop, Connor and Yanardag, Pinar},
+      journal={arXiv preprint arXiv:2412.05275},
+      year={2024}
+    }
+
+- title: "MotionShop: Zero-Shot Motion Transfer in Video Diffusion Models with Mixture of Score Guidance"
+  authors: "Hidir Yesiltepe, <strong>Tuna Han Salih Meral</strong>, Connor Dunlop, Pinar Yanardag"
+  venue: "Preprint"
+  year: 2024
+  description: "MotionShop proposes Mixture of Score Guidance (MSG), a method for motion transfer in video diffusion models."
+  image: "motionshop.png"
+  featured: false
+  links:
+    - text: "Paper"
+      url: "https://arxiv.org/abs/2412.05355"
+      type: "paper"
+    - text: "Project Page"
+      url: "https://motionshop-diffusion.github.io"
+      type: "project"
+  citation: |
+    @article{yesiltepe2024motionshop,
+      title={MotionShop: Zero-Shot Motion Transfer in Video Diffusion Models with Mixture of Score Guidance},
+      author={Yesiltepe, Hidir and Meral, Tuna Han Salih and Dunlop, Connor and Yanardag, Pinar},
+      journal={arXiv preprint arXiv:2412.05355},
+      year={2024}
+    }
+
+- title: "Conditional Information Gain Trellis"
+  authors: "Ufuk Can Bicici, <strong>Tuna Han Salih Meral</strong>, Lale Akarun"
+  venue: "Pattern Recognition Letters"
+  year: 2024
+  description: "Conditional Information Gain Trellis (CIGT) learns differentiable routing paths in deep convolutional networks to improve efficiency and interpretability."
+  image: "cigt.png"
+  featured: false
+  links:
+    - text: "Paper"
+      url: "https://www.sciencedirect.com/science/article/pii/S0167865524001880"
+      type: "paper"
+  citation: |
+    @article{bicici2024conditional,
+      title={Conditional Information Gain Trellis},
+      author={Bicici, Ufuk Can and Meral, Tuna Han Salih and Akarun, Lale},
+      journal={Pattern Recognition Letters},
+      volume={184},
+      pages={212--218},
+      year={2024},
+      publisher={Elsevier}
+    }
+
+- title: "CLoRA: A Contrastive Approach to Compose Multiple LoRA Models"
+  authors: "<strong>Tuna Han Salih Meral</strong><sup>*</sup>, Enis Simsar<sup>*</sup>, Federico Tombari, Pinar Yanardag"
+  venue: "ICCV 2025 (Highlight)"
+  year: 2025
+  description: "CLoRA composes multiple concept and style LoRAs at test time using a contrastive objective. <sup>*</sup> denotes equal contribution."
+  image: "clora.png"
+  featured: true
+  featured_order: 4
+  links:
+    - text: "Paper"
+      url: "https://arxiv.org/abs/2403.19776"
+      type: "paper"
+    - text: "Project Page"
+      url: "https://clora-diffusion.github.io"
+      type: "project"
+    - text: "Code"
+      url: "https://github.com/gemlab-vt/clora"
+      type: "code"
+  citation: |
+    @article{meral2024clora,
+      title={CLoRA: A Contrastive Approach to Compose Multiple LoRA Models},
+      author={Meral, Tuna Han Salih and Simsar, Enis and Tombari, Federico and Yanardag, Pinar},
+      journal={arXiv preprint arXiv:2403.19776},
+      year={2024}
+    }
+
 - title: "CONFORM: Contrast is All You Need for High-Fidelity Text-to-Image Diffusion Models"
   authors: "<strong>Tuna Han Salih Meral</strong>, Enis Simsar, Federico Tombari, Pinar Yanardag"
   venue: "CVPR 2024"
   year: 2024
-  date: 2024-05-15
   description: "CONFORM improves text-to-image faithfulness with a contrastive objective for stronger object-attribute grounding."
   image: "conform.png"
   featured: true
@@ -104,125 +227,10 @@
       year={2024}
     }
 
-- title: "MotionFlow: Attention-Driven Motion Transfer in Video Diffusion Models"
-  authors: "<strong>Tuna Han Salih Meral</strong>, Hidir Yesiltepe, Connor Dunlop, Pinar Yanardag"
-  venue: "AAAI 2026 (Main Technical Track)"
-  year: 2026
-  date: 2026-02-01
-  description: "MotionFlow is a training-free, attention-driven method for motion transfer in video diffusion models."
-  image: "motionflow.png"
-  featured: true
-  featured_order: 3
-  links:
-    - text: "Paper"
-      url: "https://arxiv.org/abs/2412.05275"
-      type: "paper"
-    - text: "Project Page"
-      url: "https://motionflow-diffusion.github.io"
-      type: "project"
-  citation: |
-    @article{meral2024motionflow,
-      title={MotionFlow: Attention-Driven Motion Transfer in Video Diffusion Models},
-      author={Meral, Tuna Han Salih and Yesiltepe, Hidir and Dunlop, Connor and Yanardag, Pinar},
-      journal={arXiv preprint arXiv:2412.05275},
-      year={2024}
-    }
-
-- title: "SteerCLR: A Contrastive Learning Approach for Unsupervised Discovery of Interpretable Steering Vectors in Large Language Models"
-  authors: "<strong>Tuna Han Salih Meral</strong>, Connor Dunlop, Sanmitra Bhattacharya, Balaji Veeramani, Stephen Adams, Edward Bowen, Pinar Yanardag"
-  venue: "Under review"
-  year: 2025
-  date: 2025-05-01
-  description: "SteerCLR discovers interpretable steering vectors for controlling implicit LLM behaviors by learning contrastive representations of internal activations."
-  featured: false
-
-- title: "Infinity-RoPE: Action-Controllable Infinite Video Generation Emerges from Autoregressive Self-Rollout"
-  authors: "Hidir Yesiltepe, <strong>Tuna Han Salih Meral</strong>, Adil Kaan Akan, Kaan Oktay, Pinar Yanardag"
-  venue: "CVPR 2026"
-  year: 2026
-  date: 2026-06-01
-  description: "Infinity-RoPE provides plug-and-play inference strategies for long-horizon video generation with action control and scene transitions."
-  image: "infinity-rope.png"
-  featured: true
-  featured_order: 2
-  links:
-    - text: "Paper"
-      url: "https://arxiv.org/abs/2511.20649"
-      type: "paper"
-    - text: "Project Page"
-      url: "https://infinity-rope.github.io"
-      type: "project"
-  citation: |
-    @article{yesiltepe2025infinityrope,
-      title={Infinity-RoPE: Action-Controllable Infinite Video Generation Emerges From Autoregressive Self-Rollout},
-      author={Yesiltepe, Hidir and Meral, Tuna Han Salih and Akan, Adil Kaan and Oktay, Kaan and Yanardag, Pinar},
-      journal={arXiv preprint arXiv:2511.20649},
-      year={2025}
-    }
-
-- title: "MITHRIL: Playing Tabletop Games with Generative Policies"
-  authors: "Michael Atkins, William Denman, <strong>Tuna Han Salih Meral</strong>, Mustafa Doga Dogan, Pinar Yanardag"
-  venue: "NeurIPS 2025 GenProCC Workshop"
-  year: 2025
-  date: 2025-12-01
-  description: "Workshop paper on generative policies for tabletop gameplay."
-  featured: false
-  links:
-    - text: "Paper"
-      url: "https://openreview.net/pdf?id=EKZV46BGsS"
-      type: "paper"
-
-- title: "MotionShop: Zero-Shot Motion Transfer in Video Diffusion Models with Mixture of Score Guidance"
-  authors: "Hidir Yesiltepe, <strong>Tuna Han Salih Meral</strong>, Connor Dunlop, Pinar Yanardag"
-  venue: "Preprint"
-  year: 2024
-  date: 2024-11-01
-  description: "MotionShop proposes Mixture of Score Guidance (MSG), a method for motion transfer in video diffusion models."
-  image: "motionshop.png"
-  featured: false
-  links:
-    - text: "Paper"
-      url: "https://arxiv.org/abs/2412.05355"
-      type: "paper"
-    - text: "Project Page"
-      url: "https://motionshop-diffusion.github.io"
-      type: "project"
-  citation: |
-    @article{yesiltepe2024motionshop,
-      title={MotionShop: Zero-Shot Motion Transfer in Video Diffusion Models with Mixture of Score Guidance},
-      author={Yesiltepe, Hidir and Meral, Tuna Han Salih and Dunlop, Connor and Yanardag, Pinar},
-      journal={arXiv preprint arXiv:2412.05355},
-      year={2024}
-    }
-
-- title: "Conditional Information Gain Trellis"
-  authors: "Ufuk Can Bicici, <strong>Tuna Han Salih Meral</strong>, Lale Akarun"
-  venue: "Pattern Recognition Letters"
-  year: 2024
-  date: 2024-06-01
-  description: "Conditional Information Gain Trellis (CIGT) learns differentiable routing paths in deep convolutional networks to improve efficiency and interpretability."
-  image: "cigt.png"
-  featured: false
-  links:
-    - text: "Paper"
-      url: "https://www.sciencedirect.com/science/article/pii/S0167865524001880"
-      type: "paper"
-  citation: |
-    @article{bicici2024conditional,
-      title={Conditional Information Gain Trellis},
-      author={Bicici, Ufuk Can and Meral, Tuna Han Salih and Akarun, Lale},
-      journal={Pattern Recognition Letters},
-      volume={184},
-      pages={212--218},
-      year={2024},
-      publisher={Elsevier}
-    }
-
 - title: "Unsupervised Routing Strategies for Conditional Deep Neural Networks"
   authors: "<strong>Tuna Han Salih Meral</strong>"
   venue: "M.S. Thesis, Bogazici University"
   year: 2022
-  date: 2022-01-01
   description: "Master's thesis on routing strategies for conditional deep neural networks."
   featured: false
   pre_phd: true
@@ -231,7 +239,6 @@
   authors: "Fatih Kose, Ibrahim Ozcan, Melih Dal, Metehan Yildirim, Kadir Turksoy, Kerem Zaman, <strong>Tuna Han Salih Meral</strong>, Sinan Oncu"
   venue: "SIU 2020"
   year: 2020
-  date: 2020-09-01
   description: "Software and simulation framework contributions for autonomous vehicle development."
   featured: false
   pre_phd: true
@@ -240,7 +247,6 @@
   authors: "Nadin Kokciyan, Mustafa Erdogan, <strong>Tuna Han Salih Meral</strong>, Pinar Yolum"
   venue: "International Workshop on Agents in Traffic and Transportation (ATT 2018)"
   year: 2018
-  date: 2018-07-01
   description: "Approaches for privacy-aware autonomous vehicle coordination at intersections."
   featured: false
   pre_phd: true

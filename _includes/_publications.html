@@ -1,6 +1,6 @@
 <section id="publications" class="academic-publications-list">
   <div class="academic-publications-container">
-    {% assign all_pubs = site.data.publications | sort: "date" | reverse %}
+    {% assign all_pubs = site.data.publications %}
     {% assign shown_earlier = false %}
 
     {% for pub in all_pubs %}
@@ -17,9 +17,6 @@
       {% endif %}
       <article class="academic-publication">
         {% assign pub_year = pub.year %}
-        {% if pub.date %}
-          {% assign pub_year = pub.date | date: "%Y" %}
-        {% endif %}
         <h3 class="publication-title-academic">
           <span class="publication-year">{{ pub_year }}</span>
           {% if paper_link %}
