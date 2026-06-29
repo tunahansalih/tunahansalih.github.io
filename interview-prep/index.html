@@ -231,7 +231,7 @@ const PLANKEY='ipcc_plan_v2';
 const planKeyForUid=uid=>PLANKEY+':'+uid;
 let planError='';
 const PLAN_REFINEMENT_VERSION=3;
-const PLAN_CONTENT_REFINEMENT_VERSION=1;
+const PLAN_CONTENT_REFINEMENT_VERSION=2;
 const SETUP_DEFERRAL_SOURCE_WEEKS=4;
 const TARGET_COMPANY_FIELDS=[
   ['targetCompanyA','Target company 1','e.g. OpenAI'],
@@ -284,23 +284,20 @@ function normalizePlanContent(raw){
 }
 function isDeferredSetupTask(t){
   const text=taskText(t).replace(/<[^>]*>/g,' ').toLowerCase();
-  const mockSetup=/\b(mock|interview)\b/.test(text)&&/\b(partner|peer|interviewer|find|identify|line up|schedule|book|ask)\b/.test(text);
+  const mockSetup=/\b(mock|interview)\b/.test(text)&&/\b(partner|peer|interviewer|find|identify|line up|schedule|book|ask|source|sourcing)\b/.test(text);
   const companySetup=/\b(companies|company|target firm|target firms|employer|employers|pipeline)\b/.test(text)&&/\b(list|shortlist|draft|identify|choose|rank|prioritize|prioritise|map|research)\b/.test(text);
-  return mockSetup||companySetup;
+  const projectSelection=/\b(project|projects|portfolio)\b/.test(text)&&/\b(select|selection|choose|pick|scope|decide|identify|rank|prioritize|prioritise|shortlist)\b/.test(text);
+  const diagnosticSetup=/\b(diagnostic|diagnostics|baseline|self-assessment|self assessment|assessment|audit|gap analysis|benchmark)\b/.test(text);
+  return mockSetup||companySetup||projectSelection||diagnosticSetup;
 }
-function middleWeekIndexes(weeks){
+function deferredWeekIndexes(weeks){
   const sourceEnd=Math.min(SETUP_DEFERRAL_SOURCE_WEEKS,weeks.length);
-  const mid=Math.floor((weeks.length-1)/2);
-  const start=Math.max(sourceEnd,mid-1);
-  const end=Math.min(weeks.length-1,mid+1);
   const idx=[];
-  for(let i=start;i<=end;i++)if(weeks[i]&&Array.isArray(weeks[i].sessions)&&weeks[i].sessions.length)idx.push(i);
-  if(idx.length)return idx;
   for(let i=sourceEnd;i<weeks.length;i++)if(weeks[i]&&Array.isArray(weeks[i].sessions)&&weeks[i].sessions.length)idx.push(i);
   return idx;
 }
 function deferEarlySetupTasks(weeks){
-  const targets=middleWeekIndexes(weeks);
+  const targets=deferredWeekIndexes(weeks);
   if(!targets.length)return weeks;
   const moved=[];
   const sourceWeeks=Math.min(SETUP_DEFERRAL_SOURCE_WEEKS,weeks.length);

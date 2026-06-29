@@ -1,3 +1,11 @@
+- date: 2026-06-29
+  type: milestone
+  description: "Launched an interview prep website for organizing Research Scientist and Applied Scientist interview preparation."
+  links:
+    - text: Website
+      url: /interview-prep/
+      type: project
+
 - date: 2026-05-25
   type: publication
   description: "Released the <em>Aligning Latent Geometry for Spherical Flow Matching in Image Generation</em> preprint on arXiv."
