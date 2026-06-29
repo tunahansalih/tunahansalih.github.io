@@ -42,9 +42,6 @@ published: true
       <a href="https://linkedin.com/in/{{ site.owner.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>.
     </p>
   </div>
-  <a class="recruiter-callout__button" href="mailto:{{ site.owner.email }}?subject=Full-time%20Research%20Scientist%20%2F%20Applied%20Scientist%20role">
-    Discuss opportunities
-  </a>
 </section>
 
 ## Highlights

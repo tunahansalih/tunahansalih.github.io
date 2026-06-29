@@ -81,16 +81,26 @@ a:focus {
 }
 
 .site-mark {
+  flex: 0 0 34px;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   width: 34px;
+  min-width: 34px;
+  max-width: 34px;
   height: 34px;
+  min-height: 34px;
+  max-height: 34px;
+  line-height: 0;
+  overflow: hidden;
 }
 
 .site-mark img {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: 100%;
+  max-height: 100%;
   object-fit: contain;
 }
 
@@ -626,16 +636,13 @@ article.page ol {
 }
 
 .recruiter-callout {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.85rem;
   max-width: var(--content-max);
-  margin: 1.1rem 0 2.2rem;
-  padding: 0.78rem 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  background: transparent;
+  margin: 1.15rem 0 2.2rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+  background: var(--surface-alt);
 }
 
 .recruiter-callout__content {
@@ -649,31 +656,16 @@ article.page ol {
   color: var(--ink-muted);
 }
 
-.recruiter-callout__button {
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 34px;
-  padding: 0.35rem 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
+.recruiter-callout__summary a {
   color: var(--accent);
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
   font-weight: 700;
-  line-height: 1.2;
-  text-align: center;
-  white-space: nowrap;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
 }
 
-.recruiter-callout__button:hover,
-.recruiter-callout__button:focus {
-  background: transparent;
-  border-color: transparent;
+.recruiter-callout__summary a:hover,
+.recruiter-callout__summary a:focus {
   color: var(--accent-soft);
-  text-decoration: underline;
 }
 
 .home-link-list {
@@ -1434,11 +1426,6 @@ article.page,
     align-items: stretch;
     flex-direction: column;
     gap: 0.8rem;
-  }
-
-  .recruiter-callout__button {
-    align-self: flex-start;
-    white-space: normal;
   }
 
   .featured-pub-card {
