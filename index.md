@@ -29,17 +29,18 @@ published: true
   </div>
 </div>
 
-<section class="recruiter-callout" aria-labelledby="recruiter-callout-title">
+<section class="recruiter-callout" aria-label="Recruiting availability">
   <div class="recruiter-callout__content">
-    <p class="recruiter-callout__eyebrow" id="recruiter-callout-title">Recruiting status</p>
-    <p class="recruiter-callout__headline">Expected Ph.D. graduation: Spring 2027</p>
     <p class="recruiter-callout__summary">
-      I am seeking full-time Research Scientist / Applied Scientist roles in generative vision and multimodal ML,
-      especially work on understanding and controlling image/video generation models.
+      I expect to complete my Ph.D. in Spring 2027 and am exploring full-time Research Scientist and Applied Scientist
+      roles focused on generative vision, multimodal ML, and controllable image/video generation.
+      You can view my <a href="{{ '/resume/' | relative_url }}">resume</a> or reach me by
+      <a href="mailto:{{ site.owner.email }}">email</a> and
+      <a href="https://linkedin.com/in/{{ site.owner.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>.
     </p>
   </div>
   <a class="recruiter-callout__button" href="mailto:{{ site.owner.email }}?subject=Full-time%20Research%20Scientist%20%2F%20Applied%20Scientist%20role">
-    Email me about roles
+    Discuss opportunities
   </a>
 </section>
 
