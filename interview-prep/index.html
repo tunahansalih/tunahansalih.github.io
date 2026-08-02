@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Research Scientist Interview Prep</title>
+<title>Vision Research Scientist Interview Prep</title>
 <style>
   :root{
     --bg:#ffffff; --panel:#ffffff; --panel2:#fafafa; --line:#e6e6e6;
@@ -43,10 +43,39 @@
   @media(min-width:760px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}}
   .pill{display:inline-block;font-size:11px;padding:2px 9px;border-radius:99px;background:var(--chip);color:var(--mut);font-weight:600}
   .pill.p1,.pill.p2,.pill.p3,.pill.p4{background:var(--chip);color:var(--mut)}
-  .ck{display:flex;gap:10px;align-items:flex-start;padding:5px 0;cursor:pointer}
-  .ck input{margin-top:3px;width:15px;height:15px;accent-color:var(--good);flex:none;cursor:pointer}
-  .ck span{font-size:13.5px}
-  .ck.done span{color:var(--mut);text-decoration:line-through}
+  .ck{display:flex;gap:10px;align-items:flex-start;padding:7px 0}
+  .ck input{margin-top:3px;width:16px;height:16px;accent-color:var(--good);flex:none;cursor:pointer}
+  .taskcopy{font-size:13.5px;min-width:0;flex:1}
+  .tasktext{display:block;cursor:pointer;font-size:14px;line-height:1.62;color:#252525}
+  .task-prose{max-width:74ch}
+  .task-steps{display:grid;gap:8px;margin:2px 0 0}
+  .task-step{display:grid;grid-template-columns:76px minmax(0,1fr);gap:10px;align-items:start}
+  .step-label{font-size:10.5px;line-height:1.4;text-transform:uppercase;letter-spacing:.055em;font-weight:750;color:var(--accent);padding-top:3px}
+  .step-copy{min-width:0}
+  .completion{max-width:74ch;margin-top:9px;padding:8px 10px;border-radius:6px;background:#f3f8f4;color:#285a35;font-size:12px}
+  .completion strong{font-weight:750}
+  .ck.done .tasktext{color:var(--mut);text-decoration:line-through}
+  .ck.done .completion{opacity:.65}
+  .ck.skipped{opacity:.64}
+  .ck.skipped .tasktext{text-decoration:line-through}
+  .res .ck.done span,#v-story .ck.done span{color:var(--mut);text-decoration:line-through}
+  .taskmeta{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:5px;color:var(--mut);font-size:11.5px}
+  .taskmeta .donewhen{color:#374151}
+  .timepill{font-size:10.5px;padding:2px 8px;border-radius:99px;background:#eef3f8;color:#334155;font-weight:650}
+  .timepill.strict{background:#fbe9e9;color:var(--accent)}
+  .timepill.deep{background:#f4eee5;color:var(--warn)}
+  .focusbar{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:7px;padding:7px 9px;background:var(--panel2);border:1px solid var(--line);border-radius:6px}
+  .focusclock{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;font-weight:700;min-width:52px;color:var(--ink)}
+  .focusclock.active{color:var(--accent)}
+  .focushelp{font-size:11px;color:var(--mut);flex:1 1 180px}
+  .taskfallback{margin-top:5px}
+  .taskfallback summary{font-size:11.5px;color:var(--accent);font-weight:600}
+  .taskfallback div{margin-top:4px;color:var(--mut);font-size:12px;border-left:2px solid var(--line);padding-left:8px}
+  .flex-task{background:var(--panel2);border-radius:6px;padding:8px 10px;margin:3px 0}
+  .kind{font-size:9.5px;padding:1px 7px;border-radius:99px;text-transform:uppercase;letter-spacing:.05em;font-weight:700}
+  .kind.core{background:#e8f5ec;color:var(--good)}
+  .kind.flex{background:#f4eee5;color:var(--warn)}
+  .kind.company{background:#fbe9e9;color:var(--accent)}
   .wkhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
   .wkhead .pr{font-size:12px;color:var(--mut)}
   .mini{height:4px;background:var(--chip);border-radius:99px;overflow:hidden;margin:8px 0 4px}
@@ -112,32 +141,85 @@
   @media(min-width:620px){.setdays{grid-template-columns:1fr 1fr}}
   #v-settings input,#v-settings select{width:100%;background:#fff;border:1px solid var(--line);color:var(--ink);
     border-radius:6px;padding:9px 10px;font-size:13.5px;font-family:inherit}
-  .overlay{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;background:#fafafa}
-  .authcard{width:100%;max-width:430px;background:#fff;border:1px solid var(--line);border-radius:12px;
-    padding:28px 26px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-  .authcard h2{margin:0 0 4px;font-size:20px;font-weight:700}
-  .authcard p.sub{margin:0 0 18px;color:var(--mut);font-size:13px}
-  .authfeatures{margin:0 0 20px;padding:0;display:grid;gap:7px;color:var(--mut);font-size:12.5px;list-style:none}
-  .authfeatures li::before{content:"✓";color:var(--good);font-weight:700;margin-right:8px}
-  .gbtn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;color:#1a1a1a;
-    border:1px solid var(--line);border-radius:8px;padding:11px;font-size:14px;font-weight:600;cursor:pointer}
+  .authbar{display:none;align-items:center;gap:8px;flex-wrap:wrap;padding:0 0 12px;margin-top:-4px}
+  .authbar.on{display:flex}
+  .authbar input{background:#fff;border:1px solid var(--line);color:var(--ink);border-radius:6px;
+    padding:7px 9px;font-size:13px;font-family:inherit;width:170px}
+  .authbar .btn{padding:7px 11px}
+  .gbtn{display:flex;align-items:center;gap:7px;background:#fff;color:#1a1a1a;
+    border:1px solid var(--line);border-radius:6px;padding:7px 11px;font-size:13px;font-weight:600;cursor:pointer}
   .gbtn:hover{background:#f7f7f7}
-  .gbtn svg{width:18px;height:18px}
-  .divider{display:flex;align-items:center;gap:10px;color:var(--mut);font-size:12px;margin:16px 0}
-  .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
-  .authcard input{width:100%;background:#fff;border:1px solid var(--line);color:var(--ink);border-radius:8px;
-    padding:11px;font-size:14px;margin-bottom:10px;font-family:inherit}
-  .authcard .row{display:flex;gap:10px}
-  .authcard .row .btn{flex:1;justify-content:center;text-align:center;padding:11px}
-  #autherr{color:var(--bad);font-size:12.5px;min-height:16px;margin-top:6px}
-  #cfgnote{display:none;background:var(--panel2);border-left:3px solid var(--warn);border-radius:0 6px 6px 0;
-    padding:10px 12px;font-size:12.5px;color:var(--mut);margin-top:8px}
-  .authmini{color:var(--mut);font-size:11.5px;text-align:center;margin-top:14px}
-  .authlinks{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:12px}
-  .linkbtn{border:0;background:none;color:var(--accent);font:inherit;padding:0;cursor:pointer}
+  .gbtn svg{width:15px;height:15px}
+  #autherr{color:var(--bad);font-size:12px;flex-basis:100%}
+  #autherr:empty{display:none}
+  #cfgnote{display:none;font-size:12px;color:var(--warn)}
+  .linkbtn{border:0;background:none;color:var(--accent);font:inherit;font-size:12px;padding:0;cursor:pointer}
   .linkbtn:hover{text-decoration:underline}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   .page-foot{color:var(--mut);font-size:12px;text-align:center;margin-top:28px}
+  .gategrid{display:grid;gap:12px}
+  @media(min-width:760px){.gategrid{grid-template-columns:1fr 1fr}}
+  .gatecard{margin:0}
+  .gatehead{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+  .gatehead h3{margin:0}
+  .gatestate{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;font-weight:700;padding:3px 8px;border-radius:99px;background:var(--chip);color:var(--mut)}
+  .gatestate.pass{background:#e8f5ec;color:var(--good)}
+  .gatestate.fail{background:#fbe9e9;color:var(--bad)}
+  .gatestate.defer{background:#f4eee5;color:var(--warn)}
+  .gateform{display:grid;gap:8px;grid-template-columns:1fr 1fr;margin-top:10px}
+  .gateform label{font-size:11px;color:var(--mut);font-weight:600}
+  .gateform select,.gateform input,.gateform textarea{display:block;width:100%;margin-top:3px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:7px 8px;font:inherit;font-size:12.5px}
+  .gateform textarea{grid-column:1/-1;min-height:58px;resize:vertical}
+  .protocol-on{border-color:var(--accent);background:#fff8f8}
+  .protocol-step{border-left:3px solid var(--line);padding-left:12px;margin:14px 0}
+  .protocol-step h3{margin-bottom:2px}
+  .protocol-step ul,.rulelist{margin:7px 0 0;padding-left:20px}
+  .protocol-step li,.rulelist li{margin:5px 0}
+  .idtag{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;color:var(--mut)}
+  .tasknote textarea{width:100%;min-height:56px;margin-top:6px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:7px 8px;font:inherit;font-size:12px;resize:vertical}
+  .cardprompt{font-weight:650;font-size:14px}
+  .cardanswer{white-space:pre-wrap;margin:8px 0;color:#374151}
+  .due{border-color:var(--warn)}
+  #v-cards textarea,#v-cards input[type=date]{background:#fff;border:1px solid var(--line);border-radius:6px;padding:8px 9px;font:inherit;font-size:13px}
+  .target-universe{padding:18px;margin-top:14px}
+  .target-universe>p{margin:4px 0 14px}
+  .target-group{border-top:1px solid var(--line);padding:12px 0 2px}
+  .target-group:first-of-type{border-top:0;padding-top:0}
+  .target-group>summary{color:var(--ink);font-size:14px}
+  .target-rule{margin:5px 0 11px;font-size:12px;color:var(--mut)}
+  .target-grid{display:grid;gap:10px}
+  @media(min-width:760px){.target-grid{grid-template-columns:1fr 1fr}}
+  .target-card{border:1px solid var(--line);border-radius:7px;padding:13px;background:var(--panel2);margin:0}
+  .target-card h4{font-size:14px;margin:0}
+  .target-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+  .target-meta{font-size:11.5px;color:var(--mut);margin:3px 0 8px}
+  .target-roles{font-size:12px;margin:8px 0;color:#374151}
+  .target-why{font-size:12.5px;margin:0}
+  .target-pack{font-size:11.5px;color:var(--mut);margin-top:8px}
+  .target-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px}
+  .target-actions .btn:disabled{cursor:default;opacity:.62}
+  .plan-intro{padding:20px 21px;margin-bottom:14px;border-left:4px solid var(--accent)}
+  .plan-intro h2{font-size:20px;line-height:1.25;margin:0 0 6px;letter-spacing:-.015em}
+  .plan-intro p{max-width:72ch;margin:0;color:var(--mut)}
+  .reading-cues{display:grid;gap:8px;margin-top:14px}
+  @media(min-width:760px){.reading-cues{grid-template-columns:repeat(3,1fr)}}
+  .reading-cue{padding:9px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel2);font-size:12px;color:var(--mut)}
+  .reading-cue b{display:block;color:var(--ink);margin-bottom:1px}
+  .plan-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0 16px}
+  .plan-tools .sp{flex:1}
+  .week-card{padding:0;overflow:hidden}
+  .week-card[open]{border-color:#d7d7d7}
+  .week-card.now{border-color:var(--accent)}
+  .week-summary{list-style:none;padding:15px 18px;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;color:var(--ink)}
+  .week-summary::-webkit-details-marker{display:none}
+  .week-summary::before{content:'›';grid-column:2;grid-row:1/3;font-size:22px;color:var(--mut);transform:rotate(0);transition:transform .15s}
+  .week-card[open]>.week-summary::before{transform:rotate(90deg)}
+  .week-title{font-size:15px;font-weight:720;line-height:1.35;padding-right:8px}
+  .week-sub{font-size:11.5px;color:var(--mut);margin-top:3px;padding-right:8px}
+  .week-body{padding:0 18px 14px;border-top:1px solid var(--line)}
+  .timing-guide{padding:0;overflow:hidden}
+  .timing-guide>summary{padding:13px 16px;color:var(--ink)}
+  .timing-guide-body{padding:0 16px 14px}
   @media(max-width:700px){
     header{padding:14px 16px 0}
     main{padding:18px 14px 64px}
@@ -147,8 +229,11 @@
     nav button{padding:9px 10px}
     .storagebar .muted{max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     .storagebar .sp{display:none}
-    .authcard{padding:24px 20px}
+    .authbar input{width:100%}
     th,td{min-width:105px}
+    .task-step{grid-template-columns:1fr;gap:1px}
+    .step-label{padding-top:0}
+    .week-summary{padding:13px 14px}.week-body{padding:0 14px 12px}
   }
   @media(prefers-reduced-motion:reduce){
     *,*::before,*::after{scroll-behavior:auto!important;transition:none!important}
@@ -156,40 +241,9 @@
 </style>
 </head>
 <body>
-<div class="overlay" id="loginoverlay">
-  <div class="authcard">
-    <h2>Research Scientist Interview Prep</h2>
-    <p class="sub">A structured plan for ML coding, research depth, mock interviews, and the job-search pipeline.</p>
-    <ul class="authfeatures">
-      <li>Sixteen-week guided preparation plan with personalization</li>
-      <li>Topic mastery, coding, mock, and story trackers</li>
-      <li>Private progress synchronized across devices</li>
-    </ul>
-    <div id="authforms">
-      <button class="gbtn" id="g-signin" type="button">
-        <svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.4 29.3 35 24 35c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 5.1 29.5 3 24 3 12.4 3 3 12.4 3 24s9.4 21 21 21 21-9.4 21-21c0-1.2-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 13 24 13c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 5.1 29.5 3 24 3 16 3 9.1 7.6 6.3 14.7z"/><path fill="#4CAF50" d="M24 45c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 36 26.7 37 24 37c-5.3 0-9.7-2.6-11.3-7l-6.5 5C9 40.3 15.9 45 24 45z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.1-4.1 5.6l6.2 5.2C40.9 35.7 45 30.4 45 24c0-1.2-.1-2.3-.4-3.5z"/></svg>
-        Continue with Google
-      </button>
-      <div class="divider">or</div>
-      <label class="sr-only" for="auth-email">Email address</label>
-      <input id="auth-email" type="email" placeholder="you@example.com" autocomplete="username">
-      <label class="sr-only" for="auth-pass">Password</label>
-      <input id="auth-pass" type="password" placeholder="Password" autocomplete="current-password">
-      <div class="row">
-        <button class="btn accent" id="e-signin" type="button">Sign in</button>
-        <button class="btn" id="e-register" type="button">Create account</button>
-      </div>
-      <div class="authlinks"><button class="linkbtn" id="e-reset" type="button">Forgot password?</button></div>
-      <div id="autherr" role="status" aria-live="polite"></div>
-    </div>
-    <div id="cfgnote">Sign-in is not configured for this deployment.</div>
-    <p class="authmini">Your progress is stored in this app's Firebase project and is restricted to your account.</p>
-    <p class="authmini">Inspired by <a href="https://alisawuffles.github.io/blog/job-search/" target="_blank" rel="noopener">Alisa Liu's industry job-search guide</a>.</p>
-  </div>
-</div>
 <header>
   <div class="htop">
-    <h1>Interview Prep<small id="sub">Research Scientist / RE / MTS prep</small></h1>
+    <h1>Interview Prep<small id="sub">Research Scientist · Generative Vision / Multimodal / RL</small></h1>
     <div class="meta">
       <div class="overall">
         <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px;gap:14px">
@@ -201,6 +255,21 @@
   </div>
   <nav id="nav" aria-label="Interview preparation sections"></nav>
   <div id="storagebar" class="storagebar"></div>
+  <div id="authbar" class="authbar">
+    <button class="gbtn" id="g-signin" type="button">
+      <svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.4 29.3 35 24 35c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 5.1 29.5 3 24 3 12.4 3 3 12.4 3 24s9.4 21 21 21 21-9.4 21-21c0-1.2-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 13 24 13c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 5.1 29.5 3 24 3 16 3 9.1 7.6 6.3 14.7z"/><path fill="#4CAF50" d="M24 45c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 36 26.7 37 24 37c-5.3 0-9.7-2.6-11.3-7l-6.5 5C9 40.3 15.9 45 24 45z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.1-4.1 5.6l6.2 5.2C40.9 35.7 45 30.4 45 24c0-1.2-.1-2.3-.4-3.5z"/></svg>
+      Google
+    </button>
+    <label class="sr-only" for="auth-email">Email address</label>
+    <input id="auth-email" type="email" placeholder="you@example.com" autocomplete="username">
+    <label class="sr-only" for="auth-pass">Password</label>
+    <input id="auth-pass" type="password" placeholder="Password" autocomplete="current-password">
+    <button class="btn accent" id="e-signin" type="button">Sign in</button>
+    <button class="btn" id="e-register" type="button">Create account</button>
+    <button class="linkbtn" id="e-reset" type="button">Forgot password?</button>
+    <span id="cfgnote">Sign-in is not configured for this deployment. Progress stays in this browser.</span>
+    <div id="autherr" role="status" aria-live="polite"></div>
+  </div>
 </header>
 <main>
   <section class="view on" id="v-dash"></section>
@@ -210,28 +279,36 @@
   <section class="view" id="v-mocks"></section>
   <section class="view" id="v-pipe"></section>
   <section class="view" id="v-story"></section>
+  <section class="view" id="v-cards"></section>
+  <section class="view" id="v-gates"></section>
+  <section class="view" id="v-evidence"></section>
+  <section class="view" id="v-protocol"></section>
   <section class="view" id="v-res"></section>
   <section class="view" id="v-settings"></section>
 </main>
 
 <script>
 /* ---------- dates (user-configurable via Settings) ---------- */
-const DEF_START='2026-06-29', DEF_TARGET='2026-10-19';
+const DEF_START='2026-08-03', DEF_TARGET='2027-05-31';
 function getStart(){const v=(typeof S!=='undefined'&&S.settings&&S.settings.startDate)||DEF_START;return new Date(v+'T00:00:00');}
 function getTarget(){const v=(typeof S!=='undefined'&&S.settings&&S.settings.targetDate)||DEF_TARGET;return new Date(v+'T00:00:00');}
 function fmtD(d){return d.toLocaleDateString(undefined,{month:'short',day:'numeric'});}
-function weekDateLabel(i){const a=new Date(getStart());a.setDate(a.getDate()+i*7);const b=new Date(a);b.setDate(b.getDate()+6);return fmtD(a)+' – '+fmtD(b);}
+function dateKey(d){const x=new Date(d);return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0');}
+function weekDateLabel(i,w){const a=new Date(getStart());a.setDate(a.getDate()+i*7);
+  if(w&&(w.openEnded||w.id==='live'))return 'From '+fmtD(a)+' onward';
+  const b=new Date(a);b.setDate(b.getDate()+6);return fmtD(a)+' – '+fmtD(b);}
 
 /* ---------- plan content (loaded from Firestore after login; personalized at render time) ---------- */
 let WEEKS=[], PHASES={}, TOPICS=[], STORY_CATS=[], RESOURCES=[], PACING={};
+let GATES=[], EVIDENCE={}, TIMING={}, PROTOCOL={}, RUBRIC={}, TARGET_COMPANIES={groups:[]}, ADAPT_RULES=[], FAILURE_CATEGORIES=[], FIRST_CUTS=[], NEVER_CUT=[];
 let PERSONALIZATION={vars:{},branches:{}};
 let RAW_PLAN=null;
 let activeUid=null, activeEmail='', activeKey=null;
 const PLANKEY='ipcc_plan_v2';
 const planKeyForUid=uid=>PLANKEY+':'+uid;
 let planError='';
-const PLAN_REFINEMENT_VERSION=3;
-const PLAN_CONTENT_REFINEMENT_VERSION=3;
+const PLAN_REFINEMENT_VERSION=10;
+const PLAN_CONTENT_REFINEMENT_VERSION=9;
 const TARGET_COMPANY_FIELDS=[
   ['targetCompanyA','Target company 1','e.g. OpenAI'],
   ['targetCompanyB','Target company 2','e.g. Anthropic'],
@@ -266,15 +343,36 @@ function substituteVars(text,vars){
 function taskText(t){
   return typeof t==='string'?t:(t&&t.text)||'';
 }
+function taskPriority(t){
+  const p=typeof t==='object'&&t&&t.priority;
+  return p==='flex'||p==='company'?p:'core';
+}
+function isCoreTask(t){return taskPriority(t)==='core';}
 function normalizePlanContent(raw){
   const plan=JSON.parse(JSON.stringify(raw||{}));
   const weeks=Array.isArray(plan.weeks)?plan.weeks:[];
+  (plan.recurringTasks||[]).forEach(r=>{
+    const start=weeks.findIndex(w=>w.id===r.fromWeek);
+    const end=weeks.findIndex(w=>w.id===r.throughWeek);
+    if(start<0||end<start)return;
+    for(let wi=start;wi<=end;wi++){
+      const w=weeks[wi];
+      if((r.excludeWeeks||[]).includes(w.id))continue;
+      const suffix=r.taskIdSuffix||'OUT';
+      const id=w.id.toUpperCase()+'-'+suffix;
+      if((w.sessions||[]).some(s=>(s.x||[]).some(t=>t&&t.id===id)))continue;
+      const task=Object.assign({},r,{id});
+      delete task.fromWeek;delete task.throughWeek;delete task.excludeWeeks;delete task.taskIdSuffix;delete task.sessionTitle;
+      w.sessions=w.sessions||[];
+      w.sessions.push({t:r.sessionTitle,x:[task],_preserveDay:true});
+    }
+  });
   weeks.forEach(w=>{
     (w.sessions||[]).forEach((s,si)=>{
       s.x=(Array.isArray(s.x)?s.x:[]).map((t,ti)=>{
-        const key=w.id+'s'+si+'#'+ti;
-        if(typeof t==='string')return {text:t,_key:key};
-        return Object.assign({},t||{},{_key:(t&&t._key)||key});
+        const legacyKey=w.id+'s'+si+'#'+ti;
+        if(typeof t==='string')return {text:t,_key:legacyKey,_legacyKey:legacyKey};
+        return Object.assign({},t||{},{_key:(t&&t.id)||legacyKey,_legacyKey:legacyKey});
       });
     });
   });
@@ -292,6 +390,43 @@ function migratePlanProgress(){
   if(typeof S==='undefined'||!S||S.planRefinementVersion>=PLAN_REFINEMENT_VERSION)return false;
   if(!S.weekTasks||typeof S.weekTasks!=='object')S.weekTasks={};
   if((S.planRefinementVersion||0)<3) S.weekTasks={};
+  if((S.planRefinementVersion||0)<4){
+    Object.keys(S.weekTasks).forEach(k=>{if(/^(w4|w6|w7|w8|w9)/.test(k))delete S.weekTasks[k];});
+  }
+  // v5 re-sequences every week (adds W0 and the Live Phase), so positional task keys no longer
+  // point at the same work. Keeping them would mark unrelated tasks done.
+  if((S.planRefinementVersion||0)<5) S.weekTasks={};
+  // v6 switches from positional keys to the stable IDs introduced by the audit.
+  // Preserve any progress recorded against the first v5 renderer.
+  if((S.planRefinementVersion||0)<6){
+    WEEKS.forEach(w=>(w.sessions||[]).forEach(s=>(s.x||[]).forEach(t=>{
+      if(t.id&&t._legacyKey&&S.weekTasks[t._legacyKey])S.weekTasks[t.id]=true;
+    })));
+  }
+  // v7 fixes the prerequisite order. These six tasks changed meaning, and old gate
+  // results must not survive the move from a cold Week 0 test to taught Week 1/2 gates.
+  if((S.planRefinementVersion||0)<7){
+    ['W0-G1','W0-G2','W0-G8','W1-T8','W2-T2','W2-T8'].forEach(id=>delete S.weekTasks[id]);
+    if(S.gates) ['G1','G2','G8'].forEach(id=>delete S.gates[id]);
+  }
+  if((S.planRefinementVersion||0)<8){
+    const changed=['W1-T4','W3-T1','W3-T3','W3-T4','W4-T2','W4-T3','W4-T4',
+      'W5-T2','W5-T3','W5-T4','W5-T7','W6-T2','W6-T3','W6-T7','W6-T8',
+      'W7-T1','W7-T2','W7-T3','W7-T4','W7-T8','W8-T3','W9-T2','W9-T3',
+      'W9-T4','W9-T7','W9-T8','W10-T4','W11-T4','W11-T7','W13-T2','W13-T3',
+      'W13-T4','W13-T7','W14-T1','W14-T3','W15-T3','W15-T6','W15-T7'];
+    changed.forEach(id=>delete S.weekTasks[id]);
+  }
+  // v9 adds the evidence-backed coding queue and changes the modern vision,
+  // visual post-training and data/evaluation assignments.
+  if((S.planRefinementVersion||0)<9){
+    ['W0-G1','W2-T8','W3-T2','W3-T6','W6-T3','W9-T2','W9-T4','W9-T8','W10-T3','W10-T7','W14-T6']
+      .forEach(id=>delete S.weekTasks[id]);
+    if(S.gates) ['G1','G7'].forEach(id=>delete S.gates[id]);
+  }
+  // v10 changes timing presentation and adds actual-duration calibration without
+  // invalidating completed curriculum work.
+  if((S.planRefinementVersion||0)<10&&!S.taskTimes)S.taskTimes={};
   S.planRefinementVersion=PLAN_REFINEMENT_VERSION;
   return true;
 }
@@ -309,6 +444,9 @@ function setPlan(raw){
   rebuildWeeks();
   PHASES=RAW_PLAN.phases||{};TOPICS=RAW_PLAN.topics||[];
   STORY_CATS=RAW_PLAN.stories||[];RESOURCES=RAW_PLAN.resources||[];
+  GATES=RAW_PLAN.gates||[];EVIDENCE=RAW_PLAN.evidenceBase||{};TIMING=RAW_PLAN.timingModel||{};PROTOCOL=RAW_PLAN.protocol||{};RUBRIC=RAW_PLAN.rubric||{};TARGET_COMPANIES=RAW_PLAN.targetCompanies||{groups:[]};
+  ADAPT_RULES=RAW_PLAN.adaptationRules||[];FAILURE_CATEGORIES=RAW_PLAN.failureCategories||[];
+  FIRST_CUTS=RAW_PLAN.firstFiveCuts||[];NEVER_CUT=RAW_PLAN.neverCut||[];
   planError='';const migrated=migratePlanProgress();
   try{
     if(activeUid)localStorage.setItem(planKeyForUid(activeUid),JSON.stringify(RAW_PLAN));
@@ -322,7 +460,7 @@ window.__planMissing=function(){ planError="The preparation plan could not be lo
 /* ---------- state ---------- */
 const KEY='ipcc_v2';
 const DEFAULT={
-  schemaVersion:3,
+  schemaVersion:5,
   planRefinementVersion:0,
   weekTasks:{},        // "w1#0": true
   topics:{},           // idx: {explain:bool, implement:bool, status:''}
@@ -332,26 +470,51 @@ const DEFAULT={
   leet:[],             // {date,problem,pattern,diff,unaided,min,revisit,notes}
   mocks:[],            // {date,type,who,score,well,fix,follow}
   pipe:[],             // {company,role,priority,stage,recruiter,referral,applied,next,status,notes}
-  settings:{startDate:'2026-06-29',targetDate:'2026-10-19',days:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],name:''},
-  userConfig:{projectA:'',projectB:'',projectC:'',primaryLane:'',adjacentLane:'',targetLabA:'',targetLabB:'',targetCompanyA:'',targetCompanyB:'',targetCompanyC:'',branches:{w9:'interp'}},
+  cards:[],            // {prompt,answer,source,due,last}
+  taskNotes:{},
+  taskTimes:{},         // stable task key: accumulated focus seconds
+  skippedTasks:{},
+  openWeeks:{},         // week id: whether its roadmap card is expanded
+  gates:{},            // gate id: {status,date,failure,notes}
+  protocolActive:false,
+  protocolCompany:'',
+  settings:{startDate:DEF_START,targetDate:DEF_TARGET,days:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],name:''},
+  userConfig:{projectA:'',projectB:'',projectC:'',primaryLane:'',adjacentLane:'',targetLabA:'',targetLabB:'',targetCompanyA:'',targetCompanyB:'',targetCompanyC:'',branches:{}},
 };
 function freshState(){return JSON.parse(JSON.stringify(DEFAULT))}
 function normSettings(o){const d={startDate:DEF_START,targetDate:DEF_TARGET,days:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],name:''};
   const s=Object.assign({},d,o||{}); if(!Array.isArray(s.days)||s.days.length<6)s.days=d.days.slice(); return s;}
 function normUserConfig(o){
-  const d={projectA:'',projectB:'',projectC:'',primaryLane:'',adjacentLane:'',targetLabA:'',targetLabB:'',targetCompanyA:'',targetCompanyB:'',targetCompanyC:'',branches:{w9:'interp'}};
+  const d={projectA:'',projectB:'',projectC:'',primaryLane:'',adjacentLane:'',targetLabA:'',targetLabB:'',targetCompanyA:'',targetCompanyB:'',targetCompanyC:'',branches:{}};
   const u=Object.assign({},d,o||{});
   if(!u.branches||typeof u.branches!=='object')u.branches=Object.assign({},d.branches);
   else u.branches=Object.assign({},d.branches,u.branches);
   return u;
 }
 let S=freshState();
-function normalizeState(raw){const m=Object.assign(freshState(),raw||{});m.schemaVersion=3;m.settings=normSettings(m.settings);m.userConfig=normUserConfig(m.userConfig);return m}
+function normalizeState(raw){
+  const prior=raw||{};const m=Object.assign(freshState(),prior);
+  m.settings=normSettings(m.settings);
+  if((prior.schemaVersion||0)<4&&m.settings.startDate==='2026-06-29'&&m.settings.targetDate==='2026-10-19'){
+    m.settings.startDate=DEF_START;m.settings.targetDate=DEF_TARGET;
+  }
+  if((prior.schemaVersion||0)<5&&m.settings.targetDate==='2027-01-11')m.settings.targetDate=DEF_TARGET;
+  if(!m.gates||typeof m.gates!=='object')m.gates={};
+  if(!Array.isArray(m.cards))m.cards=[];
+  if(!m.taskNotes||typeof m.taskNotes!=='object')m.taskNotes={};
+  if(!m.taskTimes||typeof m.taskTimes!=='object')m.taskTimes={};
+  if(!m.skippedTasks||typeof m.skippedTasks!=='object')m.skippedTasks={};
+  if(!m.openWeeks||typeof m.openWeeks!=='object')m.openWeeks={};
+  m.schemaVersion=5;m.userConfig=normUserConfig(m.userConfig);return m;
+}
 function loadForUser(uid){
+  const carry=RAW_PLAN;   // the plan is shared content — keep it across guest ↔ account switches
   activeUid=uid;activeKey=KEY+':'+uid;
   WEEKS=[];PHASES={};TOPICS=[];STORY_CATS=[];RESOURCES=[];planError='';
   try{S=normalizeState(JSON.parse(localStorage.getItem(activeKey)))}catch(e){S=freshState()}
-  try{const cp=JSON.parse(localStorage.getItem(planKeyForUid(uid)));if(cp)setPlan(cp)}catch(e){}
+  let applied=false;
+  try{const cp=JSON.parse(localStorage.getItem(planKeyForUid(uid)));if(cp){setPlan(cp);applied=true;}}catch(e){}
+  if(!applied&&carry)setPlan(carry);
 }
 let saveTimer;
 function save(){clearTimeout(saveTimer);saveTimer=setTimeout(()=>{if(activeKey)localStorage.setItem(activeKey,JSON.stringify(S));flashSaved();scheduleFileWrite();scheduleServerSave();if(window.__cloudSave)window.__cloudSave(S);},150)}
@@ -362,17 +525,62 @@ const CLOUD = true;
 window.__getState=()=>S;
 window.__prepareUser=function(uid,email){loadForUser(uid);activeEmail=email||'(signed in)';window.__user=activeEmail;renderAllViews();};
 window.__applyRemote=function(data){ if(data&&Object.keys(data).length){ S=normalizeState(data);const migrated=migratePlanProgress();if(activeKey)localStorage.setItem(activeKey,JSON.stringify(S));renderAllViews();if(migrated)save(); } };
-window.__onLogin=function(){ const o=document.getElementById('loginoverlay'); if(o)o.style.display='none'; renderStorageBar(); renderAllViews(); };
-window.__onLogout=function(){
-  window.__user=null;activeUid=null;activeEmail='';activeKey=null;S=freshState();
-  WEEKS=[];PHASES={};TOPICS=[];STORY_CATS=[];RESOURCES=[];planError='';
-  renderAllViews();renderStorageBar();
-  const o=document.getElementById('loginoverlay'); if(o)o.style.display='flex';
+window.__onLogin=function(){ window.__hideAuth(); renderStorageBar(); renderAllViews(); };
+
+/* ---------- guest mode: the plan is readable and tickable without an account ---------- */
+const GUEST_UID='guest';
+function hasProgress(st){
+  if(!st)return false;
+  if(st.weekTasks&&Object.keys(st.weekTasks).some(k=>st.weekTasks[k]))return true;
+  if(st.topics&&Object.keys(st.topics).length)return true;
+  if(st.storyReady&&Object.keys(st.storyReady).some(k=>st.storyReady[k]))return true;
+  if(st.gates&&Object.values(st.gates).some(g=>g&&g.status))return true;
+  if(st.protocolActive)return true;
+  if(Array.isArray(st.cards)&&st.cards.length)return true;
+  if(st.taskNotes&&Object.keys(st.taskNotes).some(k=>st.taskNotes[k]))return true;
+  if(st.skippedTasks&&Object.keys(st.skippedTasks).some(k=>st.skippedTasks[k]))return true;
+  return ['leet','mocks','pipe'].some(k=>Array.isArray(st[k])&&st[k].length);
+}
+// Read the guest session's progress without destroying it — it stays as a local backup.
+window.__guestProgress=function(){
+  try{const st=JSON.parse(localStorage.getItem(KEY+':'+GUEST_UID));return hasProgress(st)?st:null;}catch(e){return null;}
+};
+window.__adoptState=function(st){
+  if(!st)return;
+  S=normalizeState(st);migratePlanProgress();
+  if(activeKey)localStorage.setItem(activeKey,JSON.stringify(S));
+  renderAllViews();
+};
+window.__startGuest=function(){
+  window.__user=null;activeEmail='';
+  loadForUser(GUEST_UID);
+  window.__hideAuth();renderAllViews();renderStorageBar();
+};
+window.__showAuth=function(){
+  const o=document.getElementById('authbar'); if(o)o.classList.add('on');
   const e=document.getElementById('autherr'); if(e)e.textContent='';
+  const em=document.getElementById('auth-email'); if(em)em.focus();
+};
+window.__hideAuth=function(){
+  const o=document.getElementById('authbar'); if(o)o.classList.remove('on');
+  const e=document.getElementById('autherr'); if(e)e.textContent='';
+};
+window.__toggleAuth=function(){
+  const o=document.getElementById('authbar');
+  if(o&&o.classList.contains('on'))window.__hideAuth(); else window.__showAuth();
+};
+window.__onLogout=function(){
+  // Signing out drops back to the guest session rather than locking the app.
+  window.__syncStatus='';
+  window.__startGuest();
 };
 window.__authError=function(msg){ const e=document.getElementById('autherr'); if(e)e.textContent=msg||'Something went wrong. Try again.'; };
 window.__syncState=function(state){window.__syncStatus=state;renderStorageBar();};
-window.__needConfig=function(){ const c=document.getElementById('cfgnote'); if(c)c.style.display='block'; const f=document.getElementById('authforms'); if(f)f.style.display='none'; };
+window.__needConfig=function(){
+  const c=document.getElementById('cfgnote'); if(c)c.style.display='inline';
+  ['g-signin','auth-email','auth-pass','e-signin','e-register','e-reset']
+    .forEach(id=>{const e=document.getElementById(id); if(e)e.style.display='none';});
+};
 const SERVER = false;
 let serverTimer, serverOK=false;
 async function serverPing(){try{const r=await fetch('/ping',{cache:'no-store'});serverOK=r.ok;}catch(e){serverOK=false;}return serverOK;}
@@ -385,8 +593,8 @@ function scheduleServerSave(){if(!SERVER)return;clearTimeout(serverTimer);server
 async function serverSave(){
   if(!SERVER)return;
   try{const r=await fetch('/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(S)});
-    serverOK=r.ok;setFileStatus(r.ok?'saved to progress.json ✓':'helper error — kept in browser');}
-  catch(e){serverOK=false;setFileStatus('helper offline — kept in browser');renderStorageBar();}
+    serverOK=r.ok;setFileStatus(r.ok?'saved to progress.json ✓':'helper error; kept in browser');}
+  catch(e){serverOK=false;setFileStatus('helper offline; kept in browser');renderStorageBar();}
 }
 
 /* ---------- robust file persistence (File System Access API) ---------- */
@@ -411,7 +619,7 @@ async function connectFile(){
     }
     fileHandle=h;fileName=h.name;await idbSet('handle',h);
     await writeFile();renderAllViews();renderStorageBar();
-  }catch(e){if(e&&e.name!=='AbortError')alert('Could not open the file picker here. If you opened this page directly from disk, your browser may block file access — use Export / Import instead, or open it through a local web server.')}
+  }catch(e){if(e&&e.name!=='AbortError')alert('Could not open the file picker here. If you opened this page directly from disk, your browser may block file access. Use Export / Import instead, or open it through a local web server.')}
 }
 async function disconnectFile(){fileHandle=null;fileName='';await idbDel('handle');renderStorageBar()}
 let fileTimer;
@@ -423,7 +631,7 @@ async function writeFile(){
       if(p!=='granted'){p=await fileHandle.requestPermission({mode:'readwrite'});if(p!=='granted'){renderStorageBar(true);return}}}
     const w=await fileHandle.createWritable();await w.write(JSON.stringify(S,null,2));await w.close();
     setFileStatus('saved to file ✓');
-  }catch(e){setFileStatus('file save failed — kept in browser')}
+  }catch(e){setFileStatus('file save failed; kept in browser')}
 }
 async function loadFromFile(){
   try{const f=await fileHandle.getFile();const txt=await f.text();
@@ -448,27 +656,28 @@ function renderStorageBar(needReconnect){
     if(window.__user){
       const status=window.__syncStatus||'synced';
       const dot=status==='error'?'bad':status==='saving'?'warn':'good';
-      const label=status==='error'?'Sync failed — progress is safe on this device':status==='saving'?'Saving…':'Synced';
+      const label=status==='error'?'Sync failed. Progress is safe on this device.':status==='saving'?'Saving…':'Synced';
       bar.innerHTML=`<span class="dot ${dot}"></span><span class="muted">${label} · <b id="sync-user"></b></span><span class="sp"></span><button class="btn sm" id="sb-set">Settings</button><button class="btn sm" id="sb-out">Sign out</button>`;
       const u=document.getElementById('sync-user');if(u)u.textContent=window.__user;
       const o=document.getElementById('sb-out'); if(o)o.onclick=()=>{window.__signOut&&window.__signOut()};
     } else {
-      bar.innerHTML='<span class="dot warn"></span><span class="muted">Sign in to load your plan and progress.</span>';
+      bar.innerHTML='<span class="dot warn"></span><span class="muted">Progress is saved in this browser only.</span><span class="sp"></span><button class="btn sm" id="sb-set">Settings</button><button class="btn sm accent" id="sb-in">Sign in to sync</button>';
+      const i=document.getElementById('sb-in'); if(i)i.onclick=()=>window.__toggleAuth();
     }
     const g=document.getElementById('sb-set'); if(g)g.onclick=()=>show('settings');
     return;
   }
   if(SERVER){
-    html=`<span class="dot ${serverOK?'good':'warn'}"></span><span>${serverOK?'Auto-saving to <b>progress.json</b> via the local helper — nothing to do, just study.':'Local helper not responding — progress is in this browser. Make sure the helper is installed (see Install.command).'}</span><span id="filestat" class="muted sm"></span>`;
+    html=`<span class="dot ${serverOK?'good':'warn'}"></span><span>${serverOK?'Auto-saving to <b>progress.json</b> through the local helper.':'The local helper is not responding. Progress remains in this browser. Make sure the helper is installed (see Install.command).'}</span><span id="filestat" class="muted sm"></span>`;
     bar.innerHTML=html;return;
   }
   if(fileHandle&&!needReconnect){
     html=`<span class="dot good"></span><span>Auto-saving to <b>${fileName}</b></span><span id="filestat" class="muted sm"></span><span class="sp"></span><button class="btn sm" id="sb-disc">Disconnect</button>`;
   }else if(fileHandle&&needReconnect){
-    html=`<span class="dot warn"></span><span>Progress file found — click to resume auto-save.</span><span class="sp"></span><button class="btn sm accent" id="sb-recon">Reconnect file</button>`;
+    html=`<span class="dot warn"></span><span>Progress file found. Reconnect it to resume automatic saving.</span><span class="sp"></span><button class="btn sm accent" id="sb-recon">Reconnect file</button>`;
   }else{
     const sup=fsaSupported();
-    html=`<span class="dot ${sup?'':'bad'}"></span><span>${sup?'Progress is saved in this browser. Link a file in your folder for durable auto-save + backup.':'Progress is saved in this browser. Auto file-save needs Chrome / Edge — use Export / Import to back up.'}</span><span class="sp"></span>${sup?'<button class="btn sm accent" id="sb-conn">Link progress file</button>':''}`;
+    html=`<span class="dot ${sup?'':'bad'}"></span><span>${sup?'Progress is saved in this browser. Link a file in your folder for automatic saving and backup.':'Progress is saved in this browser. Automatic file saving needs Chrome or Edge. Use Export / Import to make a backup.'}</span><span class="sp"></span>${sup?'<button class="btn sm accent" id="sb-conn">Link progress file</button>':''}`;
   }
   bar.innerHTML=html;
   const g=id=>document.getElementById(id);
@@ -477,36 +686,56 @@ function renderStorageBar(needReconnect){
   if(g('sb-recon'))g('sb-recon').onclick=grantReconnect;
 }
 function renderAllViews(){
-  renderDash();renderPlan();renderTopics();renderLeet();renderMocks();renderPipe();renderStory();renderRes();renderSettings();
+  renderDash();renderPlan();renderTopics();renderLeet();renderMocks();renderPipe();renderStory();
+  renderCards();renderGates();renderEvidence();renderProtocol();renderRes();renderSettings();
   refreshHeader();
 }
 
 /* ---------- helpers ---------- */
 const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
+function escapeHtml(v){return String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function daysBetween(a,b){return Math.round((b-a)/86400000)}
 function currentWeekIdx(){if(!WEEKS.length)return 0;const now=new Date();const st=getStart();if(now<st)return 0;const w=Math.floor(daysBetween(st,now)/7);return Math.min(Math.max(w,0),WEEKS.length-1)}
 
 /* ---------- progress math ---------- */
-function tkey(w,si,ti,t){return (t&&t._key)||w.id+'s'+si+'#'+ti}
-function weekTotal(i){let t=0;WEEKS[i].sessions.forEach(s=>t+=s.x.length);return t}
-function weekDone(i){const w=WEEKS[i];let d=0;w.sessions.forEach((s,si)=>s.x.forEach((t,ti)=>{if(S.weekTasks[tkey(w,si,ti,t)])d++}));return d}
-function sessDone(w,si){let d=0;w.sessions[si].x.forEach((t,ti)=>{if(S.weekTasks[tkey(w,si,ti,t)])d++});return d}
-function planPct(){let t=0,d=0;WEEKS.forEach((w,i)=>{t+=weekTotal(i);d+=weekDone(i)});return t?d/t:0}
+function weekStamp(d){const x=new Date(d);const day=(x.getDay()+6)%7;x.setDate(x.getDate()-day);return dateKey(x)}
+function tkey(w,si,ti,t){
+  const base=(t&&t.id)||(t&&t._key)||w.id+'s'+si+'#'+ti;
+  return w.id==='live'&&['LIVE-1','LIVE-2','LIVE-3'].includes(base)?base+'@'+weekStamp(new Date()):base;
+}
+function taskSkipped(w,si,ti,t){return !!S.skippedTasks[tkey(w,si,ti,t)]}
+function weekTotal(i){let n=0;const w=WEEKS[i];w.sessions.forEach((s,si)=>s.x.forEach((task,ti)=>{if(isCoreTask(task)&&!taskSkipped(w,si,ti,task))n++}));return n}
+function weekDone(i){const w=WEEKS[i];let d=0;w.sessions.forEach((s,si)=>s.x.forEach((t,ti)=>{if(isCoreTask(t)&&!taskSkipped(w,si,ti,t)&&S.weekTasks[tkey(w,si,ti,t)])d++}));return d}
+function reserveMinutes(profile){
+  const s=(profile.calendarReserve||'').toLowerCase();const h=s.match(/(\d+)h(?:\s*(\d+)m)?/);if(h)return Number(h[1])*60+Number(h[2]||0);
+  const nums=(s.match(/\d+/g)||[]).map(Number);return nums.length?Math.max(...nums):0;
+}
+function weekReserve(i){const w=WEEKS[i];let m=0;w.sessions.forEach((s,si)=>s.x.forEach((t,ti)=>{if(isCoreTask(t)&&!taskSkipped(w,si,ti,t))m+=reserveMinutes(timingProfile(w,s,t));}));return m;}
+function reserveLabel(m){return m>=60?`${Math.floor(m/60)}h${m%60?String(m%60).padStart(2,'0')+'m':''}`:`${m}m`;}
+function sessDone(w,si){let d=0;w.sessions[si].x.forEach((t,ti)=>{if(S.weekTasks[tkey(w,si,ti,t)]||taskSkipped(w,si,ti,t))d++});return d}
+function sessCoreTotal(w,si){let n=0;w.sessions[si].x.forEach((t,ti)=>{if(isCoreTask(t)&&!taskSkipped(w,si,ti,t))n++});return n}
+function sessCoreDone(w,si){let d=0;w.sessions[si].x.forEach((t,ti)=>{if(isCoreTask(t)&&!taskSkipped(w,si,ti,t)&&S.weekTasks[tkey(w,si,ti,t)])d++});return d}
+function planPct(){let t=0,d=0;WEEKS.forEach((w,i)=>{if(w.id==='live')return;t+=weekTotal(i);d+=weekDone(i)});return t?d/t:0}
 function topicsPct(){let t=TOPICS.length*2,d=0;TOPICS.forEach((_,i)=>{const o=S.topics[i]||{};if(o.explain)d++;if(o.implement)d++});return t?d/t:0}
 function storyPct(){let d=0;STORY_CATS.forEach(c=>{if(S.storyReady[c])d++});return STORY_CATS.length?d/STORY_CATS.length:0}
 function resPct(){let t=0,d=0;RESOURCES.forEach((g,gi)=>g.items.forEach((_,ii)=>{t++;if(S.resReviewed[gi+'#'+ii])d++}));return t?d/t:0}
 function leetCount(){return S.leet.filter(r=>r.unaided==='Y'||r.problem).length}
+function gatePct(){return GATES.length?GATES.filter(g=>(S.gates[g.id]||{}).status==='pass').length/GATES.length:0}
+function orderedGates(){
+  const wi=id=>{const n=WEEKS.findIndex(w=>w.id===id);return n<0?999:n;};
+  return [...GATES].sort((a,b)=>wi(a.week)-wi(b.week)||a.id.localeCompare(b.id,undefined,{numeric:true}));
+}
 function overallPct(){
-  // weighted: plan 35, topics 30, story 10, resources 10, activity(leet+mocks) 15
-  const act=Math.min(leetCount()/40,1)*0.5+Math.min(S.mocks.filter(m=>m.type).length/12,1)*0.5;
-  return planPct()*.35+topicsPct()*.30+storyPct()*.10+resPct()*.10+act*.15;
+  // Do not manufacture a "readiness" number from arbitrary weights.
+  return planPct();
 }
 function pct(x){return Math.round(x*100)+'%'}
 
 /* ---------- header ---------- */
 function refreshHeader(){
   const now=new Date();const st=getStart();
-  const wk = now<st ? ('Starts '+fmtD(st)) : ('Week '+(currentWeekIdx()+1)+' of '+(WEEKS.length||16));
+  const current=WEEKS[currentWeekIdx()];
+  const wk = now<st ? ('Starts '+fmtD(st)) : (current?current.label:'Plan');
   const wl=document.getElementById('kWeekLabel'); if(wl)wl.textContent=wk;
   const sub=document.getElementById('sub'); if(sub)sub.textContent=(S.settings&&S.settings.name)||'Research Scientist · Generative Vision / Multimodal';
   const p=overallPct();
@@ -515,8 +744,9 @@ function refreshHeader(){
 }
 
 /* ---------- navigation ---------- */
-const TABS=[['dash','Today'],['plan','Plan'],['topics','Topics'],['leet','Coding'],
-  ['mocks','Mocks'],['pipe','Companies'],['story','Stories'],['res','Resources']];
+const TABS=[['dash','Today'],['plan','Weekly plan'],['topics','Knowledge map'],['leet','Coding'],
+  ['mocks','Mocks'],['pipe','Companies'],['story','Stories'],['cards','Review cards'],['gates','Checkpoints'],
+  ['evidence','Why this plan'],['protocol','Before an interview'],['res','Reading']];
 function buildNav(){
   const nav=document.getElementById('nav');if(!nav)return;nav.innerHTML='';
   TABS.forEach(([id,label])=>{
@@ -531,7 +761,7 @@ function show(id){
   if(!v)return;
   // Re-render the target view so checkmark state set on other tabs propagates here.
   const renders={dash:renderDash,plan:renderPlan,topics:renderTopics,leet:renderLeet,mocks:renderMocks,
-    pipe:renderPipe,story:renderStory,res:renderRes,settings:renderSettings};
+    pipe:renderPipe,story:renderStory,cards:renderCards,gates:renderGates,evidence:renderEvidence,protocol:renderProtocol,res:renderRes,settings:renderSettings};
   if(renders[id])renders[id]();
   v.classList.add('on');
   const tab=document.getElementById('tab-'+id);if(tab)tab.classList.add('on');
@@ -543,27 +773,40 @@ function show(id){
 /* ---------- render: dashboard ---------- */
 function renderDash(){
   const v=document.getElementById('v-dash');v.innerHTML='';
-  if(!WEEKS.length){ v.appendChild(el('div','note',planError||(window.__user?'Loading your plan…':'Sign in to load your plan.'))); return; }
+  if(!WEEKS.length){ v.appendChild(el('div','note',planError||'Loading your plan…')); return; }
+  if(S.protocolActive){
+    const who=S.protocolCompany?' for <strong>'+escapeHtml(S.protocolCompany)+'</strong>':'';
+    const p=el('div','note protocol-on','<strong>Interview protocol active'+who+'.</strong> The 72-hour protocol replaces this week’s curriculum except outreach, retrieval, and post-round debriefs. <button class="linkbtn" id="dash-protocol" type="button">Open protocol →</button>');
+    v.appendChild(p);p.querySelector('#dash-protocol').onclick=()=>show('protocol');
+  }else{
+    v.appendChild(el('div','note','<strong>For today:</strong> choose one unfinished Core task and reserve the time shown on its card. Start the count-up clock when you begin. Finish when the stated artifact exists. Use the shorter fallback if starting the full task feels difficult.'));
+  }
   const ci=currentWeekIdx();const now=new Date();const st=getStart();
   v.appendChild(el('div','kpi',`
     <div class="card"><b>${daysBetween(now,getTarget())>0?daysBetween(now,getTarget()):0}</b><span class="muted">days to target (${fmtD(getTarget())})</span></div>
-    <div class="card"><b>${now<st?'Pre':('W'+(ci+1))}</b><span class="muted">${now<st?('starts '+fmtD(st)):WEEKS[ci].theme}</span></div>
-    <div class="card"><b>${pct(overallPct())}</b><span class="muted">readiness score</span></div>
+    <div class="card"><b>${now<st?'Pre':WEEKS[ci].label.replace('Week ','W')}</b><span class="muted">${now<st?('starts '+fmtD(st)):WEEKS[ci].theme}</span></div>
+    <div class="card"><b>${pct(overallPct())}</b><span class="muted">curriculum complete</span></div>
   `));
+  const gp=GATES.filter(g=>(S.gates[g.id]||{}).status==='pass').length;
+  const unresolved=orderedGates().find(g=>!(S.gates[g.id]||{}).status);
+  v.appendChild(el('div','note',`<strong>Performance gates:</strong> ${gp}/${GATES.length} passed.${unresolved?` Next unresolved: <button class="linkbtn" id="next-gate" type="button">${unresolved.id} · ${unresolved.name}</button>`:''}`));
+  const ng=v.querySelector('#next-gate');if(ng)ng.onclick=()=>show('gates');
+  const due=S.cards.filter(c=>!c.due||c.due<=dateKey(new Date())).length;
+  if(due){
+    const cn=el('div','note',`<strong>${due} retrieval card${due===1?' is':'s are'} due.</strong> <button class="linkbtn" id="due-cards" type="button">Review due cards →</button>`);
+    v.appendChild(cn);cn.querySelector('#due-cards').onclick=()=>show('cards');
+  }
   const w=WEEKS[ci];const done=weekDone(ci);const tot=weekTotal(ci);
   const focus=el('div','card now');
-  focus.appendChild(el('div',null,`<div class="wkhead"><h3>${now<st?'Start here':'Today'} · ${w.label} — ${w.theme}</h3>
+  focus.appendChild(el('div',null,`<div class="wkhead"><h3>${now<st?'Start here':'Today'} · ${w.label}: ${w.theme}</h3>
     <span class="pill p${w.phase}">${PHASES[w.phase]}</span></div>
-    <div class="pr">${weekDateLabel(ci)} · ${done}/${tot} tasks complete</div><div class="mini"><i style="width:${tot?Math.round(done/tot*100):0}%"></i></div>`));
+    <div class="pr">${weekDateLabel(ci,w)} · ${done}/${tot} tasks complete · reserve about ${reserveLabel(weekReserve(ci))}</div><div class="mini"><i style="width:${tot?Math.round(done/tot*100):0}%"></i></div>`));
   const today=now.toLocaleDateString('en-US',{weekday:'short'});
-  // Pick the session to focus on: pre-start → session 0 (a preview); otherwise the session mapped to today.
-  // Never auto-advance when the focused session becomes complete — that's what made tasks "disappear"
-  // after the user checked them. Show "Next up" below instead.
-  let si = now<st ? 0 : (S.settings.days||[]).indexOf(today);
-  // Bounds-check: slack weeks (W5, W10) have only 3 sessions so today's index may exceed sessions.length.
-  if(si<0||si>=w.sessions.length){
-    si = w.sessions.findIndex((_,idx)=>sessDone(w,idx)<w.sessions[idx].x.length);
-  }
+  const mapped=(S.settings.days||[]).indexOf(today);
+  // Surface the earliest unfinished Core block up to today. Missed work stays visible instead of disappearing.
+  let si=now<st?0:w.sessions.findIndex((_,idx)=>idx<=Math.max(mapped,0)&&sessCoreDone(w,idx)<sessCoreTotal(w,idx));
+  if(si<0||si>=w.sessions.length)si=w.sessions.findIndex((_,idx)=>sessCoreDone(w,idx)<sessCoreTotal(w,idx));
+  if(si<0||si>=w.sessions.length)si=(mapped>=0&&mapped<w.sessions.length)?mapped:w.sessions.findIndex((_,idx)=>sessDone(w,idx)<w.sessions[idx].x.length);
   if(si<0||si>=w.sessions.length){
     focus.appendChild(el('div','empty','This week is complete. Use the extra time for a mock interview or targeted review.'));
   } else {
@@ -577,14 +820,84 @@ function renderDash(){
     }
   }
   v.appendChild(focus);
-  v.appendChild(el('div','note','Aim for consistent execution, not perfect completion. If a session slips, move it to the nearest open block and preserve the weekly build or mock.'));
+  v.appendChild(el('div','note','If a task slips, continue with the first unfinished Core task during your next study session. Use a slack week for work that remains important.'));
   v.appendChild(el('p','page-foot','Methodology inspired by <a href="https://alisawuffles.github.io/blog/job-search/" target="_blank" rel="noopener">Alisa Liu’s notes on the industry job search</a>, adapted for research scientist roles in generative vision and multimodal ML.'));
 }
 function sessionParts(si,rawTitle,s){
   const bits=rawTitle.split(' · ');
-  const day=(s&&s._preserveDay?bits[0]:(S.settings&&S.settings.days&&S.settings.days[si]))||bits[0];
-  const content=bits.length>1?bits.slice(1).join(' · '):rawTitle;
+  const defaults=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  const defaultIdx=defaults.indexOf(bits[0]);
+  const day=(defaultIdx>=0&&S.settings&&S.settings.days?S.settings.days[defaultIdx]:bits[0])||bits[0];
+  const content=(bits.length>1?bits.slice(1).join(' · '):rawTitle)
+    .replace(/^(?:~?\d+h(?:\d+m)?|~?\d+m|\d+×\d+m)(?:\s+(?:including breaks|calendar reserve))?\s+—\s+/i,'');
   return {day,content};
+}
+function timingProfile(w,s,t){
+  const id=(t&&t.id)||'';const profiles=TIMING.profiles||{};
+  let name='standard';
+  if((TIMING.staminaTaskIds||[]).includes(id))name='stamina';
+  else if((TIMING.strictTaskIds||[]).includes(id)||t.gate||/-DSA$/.test(id))name='strict';
+  else if((TIMING.deepTaskIds||[]).includes(id))name='deep';
+  else if(/-OUT$/.test(id)||/^Fri\b/.test(s.t)||w.id==='w8'||w.id==='w12'||['LIVE-2','LIVE-4'].includes(id))name='brief';
+  return Object.assign({label:name,workWindow:'40–65m',calendarReserve:'75m',rhythm:'Two focus cycles',stopRule:''},profiles[name]||{},{name});
+}
+function flexibleTaskText(raw,profile){
+  if(profile.name==='strict'||profile.name==='stamina')return raw;
+  let step=0;const cues=['First','Next','Then','Finish'];
+  return raw
+    .replace(/<strong>([^<]*?) \(\d+(?:–\d+)?m(?: total)?\)(:\s*<\/strong>)/g,'<strong>$1$2')
+    .replace(/\b\d+\s*min:/g,()=>cues[Math.min(step++,cues.length-1)]+':')
+    .replace(/Spend \d+ minutes per paper:/g,'For each paper:')
+    .replace(/Use the final \w+ minutes/g,'At the end')
+    .replace(/Use the remaining time/g,'For the final step');
+}
+function humanTaskHtml(raw){
+  const parts=[];const re=/<strong>([^<]+)<\/strong>\s*([\s\S]*?)(?=<strong>|$)/g;let m;
+  while((m=re.exec(raw)))parts.push({at:m.index,label:m[1].replace(/:\s*$/,''),copy:m[2].trim()});
+  if(parts.length>=2&&parts[0].at===0){
+    return '<div class="task-steps">'+parts.map(p=>`<div class="task-step"><span class="step-label">${p.label}</span><span class="step-copy">${p.copy}</span></div>`).join('')+'</div>';
+  }
+  return `<div class="task-prose">${raw}</div>`;
+}
+let ACTIVE_FOCUS={key:'',startedAt:0};let focusTicker=null;let focusPaintTicks=0;
+function focusSeconds(key){
+  const saved=Number(S.taskTimes[key]||0);
+  return saved+(ACTIVE_FOCUS.key===key?Math.max(0,Math.floor((Date.now()-ACTIVE_FOCUS.startedAt)/1000)):0);
+}
+function focusClockText(sec){const m=Math.floor(sec/60),s=sec%60;return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+function checkpointFocus(){
+  if(!ACTIVE_FOCUS.key)return;
+  const key=ACTIVE_FOCUS.key;S.taskTimes[key]=focusSeconds(key);ACTIVE_FOCUS.startedAt=Date.now();
+  try{if(activeKey)localStorage.setItem(activeKey,JSON.stringify(S));}catch(e){}
+}
+function paintFocusClocks(){
+  document.querySelectorAll('[data-focus-clock]').forEach(n=>{const key=n.dataset.focusClock;n.textContent=focusClockText(focusSeconds(key));n.classList.toggle('active',ACTIVE_FOCUS.key===key);});
+  focusPaintTicks++;if(focusPaintTicks%15===0)checkpointFocus();
+}
+function pauseFocus(){
+  if(!ACTIVE_FOCUS.key)return;
+  const key=ACTIVE_FOCUS.key;S.taskTimes[key]=focusSeconds(key);ACTIVE_FOCUS={key:'',startedAt:0};
+  clearInterval(focusTicker);focusTicker=null;save();
+}
+function startFocus(key){
+  if(ACTIVE_FOCUS.key===key){pauseFocus();return;}
+  pauseFocus();ACTIVE_FOCUS={key,startedAt:Date.now()};
+  clearInterval(focusTicker);focusPaintTicks=0;focusTicker=setInterval(paintFocusClocks,1000);paintFocusClocks();
+}
+function resetFocus(key){
+  if(!confirm('Reset the recorded focus time for this task?'))return;
+  if(ACTIVE_FOCUS.key===key){ACTIVE_FOCUS={key:'',startedAt:0};clearInterval(focusTicker);focusTicker=null;}
+  delete S.taskTimes[key];save();refreshAll();
+}
+function renderFocusBar(copy,key,profile){
+  const bar=el('div','focusbar');
+  const clock=el('span','focusclock'+(ACTIVE_FOCUS.key===key?' active':''),focusClockText(focusSeconds(key)));clock.dataset.focusClock=key;
+  const toggle=el('button','btn sm',ACTIVE_FOCUS.key===key?'Pause':'Start count-up');toggle.type='button';
+  toggle.onclick=()=>{startFocus(key);refreshAll();};
+  const reset=el('button','linkbtn','Reset');reset.type='button';reset.onclick=()=>resetFocus(key);
+  const hint=profile.name==='strict'||profile.name==='stamina'?'Use the prompt countdown separately; this records setup + work + review.':profile.name==='brief'?'At 20–25m finish the small artifact or use the fallback.':'At 25m check in; at 50m finish, fallback, or choose one final cycle.';
+  const help=el('span','focushelp',hint);
+  bar.append(clock,toggle,reset,help);copy.appendChild(bar);
 }
 function renderSession(parent,w,si){
   const s=w.sessions[si];const d=sessDone(w,si);const done=d===s.x.length;
@@ -596,34 +909,107 @@ function renderSession(parent,w,si){
   parent.appendChild(box);
 }
 function taskRow(w,si,ti,t){
-  const key=tkey(w,si,ti,t);const on=!!S.weekTasks[key];
-  const lab=el('label','ck'+(on?' done':''));
-  const cb=el('input');cb.type='checkbox';cb.checked=on;
-  cb.onchange=()=>{S.weekTasks[key]=cb.checked;save();refreshAll()};
-  lab.appendChild(cb);
+  const key=tkey(w,si,ti,t);const on=!!S.weekTasks[key];const skipped=!!S.skippedTasks[key];
+  const priority=taskPriority(t);
+  const row=el('div','ck'+(on?' done':'')+(skipped?' skipped':'')+(priority!=='core'?' flex-task':''));
+  const cb=el('input');cb.type='checkbox';cb.checked=on;cb.disabled=skipped;
+  cb.id='task-'+key.replace(/[^a-zA-Z0-9_-]/g,'-');
+  cb.onchange=()=>{if(cb.checked&&ACTIVE_FOCUS.key===key)pauseFocus();S.weekTasks[key]=cb.checked;save();refreshAll()};
+  row.appendChild(cb);
+  const profile=timingProfile(w,w.sessions[si],t);
   const raw=taskText(t);
-  const text=substituteVars(raw,userVars());
-  const span=el('span',null,text);
-  span.querySelectorAll('a').forEach(an=>{an.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();window.open(an.href,'_blank','noopener')});});
-  lab.appendChild(span);
-  return lab;
+  const text=flexibleTaskText(substituteVars(raw,userVars()),profile);
+  const copy=el('div','taskcopy');
+  const label=el('label','tasktext',humanTaskHtml(text));label.htmlFor=cb.id;
+  label.querySelectorAll('a').forEach(an=>{an.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();window.open(an.href,'_blank','noopener')});});
+  copy.appendChild(label);
+  const artifact=typeof t==='object'&&t?t.artifact:'';
+  const doneWhen=typeof t==='object'&&t?(t.doneWhen||artifact):'';
+  const minimum=typeof t==='object'&&t?(t.fallback||t.minimum):'';
+  const kindLabel=skipped?'Skipped':priority==='company'?'Company':priority==='flex'?'Flex':'Core';
+  const metaBits=[`<span class="kind ${skipped?'flex':priority}">${kindLabel}</span>`];
+  metaBits.push(`<span class="timepill ${profile.name==='strict'||profile.name==='stamina'?'strict':profile.name==='deep'?'deep':''}">${escapeHtml(profile.label)} · work ${escapeHtml(profile.workWindow)} · reserve ${escapeHtml(profile.calendarReserve)}</span>`);
+  if(t.gate)metaBits.push(`<button class="linkbtn" type="button" data-gate="${t.gate}">Open checkpoint ${t.gate}</button>`);
+  const meta=el('div','taskmeta',metaBits.join(''));
+  copy.appendChild(meta);
+  if(doneWhen)copy.appendChild(el('div','completion',`<strong>You are finished when:</strong> ${doneWhen}`));
+  renderFocusBar(copy,key,profile);
+  meta.querySelectorAll('[data-gate]').forEach(b=>b.onclick=()=>show('gates'));
+  const controls=el('div','taskmeta');
+  const canSkip=!NEVER_CUT.includes(t.id)&&!/-OUT$/.test(t.id);
+  const skip=el('button','linkbtn',canSkip?(skipped?'Restore task':'Skip task'):'Never cut');skip.type='button';skip.disabled=!canSkip;
+  if(canSkip)skip.onclick=()=>{S.skippedTasks[key]=!skipped;if(!skipped)delete S.weekTasks[key];save();refreshAll();};
+  const addCard=el('button','linkbtn','Add retrieval card');addCard.type='button';
+  addCard.onclick=()=>{S.cards.push({prompt:'',answer:'',source:t.id||key,due:dateKey(new Date()),last:''});save();show('cards');};
+  controls.append(skip,addCard);copy.appendChild(controls);
+  if(minimum){
+    const details=el('details','taskfallback',`<summary>If your attention or energy is low today</summary><div>${minimum}</div>`);
+    copy.appendChild(details);
+  }
+  if(t.id||t.competency||t.why||t.scenario||t.repeat||t.prereq||profile.stopRule){
+    const facts=[];
+    if(t.id)facts.push('<strong>Reference:</strong> <span class="idtag">'+escapeHtml(t.id)+'</span>');
+    if(t.competency&&t.competency!=='—')facts.push('<strong>Skill:</strong> '+escapeHtml(t.competency));
+    if(profile.rhythm)facts.push('<strong>Rhythm:</strong> '+escapeHtml(profile.rhythm));
+    if(profile.stopRule)facts.push('<strong>Stop rule:</strong> '+escapeHtml(profile.stopRule));
+    if(t.why)facts.push('<strong>Why:</strong> '+t.why);
+    if(t.scenario&&t.scenario!=='—')facts.push('<strong>Interview:</strong> '+t.scenario);
+    if(t.repeat)facts.push('<strong>Repeat:</strong> '+t.repeat);
+    if(t.prereq)facts.push('<strong>Prerequisite:</strong> '+t.prereq);
+    copy.appendChild(el('details','taskfallback',`<summary>Why this matters and where it appears</summary><div>${facts.join('<br>')}</div>`));
+  }
+  const note=el('details','taskfallback tasknote','<summary>Save a link or short note</summary>');
+  const ta=el('textarea');ta.placeholder='File, link, result, or the first place you got stuck';ta.value=S.taskNotes[key]||'';
+  ta.oninput=()=>{S.taskNotes[key]=ta.value;save()};note.appendChild(ta);copy.appendChild(note);
+  row.appendChild(copy);
+  return row;
 }
 
 /* ---------- render: plan ---------- */
 function renderPlan(){
   const v=document.getElementById('v-plan');if(!v)return;v.innerHTML='';
-  if(!WEEKS.length){ v.appendChild(el('div','note',planError||(window.__user?'Loading your plan…':'Sign in to load your plan.'))); return; }
-  v.appendChild(el('div','note','Weeknight tasks are sized for one focused block: learn <strong>or</strong> drill, not both at high volume. For a new coding pattern, one worked example plus one problem is a complete session.'));
+  if(!WEEKS.length){ v.appendChild(el('div','note',planError||'Loading your plan…')); return; }
   const ci=currentWeekIdx();const started=new Date()>=getStart();
-  let curPhase=0;
+  const intro=el('div','card plan-intro');
+  intro.appendChild(el('h2',null,'Your preparation roadmap'));
+  intro.appendChild(el('p',null,'Only your current week is open by default. Inside it, finish one visible task at a time; the rest of the curriculum can stay folded until you need it.'));
+  intro.appendChild(el('div','reading-cues',`<div class="reading-cue"><b>1 · Read the action</b>The large text tells you exactly what to do.</div><div class="reading-cue"><b>2 · Check the finish line</b>“You are finished when” is the stopping rule.</div><div class="reading-cue"><b>3 · Use support when needed</b>Open the low-energy fallback or context only if it helps.</div>`));
+  v.appendChild(intro);
+  const tools=el('div','plan-tools');
+  const openNow=el('button','btn accent sm',started?'Open this week':'Open the starting week');openNow.type='button';
+  openNow.onclick=()=>{WEEKS.forEach((w,i)=>S.openWeeks[w.id]=i===ci);save();renderPlan();requestAnimationFrame(()=>document.getElementById('week-'+WEEKS[ci].id)?.scrollIntoView({block:'start'}));};
+  const closeAll=el('button','btn sm','Fold every week');closeAll.type='button';closeAll.onclick=()=>{WEEKS.forEach(w=>S.openWeeks[w.id]=false);save();renderPlan();};
+  tools.append(openNow,closeAll,el('span','sp'),el('span','muted','Open another week only when you want the roadmap view.'));v.appendChild(tools);
+  if(TIMING.profiles){
+    const guide=el('details','card timing-guide');guide.appendChild(el('summary',null,'How timing works'));
+    const body=el('div','timing-guide-body');
+    body.appendChild(el('p','muted',escapeHtml(TIMING.purpose||'')));
+    const grid=el('div','grid g2');
+    Object.values(TIMING.profiles).forEach(p=>{const c=el('div','note',`<strong>${escapeHtml(p.label)}</strong> · work ${escapeHtml(p.workWindow)} · reserve ${escapeHtml(p.calendarReserve)}<br>${escapeHtml(p.rhythm)}<br><span class="muted">${escapeHtml(p.stopRule)}</span>`);grid.appendChild(c);});
+    body.appendChild(grid);
+    const observed=Object.values(S.taskTimes||{}).map(Number).filter(x=>x>=300).sort((a,b)=>a-b);
+    const median=observed.length?observed[Math.floor(observed.length/2)]:0;
+    body.appendChild(el('p','muted',escapeHtml(TIMING.calibration||'')));
+    body.appendChild(el('p',null,observed.length?`<strong>Your calibration:</strong> ${observed.length} recorded task${observed.length===1?'':'s'} · median ${focusClockText(median)}.`:'<strong>Your calibration:</strong> You have not completed a focus-clock session yet. Three recorded sessions will provide the first useful estimate.'));
+    if((TIMING.sources||[]).length){
+      const src=el('details','taskfallback','<summary>Why the timing system works this way</summary>');
+      src.appendChild(el('div',null,(TIMING.sources||[]).map(x=>`<a href="${escapeHtml(x.url)}" target="_blank" rel="noopener">${escapeHtml(x.name)}</a>. ${escapeHtml(x.usedFor)}`).join('<br><br>')));body.appendChild(src);
+    }
+    guide.appendChild(body);
+    v.appendChild(guide);
+  }
+  let curPhase=null;
   WEEKS.forEach((w,i)=>{
     if(w.phase!==curPhase){curPhase=w.phase;
       v.appendChild(el('div','sectionhdr',`Phase ${w.phase} · ${PHASES[w.phase]}`));}
-    const done=weekDone(i);const tot=weekTotal(i);const isnow=i===ci&&started;
-    const c=el('div','card'+(isnow?' now':''));
-    c.appendChild(el('div',null,`<div class="wkhead"><h3>${w.label} — ${w.theme}${isnow?' <span class="pill" style="background:var(--accent);color:#fff">this week</span>':''}</h3></div>
-      <div class="pr">${weekDateLabel(i)} · ${done}/${tot} done</div><div class="mini"><i style="width:${tot?Math.round(done/tot*100):0}%"></i></div>`));
-    w.sessions.forEach((s,si)=>renderSession(c,w,si));
+    const done=weekDone(i);const tot=weekTotal(i);const isnow=i===ci;
+    const c=el('details','card week-card'+(isnow?' now':''));c.id='week-'+w.id;
+    const hasSaved=Object.prototype.hasOwnProperty.call(S.openWeeks,w.id);c.open=hasSaved?!!S.openWeeks[w.id]:isnow;
+    const nowLabel=isnow?(started?' · This week':' · Start here'):'';
+    const summary=el('summary','week-summary',`<div><div class="week-title">${escapeHtml(w.label)} · ${escapeHtml(w.theme)}${nowLabel?` <span class="pill" style="background:var(--accent);color:#fff">${escapeHtml(nowLabel.replace(' · ',''))}</span>`:''}</div><div class="week-sub">${escapeHtml(weekDateLabel(i,w))} · ${done}/${tot} complete · set aside about ${escapeHtml(reserveLabel(weekReserve(i)))}</div><div class="mini"><i style="width:${tot?Math.round(done/tot*100):0}%"></i></div></div>`);
+    c.appendChild(summary);
+    const body=el('div','week-body');w.sessions.forEach((s,si)=>renderSession(body,w,si));c.appendChild(body);
+    c.addEventListener('toggle',()=>{S.openWeeks[w.id]=c.open;save();});
     v.appendChild(c);
   });
 }
@@ -672,7 +1058,7 @@ function exportData(){
 function importData(){
   const inp=el('input');inp.type='file';inp.accept='.json';
   inp.onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();
-    r.onload=()=>{try{S=Object.assign(JSON.parse(JSON.stringify(DEFAULT)),JSON.parse(r.result));save();refreshAll();alert('Progress imported.')}catch(err){alert('Could not read file.')}};r.readAsText(f)};
+    r.onload=()=>{try{S=normalizeState(JSON.parse(r.result));migratePlanProgress();save();refreshAll();alert('Progress imported.')}catch(err){alert('Could not read file.')}};r.readAsText(f)};
   inp.click();
 }
 
@@ -680,7 +1066,7 @@ function importData(){
 function renderLeet(){
   const v=document.getElementById('v-leet');v.innerHTML='';
   const {bar,add}=logToolbar();v.appendChild(el('h3',null,'LeetCode Log'));v.appendChild(bar);
-  v.appendChild(el('div','note','A realistic 45-minute session is one new pattern plus one untimed problem, or one familiar problem under interview conditions. Track quality and revisits instead of maximizing problem count.'));
+  v.appendChild(el('div','note','Reserve 75 minutes for a coding session even when the problem limit is 25–30 minutes. The remaining time covers starting, tests, classification, and transition. Track actual elapsed time instead of treating the estimate as a grade.'));
   const card=el('div','card table-card');
   const tbl=el('table',null,'<thead><tr><th>Date</th><th>Problem</th><th>Pattern</th><th>Diff</th><th>Unaided</th><th>Min</th><th>Revisit</th><th>Notes</th><th></th></tr></thead>');
   const tb=el('tbody');tbl.appendChild(tb);card.appendChild(tbl);v.appendChild(card);
@@ -704,7 +1090,7 @@ function renderLeet(){
   }
   S.leet.forEach((r,i)=>tb.appendChild(rowEl(r,i)));
   add.onclick=()=>{S.leet.push({});save();renderLeet()};
-  if(!S.leet.length)tb.appendChild(el('tr',null,'<td colspan="9" class="muted" style="text-align:center;padding:18px">No entries yet — click “Add row”.</td>'));
+  if(!S.leet.length)tb.appendChild(el('tr',null,'<td colspan="9" class="muted" style="text-align:center;padding:18px">You have not logged a coding problem yet. Choose “Add row” to create the first entry.</td>'));
 }
 
 /* ---------- render: mocks ---------- */
@@ -731,19 +1117,57 @@ function renderMocks(){
   }
   S.mocks.forEach((r,i)=>tb.appendChild(rowEl(r,i)));
   add.onclick=()=>{S.mocks.push({});save();renderMocks()};
-  if(!S.mocks.length)tb.appendChild(el('tr',null,'<td colspan="7" class="muted" style="text-align:center;padding:18px">No mocks logged yet.</td>'));
+  if(!S.mocks.length)tb.appendChild(el('tr',null,'<td colspan="7" class="muted" style="text-align:center;padding:18px">You have not logged a mock interview yet.</td>'));
 }
 
 /* ---------- render: pipeline ---------- */
 function renderPipe(){
   const v=document.getElementById('v-pipe');v.innerHTML='';
   const {bar,add}=logToolbar();v.appendChild(el('h3',null,'Company Pipeline'));v.appendChild(bar);
-  v.appendChild(el('div','note','Sequence: 1–2 practice companies first, then cluster the ones you want so offers land together for negotiation — but watch your stamina. Always negotiate; initial offers leave room by design.'));
+  v.appendChild(el('div','note','Keep at most five Dream/High targets, two practice companies, and one watch relationship active. Interview with one or two practice companies first. Schedule high-priority companies close together only if your energy allows it.'));
+  const targetGroups=(TARGET_COMPANIES&&TARGET_COMPANIES.groups)||[];
+  if(targetGroups.length){
+    const universe=el('div','card target-universe');
+    universe.appendChild(el('h3',null,escapeHtml(TARGET_COMPANIES.title||'Suggested target universe')));
+    universe.appendChild(el('p','muted',escapeHtml(TARGET_COMPANIES.principle||'')));
+    targetGroups.forEach((group,gi)=>{
+      const details=el('details','target-group');
+      if(gi===0)details.open=true;
+      const companies=group.companies||[];
+      details.appendChild(el('summary',null,`${escapeHtml(group.name||'Targets')} <span class="pill">${companies.length}</span>`));
+      details.appendChild(el('p','target-rule',escapeHtml(group.rule||'')));
+      const grid=el('div','target-grid');
+      companies.forEach(c=>{
+        const exists=S.pipe.some(r=>(r.company||'').trim().toLowerCase()===c.name.trim().toLowerCase());
+        const item=el('article','target-card');
+        const head=el('div','target-head');
+        head.appendChild(el('h4',null,escapeHtml(c.name)));
+        head.appendChild(el('span','pill',escapeHtml(c.fit||'')));
+        item.appendChild(head);
+        item.appendChild(el('div','target-meta',`${escapeHtml(c.status||'')} · ${escapeHtml(c.location||'Location varies')} · suggested ${escapeHtml(c.defaultPriority||'High')}`));
+        item.appendChild(el('p','target-why',escapeHtml(c.why||'')));
+        item.appendChild(el('div','target-roles',`<strong>Likely roles:</strong> ${escapeHtml(c.roles||'Check current openings')}`));
+        item.appendChild(el('div','target-pack',`<strong>Review before the interview:</strong> ${escapeHtml(c.pack||'Use the job description to choose what to review')}`));
+        const actions=el('div','target-actions');
+        const addTarget=el('button','btn accent sm',exists?'Already in pipeline':'Add to pipeline');addTarget.type='button';addTarget.disabled=exists;
+        addTarget.onclick=()=>{
+          if(S.pipe.some(r=>(r.company||'').trim().toLowerCase()===c.name.trim().toLowerCase()))return;
+          S.pipe.push({company:c.name,role:c.roles||'',priority:c.defaultPriority||'High',stage:(c.defaultPriority==='Watch'?'Watching':'Networking'),next:c.next||'Open current roles and choose one next step',notes:`Fit: ${c.fit||'role-dependent'}. Activation: ${c.pack||'choose from the posted role'}.`});
+          save();renderPipe();refreshAll();
+        };
+        const source=el('a','tlink','Official roles / careers');source.href=c.url;source.target='_blank';source.rel='noopener';
+        actions.append(addTarget,source);item.appendChild(actions);grid.appendChild(item);
+      });
+      details.appendChild(grid);universe.appendChild(details);
+    });
+    universe.appendChild(el('p','muted',`Verified against official company or job-board pages on ${escapeHtml(TARGET_COMPANIES.asOf||'the audit date')}. “Hiring now” describes that date, not a permanent promise.`));
+    v.appendChild(universe);
+  }
   const card=el('div','card table-card');
   const tbl=el('table',null,'<thead><tr><th>Company</th><th>Role</th><th>Priority</th><th>Stage</th><th>Next step</th><th>Notes</th><th></th></tr></thead>');
   const tb=el('tbody');tbl.appendChild(tb);card.appendChild(tbl);v.appendChild(card);
-  const stages=['','Networking','Applied','Recruiter call','Phone screen','Onsite/loop','Offer','Negotiating','Accepted','Withdrawn','Rejected','Ghosted'];
-  const prios=['','Dream','High','Practice'];
+  const stages=['','Watching','Networking','Applied','Recruiter call','Phone screen','Onsite/loop','Offer','Negotiating','Accepted','Withdrawn','Rejected','Ghosted'];
+  const prios=['','Dream','High','Practice','Watch'];
   function rowEl(r,idx){
     const tr=el('tr');
     const f=(k,ph)=>{const td=el('td');const i=el('input');i.value=r[k]||'';if(ph)i.placeholder=ph;i.oninput=()=>{r[k]=i.value;save()};td.appendChild(i);return td;};
@@ -757,13 +1181,13 @@ function renderPipe(){
   }
   S.pipe.forEach((r,i)=>tb.appendChild(rowEl(r,i)));
   add.onclick=()=>{S.pipe.push({});save();renderPipe()};
-  if(!S.pipe.length)tb.appendChild(el('tr',null,'<td colspan="7" class="muted" style="text-align:center;padding:18px">No companies yet.</td>'));
+  if(!S.pipe.length)tb.appendChild(el('tr',null,'<td colspan="7" class="muted" style="text-align:center;padding:18px">You have not added a company to the pipeline yet.</td>'));
 }
 
 /* ---------- render: stories ---------- */
 function renderStory(){
   const v=document.getElementById('v-story');v.innerHTML='';
-  v.appendChild(el('div','note','Map memorable PhD stories to each prompt so you retrieve them instantly. Don\'t improvise behavioral — it\'s the easiest round to fail by winging it. Tick “Ready” once you can tell it in ~2 min (Situation → Action → Result).'));
+  v.appendChild(el('div','note','Connect each prompt to a specific event from your PhD, internships, or production work. Mark a story as ready when you can explain the situation, your action, and the result in about two minutes without reading notes.'));
   STORY_CATS.forEach(cat=>{
     const on=!!S.storyReady[cat];
     const c=el('div','card');
@@ -780,10 +1204,207 @@ function renderStory(){
   });
 }
 
+/* ---------- render: retrieval cards ---------- */
+function addDaysISO(n){
+  const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+n);return dateKey(d);
+}
+function renderCards(){
+  const v=document.getElementById('v-cards');if(!v)return;v.innerHTML='';
+  const today=dateKey(new Date());
+  const due=S.cards.filter(c=>!c.due||c.due<=today).length;
+  v.appendChild(el('div','note',`<strong>${due} due now.</strong> Friday pulls start with due cards, then the oldest unseen cards. “Missed” returns tomorrow; “Got it” returns in seven days. Add cards from any curriculum task so the source ID is preserved.`));
+  const toolbar=el('div','toolbar');const add=el('button','btn accent sm','+ New card');
+  add.onclick=()=>{S.cards.unshift({prompt:'',answer:'',source:'manual',due:today,last:''});save();renderCards();};
+  toolbar.append(add);v.appendChild(toolbar);
+  if(!S.cards.length){v.appendChild(el('div','empty','You have not created a retrieval card yet. Open a curriculum task and choose “Add retrieval card.”'));return;}
+  const ordered=S.cards.map((card,index)=>({card,index})).sort((a,b)=>(a.card.due||'').localeCompare(b.card.due||''));
+  ordered.forEach(({card,index})=>{
+    const isDue=!card.due||card.due<=today;
+    const c=el('div','card'+(isDue?' due':''));
+    const head=el('div','wkhead');
+    const source=el('span','idtag',card.source||'manual');
+    const dueLabel=el('span','pill',isDue?'Due now':'Due '+card.due);
+    head.append(source,dueLabel);c.appendChild(head);
+    const prompt=el('textarea');prompt.className='cardprompt';prompt.style.cssText='width:100%;min-height:48px;margin-top:10px';prompt.placeholder='Question / retrieval cue';prompt.value=card.prompt||'';
+    prompt.oninput=()=>{card.prompt=prompt.value;save()};c.appendChild(prompt);
+    const answerBox=el('details');answerBox.appendChild(el('summary',null,'Show / edit answer'));
+    const answer=el('textarea');answer.style.cssText='width:100%;min-height:80px;margin-top:8px';answer.placeholder='Answer in 40 words or fewer';answer.value=card.answer||'';
+    answer.oninput=()=>{card.answer=answer.value;save()};answerBox.appendChild(answer);c.appendChild(answerBox);
+    const dueInput=el('input');dueInput.type='date';dueInput.value=card.due||today;dueInput.onchange=()=>{card.due=dueInput.value;save();renderCards();};
+    const dueWrap=el('label','setlbl','Next review');dueWrap.appendChild(dueInput);c.appendChild(dueWrap);
+    const actions=el('div','row-actions');
+    const miss=el('button','btn sm','Missed → tomorrow');miss.onclick=()=>{card.last=today;card.due=addDaysISO(1);save();renderCards();};
+    const got=el('button','btn accent sm','Got it → 7 days');got.onclick=()=>{card.last=today;card.due=addDaysISO(7);save();renderCards();};
+    const del=el('button','btn sm','Delete');del.onclick=()=>{if(confirm('Delete this retrieval card?')){S.cards.splice(index,1);save();renderCards();}};
+    actions.append(miss,got,del);c.appendChild(actions);v.appendChild(c);
+  });
+}
+
+/* ---------- render: performance gates and adaptation ---------- */
+function taskById(id){
+  for(const w of WEEKS)for(const s of (w.sessions||[]))for(const t of (s.x||[]))if(t.id===id)return t;
+  return null;
+}
+function renderGates(){
+  const v=document.getElementById('v-gates');if(!v)return;v.innerHTML='';
+  if(!GATES.length){v.appendChild(el('div','note',planError||'Loading gates…'));return;}
+  const passed=GATES.filter(g=>(S.gates[g.id]||{}).status==='pass').length;
+  v.appendChild(el('div','note',`<strong>You have passed ${passed} of ${GATES.length} checkpoints.</strong> A passing result allows you to remove redundant preparation. After an unsuccessful attempt, repair the specific failure category before repeating the checkpoint.`));
+  const grid=el('div','gategrid');
+  orderedGates().forEach(g=>{
+    const rec=S.gates[g.id]||(S.gates[g.id]={status:'',date:'',failure:'',notes:''});
+    const stateClass=rec.status==='pass'?'pass':rec.status==='fail'?'fail':rec.status==='defer'?'defer':'';
+    const stateText=rec.status==='pass'?'Passed':rec.status==='fail'?'Failed':rec.status==='defer'?'Deferred':'Not run';
+    const c=el('div','card gatecard');
+    const head=el('div','gatehead');
+    const title=el('div');title.appendChild(el('h3',null,`${escapeHtml(g.id)} · ${escapeHtml(g.name)}`));
+    title.appendChild(el('div','muted',`${escapeHtml(g.week||'')} · ${escapeHtml(g.limit||'No fixed limit')}`));
+    head.append(title,el('span','gatestate '+stateClass,stateText));c.appendChild(head);
+    c.appendChild(el('p',null,`<strong>Format:</strong> ${escapeHtml(g.format)}`));
+    c.appendChild(el('p',null,`<strong>Pass:</strong> ${escapeHtml(g.pass)}`));
+    const detail=el('details',null,`<summary>Remediation and retest</summary><p><strong>Repair:</strong> ${escapeHtml(g.remediation||'—')}</p><p><strong>Retest:</strong> ${escapeHtml(g.retest||'—')}</p>`);
+    c.appendChild(detail);
+    const form=el('div','gateform');
+    const statusWrap=el('label',null,'Result');
+    const status=el('select');
+    [['','Not run'],['pass','Passed'],['fail','Failed'],['defer','Deferred']].forEach(([value,label])=>{const o=el('option',null,label);o.value=value;status.appendChild(o);});
+    status.value=rec.status||'';
+    const dateWrap=el('label',null,'Date');
+    const date=el('input');date.type='date';date.value=rec.date||'';
+    const failWrap=el('label',null,'Failure category');
+    const failure=el('select');failure.appendChild(el('option',null,'—'));failure.options[0].value='';
+    FAILURE_CATEGORIES.forEach(f=>{const o=el('option',null,f.signature);o.value=f.id;failure.appendChild(o);});
+    failure.value=rec.failure||'';
+    const noteWrap=el('label',null,'Notes / evidence');noteWrap.style.gridColumn='1/-1';
+    const notes=el('textarea');notes.placeholder='What happened? What will change?';notes.value=rec.notes||'';
+    const persist=()=>{rec.status=status.value;rec.date=date.value;rec.failure=failure.value;rec.notes=notes.value;save();};
+    status.onchange=()=>{persist();renderGates();refreshHeader();};
+    date.onchange=persist;failure.onchange=persist;notes.oninput=persist;
+    statusWrap.appendChild(status);dateWrap.appendChild(date);failWrap.appendChild(failure);noteWrap.appendChild(notes);
+    form.append(statusWrap,dateWrap,failWrap,noteWrap);c.appendChild(form);grid.appendChild(c);
+  });
+  v.appendChild(grid);
+
+  v.appendChild(el('div','sectionhdr','How the plan adapts'));
+  const rules=el('div','card');rules.appendChild(el('h3',null,'Rules that outrank the calendar'));
+  rules.appendChild(el('ul','rulelist',ADAPT_RULES.map(x=>`<li>${escapeHtml(x)}</li>`).join('')));v.appendChild(rules);
+
+  const cats=el('div','card table-card');cats.appendChild(el('h3',null,'Failure → smallest useful repair'));
+  const tbl=el('table','',`<thead><tr><th>Category</th><th>What it looks like</th><th>Repair</th></tr></thead><tbody>${FAILURE_CATEGORIES.map(f=>`<tr><td>${escapeHtml(f.id.replaceAll('_',' '))}</td><td>${escapeHtml(f.signature)}</td><td>${escapeHtml(f.remediation)}</td></tr>`).join('')}</tbody>`);
+  cats.appendChild(tbl);v.appendChild(cats);
+
+  const cut=el('div','grid g2');
+  const first=el('div','card');first.appendChild(el('h3',null,'First five cuts when overloaded'));
+  first.appendChild(el('ol','rulelist',FIRST_CUTS.map(id=>{const t=taskById(id);return `<li><span class="idtag">${escapeHtml(id)}</span>${t?' · '+taskText(t):''}</li>`;}).join('')));
+  const never=el('div','card');never.appendChild(el('h3',null,'Never cut'));
+  never.appendChild(el('ul','rulelist',NEVER_CUT.map(id=>{const t=taskById(id);return `<li><span class="idtag">${escapeHtml(id)}</span>${t?' · '+taskText(t):''}</li>`;}).join('')));
+  cut.append(first,never);v.appendChild(cut);
+
+  if(RUBRIC.axes){
+    const r=el('div','card');r.appendChild(el('h3',null,'Mock and real-round rubric'));
+    r.appendChild(el('p','muted',`${escapeHtml(RUBRIC.scale)} · Pass: ${escapeHtml(RUBRIC.pass)}`));
+    r.appendChild(el('ol','rulelist',RUBRIC.axes.map(a=>`<li>${escapeHtml(a)}</li>`).join('')));v.appendChild(r);
+  }
+}
+
+/* ---------- render: evidence and curriculum rationale ---------- */
+function renderEvidence(){
+  const v=document.getElementById('v-evidence');if(!v)return;v.innerHTML='';
+  if(!EVIDENCE.asOf){v.appendChild(el('div','note',planError||'Loading the evidence base…'));return;}
+  v.appendChild(el('div','note',`<strong>Research cutoff: ${escapeHtml(EVIDENCE.asOf)}.</strong> ${escapeHtml(EVIDENCE.thesis||'')}`));
+
+  const fit=el('div','card');
+  fit.appendChild(el('h3',null,'Why this curriculum fits this CV'));
+  fit.appendChild(el('p',null,escapeHtml(EVIDENCE.candidateFit||'')));
+  v.appendChild(fit);
+
+  const lanes=el('div','grid g2');
+  (EVIDENCE.roleLanes||[]).forEach(lane=>{
+    const c=el('div','card');
+    c.appendChild(el('div','wkhead',`<h3>${escapeHtml(lane.lane)}</h3><span class="pill">${escapeHtml(lane.weight)}</span>`));
+    c.appendChild(el('p',null,escapeHtml(lane.signals)));
+    c.appendChild(el('p','muted',escapeHtml(lane.employerEvidence)));
+    lanes.appendChild(c);
+  });
+  v.appendChild(lanes);
+
+  const conclusions=el('div','card');
+  conclusions.appendChild(el('h3',null,'What the research supports'));
+  conclusions.appendChild(el('ul','rulelist',(EVIDENCE.marketConclusions||[]).map(x=>`<li>${escapeHtml(x)}</li>`).join('')));
+  v.appendChild(conclusions);
+
+  const contract=el('div','grid g2');
+  const task=el('div','card');task.appendChild(el('h3',null,'Task design contract'));
+  task.appendChild(el('ol','rulelist',(EVIDENCE.taskContract||[]).map(x=>`<li>${escapeHtml(x)}</li>`).join('')));
+  const limits=el('div','card');limits.appendChild(el('h3',null,'Uncertainty kept visible'));
+  limits.appendChild(el('ul','rulelist',(EVIDENCE.limitations||[]).map(x=>`<li>${escapeHtml(x)}</li>`).join('')));
+  contract.append(task,limits);v.appendChild(contract);
+
+  const grades=Object.fromEntries((EVIDENCE.evidenceGrades||[]).map(x=>[x.grade,x.meaning]));
+  const sources=el('div','card res');sources.appendChild(el('h3',null,'Source ledger'));
+  const ul=el('ul');
+  (EVIDENCE.sourceLedger||[]).forEach(src=>{
+    ul.appendChild(el('li',null,`<span class="pill">${escapeHtml(src.grade)}</span> <a href="${escapeHtml(src.url)}" target="_blank" rel="noopener">${escapeHtml(src.name)}</a><br><small>${escapeHtml(src.usedFor)} ${grades[src.grade]?'<br><span class="muted">'+escapeHtml(grades[src.grade])+'</span>':''}</small>`));
+  });
+  sources.appendChild(ul);v.appendChild(sources);
+}
+
+/* ---------- render: 72-hour company protocol ---------- */
+function renderProtocol(){
+  const v=document.getElementById('v-protocol');if(!v)return;v.innerHTML='';
+  if(!PROTOCOL.steps){v.appendChild(el('div','note',planError||'Loading the protocol…'));return;}
+  const control=el('div','card'+(S.protocolActive?' protocol-on':''));
+  control.appendChild(el('h3',null,S.protocolActive?'Interview protocol is active. Weekly tasks are paused.':'Activate when an interview is scheduled'));
+  control.appendChild(el('p','muted',escapeHtml(PROTOCOL.activation||'')));
+  const row=el('div','setrow');
+  const companyWrap=el('div');companyWrap.innerHTML='<label class="setlbl">Company / team</label>';
+  const company=el('input');company.type='text';company.placeholder='e.g. DeepMind · Generative Media';company.value=S.protocolCompany||'';
+  const buttonWrap=el('div');buttonWrap.innerHTML='<label class="setlbl">Status</label>';
+  const toggle=el('button','btn '+(S.protocolActive?'':'accent'),S.protocolActive?'End protocol and resume next week':'Activate 72-hour protocol');
+  company.oninput=()=>{S.protocolCompany=company.value;save();};
+  toggle.onclick=()=>{S.protocolActive=!S.protocolActive;save();renderProtocol();refreshHeader();};
+  companyWrap.appendChild(company);buttonWrap.appendChild(toggle);row.append(companyWrap,buttonWrap);control.appendChild(row);v.appendChild(control);
+
+  const mix=el('div','card');mix.appendChild(el('h3',null,'Five-priority cap'));
+  mix.appendChild(el('p','muted','Choose the matching role family. These are default mixes, not a sixth source of work.'));
+  const mixList=el('div');
+  Object.entries(PROTOCOL.defaultPriorityMix||{}).forEach(([role,text])=>{
+    mixList.appendChild(el('details',null,`<summary>${escapeHtml(role.replaceAll('_',' '))}</summary><p>${escapeHtml(text)}</p>`));
+  });
+  mix.appendChild(mixList);v.appendChild(mix);
+
+  if((PROTOCOL.activationPacks||[]).length){
+    const packs=el('div','card');packs.appendChild(el('h3',null,'Role-specific review plans'));
+    packs.appendChild(el('p','muted','Choose one pack only when the job description or recruiter triggers it. Its five items become the five-priority cap above.'));
+    (PROTOCOL.activationPacks||[]).forEach(pack=>{
+      const detail=el('details');
+      detail.appendChild(el('summary',null,escapeHtml(pack.name)));
+      detail.appendChild(el('p','muted','Trigger: '+escapeHtml(pack.trigger)));
+      detail.appendChild(el('ol','rulelist',(pack.fivePriorities||[]).map(x=>`<li>${escapeHtml(x)}</li>`).join('')));
+      packs.appendChild(detail);
+    });
+    v.appendChild(packs);
+  }
+
+  PROTOCOL.steps.forEach((step,i)=>{
+    const c=el('div','card protocol-step');
+    c.appendChild(el('h3',null,`${i+1}. ${escapeHtml(step.window)} · ${escapeHtml(step.duration)}`));
+    c.appendChild(el('ul','rulelist',(step.actions||[]).map(a=>`<li>${escapeHtml(a)}</li>`).join('')));
+    v.appendChild(c);
+  });
+  const rules=el('div','grid g2');
+  const retain=el('div','card');retain.appendChild(el('h3',null,'Keep active'));
+  retain.appendChild(el('ul','rulelist',(PROTOCOL.retainedWhileActive||[]).map(x=>`<li>${escapeHtml(x)}</li>`).join('')));
+  const suspend=el('div','card');suspend.appendChild(el('h3',null,'Suspend'));
+  suspend.appendChild(el('ul','rulelist',(PROTOCOL.suspendedWhileActive||[]).map(x=>`<li>${escapeHtml(x)}</li>`).join('')));
+  rules.append(retain,suspend);v.appendChild(rules);
+  v.appendChild(el('div','note',`<strong>After the loop:</strong> ${escapeHtml(PROTOCOL.afterLoop||'')}`));
+}
+
 /* ---------- render: resources ---------- */
 function renderRes(){
   const v=document.getElementById('v-res');v.innerHTML='';
-  v.appendChild(el('div','note','<span class="star">★</span> = core picks from Alisa Liu\'s blog. Tick each once reviewed. Skim widely; go deep on a few.'));
+  v.appendChild(el('div','note','Use this library when a task or checkpoint identifies a gap. You do not need to finish every item.'));
   RESOURCES.forEach((g,gi)=>{
     const c=el('div','card res');c.appendChild(el('h3',null,g.g));
     const ul=el('ul');
@@ -819,7 +1440,7 @@ function renderSettings(){
   const mkDate=(lbl,key)=>{const w=el('div');w.innerHTML='<label class="setlbl">'+lbl+'</label>';
     const i=el('input');i.type='date';i.value=s[key]||'';
     i.onchange=()=>{if(i.value){s[key]=i.value;save();renderAllViews();}};w.appendChild(i);return w;};
-  dRow.appendChild(mkDate('Start date (Week 1 begins)','startDate'));
+  dRow.appendChild(mkDate('Start date (Week 0 begins)','startDate'));
   dRow.appendChild(mkDate('Target interview date','targetDate'));
   c.appendChild(dRow);v.appendChild(c);
 
@@ -876,13 +1497,13 @@ function renderSettings(){
   const dc=el('div','card');dc.appendChild(el('h3',null,'Study days'));
   dc.appendChild(el('div',null,'<div class="muted" style="font-size:12.5px;margin-bottom:8px">Each row sets the weekday for a session slot. The plan ships with Mon–Sun; remap if your study week is shifted (e.g., weekend off Wed/Thu).</div>'));
   const slotLabels=[
-    'Slot 1 — weeknight (default Mon)',
-    'Slot 2 — weeknight LeetCode (default Tue)',
-    'Slot 3 — weeknight (default Wed)',
-    'Slot 4 — weeknight (default Thu)',
-    'Slot 5 — Friday rotation (default Fri)',
-    'Slot 6 — long block A (default Sat)',
-    'Slot 7 — long block B (default Sun)'
+    'Slot 1: weeknight (default Mon)',
+    'Slot 2: weeknight LeetCode (default Tue)',
+    'Slot 3: weeknight (default Wed)',
+    'Slot 4: weeknight (default Thu)',
+    'Slot 5: Friday rotation (default Fri)',
+    'Slot 6: long block A (default Sat)',
+    'Slot 7: long block B (default Sun)'
   ];
   const DOW=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
   const grid=el('div','setdays');
@@ -914,12 +1535,25 @@ function refreshAll(){
   const active=document.querySelector('.view.on');
   const id=active?active.id.replace('v-',''):'dash';
   const renders={dash:renderDash,plan:renderPlan,topics:renderTopics,leet:renderLeet,mocks:renderMocks,
-    pipe:renderPipe,story:renderStory,res:renderRes,settings:renderSettings};
+    pipe:renderPipe,story:renderStory,cards:renderCards,gates:renderGates,evidence:renderEvidence,protocol:renderProtocol,res:renderRes,settings:renderSettings};
   if(renders[id])renders[id]();
 }
 
 /* ---------- init ---------- */
-buildNav();renderAllViews();renderStorageBar();
+buildNav();
+// Open the app immediately as a guest. Firebase may replace this with a real session later.
+window.__startGuest();
+// The plan ships with the page, so it loads without an account.
+(async function bootPlan(){
+  try{
+    const r=await fetch('plan.json',{cache:'no-store'});
+    if(r.ok){window.__applyPlan(await r.json());return;}
+  }catch(e){}
+  if(!window.__hasPlan())window.__planMissing();
+})();
+renderStorageBar();
+document.addEventListener('keydown',e=>{if(e.key==='Escape')window.__hideAuth();});
+window.addEventListener('beforeunload',checkpointFocus);
 const initial=(location.hash||'#dash').slice(1);
 show(TABS.some(([id])=>id===initial)?initial:'dash');
 window.addEventListener('hashchange',()=>{
@@ -978,9 +1612,9 @@ window.addEventListener('hashchange',()=>{
       if(c.includes('weak-password')) return 'Password should be at least 6 characters.';
       if(c.includes('invalid-email')) return 'That doesn\'t look like a valid email.';
       if(c.includes('operation-not-allowed')) return 'Email/Password sign-in is OFF in Firebase → Authentication → Sign-in method. Enable it.';
-      if(c.includes('network-request-failed')) return 'Network/blocked request — check connection or an ad/script blocker.';
-      if(c.includes('too-many-requests')) return 'Too many attempts — wait a minute and retry.';
-      if(c.includes('popup-closed')||c.includes('cancelled-popup')||c.includes('popup-blocked')) return 'Google popup was blocked by the browser — use email/password instead.';
+      if(c.includes('network-request-failed')) return 'The network request failed. Check your connection or ad/script blocker.';
+      if(c.includes('too-many-requests')) return 'Too many attempts. Wait a minute and retry.';
+      if(c.includes('popup-closed')||c.includes('cancelled-popup')||c.includes('popup-blocked')) return 'The browser blocked the Google popup. Use email/password instead.';
       if(c.includes('web-storage-unsupported')||c.includes('missing-initial-state')||m.includes('missing initial state')) return 'Your browser blocked the Google sign-in handoff (common on iPhone Safari or private browsing). Use email/password to sign in instead.';
       if(c.includes('unauthorized-domain')) return 'This domain isn\'t authorized: add it in Firebase → Authentication → Settings → Authorized domains.';
       return 'Sign-in failed: '+(c||m||'unknown error');};
@@ -1003,18 +1637,23 @@ window.addEventListener('hashchange',()=>{
 
     onAuthStateChanged(auth, async (user)=>{
       if(user){
+        // Carry anything ticked while signed out into a brand-new account.
+        const guestState=window.__guestProgress();
         userRef=doc(db,'users',user.uid);
         window.__prepareUser(user.uid,user.email || '(signed in)');
         window.__onLogin();
-        // 1) load the shared plan content (gated behind auth by security rules)
-        try{ const pc=await getDoc(doc(db,'content','plan'));
-          if(pc.exists()){ window.__applyPlan(pc.data()); } else { window.__planMissing(); } }
-        catch(e){ if(!window.__hasPlan())window.__planMissing(); }
+        // 1) the plan already loaded with the page; Firestore stays as a compatibility fallback.
+        if(!window.__hasPlan()){
+          try{ const pc=await getDoc(doc(db,'content','plan'));
+            if(pc.exists()) window.__applyPlan(pc.data()); }
+          catch(e){}
+        }
+        if(!window.__hasPlan())window.__planMissing();
         // 2) load this user's progress
         try{
           const snap=await getDoc(userRef);
           if(snap.exists() && snap.data().state){ window.__applyRemote(snap.data().state); }
-          else { window.__cloudSave(window.__getState()); }
+          else { window.__adoptState(guestState); window.__cloudSave(window.__getState()); }
         }catch(e){ window.__authError(friendly(e)); }
         if(unsub)unsub();
         unsub=onSnapshot(userRef,(s)=>{ if(s.metadata.hasPendingWrites)return;
