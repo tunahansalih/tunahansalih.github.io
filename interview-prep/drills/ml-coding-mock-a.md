@@ -1,3 +1,9 @@
+---
+layout: interview-drill
+title: ML-coding mock A
+permalink: /interview-prep/drills/ml-coding-mock-a.html
+---
+
 # ML-coding mock A
 
 Open this file only when the 45-minute timer starts. Keep the check sheet closed.
@@ -44,4 +50,4 @@ Write and run:
 - a backward-pass test checking finite gradients for all three inputs;
 - a batch-size-1 case.
 
-Stop coding at 35 minutes. Use the last 10 minutes with `ml-coding-mock-a-check.md`.
+Stop coding at 35 minutes. Use the check sheet during the last 10 minutes.

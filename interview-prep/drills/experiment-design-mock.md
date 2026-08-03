@@ -1,3 +1,9 @@
+---
+layout: interview-drill
+title: Experiment-design mock
+permalink: /interview-prep/drills/experiment-design-mock.html
+---
+
 # Experiment-design mock
 
 Time: 45 minutes. Ask the follow-ups in order; do not reveal them all at once.

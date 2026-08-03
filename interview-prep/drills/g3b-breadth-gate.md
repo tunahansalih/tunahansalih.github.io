@@ -1,3 +1,9 @@
+---
+layout: interview-drill
+title: G3b breadth gate
+permalink: /interview-prep/drills/g3b-breadth-gate.html
+---
+
 # G3b breadth gate
 
 Use 45 seconds per question. A partner should read the questions, or use a

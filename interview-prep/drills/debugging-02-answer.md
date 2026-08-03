@@ -1,4 +1,10 @@
-# Debugging drill 02 - answer key
+---
+layout: interview-drill
+title: Debugging drill 02 answer key
+permalink: /interview-prep/drills/debugging-02-answer.html
+---
+
+# Debugging drill 02: answer key
 
 1. **Masking bug:** replacing disallowed scores with `0.0` still gives them
    nonzero softmax probability. Replace them with negative infinity (or the

@@ -1,3 +1,9 @@
+---
+layout: interview-drill
+title: Research-defense questions
+permalink: /interview-prep/drills/research-defense-questions.html
+---
+
 # Research-defense questions
 
 Use questions 1-6 for G10. Use 7-12 for later retests.

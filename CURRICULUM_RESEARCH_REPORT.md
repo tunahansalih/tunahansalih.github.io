@@ -2,8 +2,8 @@
 
 - **Candidate:** Tuna Han Salih Meral
 - **Market target:** Spring 2027
-- **Research cutoff:** 1 August 2026
-- **Curriculum version:** `vision-generative-2026-08-rev9-style-audit`
+- **Research cutoff:** 2 August 2026
+- **Curriculum version:** `vision-generative-2026-08-rev12-coding-refresher`
 
 ## Executive conclusion
 
@@ -184,13 +184,31 @@ Every task was reviewed against these rules:
 9. recurring work appears in the tracker;
 10. failed work is classified and repaired, not accumulated.
 
+## General-coding program: Grind 75 integration
+
+The previous plan did not contain enough deliberate general-coding practice. It assigned an early two-Medium gate, followed by one problem per week in topic blocks. That arrangement measured prior LeetCode exposure and allowed long gaps between related patterns.
+
+The replacement uses the current [Grind 75 question data](https://www.techinterviewhandbook.org/grind75/) and the author's [ordering and timing guidance](https://www.techinterviewhandbook.org/grind75/faq):
+
+- Start from the 14-active-week, 2-hours-per-week, Easy-and-Medium, all-topic, all-rounded filter.
+- Omit Two Sum from required work. For this candidate it is an editor-fluency check, not useful interview preparation.
+- Start with a 30-minute, four-cue recognition refresher covering arrays and strings, hash maps, stacks, and linked lists. It produces one retrieval sheet and contains no problem solving.
+- Keep filtered questions 2–34 as the ordered Core sequence: 17 Easy and 16 Medium across 12 topics.
+- The source estimate is about 24 hours including solution review and logging; the rounded task reservations total 24.5 hours. Weekly coding reservations range from about 1h20 to 2h10.
+- Leave Weeks 8 and 12 empty instead of pulling future problems into recovery time.
+- Keep the next three filtered problems—Rotting Oranges, Search in Rotated Sorted Array, and Combination Sum—as replacement-only repair problems.
+- Run the first two-problem Medium checkpoint on questions 20 and 21, after 19 preparations. A failed checkpoint replaces one later problem; it never adds work to the week.
+- Keep Hard problems outside Core until two consecutive two-Medium simulations pass.
+
+Each problem has one countdown for the attempt and one larger calendar reservation for the full block. The problem remains complete even when the attempt is unfinished, provided the approach, elapsed time, failure point, and review are logged. This prevents a difficult problem from becoming an open-ended session.
+
 ## Whole-plan audit
 
 ### Week 0: Supported preparation
 
-**Verdict:** dependency-correct. No pass/fail test occurs cold.
+**Verdict:** dependency-correct. The first timed assessment comes after guided preparation.
 
-- General coding now names `Valid Anagram` and a fixed alternate.
+- General coding begins with the four-cue recognition sheet. Valid Parentheses and Merge Two Sorted Lists then retrieve stack and pointer ideas that were activated first. Two Sum is not required or counted.
 - ML coding uses a guided attention adapter and objective tests.
 - Math uses explicit worked examples and a later fixed gate.
 - The CV review comes before paper-defense sampling.
@@ -200,15 +218,16 @@ Every task was reviewed against these rules:
 **Verdict:** coherent.
 
 - The repair task branches from the actual Week 0 blocker.
+- Three more Easy problems introduce array, string, and tree patterns without a timer-based pass criterion.
 - Three paper cards exist before later random defense.
 - The story bank begins before behavioral gates.
 - Mock partners, references, and outreach are started early enough to have external latency.
 
-### Week 2: First measured gates
+### Week 2: Supported coding and first ML/math gates
 
 **Verdict:** corrected and measurable.
 
-- G1 now names two fixed Mediums plus fixed alternates.
+- Valid Anagram, Binary Search, and Flood Fill complete the first nine coding preparations. G1 does not run yet.
 - G2 follows guided attention work and repair.
 - Shape/dtype/device debugging precedes later planted-bug mocks.
 - The paper defense occurs only after source review.
@@ -217,7 +236,7 @@ Every task was reviewed against these rules:
 
 **Verdict:** coherent.
 
-- The coding rep names a fixed sliding-window problem.
+- Maximum Subarray is the first Medium, after nine Easy problems; Lowest Common Ancestor revisits trees with a different invariant.
 - The first debugging drill is supported and hypothesis-first.
 - JAX study is introduced before its later gate.
 - Vision fundamentals are tested only after a bounded review.
@@ -231,7 +250,7 @@ Every task was reviewed against these rules:
 - Camera geometry stays deliberately bounded.
 - JAX sharding builds on Week 3.
 - The architecture/evaluation tasks lead into the Waymo defense.
-- A 35-minute general-coding task now keeps algorithms alive.
+- Insert Interval and 01 Matrix continue the mixed-topic sequence within a combined reservation of about 1h50.
 
 ### Week 5: Diffusion, flow, controls, 3D evaluation
 
@@ -240,7 +259,7 @@ Every task was reviewed against these rules:
 - DDPM/CFG precede implementation and controlled-generation defense.
 - Flow matching is studied and derived before the broader comparison.
 - Detection experiment design follows the Week 4 architecture.
-- A tree-BFS coding rep supplies an unrelated generalization test.
+- K Closest Points, Balanced Binary Tree, and Linked List Cycle mix heap, tree, and linked-list patterns.
 
 ### Week 6: Modern visual stack, video, evaluation, debugging
 
@@ -250,7 +269,7 @@ Every task was reviewed against these rules:
 - Video factorization follows diffusion foundations.
 - VBench-style evaluation precedes long-horizon stress tests.
 - The second debugging mock is separated from the design block.
-- The coding queue tests tree invariants, not another ML-specific implementation.
+- Queue using Stacks, First Bad Version, and Ransom Note revisit stack, binary-search, and hash-table patterns.
 
 ### Week 7: Systems, scale, JAX/TPU
 
@@ -259,7 +278,7 @@ Every task was reviewed against these rules:
 - Parameter/FLOP/memory arithmetic precedes parallelism decisions.
 - Training and inference design are separately gated.
 - JAX/TPU has its own measured gate.
-- Graph traversal maintains general-coding breadth.
+- Longest Substring Without Repeating Characters and 3Sum form G1 only after 19 earlier preparations. Each has a 30-minute attempt limit and its own review block.
 
 ### Week 8: Slack and adaptation
 
@@ -277,7 +296,7 @@ Every task was reviewed against these rules:
 - Diffusion-DPO and VADER replace default tabular Q-learning.
 - REINFORCE and GAE/PPO implementations remain bounded.
 - G7 now includes a falsifiable held-out reward-hacking test.
-- Graph cloning maintains general-coding breadth.
+- Binary Tree Level Order Traversal and Clone Graph restart the sequence after the recovery week.
 
 ### Week 10: Breadth, data/evaluation design, mocks
 
@@ -287,7 +306,7 @@ Every task was reviewed against these rules:
 - Experiment design now separates method, data mixture, compute, leakage, metrics, seeds, slices, and human evaluation.
 - Rapid-fire breadth uses fixed prompts and answer cues.
 - Experiment-design and ML-coding mocks are separate; the ML mock has a fixed sealed prompt and separate check sheet.
-- Topological-sort maintenance supplies a coding rep.
+- Evaluate Reverse Polish Notation and Course Schedule provide a two-Medium retest pair if G1 failed.
 
 ### Week 11: Research agenda and random defense
 
@@ -296,7 +315,7 @@ Every task was reviewed against these rules:
 - Remaining paper cards are created before random selection.
 - The research agenda unifies the CV instead of adding a new topic.
 - Random defense has a fixed question bank.
-- A heap/selection coding rep maintains general coding.
+- Implement Trie and Coin Change add trie and dynamic-programming practice without increasing the weekly count after a miss.
 
 ### Week 12: Slack
 
@@ -312,7 +331,7 @@ Every task was reviewed against these rules:
 - Slides reuse existing figures and assign one remembered sentence plus one piece of evidence per slide.
 - Responsible-research work is grounded in the candidate's actual projects.
 - Company variants remain deferred until a real role exists.
-- Dynamic programming maintenance remains bounded to one problem.
+- Product of Array Except Self and Climbing Stairs revisit array and dynamic-programming patterns.
 
 ### Week 14: Behavioral and full-loop simulation
 
@@ -320,14 +339,14 @@ Every task was reviewed against these rules:
 
 - Behavioral preparation precedes the onsite simulation.
 - The full loop combines research, ML coding, design, and behavioral performance. A second fixed prompt makes the ML round possible without a partner.
-- The final coding rep covers sequence DP.
+- Longest Palindrome, Min Stack, and Reverse Linked List revisit string, stack, and linked-list patterns.
 - Company-specific content is activated only by a scheduled interview.
 
 ### Week 15: Launch and stamina
 
 **Verdict:** intentionally exceptional workload.
 
-- No additional generated coding task is added.
+- Validate Binary Search Tree and Number of Islands close the 33-problem Core sequence before live interviewing.
 - Application launch, offer-model preparation, negotiation criteria, stamina, and logistics are completed before live interviewing.
 - The workload exception is explicit and should not be treated as the weekly norm.
 
@@ -342,9 +361,9 @@ Every task was reviewed against these rules:
 ## Curriculum changes made by this research
 
 1. Added a visible Evidence tab with technical areas, source grades, conclusions, limitations, and source links.
-2. Added a deterministic general-coding queue with primary/alternate problems and fixed rules.
-3. Added nine rendered coding-maintenance tasks in Weeks 4–7, 9–11, 13, and 14; kept slack weeks and Week 15 clear.
-4. Replaced vague “next unsolved problem” language in Weeks 0, 2, and 3.
+2. Replaced the improvised coding queue with a 33-problem Grind 75 sequence selected from a 14-week, 2-hour, Easy-and-Medium, all-topic filter. Two Sum is excluded from required work.
+3. Moved G1 from Week 2 to Week 7, after 19 preparations, and defined a fixed W10 retest pair.
+4. Added replacement-only repair problems so remediation changes the sequence without adding backlog.
 5. Added latent diffusion, visual tokenizer/VAE, and DiT coverage to the modern visual architecture sequence.
 6. Replaced default tabular Q-learning with Diffusion-DPO, VADER, rewards, preference optimization, and reward-hacking evaluation.
 7. Expanded experiment design to separate method effects from data-mixture effects and leakage.
@@ -353,6 +372,7 @@ Every task was reviewed against these rules:
 10. Added two fixed ML-coding mock prompts with separate check sheets so solo simulation is executable.
 11. Updated gates, prerequisites, completion criteria, fallbacks, workload, and progress migration.
 12. Replaced fixed learning deadlines with ADHD-calibrated work windows, calendar reserves, a count-up focus clock, and saved actual duration.
+13. Replaced the cold Two Sum start with a bounded pattern-recognition refresher; Two Sum is now only an optional editor check.
 
 ## Timing reassessment: 31 July 2026
 
@@ -368,41 +388,42 @@ The revised model separates **content work**, **calendar reservation**, and **st
 | Simulation | Prompt limit plus review | 75 minutes | Countdown only for the interview prompt; count up for the whole block |
 | Stamina simulation | Four hours of rounds/breaks | 5 hours 30 minutes | Run only when rested |
 
-A normal full week still contains roughly 6h25–7h of content, but now reserves approximately 8h30–11h30 on the calendar. The heaviest weeks reserve 11h30; slack weeks reserve 1h30. The default across Weeks 0–15 is about 144 calendar hours. This is deliberately larger than the content total and should be replaced by the candidate's observed median after several tasks.
+After the Grind 75 integration, a normal full week reserves approximately 9h10–12h05 on the calendar. Slack weeks still reserve 1h30, and Week 15 reserves about 13h because it combines the final coding problems with the full-loop simulation. The default across Weeks 0–15 is about 154 calendar hours. This is deliberately larger than the content total and should be replaced by the candidate's observed median after several tasks.
 
 | Week | Default calendar reserve |
 |---|---:|
-| W0 | 4h40 |
-| W1 | 8h35 |
-| W2 | 8h45 |
-| W3 | 9h25 |
-| W4 | 10h50 |
-| W5 | 10h50 |
-| W6 | 11h05 |
-| W7 | 11h20 |
+| W0 | 5h30 |
+| W1 | 10h15 |
+| W2 | 9h10 |
+| W3 | 9h30 |
+| W4 | 11h25 |
+| W5 | 11h45 |
+| W6 | 11h40 |
+| W7 | 12h05 |
 | W8 | 1h30 |
-| W9 | 11h30 |
-| W10 | 11h00 |
-| W11 | 10h05 |
+| W9 | 11h45 |
+| W10 | 11h45 |
+| W11 | 10h50 |
 | W12 | 1h30 |
-| W13 | 10h25 |
-| W14 | 10h30 |
-| W15 | 11h30 |
+| W13 | 10h50 |
+| W14 | 11h15 |
+| W15 | 13h00 |
 
 The tracker now:
 
 - hides minute-by-minute splits for flexible learning and presents the steps in order;
-- displays a work window and calendar reserve on every task;
+- displays one calendar reservation on each task and keeps the detailed timing model in a collapsed explanation;
 - strips obsolete duration labels from session headings;
 - provides a count-up clock for study sessions;
 - saves actual focus duration per task;
 - checkpoints elapsed time locally every 15 seconds, so opening a source in another tab does not stop the clock;
 - shows weekly calendar reserve and a running median after three recorded tasks;
 - keeps strict countdown language only for gates, mocks, and full-loop simulations.
+- gives the Coding page a visible 14-week sequence, weekly problem checkboxes, direct problem links, exact attempt limits, and a pre-filled result log.
 
 ## ADHD-oriented execution design
 
-The implementation follows practical task-structure guidance from [CHADD on task lists](https://chadd.org/for-adults/time-management-and-adhd-to-do-lists/), [CHADD on timers and visual reminders](https://chadd.org/adhd-news/adhd-news-adults/make-this-the-time-to-thrive-with-adhd/), and [CNWL's adult-ADHD adjustment guidance](https://www.cnwl.nhs.uk/services/mental-health-services/cnwl-adult-adhd-service/adhd-reasonable-adjustments):
+The implementation follows [NICE guidance on environmental modifications and daily structure](https://www.nice.org.uk/guidance/ng87/chapter/recommendations), [NHS guidance on written instructions and help structuring tasks](https://www.nhs.uk/conditions/adhd-adults/), and [W3C cognitive-accessibility guidance](https://www.w3.org/WAI/WCAG2/supplemental/objectives/o5-user-focus/):
 
 - written step-by-step tasks;
 - one visible action at a time;
@@ -417,6 +438,23 @@ The implementation follows practical task-structure guidance from [CHADD on task
 - slack weeks and explicit scope cuts.
 
 These are interface and workflow choices, not medical treatment.
+
+## Human-use review: 2 August 2026
+
+The curriculum data was coherent, but the route to starting a task was too long. The dashboard placed countdowns, percentages, checkpoints and review-card reminders before the next action. Twelve primary navigation items competed for attention. Task cards showed two different time estimates, several controls and technical metadata at once. The coding schedule opened a separate Markdown instruction sheet before sending the candidate to the real exercise.
+
+The revised interface now:
+
+- places the next task before progress statistics and reminders;
+- moves secondary tools into one More page;
+- shows one calendar reservation on the task card;
+- places the finish line and smaller starting version next to the action;
+- keeps skip controls, rationale, prerequisites and saved notes under Options and context;
+- puts each Grind 75 problem directly in its own task and keeps the ordered schedule visible on the Coding page;
+- uses `plan.json` as the curriculum source while Firebase stores progress only;
+- stops displaying weekly work while the interview-specific protocol is active.
+
+The full curriculum remains demanding. Its calendar reservations include breaks and transition time, so they should not be compressed to make the plan look easier. If completion falls below 70% for two weeks, the existing scope-cut rule should remove later tasks. The plan should not create catch-up days or borrow from sleep.
 
 ## Remaining uncertainties and update policy
 

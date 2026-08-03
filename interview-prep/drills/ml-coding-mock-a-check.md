@@ -1,4 +1,10 @@
-# ML-coding mock A — check sheet
+---
+layout: interview-drill
+title: ML-coding mock A check sheet
+permalink: /interview-prep/drills/ml-coding-mock-a-check.html
+---
+
+# ML-coding mock A: check sheet
 
 Open only after 35 minutes.
 

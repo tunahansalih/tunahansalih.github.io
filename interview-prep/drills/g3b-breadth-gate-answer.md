@@ -1,4 +1,10 @@
-# G3b breadth gate - answer cues
+---
+layout: interview-drill
+title: G3b breadth gate answer cues
+permalink: /interview-prep/drills/g3b-breadth-gate-answer.html
+---
+
+# G3b breadth gate: answer cues
 
 These are checking cues, not scripts to memorize.
 

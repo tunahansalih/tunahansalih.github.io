@@ -1,4 +1,10 @@
-# ML-coding foundation mock — check sheet
+---
+layout: interview-drill
+title: ML-coding foundation mock check sheet
+permalink: /interview-prep/drills/ml-coding-mock-foundation-check.html
+---
+
+# ML-coding foundation mock: check sheet
 
 Open only after 35 minutes.
 

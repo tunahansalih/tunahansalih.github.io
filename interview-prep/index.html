@@ -71,6 +71,36 @@
   .taskfallback{margin-top:5px}
   .taskfallback summary{font-size:11.5px;color:var(--accent);font-weight:600}
   .taskfallback div{margin-top:4px;color:var(--mut);font-size:12px;border-left:2px solid var(--line);padding-left:8px}
+  .taskstarter{margin-top:9px;padding:7px 9px;border:1px solid #eadfce;border-radius:6px;background:#fffaf2}
+  .taskstarter summary{color:#8a4b08;font-size:12px}
+  .taskmore{margin-top:8px}
+  .taskmore>.taskmorebody{border-left:0;padding:8px 0 0;margin:0;color:var(--mut)}
+  .taskmorebody .taskmeta{margin-top:8px}
+  .dashboard-overview{padding:0;overflow:hidden}
+  .dashboard-overview>summary{padding:13px 16px;color:var(--ink)}
+  .dashboard-overview-body{padding:0 16px 14px}
+  .more-grid{display:grid;gap:10px}
+  @media(min-width:700px){.more-grid{grid-template-columns:1fr 1fr}}
+  .more-link{display:block;width:100%;text-align:left;background:var(--panel2);border:1px solid var(--line);border-radius:7px;padding:13px 14px;cursor:pointer;color:var(--ink);font:inherit}
+  .more-link:hover{border-color:#aaa;background:#fff}
+  .more-link b{display:block;font-size:14px;margin-bottom:2px}
+  .more-link span{display:block;font-size:12px;color:var(--mut)}
+  .coding-summary{display:grid;gap:10px;margin:14px 0}
+  @media(min-width:700px){.coding-summary{grid-template-columns:repeat(3,1fr)}}
+  .coding-stat{border:1px solid var(--line);border-radius:6px;background:var(--panel2);padding:10px 12px}
+  .coding-stat b{display:block;font-size:18px;color:var(--ink)}
+  .coding-stat span{font-size:11.5px;color:var(--mut)}
+  .coding-week{padding:0;overflow:hidden}
+  .coding-week>summary{padding:12px 15px;color:var(--ink)}
+  .coding-week-body{padding:0 15px 12px;border-top:1px solid var(--line)}
+  .problem-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+  .problem-row:last-child{border-bottom:0}
+  .problem-row>input{width:17px;height:17px;accent-color:var(--good)}
+  .problem-row.done .problem-title{text-decoration:line-through;color:var(--mut)}
+  .problem-title{display:block;font-weight:650;font-size:13.5px}
+  .problem-meta{font-size:11.5px;color:var(--mut);margin-top:2px}
+  .problem-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+  .coding-source{font-size:11.5px;color:var(--mut);margin-top:10px}
   .flex-task{background:var(--panel2);border-radius:6px;padding:8px 10px;margin:3px 0}
   .kind{font-size:9.5px;padding:1px 7px;border-radius:99px;text-transform:uppercase;letter-spacing:.05em;font-weight:700}
   .kind.core{background:#e8f5ec;color:var(--good)}
@@ -234,6 +264,8 @@
     .task-step{grid-template-columns:1fr;gap:1px}
     .step-label{padding-top:0}
     .week-summary{padding:13px 14px}.week-body{padding:0 14px 12px}
+    .problem-row{grid-template-columns:auto minmax(0,1fr)}
+    .problem-actions{grid-column:2;justify-content:flex-start}
   }
   @media(prefers-reduced-motion:reduce){
     *,*::before,*::after{scroll-behavior:auto!important;transition:none!important}
@@ -284,6 +316,7 @@
   <section class="view" id="v-evidence"></section>
   <section class="view" id="v-protocol"></section>
   <section class="view" id="v-res"></section>
+  <section class="view" id="v-more"></section>
   <section class="view" id="v-settings"></section>
 </main>
 
@@ -298,17 +331,15 @@ function weekDateLabel(i,w){const a=new Date(getStart());a.setDate(a.getDate()+i
   if(w&&(w.openEnded||w.id==='live'))return 'From '+fmtD(a)+' onward';
   const b=new Date(a);b.setDate(b.getDate()+6);return fmtD(a)+' – '+fmtD(b);}
 
-/* ---------- plan content (loaded from Firestore after login; personalized at render time) ---------- */
+/* ---------- plan content (loaded from plan.json; personalized at render time) ---------- */
 let WEEKS=[], PHASES={}, TOPICS=[], STORY_CATS=[], RESOURCES=[], PACING={};
 let GATES=[], EVIDENCE={}, TIMING={}, PROTOCOL={}, RUBRIC={}, TARGET_COMPANIES={groups:[]}, ADAPT_RULES=[], FAILURE_CATEGORIES=[], FIRST_CUTS=[], NEVER_CUT=[];
 let PERSONALIZATION={vars:{},branches:{}};
 let RAW_PLAN=null;
 let activeUid=null, activeEmail='', activeKey=null;
-const PLANKEY='ipcc_plan_v2';
-const planKeyForUid=uid=>PLANKEY+':'+uid;
 let planError='';
-const PLAN_REFINEMENT_VERSION=10;
-const PLAN_CONTENT_REFINEMENT_VERSION=9;
+const PLAN_REFINEMENT_VERSION=12;
+const PLAN_CONTENT_REFINEMENT_VERSION=12;
 const TARGET_COMPANY_FIELDS=[
   ['targetCompanyA','Target company 1','e.g. OpenAI'],
   ['targetCompanyB','Target company 2','e.g. Anthropic'],
@@ -367,6 +398,37 @@ function normalizePlanContent(raw){
       w.sessions.push({t:r.sessionTitle,x:[task],_preserveDay:true});
     }
   });
+  const coding=plan.codingProgram||{};
+  const ordered=(coding.weekOrder||[]).flatMap(weekId=>(coding.schedule&&coding.schedule[weekId]||[]).map(q=>({weekId,q})));
+  ordered.forEach(({weekId,q},index)=>{
+    const w=weeks.find(x=>x.id===weekId);if(!w)return;
+    const taskId=q.taskId||q.id;
+    if((w.sessions||[]).some(s=>(s.x||[]).some(t=>t&&t.id===taskId)))return;
+    const reserve=Math.ceil((Number(q.attemptMinutes)||20)*1.96/5)*5;
+    const prior=index?ordered[index-1].q:null;
+    const prereq=q.prereq||(prior?(prior.taskId||prior.id):'');
+    const task={
+      id:taskId,priority:'core',codingProblem:true,codingProblemId:q.id,
+      difficulty:q.difficulty,topic:q.topic,attemptMinutes:q.attemptMinutes,
+      workWindow:`${q.attemptMinutes}m attempt + ${Math.max(15,reserve-q.attemptMinutes)}m review and log`,
+      calendarReserve:`${reserve}m`,gate:q.gate||undefined,
+      text:`<strong>Attempt:</strong> open <a href="${q.url}" target="_blank" rel="noopener" class="tlink">${q.title}</a>, turn AI assistance off, and set a ${q.attemptMinutes}-minute countdown. Explain the approach and target complexity before coding. <strong>Review:</strong> test edge cases, then inspect one explanation only after the countdown. Close it and restate the approach from memory. <strong>Log:</strong> save the pattern, elapsed attempt time, outcome, complexity, and first broken step.`,
+      competency:'general coding',scenario:'Coding screen',
+      why:q.gate?'This is the second problem in the first two-Medium checkpoint, scheduled after 19 mixed-topic preparations.':`This problem keeps ${String(q.topic||'coding').replaceAll('-',' ')} in a mixed sequence instead of isolating one topic for several weeks.`,
+      doneWhen:`${q.title} is logged with the pattern, elapsed attempt time, outcome, complexity, and first broken step.${q.gate?' The G1 result is also recorded.':''}`,
+      fallback:'Read the prompt, write a three-sentence approach and target complexity, log why implementation did not start, and stop.',
+      prereq
+    };
+    const problems=(coding.schedule&&coding.schedule[weekId])||[];
+    const slot=problems.findIndex(x=>x.id===q.id);
+    const days=weekId==='w0'?(problems.length===2?['Sun AM','Sun PM']:['Sat AM','Sun AM','Sun PM']):problems.length===2?['Wed','Sun']:['Tue','Thu','Sun'];
+    w.sessions=w.sessions||[];
+    const day=days[slot]||'Any day';
+    const session={t:`${day} · ${reserve}m — Grind 75 #${q.id.replace('G75-','')}: ${q.title}`,x:[task],_preserveDay:true};
+    const prefix=day.slice(0,3);let insertAt=-1;
+    w.sessions.forEach((s,i)=>{if(String(s.t||'').slice(0,3)===prefix)insertAt=i+1;});
+    if(insertAt<0)w.sessions.push(session);else w.sessions.splice(insertAt,0,session);
+  });
   weeks.forEach(w=>{
     (w.sessions||[]).forEach((s,si)=>{
       s.x=(Array.isArray(s.x)?s.x:[]).map((t,ti)=>{
@@ -417,7 +479,7 @@ function migratePlanProgress(){
       'W13-T4','W13-T7','W14-T1','W14-T3','W15-T3','W15-T6','W15-T7'];
     changed.forEach(id=>delete S.weekTasks[id]);
   }
-  // v9 adds the evidence-backed coding queue and changes the modern vision,
+  // v9 adds the evidence-backed coding sequence and changes the modern vision,
   // visual post-training and data/evaluation assignments.
   if((S.planRefinementVersion||0)<9){
     ['W0-G1','W2-T8','W3-T2','W3-T6','W6-T3','W9-T2','W9-T4','W9-T8','W10-T3','W10-T7','W14-T6']
@@ -427,6 +489,21 @@ function migratePlanProgress(){
   // v10 changes timing presentation and adds actual-duration calibration without
   // invalidating completed curriculum work.
   if((S.planRefinementVersion||0)<10&&!S.taskTimes)S.taskTimes={};
+  // v11 replaces the one-problem maintenance queue with a 34-problem Grind 75
+  // sequence and moves G1 until after 19 preparations. Old coding marks no
+  // longer refer to the same work.
+  if((S.planRefinementVersion||0)<11){
+    Object.keys(S.weekTasks).forEach(k=>{if(/-DSA$/.test(k)||['W0-G1','W2-T8','W3-T2'].includes(k))delete S.weekTasks[k];});
+    if(S.gates)delete S.gates.G1;
+  }
+  // v12 replaces the old Two Sum task with a recognition-sheet refresher.
+  // Progress, notes and elapsed time for the old task must not mark the new work done.
+  if((S.planRefinementVersion||0)<12){
+    delete S.weekTasks['W0-G1'];
+    if(S.taskNotes)delete S.taskNotes['W0-G1'];
+    if(S.taskTimes)delete S.taskTimes['W0-G1'];
+    if(S.skippedTasks)delete S.skippedTasks['W0-G1'];
+  }
   S.planRefinementVersion=PLAN_REFINEMENT_VERSION;
   return true;
 }
@@ -449,7 +526,6 @@ function setPlan(raw){
   FIRST_CUTS=RAW_PLAN.firstFiveCuts||[];NEVER_CUT=RAW_PLAN.neverCut||[];
   planError='';const migrated=migratePlanProgress();
   try{
-    if(activeUid)localStorage.setItem(planKeyForUid(activeUid),JSON.stringify(RAW_PLAN));
     if(migrated&&activeKey)localStorage.setItem(activeKey,JSON.stringify(S));
   }catch(e){}
 }
@@ -512,9 +588,10 @@ function loadForUser(uid){
   activeUid=uid;activeKey=KEY+':'+uid;
   WEEKS=[];PHASES={};TOPICS=[];STORY_CATS=[];RESOURCES=[];planError='';
   try{S=normalizeState(JSON.parse(localStorage.getItem(activeKey)))}catch(e){S=freshState()}
-  let applied=false;
-  try{const cp=JSON.parse(localStorage.getItem(planKeyForUid(uid)));if(cp){setPlan(cp);applied=true;}}catch(e){}
-  if(!applied&&carry)setPlan(carry);
+  // Curriculum content is shared and comes from plan.json. Account changes may
+  // replace progress, but they must never replace the current curriculum.
+  if(carry)setPlan(carry);
+  try{localStorage.removeItem('ipcc_plan_v2:'+uid)}catch(e){}
 }
 let saveTimer;
 function save(){clearTimeout(saveTimer);saveTimer=setTimeout(()=>{if(activeKey)localStorage.setItem(activeKey,JSON.stringify(S));flashSaved();scheduleFileWrite();scheduleServerSave();if(window.__cloudSave)window.__cloudSave(S);},150)}
@@ -687,7 +764,7 @@ function renderStorageBar(needReconnect){
 }
 function renderAllViews(){
   renderDash();renderPlan();renderTopics();renderLeet();renderMocks();renderPipe();renderStory();
-  renderCards();renderGates();renderEvidence();renderProtocol();renderRes();renderSettings();
+  renderCards();renderGates();renderEvidence();renderProtocol();renderRes();renderMore();renderSettings();
   refreshHeader();
 }
 
@@ -744,9 +821,18 @@ function refreshHeader(){
 }
 
 /* ---------- navigation ---------- */
-const TABS=[['dash','Today'],['plan','Weekly plan'],['topics','Knowledge map'],['leet','Coding'],
-  ['mocks','Mocks'],['pipe','Companies'],['story','Stories'],['cards','Review cards'],['gates','Checkpoints'],
-  ['evidence','Why this plan'],['protocol','Before an interview'],['res','Reading']];
+const TABS=[['dash','Today'],['plan','Plan'],['leet','Coding'],['mocks','Mocks'],['pipe','Companies'],['more','More']];
+const AUX_TABS=[
+  ['topics','Knowledge map','Track concepts that you can explain and apply.'],
+  ['story','Stories','Prepare and save behavioral examples.'],
+  ['cards','Review cards','Retrieve earlier material without rereading it.'],
+  ['gates','Checkpoints','Record measured interview-practice results.'],
+  ['protocol','Before an interview','Switch to the 72-hour company plan.'],
+  ['evidence','Why this plan','Read the evidence and limits behind the curriculum.'],
+  ['res','Reading','Find a source when a task identifies a gap.'],
+  ['settings','Settings','Change dates, study days, projects, and account data.']
+];
+const KNOWN_TABS=new Set([...TABS,...AUX_TABS].map(x=>x[0]));
 function buildNav(){
   const nav=document.getElementById('nav');if(!nav)return;nav.innerHTML='';
   TABS.forEach(([id,label])=>{
@@ -761,10 +847,10 @@ function show(id){
   if(!v)return;
   // Re-render the target view so checkmark state set on other tabs propagates here.
   const renders={dash:renderDash,plan:renderPlan,topics:renderTopics,leet:renderLeet,mocks:renderMocks,
-    pipe:renderPipe,story:renderStory,cards:renderCards,gates:renderGates,evidence:renderEvidence,protocol:renderProtocol,res:renderRes,settings:renderSettings};
+    pipe:renderPipe,story:renderStory,cards:renderCards,gates:renderGates,evidence:renderEvidence,protocol:renderProtocol,res:renderRes,more:renderMore,settings:renderSettings};
   if(renders[id])renders[id]();
   v.classList.add('on');
-  const tab=document.getElementById('tab-'+id);if(tab)tab.classList.add('on');
+  const tab=document.getElementById('tab-'+id)||document.getElementById('tab-more');if(tab)tab.classList.add('on');
   if(tab)tab.scrollIntoView({block:'nearest',inline:'center'});
   if(id!=='settings')history.replaceState(null,'','#'+id);
   window.scrollTo(0,0);
@@ -774,53 +860,55 @@ function show(id){
 function renderDash(){
   const v=document.getElementById('v-dash');v.innerHTML='';
   if(!WEEKS.length){ v.appendChild(el('div','note',planError||'Loading your plan…')); return; }
+  const ci=currentWeekIdx();const now=new Date();const st=getStart();
   if(S.protocolActive){
     const who=S.protocolCompany?' for <strong>'+escapeHtml(S.protocolCompany)+'</strong>':'';
-    const p=el('div','note protocol-on','<strong>Interview protocol active'+who+'.</strong> The 72-hour protocol replaces this week’s curriculum except outreach, retrieval, and post-round debriefs. <button class="linkbtn" id="dash-protocol" type="button">Open protocol →</button>');
+    const p=el('div','card protocol-on',`<h3>Interview plan${who}</h3><p>The weekly curriculum is paused. Use the 72-hour plan for this interview.</p><button class="btn accent" id="dash-protocol" type="button">Open the interview plan</button>`);
     v.appendChild(p);p.querySelector('#dash-protocol').onclick=()=>show('protocol');
-  }else{
-    v.appendChild(el('div','note','<strong>For today:</strong> choose one unfinished Core task and reserve the time shown on its card. Start the count-up clock when you begin. Finish when the stated artifact exists. Use the shorter fallback if starting the full task feels difficult.'));
-  }
-  const ci=currentWeekIdx();const now=new Date();const st=getStart();
-  v.appendChild(el('div','kpi',`
-    <div class="card"><b>${daysBetween(now,getTarget())>0?daysBetween(now,getTarget()):0}</b><span class="muted">days to target (${fmtD(getTarget())})</span></div>
-    <div class="card"><b>${now<st?'Pre':WEEKS[ci].label.replace('Week ','W')}</b><span class="muted">${now<st?('starts '+fmtD(st)):WEEKS[ci].theme}</span></div>
-    <div class="card"><b>${pct(overallPct())}</b><span class="muted">curriculum complete</span></div>
-  `));
-  const gp=GATES.filter(g=>(S.gates[g.id]||{}).status==='pass').length;
-  const unresolved=orderedGates().find(g=>!(S.gates[g.id]||{}).status);
-  v.appendChild(el('div','note',`<strong>Performance gates:</strong> ${gp}/${GATES.length} passed.${unresolved?` Next unresolved: <button class="linkbtn" id="next-gate" type="button">${unresolved.id} · ${unresolved.name}</button>`:''}`));
-  const ng=v.querySelector('#next-gate');if(ng)ng.onclick=()=>show('gates');
-  const due=S.cards.filter(c=>!c.due||c.due<=dateKey(new Date())).length;
-  if(due){
-    const cn=el('div','note',`<strong>${due} retrieval card${due===1?' is':'s are'} due.</strong> <button class="linkbtn" id="due-cards" type="button">Review due cards →</button>`);
-    v.appendChild(cn);cn.querySelector('#due-cards').onclick=()=>show('cards');
+    v.appendChild(el('p','page-foot','Your saved weekly progress will still be here after the interview.'));
+    return;
   }
   const w=WEEKS[ci];const done=weekDone(ci);const tot=weekTotal(ci);
+  v.appendChild(el('div','note','<strong>Do one thing:</strong> work on the task below until its finish line is true. If starting feels difficult, open the smaller version on the card.'));
   const focus=el('div','card now');
-  focus.appendChild(el('div',null,`<div class="wkhead"><h3>${now<st?'Start here':'Today'} · ${w.label}: ${w.theme}</h3>
-    <span class="pill p${w.phase}">${PHASES[w.phase]}</span></div>
-    <div class="pr">${weekDateLabel(ci,w)} · ${done}/${tot} tasks complete · reserve about ${reserveLabel(weekReserve(ci))}</div><div class="mini"><i style="width:${tot?Math.round(done/tot*100):0}%"></i></div>`));
+  focus.appendChild(el('div',null,`<div class="wkhead"><h3>${now<st?'Your first task':'Your next task'}</h3><span class="pill">${escapeHtml(w.label)}</span></div><div class="pr">${escapeHtml(w.theme)}</div>`));
   const today=now.toLocaleDateString('en-US',{weekday:'short'});
-  const mapped=(S.settings.days||[]).indexOf(today);
-  // Surface the earliest unfinished Core block up to today. Missed work stays visible instead of disappearing.
-  let si=now<st?0:w.sessions.findIndex((_,idx)=>idx<=Math.max(mapped,0)&&sessCoreDone(w,idx)<sessCoreTotal(w,idx));
+  const dayOrder=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];const todayIndex=dayOrder.indexOf(today);
+  const isDue=s=>{const p=sessionParts(0,substituteVars(s.t,userVars()),s);const i=dayOrder.indexOf(String(p.day||'').slice(0,3));return i<0||i<=todayIndex;};
+  // Surface the earliest unfinished Core block whose displayed day has arrived.
+  // Multiple tasks can share a day, so session-array position is not used as a calendar proxy.
+  let si=now<st?w.sessions.findIndex((_,idx)=>sessCoreDone(w,idx)<sessCoreTotal(w,idx)):w.sessions.findIndex((s,idx)=>isDue(s)&&sessCoreDone(w,idx)<sessCoreTotal(w,idx));
   if(si<0||si>=w.sessions.length)si=w.sessions.findIndex((_,idx)=>sessCoreDone(w,idx)<sessCoreTotal(w,idx));
-  if(si<0||si>=w.sessions.length)si=(mapped>=0&&mapped<w.sessions.length)?mapped:w.sessions.findIndex((_,idx)=>sessDone(w,idx)<w.sessions[idx].x.length);
+  if(si<0||si>=w.sessions.length)si=w.sessions.findIndex((_,idx)=>sessDone(w,idx)<w.sessions[idx].x.length);
   if(si<0||si>=w.sessions.length){
-    focus.appendChild(el('div','empty','This week is complete. Use the extra time for a mock interview or targeted review.'));
+    focus.appendChild(el('div','empty','You finished this week. Stop here. The next week will appear on its start date.'));
   } else {
-    renderSession(focus,w,si);
-    if(sessDone(w,si)===w.sessions[si].x.length){
-      const nextSi=w.sessions.findIndex((_,idx)=>idx!==si&&sessDone(w,idx)<w.sessions[idx].x.length);
-      if(nextSi>=0){
-        focus.appendChild(el('div','note','This session is complete. Next up:'));
-        renderSession(focus,w,nextSi);
-      }
-    }
+    const nextTi=w.sessions[si].x.findIndex((t,ti)=>isCoreTask(t)&&!taskSkipped(w,si,ti,t)&&!S.weekTasks[tkey(w,si,ti,t)]);
+    const fallbackTi=w.sessions[si].x.findIndex((t,ti)=>!taskSkipped(w,si,ti,t)&&!S.weekTasks[tkey(w,si,ti,t)]);
+    renderSession(focus,w,si,nextTi>=0?nextTi:fallbackTi>=0?fallbackTi:null);
   }
   v.appendChild(focus);
-  v.appendChild(el('div','note','If a task slips, continue with the first unfinished Core task during your next study session. Use a slack week for work that remains important.'));
+
+  const overview=el('details','card dashboard-overview');
+  overview.appendChild(el('summary',null,'Progress and reminders'));
+  const body=el('div','dashboard-overview-body');
+  body.appendChild(el('div','kpi',`
+    <div class="card"><b>${daysBetween(now,getTarget())>0?daysBetween(now,getTarget()):0}</b><span>days to target (${fmtD(getTarget())})</span></div>
+    <div class="card"><b>${done}/${tot}</b><span>${escapeHtml(w.label)} tasks complete</span></div>
+    <div class="card"><b>${pct(overallPct())}</b><span>curriculum complete</span></div>
+  `));
+  body.appendChild(el('div','note',`${escapeHtml(weekDateLabel(ci,w))}. Set aside about ${escapeHtml(reserveLabel(weekReserve(ci)))} for the full week.`));
+  const gp=GATES.filter(g=>(S.gates[g.id]||{}).status==='pass').length;
+  const unresolved=orderedGates().find(g=>!(S.gates[g.id]||{}).status);
+  const gate=el('div','note',`<strong>Checkpoints:</strong> ${gp}/${GATES.length} passed.${unresolved?` <button class="linkbtn" id="next-gate" type="button">Open ${unresolved.id}: ${escapeHtml(unresolved.name)}</button>`:''}`);
+  body.appendChild(gate);const ng=gate.querySelector('#next-gate');if(ng)ng.onclick=()=>show('gates');
+  const due=S.cards.filter(c=>!c.due||c.due<=dateKey(new Date())).length;
+  if(due){
+    const cn=el('div','note',`<strong>${due} review card${due===1?' is':'s are'} due.</strong> <button class="linkbtn" id="due-cards" type="button">Open review cards</button>`);
+    body.appendChild(cn);cn.querySelector('#due-cards').onclick=()=>show('cards');
+  }
+  body.appendChild(el('div','note','If a task slips, return to the first unfinished task at your next study session. After a second slip, use the Skip task option and continue. Do not create a catch-up day.'));
+  overview.appendChild(body);v.appendChild(overview);
   v.appendChild(el('p','page-foot','Methodology inspired by <a href="https://alisawuffles.github.io/blog/job-search/" target="_blank" rel="noopener">Alisa Liu’s notes on the industry job search</a>, adapted for research scientist roles in generative vision and multimodal ML.'));
 }
 function sessionParts(si,rawTitle,s){
@@ -836,10 +924,15 @@ function timingProfile(w,s,t){
   const id=(t&&t.id)||'';const profiles=TIMING.profiles||{};
   let name='standard';
   if((TIMING.staminaTaskIds||[]).includes(id))name='stamina';
+  else if(t&&t.codingProblem)name='strict';
   else if((TIMING.strictTaskIds||[]).includes(id)||t.gate||/-DSA$/.test(id))name='strict';
   else if((TIMING.deepTaskIds||[]).includes(id))name='deep';
   else if(/-OUT$/.test(id)||/^Fri\b/.test(s.t)||w.id==='w8'||w.id==='w12'||['LIVE-2','LIVE-4'].includes(id))name='brief';
-  return Object.assign({label:name,workWindow:'40–65m',calendarReserve:'75m',rhythm:'Two focus cycles',stopRule:''},profiles[name]||{},{name});
+  const profile=Object.assign({label:name,workWindow:'40–65m',calendarReserve:'75m',rhythm:'Two focus cycles',stopRule:''},profiles[name]||{},{name});
+  if(t&&t.workWindow)profile.workWindow=t.workWindow;
+  if(t&&t.calendarReserve)profile.calendarReserve=t.calendarReserve;
+  if(t&&t.codingProblem)profile.stopRule=`Stop the attempt at ${t.attemptMinutes} minutes. Use the remaining reservation for tests, review and the log.`;
+  return profile;
 }
 function flexibleTaskText(raw,profile){
   if(profile.name==='strict'||profile.name==='stamina')return raw;
@@ -892,21 +985,37 @@ function resetFocus(key){
 function renderFocusBar(copy,key,profile){
   const bar=el('div','focusbar');
   const clock=el('span','focusclock'+(ACTIVE_FOCUS.key===key?' active':''),focusClockText(focusSeconds(key)));clock.dataset.focusClock=key;
-  const toggle=el('button','btn sm',ACTIVE_FOCUS.key===key?'Pause':'Start count-up');toggle.type='button';
+  clock.setAttribute('aria-live','polite');
+  const toggle=el('button','btn sm',ACTIVE_FOCUS.key===key?'Pause':'Start this task');toggle.type='button';
   toggle.onclick=()=>{startFocus(key);refreshAll();};
   const reset=el('button','linkbtn','Reset');reset.type='button';reset.onclick=()=>resetFocus(key);
-  const hint=profile.name==='strict'||profile.name==='stamina'?'Use the prompt countdown separately; this records setup + work + review.':profile.name==='brief'?'At 20–25m finish the small artifact or use the fallback.':'At 25m check in; at 50m finish, fallback, or choose one final cycle.';
+  const hint=profile.name==='strict'||profile.name==='stamina'?'Use the exercise countdown separately. This clock records the whole session.':'The clock counts up. Pause for a short break whenever your attention drops.';
   const help=el('span','focushelp',hint);
   bar.append(clock,toggle,reset,help);copy.appendChild(bar);
 }
-function renderSession(parent,w,si){
+function renderSession(parent,w,si,onlyTi=null){
   const s=w.sessions[si];const d=sessDone(w,si);const done=d===s.x.length;
   if(!s.x.length)return;
   const p=sessionParts(si,substituteVars(s.t,userVars()),s);
+  const status=onlyTi==null?`${d}/${s.x.length}`:`Task ${onlyTi+1} of ${s.x.length}`;
   const box=el('div','sess'+(done?' sdone':''));
-  box.appendChild(el('div','sesshead',`<span class="sday">${p.day}</span><span class="stitle">${p.content}</span><span class="sct">${d}/${s.x.length}</span>`));
-  s.x.forEach((t,ti)=>box.appendChild(taskRow(w,si,ti,t)));
+  box.appendChild(el('div','sesshead',`<span class="sday">${p.day}</span><span class="stitle">${p.content}</span><span class="sct">${status}</span>`));
+  s.x.forEach((t,ti)=>{if(onlyTi==null||ti===onlyTi)box.appendChild(taskRow(w,si,ti,t));});
   parent.appendChild(box);
+}
+function codingProgram(){return RAW_PLAN&&RAW_PLAN.codingProgram?RAW_PLAN.codingProgram:null;}
+function codingProblems(){const cp=codingProgram();return cp?(cp.weekOrder||[]).flatMap(weekId=>(cp.schedule&&cp.schedule[weekId]||[]).map(q=>Object.assign({weekId},q))):[];}
+function codingProblemById(id){return codingProblems().find(q=>q.id===id||q.taskId===id);}
+function codingTaskId(q){return q.taskId||q.id;}
+function codingReserve(q){return Math.ceil((Number(q.attemptMinutes)||20)*1.96/5)*5;}
+function ensureCodingLog(q){
+  if(!q)return null;
+  let row=S.leet.find(r=>r.sourceId===q.id);
+  if(!row){
+    row={sourceId:q.id,date:dateKey(new Date()),problem:q.title,pattern:String(q.topic||'').replaceAll('-',' '),diff:q.difficulty,unaided:'',min:'',revisit:'',notes:''};
+    S.leet.push(row);save();
+  }
+  return row;
 }
 function taskRow(w,si,ti,t){
   const key=tkey(w,si,ti,t);const on=!!S.weekTasks[key];const skipped=!!S.skippedTasks[key];
@@ -914,6 +1023,7 @@ function taskRow(w,si,ti,t){
   const row=el('div','ck'+(on?' done':'')+(skipped?' skipped':'')+(priority!=='core'?' flex-task':''));
   const cb=el('input');cb.type='checkbox';cb.checked=on;cb.disabled=skipped;
   cb.id='task-'+key.replace(/[^a-zA-Z0-9_-]/g,'-');
+  cb.setAttribute('aria-label',on?'Mark task unfinished':'Mark task complete');
   cb.onchange=()=>{if(cb.checked&&ACTIVE_FOCUS.key===key)pauseFocus();S.weekTasks[key]=cb.checked;save();refreshAll()};
   row.appendChild(cb);
   const profile=timingProfile(w,w.sessions[si],t);
@@ -926,41 +1036,52 @@ function taskRow(w,si,ti,t){
   const artifact=typeof t==='object'&&t?t.artifact:'';
   const doneWhen=typeof t==='object'&&t?(t.doneWhen||artifact):'';
   const minimum=typeof t==='object'&&t?(t.fallback||t.minimum):'';
-  const kindLabel=skipped?'Skipped':priority==='company'?'Company':priority==='flex'?'Flex':'Core';
-  const metaBits=[`<span class="kind ${skipped?'flex':priority}">${kindLabel}</span>`];
-  metaBits.push(`<span class="timepill ${profile.name==='strict'||profile.name==='stamina'?'strict':profile.name==='deep'?'deep':''}">${escapeHtml(profile.label)} · work ${escapeHtml(profile.workWindow)} · reserve ${escapeHtml(profile.calendarReserve)}</span>`);
+  const metaBits=[];
+  if(skipped)metaBits.push('<span class="kind flex">Skipped</span>');
+  else if(priority==='company')metaBits.push('<span class="kind company">Company-specific</span>');
+  else if(priority==='flex')metaBits.push('<span class="kind flex">Optional</span>');
+  const zeroTime=/\b0m\b/.test(w.sessions[si].t);
+  const timeText=zeroTime?'No time required':profile.name==='strict'||profile.name==='stamina'?`Timed practice · set aside ${profile.calendarReserve}`:`Set aside ${profile.calendarReserve}`;
+  metaBits.push(`<span class="timepill ${profile.name==='strict'||profile.name==='stamina'?'strict':profile.name==='deep'?'deep':''}">${escapeHtml(timeText)}</span>`);
   if(t.gate)metaBits.push(`<button class="linkbtn" type="button" data-gate="${t.gate}">Open checkpoint ${t.gate}</button>`);
   const meta=el('div','taskmeta',metaBits.join(''));
-  copy.appendChild(meta);
   if(doneWhen)copy.appendChild(el('div','completion',`<strong>You are finished when:</strong> ${doneWhen}`));
-  renderFocusBar(copy,key,profile);
-  meta.querySelectorAll('[data-gate]').forEach(b=>b.onclick=()=>show('gates'));
-  const controls=el('div','taskmeta');
-  const canSkip=!NEVER_CUT.includes(t.id)&&!/-OUT$/.test(t.id);
-  const skip=el('button','linkbtn',canSkip?(skipped?'Restore task':'Skip task'):'Never cut');skip.type='button';skip.disabled=!canSkip;
-  if(canSkip)skip.onclick=()=>{S.skippedTasks[key]=!skipped;if(!skipped)delete S.weekTasks[key];save();refreshAll();};
-  const addCard=el('button','linkbtn','Add retrieval card');addCard.type='button';
-  addCard.onclick=()=>{S.cards.push({prompt:'',answer:'',source:t.id||key,due:dateKey(new Date()),last:''});save();show('cards');};
-  controls.append(skip,addCard);copy.appendChild(controls);
   if(minimum){
-    const details=el('details','taskfallback',`<summary>If your attention or energy is low today</summary><div>${minimum}</div>`);
+    const details=el('details','taskfallback taskstarter',`<summary>Cannot start? Do this smaller version</summary><div>${minimum}</div>`);
     copy.appendChild(details);
   }
+  copy.appendChild(meta);renderFocusBar(copy,key,profile);
+  meta.querySelectorAll('[data-gate]').forEach(b=>b.onclick=()=>show('gates'));
+
+  const more=el('details','taskfallback taskmore','<summary>Options and context</summary>');
+  const moreBody=el('div','taskmorebody');
   if(t.id||t.competency||t.why||t.scenario||t.repeat||t.prereq||profile.stopRule){
     const facts=[];
-    if(t.id)facts.push('<strong>Reference:</strong> <span class="idtag">'+escapeHtml(t.id)+'</span>');
-    if(t.competency&&t.competency!=='—')facts.push('<strong>Skill:</strong> '+escapeHtml(t.competency));
-    if(profile.rhythm)facts.push('<strong>Rhythm:</strong> '+escapeHtml(profile.rhythm));
-    if(profile.stopRule)facts.push('<strong>Stop rule:</strong> '+escapeHtml(profile.stopRule));
     if(t.why)facts.push('<strong>Why:</strong> '+t.why);
     if(t.scenario&&t.scenario!=='—')facts.push('<strong>Interview:</strong> '+t.scenario);
-    if(t.repeat)facts.push('<strong>Repeat:</strong> '+t.repeat);
     if(t.prereq)facts.push('<strong>Prerequisite:</strong> '+t.prereq);
-    copy.appendChild(el('details','taskfallback',`<summary>Why this matters and where it appears</summary><div>${facts.join('<br>')}</div>`));
+    if(profile.stopRule)facts.push('<strong>Stopping rule:</strong> '+escapeHtml(profile.stopRule));
+    if(t.id)facts.push('<strong>Reference:</strong> <span class="idtag">'+escapeHtml(t.id)+'</span>');
+    moreBody.appendChild(el('div',null,facts.join('<br>')));
   }
-  const note=el('details','taskfallback tasknote','<summary>Save a link or short note</summary>');
+  const controls=el('div','taskmeta');
+  if(t.codingProblem){
+    const log=el('button','linkbtn','Open coding log');log.type='button';
+    log.onclick=()=>{ensureCodingLog(codingProblemById(t.codingProblemId||t.id));show('leet');requestAnimationFrame(()=>document.getElementById('coding-log')?.scrollIntoView({block:'start'}));};
+    controls.appendChild(log);
+  }
+  const canSkip=!NEVER_CUT.includes(t.id)&&!/-OUT$/.test(t.id);
+  if(canSkip){
+    const skip=el('button','linkbtn',skipped?'Restore task':'Skip task');skip.type='button';
+    skip.onclick=()=>{S.skippedTasks[key]=!skipped;if(!skipped)delete S.weekTasks[key];save();refreshAll();};controls.appendChild(skip);
+  }
+  const addCard=el('button','linkbtn','Add review card');addCard.type='button';
+  addCard.onclick=()=>{S.cards.push({prompt:'',answer:'',source:t.id||key,due:dateKey(new Date()),last:''});save();show('cards');};
+  controls.appendChild(addCard);moreBody.appendChild(controls);
+  const note=el('div','tasknote','<label class="setlbl">Saved note or next step</label>');
   const ta=el('textarea');ta.placeholder='File, link, result, or the first place you got stuck';ta.value=S.taskNotes[key]||'';
-  ta.oninput=()=>{S.taskNotes[key]=ta.value;save()};note.appendChild(ta);copy.appendChild(note);
+  ta.oninput=()=>{S.taskNotes[key]=ta.value;save()};note.appendChild(ta);moreBody.appendChild(note);
+  more.appendChild(moreBody);copy.appendChild(more);
   row.appendChild(copy);
   return row;
 }
@@ -972,8 +1093,8 @@ function renderPlan(){
   const ci=currentWeekIdx();const started=new Date()>=getStart();
   const intro=el('div','card plan-intro');
   intro.appendChild(el('h2',null,'Your preparation roadmap'));
-  intro.appendChild(el('p',null,'Only your current week is open by default. Inside it, finish one visible task at a time; the rest of the curriculum can stay folded until you need it.'));
-  intro.appendChild(el('div','reading-cues',`<div class="reading-cue"><b>1 · Read the action</b>The large text tells you exactly what to do.</div><div class="reading-cue"><b>2 · Check the finish line</b>“You are finished when” is the stopping rule.</div><div class="reading-cue"><b>3 · Use support when needed</b>Open the low-energy fallback or context only if it helps.</div>`));
+  intro.appendChild(el('p',null,'Your current week is open by default. Work from the top and finish one task before opening another week. A task that slips twice should be skipped instead of becoming catch-up debt.'));
+  intro.appendChild(el('div','reading-cues',`<div class="reading-cue"><b>Read the action</b>The task includes the exact source, problem, or prompt.</div><div class="reading-cue"><b>Use the finish line</b>Stop when “You are finished when” is true.</div><div class="reading-cue"><b>Make starting smaller</b>Open the smaller version when the full task feels difficult to begin.</div>`));
   v.appendChild(intro);
   const tools=el('div','plan-tools');
   const openNow=el('button','btn accent sm',started?'Open this week':'Open the starting week');openNow.type='button';
@@ -985,7 +1106,7 @@ function renderPlan(){
     const body=el('div','timing-guide-body');
     body.appendChild(el('p','muted',escapeHtml(TIMING.purpose||'')));
     const grid=el('div','grid g2');
-    Object.values(TIMING.profiles).forEach(p=>{const c=el('div','note',`<strong>${escapeHtml(p.label)}</strong> · work ${escapeHtml(p.workWindow)} · reserve ${escapeHtml(p.calendarReserve)}<br>${escapeHtml(p.rhythm)}<br><span class="muted">${escapeHtml(p.stopRule)}</span>`);grid.appendChild(c);});
+    Object.values(TIMING.profiles).forEach(p=>{const c=el('div','note',`<strong>${escapeHtml(p.label)}</strong> · set aside ${escapeHtml(p.calendarReserve)}<br>${escapeHtml(p.rhythm)}<br><span class="muted">${escapeHtml(p.stopRule)}</span>`);grid.appendChild(c);});
     body.appendChild(grid);
     const observed=Object.values(S.taskTimes||{}).map(Number).filter(x=>x>=300).sort((a,b)=>a-b);
     const median=observed.length?observed[Math.floor(observed.length/2)]:0;
@@ -1063,13 +1184,75 @@ function importData(){
 }
 
 /* ---------- render: leetcode ---------- */
+function codingProblemRow(q){
+  const id=codingTaskId(q),on=!!S.weekTasks[id];
+  const row=el('div','problem-row'+(on?' done':''));
+  const cb=el('input');cb.type='checkbox';cb.checked=on;cb.setAttribute('aria-label',`${on?'Mark unfinished':'Mark complete'}: ${q.title}`);
+  cb.onchange=()=>{if(cb.checked&&ACTIVE_FOCUS.key===id)pauseFocus();S.weekTasks[id]=cb.checked;save();refreshAll();};
+  const copy=el('div');
+  copy.appendChild(el('a','problem-title',escapeHtml(q.title)));copy.querySelector('a').href=q.url;copy.querySelector('a').target='_blank';copy.querySelector('a').rel='noopener';
+  copy.appendChild(el('div','problem-meta',`${escapeHtml(q.id)} · ${escapeHtml(q.difficulty)} · ${escapeHtml(String(q.topic).replaceAll('-',' '))} · ${q.attemptMinutes}m attempt · set aside ${codingReserve(q)}m${q.gate?' · G1 checkpoint':''}`));
+  const actions=el('div','problem-actions');
+  const open=el('a','btn sm','Open problem');open.href=q.url;open.target='_blank';open.rel='noopener';
+  const log=el('button','linkbtn','Log result');log.type='button';log.onclick=()=>{ensureCodingLog(q);renderLeet();requestAnimationFrame(()=>document.getElementById('coding-log')?.scrollIntoView({block:'start'}));};
+  actions.append(open,log);row.append(cb,copy,actions);return row;
+}
 function renderLeet(){
   const v=document.getElementById('v-leet');v.innerHTML='';
-  const {bar,add}=logToolbar();v.appendChild(el('h3',null,'LeetCode Log'));v.appendChild(bar);
-  v.appendChild(el('div','note','Reserve 75 minutes for a coding session even when the problem limit is 25–30 minutes. The remaining time covers starting, tests, classification, and transition. Track actual elapsed time instead of treating the estimate as a grade.'));
+  const cp=codingProgram();
+  if(cp){
+    const all=codingProblems(),done=all.filter(q=>S.weekTasks[codingTaskId(q)]).length;
+    const intro=el('div','card plan-intro');
+    intro.appendChild(el('h2',null,escapeHtml(cp.name||'Coding program')));
+    intro.appendChild(el('p',null,'Work in the displayed order. Each row is one study block: use the problem limit as a countdown, then use the remaining reservation for tests, review, and the log.'));
+    const stats=el('div','coding-summary');
+    stats.appendChild(el('div','coding-stat',`<b>${done}/${all.length}</b><span>Core problems complete</span>`));
+    stats.appendChild(el('div','coding-stat',`<b>${escapeHtml(cp.selection&&cp.selection.difficultyMix||'Easy and Medium')}</b><span>No Hard problems in Core</span>`));
+    stats.appendChild(el('div','coding-stat',`<b>~${escapeHtml(String(cp.selection&&cp.selection.coreEstimatedHours||''))}h</b><span>Across 14 active weeks</span>`));
+    intro.appendChild(stats);
+    intro.appendChild(el('div','note','Begin with the Week 0 four-cue recognition sheet before opening the first prompt. Two Sum is omitted from Core; use it only as an optional five-minute editor check if you need to verify syntax or setup.'));
+    intro.appendChild(el('div','note','The two recovery weeks contain no new coding problems. A failed checkpoint replaces one later problem with a repair problem; it never adds another task to the week.'));
+    intro.appendChild(el('div','coding-source',`Based on <a href="${cp.source.filteredUrl||cp.source.url}" target="_blank" rel="noopener">this Grind 75 filter</a>: ${escapeHtml(cp.selection.filter)}. Core uses questions 2–34; Two Sum is below the target level, and the final three filtered questions are reserved for targeted replacement only.`));
+    v.appendChild(intro);
+
+    const current=WEEKS[currentWeekIdx()];const currentProblems=current&&cp.schedule&&cp.schedule[current.id];
+    const nowCard=el('div','card');nowCard.appendChild(el('h3',null,currentProblems&&currentProblems.length?'This week’s coding problems':'No new coding problems this week'));
+    if(currentProblems&&currentProblems.length){
+      nowCard.appendChild(el('p','muted','Complete one problem per study block. Do not combine them into a single sitting.'));
+      currentProblems.forEach(q=>nowCard.appendChild(codingProblemRow(Object.assign({weekId:current.id},q))));
+    }else{
+      nowCard.appendChild(el('p','muted','Keep this week available for recovery, interviews, or the rest of the curriculum. Do not pull future problems forward.'));
+    }
+    v.appendChild(nowCard);
+
+    const schedule=el('div');schedule.appendChild(el('div','sectionhdr','Complete schedule'));
+    (cp.weekOrder||[]).forEach(weekId=>{
+      const probs=(cp.schedule&&cp.schedule[weekId])||[];const w=WEEKS.find(x=>x.id===weekId);const wi=WEEKS.indexOf(w);
+      const count=probs.filter(q=>S.weekTasks[codingTaskId(q)]).length;
+      const reserve=probs.reduce((n,q)=>n+codingReserve(q),0);
+      const card=el('details','card coding-week');card.open=!!(current&&current.id===weekId);
+      card.appendChild(el('summary',null,`${escapeHtml(w?w.label:weekId)} · ${count}/${probs.length} complete · set aside about ${reserveLabel(reserve)}`));
+      const body=el('div','coding-week-body');
+      if(w&&wi>=0)body.appendChild(el('div','problem-meta',escapeHtml(weekDateLabel(wi,w))));
+      probs.forEach(q=>body.appendChild(codingProblemRow(Object.assign({weekId},q))));card.appendChild(body);schedule.appendChild(card);
+    });
+    v.appendChild(schedule);
+    const repair=el('details','card coding-week');repair.appendChild(el('summary',null,'Replacement-only repair problems'));
+    const repairBody=el('div','coding-week-body');repairBody.appendChild(el('p','muted','Use one only when a checkpoint identifies the matching failure. It replaces a later problem instead of increasing the workload.'));
+    (cp.repairPool||[]).forEach(q=>{
+      const r=el('div','problem-row');
+      const copy=el('div',null,`<a class="problem-title" href="${q.url}" target="_blank" rel="noopener">${escapeHtml(q.title)}</a><div class="problem-meta">${escapeHtml(q.difficulty)} · ${escapeHtml(String(q.topic).replaceAll('-',' '))} · ${q.attemptMinutes}m attempt<br>${escapeHtml(q.useWhen||'')}</div>`);
+      r.append(el('span','pill','Reserve'),copy);repairBody.appendChild(r);
+    });
+    repair.appendChild(repairBody);v.appendChild(repair);
+  }
+
+  const logSection=el('div');logSection.id='coding-log';logSection.appendChild(el('div','sectionhdr','Detailed coding log'));
+  const {bar,add}=logToolbar();logSection.appendChild(bar);
+  logSection.appendChild(el('div','note','The problem countdown measures the attempt. Record that number in “Min”; setup, review, and logging belong to the larger reservation shown above.'));
   const card=el('div','card table-card');
   const tbl=el('table',null,'<thead><tr><th>Date</th><th>Problem</th><th>Pattern</th><th>Diff</th><th>Unaided</th><th>Min</th><th>Revisit</th><th>Notes</th><th></th></tr></thead>');
-  const tb=el('tbody');tbl.appendChild(tb);card.appendChild(tbl);v.appendChild(card);
+  const tb=el('tbody');tbl.appendChild(tb);card.appendChild(tbl);logSection.appendChild(card);v.appendChild(logSection);
   function rowEl(r,idx){
     const tr=el('tr');
     const f=(k,ph,w)=>{const td=el('td');const i=el('input');i.value=r[k]||'';if(ph)i.placeholder=ph;if(w)i.style.minWidth=w;
@@ -1089,7 +1272,7 @@ function renderLeet(){
     return tr;
   }
   S.leet.forEach((r,i)=>tb.appendChild(rowEl(r,i)));
-  add.onclick=()=>{S.leet.push({});save();renderLeet()};
+  add.onclick=()=>{S.leet.push({date:dateKey(new Date())});save();renderLeet();requestAnimationFrame(()=>document.getElementById('coding-log')?.scrollIntoView({block:'start'}));};
   if(!S.leet.length)tb.appendChild(el('tr',null,'<td colspan="9" class="muted" style="text-align:center;padding:18px">You have not logged a coding problem yet. Choose “Add row” to create the first entry.</td>'));
 }
 
@@ -1422,6 +1605,21 @@ function renderRes(){
   });
 }
 
+/* ---------- render: secondary tools ---------- */
+function renderMore(){
+  const v=document.getElementById('v-more');if(!v)return;v.innerHTML='';
+  const intro=el('div','card plan-intro');
+  intro.appendChild(el('h2',null,'More tools'));
+  intro.appendChild(el('p',null,'These tools support the weekly plan. Open one when a task tells you to use it.'));
+  v.appendChild(intro);
+  const grid=el('div','more-grid');
+  AUX_TABS.forEach(([id,label,description])=>{
+    const b=el('button','more-link',`<b>${escapeHtml(label)}</b><span>${escapeHtml(description)}</span>`);
+    b.type='button';b.onclick=()=>show(id);grid.appendChild(b);
+  });
+  v.appendChild(grid);
+}
+
 /* ---------- render: settings ---------- */
 function renderSettings(){
   const v=document.getElementById('v-settings');if(!v)return;v.innerHTML='';
@@ -1535,7 +1733,7 @@ function refreshAll(){
   const active=document.querySelector('.view.on');
   const id=active?active.id.replace('v-',''):'dash';
   const renders={dash:renderDash,plan:renderPlan,topics:renderTopics,leet:renderLeet,mocks:renderMocks,
-    pipe:renderPipe,story:renderStory,cards:renderCards,gates:renderGates,evidence:renderEvidence,protocol:renderProtocol,res:renderRes,settings:renderSettings};
+    pipe:renderPipe,story:renderStory,cards:renderCards,gates:renderGates,evidence:renderEvidence,protocol:renderProtocol,res:renderRes,more:renderMore,settings:renderSettings};
   if(renders[id])renders[id]();
 }
 
@@ -1544,7 +1742,7 @@ buildNav();
 // Open the app immediately as a guest. Firebase may replace this with a real session later.
 window.__startGuest();
 // The plan ships with the page, so it loads without an account.
-(async function bootPlan(){
+window.__planReady=(async function bootPlan(){
   try{
     const r=await fetch('plan.json',{cache:'no-store'});
     if(r.ok){window.__applyPlan(await r.json());return;}
@@ -1555,10 +1753,10 @@ renderStorageBar();
 document.addEventListener('keydown',e=>{if(e.key==='Escape')window.__hideAuth();});
 window.addEventListener('beforeunload',checkpointFocus);
 const initial=(location.hash||'#dash').slice(1);
-show(TABS.some(([id])=>id===initial)?initial:'dash');
+show(KNOWN_TABS.has(initial)?initial:'dash');
 window.addEventListener('hashchange',()=>{
   const id=(location.hash||'#dash').slice(1);
-  if(TABS.some(([tabId])=>tabId===id))show(id);
+  if(KNOWN_TABS.has(id))show(id);
 });
 </script>
 
@@ -1642,14 +1840,10 @@ window.addEventListener('hashchange',()=>{
         userRef=doc(db,'users',user.uid);
         window.__prepareUser(user.uid,user.email || '(signed in)');
         window.__onLogin();
-        // 1) the plan already loaded with the page; Firestore stays as a compatibility fallback.
-        if(!window.__hasPlan()){
-          try{ const pc=await getDoc(doc(db,'content','plan'));
-            if(pc.exists()) window.__applyPlan(pc.data()); }
-          catch(e){}
-        }
+        // The curriculum always comes from plan.json. Firebase stores progress only.
+        await window.__planReady;
         if(!window.__hasPlan())window.__planMissing();
-        // 2) load this user's progress
+        // Load this user's progress after the current curriculum is ready.
         try{
           const snap=await getDoc(userRef);
           if(snap.exists() && snap.data().state){ window.__applyRemote(snap.data().state); }

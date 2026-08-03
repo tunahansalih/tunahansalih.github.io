@@ -3,7 +3,7 @@
 Rules:
 1. Before editing, write two hypotheses.
 2. State a hypothesis before every edit.
-3. Open debugging-01-answer.md only after both checks pass or 35 minutes expire.
+3. Open the debugging drill 01 answer page only after both checks pass or 35 minutes expire.
 """
 
 import torch

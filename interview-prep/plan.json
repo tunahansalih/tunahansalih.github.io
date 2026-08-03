@@ -1,24 +1,28 @@
 {
  "schemaVersion": 5,
- "contentVersion": "vision-generative-2026-08-rev9-style-audit",
+ "contentVersion": "vision-generative-2026-08-rev12-coding-refresher",
  "defaultStartDate": "2026-08-03",
  "defaultTargetDate": "2027-05-31",
- "auditDate": "2026-08-01",
+ "auditDate": "2026-08-02",
  "coherenceReview": {
-  "reviewed": "2026-08-01",
+  "reviewed": "2026-08-02",
   "scope": "All weeks, tasks, prerequisites, gates, flexible work windows, strict simulation limits, calendar reserves, CV claims, recurring work, tracker behavior, current employer and neo-lab roles, official interview guides, and dated firsthand evidence",
   "rules": [
    "Learn or refresh before timed retrieval.",
    "One primary artifact per session.",
    "Every recurring obligation must render as a recurring checklist item.",
    "Every gate must have a scheduled task and an explicit source of prompts.",
+   "General coding starts with a recognition refresher, then follows a time-bounded, mixed-topic Grind 75 sequence rather than an improvised topic queue.",
    "Passing a gate changes the remaining checklist through visible Skip controls.",
    "Curriculum completion and gate performance are shown separately; no invented readiness score."
+   ,"The next task appears before progress statistics, reminders, and secondary tools."
+   ,"Instruction-only detours are removed; exercise links appear in the task that uses them."
+   ,"Each task card shows one calendar reservation and one observable finish line."
   ],
-  "storedTasks": 121,
+  "storedTasks": 119,
   "generatedWeeklyOutreachInstances": 14,
-  "generatedGeneralCodingInstances": 9,
-  "renderedTasksIncludingLiveRules": 144
+  "generatedGeneralCodingInstances": 33,
+  "renderedTasksIncludingLiveRules": 166
  },
  "evidenceBase": {
   "asOf": "2026-08-01",
@@ -464,16 +468,16 @@
   "aiOff": "All coding tasks are done with AI assistance off. No Copilot, no Claude Code, no autocomplete beyond editor defaults.",
   "cards": "Every knowledge task ends by writing one retrieval card (question / <=40-word answer). Cards are pulled on the Friday of week n+1 and week n+3.",
   "scopeCut": "If a flexible block needs more than its calendar reserve twice, mark the second overrun, stop at the next safe checkpoint, and cut one later Core task using the published cut order. Do not borrow from sleep.",
-  "coreHoursPerWeek": "Content work remains about 6h25–7h in a full week, but the realistic calendar reservation is usually 8h30–11h30 including activation, breaks, transitions, and overrun buffer. Slack weeks reserve about 1h30. Week 15 remains a deliberate stamina exception.",
-  "totalCoreHours": "approximately 97 hours of content work across W0-W15; the default calendar reserve is approximately 144 hours until personal timing data replaces it",
+  "coreHoursPerWeek": "The realistic calendar reservation is about 9h10–12h05 in a full week after adding the Grind 75 sequence. Week 0 reserves about 5h30, slack weeks about 1h30, and Week 15 about 13h because of the full-loop simulation. These numbers include activation, breaks, review, transitions, and overrun buffer.",
+  "totalCoreHours": "approximately 114 hours of content work across W0-W15; the default calendar reserve is approximately 154 hours until personal timing data replaces it",
   "flexRule": "Flex is never counted in weekly completion, never rescheduled, never rolled forward.",
   "backlogRule": "A Core task that slips twice is cut, not accumulated, and the cut is recorded."
-  ,"learningRule": "Every strictly timed gate follows an assigned source review and at least one guided or open-note practice. Learning itself is not pass/fail on time."
+  ,"learningRule": "Use a strictly timed gate only after the assigned source review and at least one guided or open-note practice."
   ,"singleOutcomeRule": "One session has one primary artifact. Reading, practice and checking are ordered steps, not separate deadlines."
   ,"timingRule": "The task card's calendar reserve is authoritative. Minute splits inside learning-task prose are sequencing hints, not deadlines; the site hides those splits in flexible mode."
  },
  "timingModel": {
-  "purpose": "Externalize time without turning ordinary study into repeated failure. Count up during learning; count down only when rehearsing a real interview constraint.",
+  "purpose": "The card shows one amount of time to reserve. Use the count-up clock during study. Use a countdown only for a timed interview exercise.",
   "profiles": {
    "brief": {
     "label": "Brief",
@@ -550,8 +554,6 @@
    "W1-T8",
    "W2-T2",
    "W2-T6",
-   "W2-T8",
-   "W3-T2",
    "W3-T6",
    "W5-T6",
    "W6-T6",
@@ -576,7 +578,7 @@
    "W15-T6"
   ],
   "briefRule": "Friday tasks, outreach tasks, slack-week reviews, and Live retrieval/debrief tasks use the Brief profile unless explicitly overridden.",
-  "calibration": "Use the built-in count-up clock. After three completed tasks, compare actual elapsed time with the displayed work window. If the median is above the window, increase calendar reserves; do not interpret the difference as failure.",
+  "calibration": "After three completed tasks, compare your recorded times with the suggested reservation. Increase the reservation when your median is higher. The estimate is there to protect your calendar, not to grade you.",
   "startProtocol": [
    "Open only the named source or file.",
    "Write the first artifact heading or function signature.",
@@ -588,6 +590,21 @@
    "At the calendar reserve: stop at a safe checkpoint and write the exact next action."
   ],
   "sources": [
+   {
+    "name": "NICE: Attention deficit hyperactivity disorder, NG87",
+    "url": "https://www.nice.org.uk/guidance/ng87/chapter/recommendations",
+    "usedFor": "Environmental adjustments, written instructions, shorter periods of focus, movement breaks and structure in daily activities."
+   },
+   {
+    "name": "W3C WAI: Cognitive accessibility",
+    "url": "https://www.w3.org/WAI/WCAG2/supplemental/objectives/o5-user-focus/",
+    "usedFor": "A short path to the main task, limited distractions, clear headings and enough information to begin without searching."
+   },
+   {
+    "name": "NHS: ADHD in adults",
+    "url": "https://www.nhs.uk/conditions/adhd-adults/",
+    "usedFor": "Written instructions and help planning and structuring tasks."
+   },
    {
     "name": "Leicestershire Partnership NHS Trust: ADHD strategies and support",
     "url": "https://www.leicspart.nhs.uk/while-you-wait/adhd/strategies-and-support/",
@@ -610,6 +627,106 @@
    }
   ]
  },
+ "codingProgram": {
+  "name": "Grind 75 · research-candidate track",
+  "source": {
+   "name": "Grind 75 by the author of Blind 75",
+   "url": "https://www.techinterviewhandbook.org/grind75/",
+   "filteredUrl": "https://www.techinterviewhandbook.org/grind75/?weeks=14&hours=2&difficulty=Easy&difficulty=Medium&mode=preferences&order=all_rounded&grouping=weeks",
+   "faq": "https://www.techinterviewhandbook.org/grind75/faq",
+   "reviewed": "2026-08-02"
+  },
+  "selection": {
+   "sourceQuestionCount": 169,
+   "filter": "14 active weeks, 2 hours per week, Easy and Medium, all topics, all-rounded order",
+   "coreQuestionCount": 33,
+   "coreEstimatedHours": 24,
+   "difficultyMix": "17 Easy, 16 Medium, 0 Hard",
+   "topicCount": 12,
+   "rationale": "The Grind 75 filter fits 37 questions inside the nominal budget. Two Sum is omitted because it is only a basic fluency check for this candidate. The next 33 questions form Core, and the final three remain a replacement-only repair pool so recovery weeks stay empty and no week becomes catch-up debt."
+  },
+  "optionalFluencyCheck": {
+   "title": "Two Sum",
+   "url": "https://leetcode.com/problems/two-sum/",
+   "use": "Optional five-minute editor and syntax check only. It is not scheduled, counted, logged, or used as evidence of interview readiness."
+  },
+  "rules": [
+   "Solve problems in the displayed order. The order deliberately mixes topics and revisits them later.",
+   "Use the listed attempt limit as a countdown. The larger reservation includes setup, tests, solution review and logging.",
+   "After the countdown, stop coding. If unfinished, inspect one explanation, close it, and write the approach from memory.",
+   "Do not add random problems after a miss. A repair problem replaces a later scheduled problem; it never increases the weekly count.",
+   "Hard problems remain outside Core until two consecutive two-problem Medium simulations pass."
+  ],
+  "weekOrder": ["w0", "w1", "w2", "w3", "w4", "w5", "w6", "w7", "w9", "w10", "w11", "w13", "w14", "w15"],
+  "schedule": {
+   "w0": [
+    {"id":"G75-02","title":"Valid Parentheses","url":"https://leetcode.com/problems/valid-parentheses/","difficulty":"Easy","attemptMinutes":20,"topic":"stack","prereq":"W0-G1"},
+    {"id":"G75-03","title":"Merge Two Sorted Lists","url":"https://leetcode.com/problems/merge-two-sorted-lists/","difficulty":"Easy","attemptMinutes":20,"topic":"linked-list"}
+   ],
+   "w1": [
+    {"id":"G75-04","title":"Best Time to Buy and Sell Stock","url":"https://leetcode.com/problems/best-time-to-buy-and-sell-stock/","difficulty":"Easy","attemptMinutes":20,"topic":"array"},
+    {"id":"G75-05","title":"Valid Palindrome","url":"https://leetcode.com/problems/valid-palindrome/","difficulty":"Easy","attemptMinutes":15,"topic":"string"},
+    {"id":"G75-06","title":"Invert Binary Tree","url":"https://leetcode.com/problems/invert-binary-tree/","difficulty":"Easy","attemptMinutes":15,"topic":"binary-tree"}
+   ],
+   "w2": [
+    {"id":"G75-07","title":"Valid Anagram","url":"https://leetcode.com/problems/valid-anagram/","difficulty":"Easy","attemptMinutes":15,"topic":"string"},
+    {"id":"G75-08","title":"Binary Search","url":"https://leetcode.com/problems/binary-search/","difficulty":"Easy","attemptMinutes":15,"topic":"binary-search"},
+    {"id":"G75-09","title":"Flood Fill","url":"https://leetcode.com/problems/flood-fill/","difficulty":"Easy","attemptMinutes":20,"topic":"graph"}
+   ],
+   "w3": [
+    {"id":"G75-10","title":"Maximum Subarray","url":"https://leetcode.com/problems/maximum-subarray/","difficulty":"Medium","attemptMinutes":20,"topic":"dynamic-programming"},
+    {"id":"G75-11","title":"Lowest Common Ancestor of a Binary Search Tree","url":"https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/","difficulty":"Easy","attemptMinutes":20,"topic":"binary-search-tree"}
+   ],
+   "w4": [
+    {"id":"G75-12","title":"Insert Interval","url":"https://leetcode.com/problems/insert-interval/","difficulty":"Medium","attemptMinutes":25,"topic":"array"},
+    {"id":"G75-13","title":"01 Matrix","url":"https://leetcode.com/problems/01-matrix/","difficulty":"Medium","attemptMinutes":30,"topic":"graph"}
+   ],
+   "w5": [
+    {"id":"G75-14","title":"K Closest Points to Origin","url":"https://leetcode.com/problems/k-closest-points-to-origin/","difficulty":"Medium","attemptMinutes":30,"topic":"heap"},
+    {"id":"G75-15","title":"Balanced Binary Tree","url":"https://leetcode.com/problems/balanced-binary-tree/","difficulty":"Easy","attemptMinutes":15,"topic":"binary-tree"},
+    {"id":"G75-16","title":"Linked List Cycle","url":"https://leetcode.com/problems/linked-list-cycle/","difficulty":"Easy","attemptMinutes":20,"topic":"linked-list"}
+   ],
+   "w6": [
+    {"id":"G75-17","title":"Implement Queue using Stacks","url":"https://leetcode.com/problems/implement-queue-using-stacks/","difficulty":"Easy","attemptMinutes":20,"topic":"stack"},
+    {"id":"G75-18","title":"First Bad Version","url":"https://leetcode.com/problems/first-bad-version/","difficulty":"Easy","attemptMinutes":20,"topic":"binary-search"},
+    {"id":"G75-19","title":"Ransom Note","url":"https://leetcode.com/problems/ransom-note/","difficulty":"Easy","attemptMinutes":15,"topic":"hash-table"}
+   ],
+   "w7": [
+    {"id":"G75-20","title":"Longest Substring Without Repeating Characters","url":"https://leetcode.com/problems/longest-substring-without-repeating-characters/","difficulty":"Medium","attemptMinutes":30,"topic":"string"},
+    {"id":"G75-21","title":"3Sum","url":"https://leetcode.com/problems/3sum/","difficulty":"Medium","attemptMinutes":30,"topic":"array","gate":"G1"}
+   ],
+   "w9": [
+    {"id":"G75-22","title":"Binary Tree Level Order Traversal","url":"https://leetcode.com/problems/binary-tree-level-order-traversal/","difficulty":"Medium","attemptMinutes":20,"topic":"binary-tree"},
+    {"id":"G75-23","title":"Clone Graph","url":"https://leetcode.com/problems/clone-graph/","difficulty":"Medium","attemptMinutes":25,"topic":"graph"}
+   ],
+   "w10": [
+    {"id":"G75-24","title":"Evaluate Reverse Polish Notation","url":"https://leetcode.com/problems/evaluate-reverse-polish-notation/","difficulty":"Medium","attemptMinutes":30,"topic":"stack"},
+    {"id":"G75-25","title":"Course Schedule","url":"https://leetcode.com/problems/course-schedule/","difficulty":"Medium","attemptMinutes":30,"topic":"graph"}
+   ],
+   "w11": [
+    {"id":"G75-26","title":"Implement Trie (Prefix Tree)","url":"https://leetcode.com/problems/implement-trie-prefix-tree/","difficulty":"Medium","attemptMinutes":35,"topic":"trie"},
+    {"id":"G75-27","title":"Coin Change","url":"https://leetcode.com/problems/coin-change/","difficulty":"Medium","attemptMinutes":25,"topic":"dynamic-programming"}
+   ],
+   "w13": [
+    {"id":"G75-28","title":"Product of Array Except Self","url":"https://leetcode.com/problems/product-of-array-except-self/","difficulty":"Medium","attemptMinutes":30,"topic":"array"},
+    {"id":"G75-29","title":"Climbing Stairs","url":"https://leetcode.com/problems/climbing-stairs/","difficulty":"Easy","attemptMinutes":20,"topic":"dynamic-programming"}
+   ],
+   "w14": [
+    {"id":"G75-30","title":"Longest Palindrome","url":"https://leetcode.com/problems/longest-palindrome/","difficulty":"Easy","attemptMinutes":20,"topic":"string"},
+    {"id":"G75-31","title":"Min Stack","url":"https://leetcode.com/problems/min-stack/","difficulty":"Medium","attemptMinutes":20,"topic":"stack"},
+    {"id":"G75-32","title":"Reverse Linked List","url":"https://leetcode.com/problems/reverse-linked-list/","difficulty":"Easy","attemptMinutes":20,"topic":"linked-list"}
+   ],
+   "w15": [
+    {"id":"G75-33","title":"Validate Binary Search Tree","url":"https://leetcode.com/problems/validate-binary-search-tree/","difficulty":"Medium","attemptMinutes":20,"topic":"binary-search-tree"},
+    {"id":"G75-34","title":"Number of Islands","url":"https://leetcode.com/problems/number-of-islands/","difficulty":"Medium","attemptMinutes":25,"topic":"graph"}
+   ]
+  },
+  "repairPool": [
+   {"id":"G75-R1","title":"Rotting Oranges","url":"https://leetcode.com/problems/rotting-oranges/","difficulty":"Medium","attemptMinutes":30,"topic":"graph","useWhen":"Replace a later graph problem after a BFS failure."},
+   {"id":"G75-R2","title":"Search in Rotated Sorted Array","url":"https://leetcode.com/problems/search-in-rotated-sorted-array/","difficulty":"Medium","attemptMinutes":30,"topic":"binary-search","useWhen":"Replace a later problem after a binary-search invariant failure."},
+   {"id":"G75-R3","title":"Combination Sum","url":"https://leetcode.com/problems/combination-sum/","difficulty":"Medium","attemptMinutes":30,"topic":"array","routine":"backtracking","useWhen":"Replace a later problem after a recursion or search-tree failure."}
+  ]
+ },
  "recurringTasks": [
   {
    "id": "WEEKLY-OUTREACH",
@@ -623,29 +740,10 @@
    "why": "Outreach was described as weekly but previously appeared only in Week 1 and the Live Phase, so the checklist could silently skip fourteen weeks.",
    "doneWhen": "One message or due follow-up is sent and its next-action date is recorded.",
    "fallback": "Draft the message and update the pipeline row; send it in the next outreach block."
-  },
-  {
-   "id": "GENERAL-CODING-MAINTENANCE",
-   "taskIdSuffix": "DSA",
-   "fromWeek": "w4",
-   "throughWeek": "w14",
-   "excludeWeeks": [
-    "w8",
-    "w12"
-   ],
-   "sessionTitle": "Any day · 35m — General-coding maintenance",
-   "priority": "core",
-   "text": "Open <a href=\"drills/general-coding-queue.md\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">the deterministic coding queue</a> and use the row for this week. Spend 25 minutes solving one primary problem without AI assistance while explaining your reasoning aloud. Use the fixed alternate only if you solved the primary problem during the previous 60 days. Then spend 10 minutes testing the solution, stating its complexity, and recording the first broken step. Finish after this problem.",
-   "competency": "general coding",
-   "scenario": "Coding screen",
-   "why": "General coding appears across current employer processes and firsthand reports, so one weekly problem prevents the skill from fading during domain-heavy weeks.",
-   "doneWhen": "One named queue problem is logged with elapsed time, outcome, complexity, and recognition cue.",
-   "fallback": "Read the named problem, write a three-sentence approach and target complexity, then stop.",
-   "prereq": "W2-T8"
   }
  ],
  "adaptationRules": [
-  "Pass a gate -> use the task-level Skip control on its remaining remediation. Passing G1 means skip W5-DSA, W7-DSA, W10-DSA and W13-DSA; keep the fixed W4, W6, W9, W11 and W14 reps. Failing G1 means do every rendered DSA rep until two consecutive passes. Passing G2 removes extra implementation repair but keeps mocks. Passing G8 removes math repair.",
+  "Pass a gate -> keep the scheduled mixed-topic coding sequence but do not activate a repair-pool problem. Fail G1 -> replace one later scheduled problem with the matching repair problem; never add it on top of the week. Passing G2 removes extra implementation repair but keeps mocks. Passing G8 removes math repair.",
   "Fail a gate -> the failure category determines the fix, not the topic. See failureCategories.",
   "A real interview outranks everything. Week Core drops to the 72-hour protocol, the Friday pull and outreach. Suspended, not deferred.",
   "Log misses within one hour of every real round. Observed misses take priority over curriculum the following week. Two consecutive misses in one category promote it to a weekend block.",
@@ -661,11 +759,12 @@
  ],
  "neverCut": [
   "W0-G1",
+  "G75-20",
+  "G75-21",
   "W0-G2",
   "W0-G8",
   "W1-T8",
   "W2-T2",
-  "W2-T8",
   "W1-OUT",
   "LIVE-1",
   "LIVE-2",
@@ -687,16 +786,16 @@
   {
    "id": "G1",
    "name": "General coding",
-   "format": "The two fixed W2 queue Mediums, kept unopened until the gate, after the Week 0 pattern review and guided repair; unaided, AI off, narrated",
-   "limit": "25 min each",
-   "pass": "Both correct within the limit; complexity stated aloud before coding",
+   "format": "Grind 75 #20 Longest Substring Without Repeating Characters and #21 3Sum after 19 scheduled preparations; unaided, AI off, reasoning narrated",
+   "limit": "30 min each",
+   "pass": "Both correct within the limit; pattern and complexity stated aloud before coding",
    "failureCategories": [
     "Retrieval",
     "Time management"
    ],
-   "remediation": "Retrieval -> two pattern cards plus every rendered weekly rep until two consecutive passes. Time -> 20-minute cap and abandon-with-log discipline.",
-   "retest": "W10 if failed; otherwise never",
-   "week": "w2"
+   "remediation": "Retrieval -> replace one later scheduled problem with the matching repair-pool problem. Time -> repeat one completed Medium with a 25-minute cap. Remediation replaces work; it is never added on top.",
+   "retest": "W10 using Grind 75 #24 and #25 if failed; otherwise never",
+   "week": "w7"
   },
   {
    "id": "G2",
@@ -1094,7 +1193,7 @@
     "name": "Coding-heavy generalist, Meta-style or unspecified ML",
     "trigger": "The recruiter names multiple coding rounds or gives no domain-specific format.",
     "fivePriorities": [
-     "Run two deterministic-queue Mediums on separate days, using the fixed time cap.",
+     "Run two medium problems on separate days using the same 25-minute limit.",
      "Run one ML-coding mock from blank with tests and narration.",
      "Run one ML-system-design prompt grounded in an actual scale from your CV.",
      "Defend two CV projects: one research and one production/system project.",
@@ -1132,7 +1231,7 @@
   "removed": [
    {
     "old": "w1 / Tue 45m LeetCode warm-up: Two Sum / 0",
-    "reason": "Below level. An Easy hash-map problem measures nothing against nine years of production engineering.",
+    "reason": "A cold Easy problem should not be treated as a diagnostic, and Two Sum is below the useful practice level for this candidate. The replacement is a short pattern-recognition refresher before the first substantive prompt.",
     "replacedBy": "W0-G1"
    },
    {
@@ -1321,18 +1420,20 @@
    "theme": "Supported foundations: learn first, then measure later",
    "sessions": [
     {
-     "t": "Sat AM · 55m — Prepare for G1: coding re-entry",
+     "t": "Sat AM · 30m — Coding-pattern refresher: four recognition cues",
      "x": [
       {
        "id": "W0-G1",
        "priority": "core",
-       "text": "<strong>Study (20m):</strong> open <a href=\"drills/general-coding-queue.md\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">the deterministic coding queue</a> and write one recognition cue for hash maps, two pointers, and sliding windows. <strong>Guided practice (25m):</strong> solve row W0: Valid Anagram, or its fixed alternate only if you solved it in the previous 60 days, with the notes visible and AI off. Explain your approach before coding. <strong>Close (10m):</strong> record what blocked you. Keep the recognition cues visible throughout this first exercise; independent assessment begins in Week 2.",
+       "text": "On one sheet, make four rows labeled <strong>cue / structure / operation cost / first code move</strong>. Copy these reminders: (1) contiguous range or substring → array/string indices or a window → one full scan is O(n) → name the left and right indices; (2) repeated membership, counting, or complement lookup → set or hash map → expected O(1) lookup → initialize the set or dictionary; (3) nesting, matching delimiters, or last-in-first-out work → stack → O(1) push and pop → initialize an empty list; (4) merge, reversal, or cycle in nodes → linked-list pointers → O(n) traversal and O(1) local relinking → draw prev/current/next. Cover the right three columns and retrieve them from each cue. If a row is unfamiliar, open only that topic in the <a href=\"https://www.techinterviewhandbook.org/algorithms/study-cheatsheet/\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">Tech Interview Handbook study cheatsheets</a>. Do not solve a problem in this block.",
        "competency": "general coding",
-       "scenario": "LeetCode-flavoured screen",
-       "why": "A cold two-Medium gate on the first day tests recent LeetCode exposure, not learnability. The real G1 now runs after two weeks of practice.",
-       "doneWhen": "Three recognition cues exist, the named W0 queue problem was attempted, and the blocker is written down.",
-       "fallback": "Read the three pattern summaries and write one recognition cue for each.",
-       "repeat": "The actual G1 runs at W2-T8."
+       "scenario": "Coding screen",
+       "why": "The first coding question should recall a pattern you have just activated. This block refreshes the selection cues and operation costs used by the first problems without pretending that a trivial warm-up measures readiness.",
+       "doneWhen": "The four-row recognition sheet exists, and you can state the structure, main operation cost, and first code move for all four cues with the right three columns covered.",
+       "fallback": "Write and retrieve only the hash-map and stack rows. Stop after those two rows.",
+       "repeat": "Use the sheet for a two-minute glance before the first three coding blocks, then put it away before opening each prompt.",
+       "workWindow": "20m build + 10m covered retrieval",
+       "calendarReserve": "30m"
       }
      ]
     },
@@ -1523,7 +1624,7 @@
       {
        "id": "W1-T8",
        "priority": "core",
-       "text": "<strong>Review (10m):</strong> read the two worked examples from W0 and your repaired example from Tuesday. Close the notes. <strong>Gate (45m):</strong> complete the three explicit problems in <a href=\"drills/g8-math-gate.md\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">G8 math gate</a>. Keep the <a href=\"drills/g8-math-gate-answer.md\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">answer key</a> closed until the timer expires. <strong>Close (5m):</strong> mark each correct/incorrect and name the first broken step. There is no RL question before the RL unit.",
+       "text": "<strong>Review (10m):</strong> read the two worked examples from W0 and your repaired example from Tuesday. Close the notes. <strong>Gate (45m):</strong> complete the three explicit problems in <a href=\"drills/g8-math-gate.html\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">G8 math gate</a>. Keep the <a href=\"drills/g8-math-gate-answer.html\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">answer key</a> closed until the timer expires. <strong>Close (5m):</strong> mark each correct/incorrect and name the first broken step. There is no RL question before the RL unit.",
        "competency": "math",
        "scenario": "Math round",
        "why": "The earlier study and guided practice make independent recall a fair expectation at this checkpoint.",
@@ -1621,8 +1722,8 @@
        "competency": "retrieval, behavioral",
        "scenario": "Behavioral; breadth round",
        "why": "A short weekly retrieval session maintains recall without adding another large study block.",
-       "doneWhen": "Both exist.",
-       "fallback": "Card pull only.",
+       "doneWhen": "You answered the review cards and saved the behavioral response.",
+       "fallback": "Answer the review cards and stop.",
        "prereq": "W1-T5",
        "repeat": "Weekly."
       }
@@ -1650,27 +1751,9 @@
        "competency": "research defense",
        "scenario": "Research round",
        "why": "Revision-after-recording is what converts practice into improvement.",
-       "doneWhen": "Re-recorded.",
+       "doneWhen": "You re-recorded both repaired answers.",
        "fallback": "Identify the three weakest and write one better opening line each.",
        "prereq": "W2-T6"
-      }
-     ]
-    },
-    {
-     "t": "Sun · 60m — G1 general-coding gate, after preparation",
-     "x": [
-      {
-       "id": "W2-T8",
-       "priority": "core",
-       "text": "<strong>Review (5m):</strong> read the three recognition cues from W0, then close them. <strong>Gate (50m):</strong> use rows W2-A and W2-B in <a href=\"drills/general-coding-queue.md\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">the deterministic coding queue</a>: Product of Array Except Self, then 3Sum; use a row's fixed alternate only if the primary was solved in the previous 60 days. Cap each at 25 minutes, unaided, AI off, narrated. State pattern and complexity before coding. <strong>Close (5m):</strong> classify each miss.",
-       "competency": "general coding",
-       "scenario": "Coding screen",
-       "why": "The same gate is now scheduled only after a guided W0 problem and a Week 1 repair rep.",
-       "doneWhen": "Both are correct within 25 minutes with pattern and complexity stated first; otherwise both misses are classified.",
-       "fallback": "Re-solve one previously completed Medium from blank and classify any stall.",
-       "prereq": "W0-G1",
-       "repeat": "If passed, keep W4/W6/W9/W11/W14 and skip the other DSA rows. If failed, do every rendered DSA row until two consecutive passes; use W10 as the formal retest.",
-       "gate": "G1"
       }
      ]
     }
@@ -1688,7 +1771,7 @@
       {
        "id": "W3-T1",
        "priority": "core",
-       "text": "Open <a href=\"drills/debugging-01.py\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">debugging-01.py</a> without opening the <a href=\"drills/debugging-01-answer.md\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">answer key</a>. First five minutes: write two hypotheses without editing. Then run the file, localize both failures, and state a new hypothesis aloud before every edit. Compare with the answer key only after tests pass or the 35-minute cap expires.",
+       "text": "Open <a href=\"drills/debugging-01.py\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">debugging drill 01</a> without opening the <a href=\"drills/debugging-01-answer.html\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">answer key</a>. First five minutes: write two hypotheses without editing. Then run the file, localize both failures, and state a new hypothesis aloud before every edit. Compare with the answer key only after tests pass or the 35-minute cap expires.",
        "competency": "debugging",
        "scenario": "The transformer-debugging round",
        "why": "Hypothesis-before-edit is the graded behaviour, not the fix. Expanded from one occurrence to three.",
@@ -1696,23 +1779,6 @@
        "fallback": "Read the file, write two hypotheses, and run it once; do not edit.",
        "prereq": "W2-T3",
        "repeat": "W6, W10."
-      }
-     ]
-    },
-    {
-     "t": "Tue · 45m — General coding rep",
-     "x": [
-      {
-       "id": "W3-T2",
-       "priority": "core",
-       "text": "Use row W3 in <a href=\"drills/general-coding-queue.md\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">the deterministic coding queue</a>: Longest Substring Without Repeating Characters, or its fixed alternate only if the primary was solved in the previous 60 days. Work 30 minutes unaided and narrated, then spend 15 minutes testing and writing the recognition cue and first failure mode.",
-       "competency": "general coding",
-       "scenario": "Coding screen",
-       "why": "Maintenance only.",
-       "doneWhen": "Logged either way.",
-       "fallback": "Read the problem, write the approach in three sentences, stop.",
-       "prereq": "W0-G1",
-       "repeat": "Fortnightly."
       }
      ]
     },
@@ -1758,9 +1824,9 @@
        "text": "Answer three retrieval cards without notes. Then draft and record a CDAEI response about a failed hypothesis and what changed; keep the recording under two minutes.",
        "competency": "retrieval, behavioral",
        "scenario": "Behavioral",
-       "why": "Weekly Core.",
-       "doneWhen": "Both done.",
-       "fallback": "Card pull only.",
+       "why": "The retrieval pull keeps earlier material available, and the story rehearsal prepares one example for behavioral interviews.",
+       "doneWhen": "You answered the review cards and saved the behavioral response.",
+       "fallback": "Answer the review cards and stop.",
        "prereq": "W2-T5",
        "repeat": "Weekly."
       }
@@ -1772,7 +1838,7 @@
       {
        "id": "W3-T6",
        "priority": "core",
-       "text": "Keep the check sheet closed, start a 45-minute timer, and open the fixed <a href=\"drills/ml-coding-mock-foundation.md\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">ML-coding foundation mock</a>. Share the prompt and your screen with a partner, or record yourself if no partner is available. Work without AI assistance and narrate continuously. Stop coding after 35 minutes, and then use <a href=\"drills/ml-coding-mock-foundation-check.md\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">the check sheet</a> for 10 minutes.",
+       "text": "Keep the check sheet closed, start a 45-minute timer, and open the fixed <a href=\"drills/ml-coding-mock-foundation.html\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">ML-coding foundation mock</a>. Share the prompt and your screen with a partner, or record yourself if no partner is available. Work without AI assistance and narrate continuously. Stop coding after 35 minutes, and then use <a href=\"drills/ml-coding-mock-foundation-check.html\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">the check sheet</a> for 10 minutes.",
        "competency": "ML coding under observation",
        "scenario": "Technical screen",
        "why": "Moved from W11. Eleven weeks before the first mock is the plan’s second-largest structural error.",
@@ -1895,9 +1961,9 @@
        "text": "Answer three retrieval cards without notes, including one card from W4-T1. Then record a CDAEI response about the hardest technical or debugging problem you have faced.",
        "competency": "retrieval, behavioral",
        "scenario": "Behavioral",
-       "why": "Weekly Core.",
-       "doneWhen": "Both done.",
-       "fallback": "Card pull only.",
+       "why": "The retrieval pull keeps earlier material available, and the story rehearsal prepares one example for behavioral interviews.",
+       "doneWhen": "You answered the review cards and saved the behavioral response.",
+       "fallback": "Answer the review cards and stop.",
        "prereq": "W1-T5",
        "repeat": "Weekly."
       }
@@ -2032,9 +2098,9 @@
        "text": "Answer three retrieval cards without notes, including one card from Week 4. Then record a CDAEI response about a research disagreement that you resolved with evidence.",
        "competency": "retrieval, behavioral",
        "scenario": "Behavioral",
-       "why": "Weekly Core.",
-       "doneWhen": "Both done.",
-       "fallback": "Card pull only.",
+       "why": "The retrieval pull keeps earlier material available, and the story rehearsal prepares one example for behavioral interviews.",
+       "doneWhen": "You answered the review cards and saved the behavioral response.",
+       "fallback": "Answer the review cards and stop.",
        "prereq": "W1-T5",
        "repeat": "Weekly."
       }
@@ -2171,9 +2237,9 @@
        "text": "Answer three retrieval cards without notes. Then record a response about a time when you led without formal authority.",
        "competency": "retrieval, behavioral",
        "scenario": "Behavioral",
-       "why": "Weekly Core.",
-       "doneWhen": "Both done.",
-       "fallback": "Card pull only.",
+       "why": "The retrieval pull keeps earlier material available, and the story rehearsal prepares one example for behavioral interviews.",
+       "doneWhen": "You answered the review cards and saved the behavioral response.",
+       "fallback": "Answer the review cards and stop.",
        "prereq": "W1-T5",
        "repeat": "Weekly."
       }
@@ -2185,7 +2251,7 @@
       {
        "id": "W6-T6",
        "priority": "core",
-       "text": "Run a 45-minute debugging mock with a partner. If no partner is available, use <a href=\"drills/debugging-02.py\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">debugging-02.py</a> and keep the <a href=\"drills/debugging-02-answer.md\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">answer key</a> closed. Spend the first five minutes writing hypotheses without editing the code. Stop after 40 minutes and classify every miss.",
+       "text": "Run a 45-minute debugging mock with a partner. If no partner is available, use <a href=\"drills/debugging-02.py\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">debugging drill 02</a> and keep the <a href=\"drills/debugging-02-answer.html\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">answer key</a> closed. Spend the first five minutes writing hypotheses without editing the code. Stop after 40 minutes and classify every miss.",
        "competency": "debugging under observation",
        "scenario": "Debugging round",
        "why": "A second mock creates an early opportunity to identify repeated debugging and communication failures.",
@@ -2259,7 +2325,7 @@
        "text": "<strong>Study (20m):</strong> read the data-, tensor-, and pipeline-parallel examples in <a href=\"https://jax-ml.github.io/scaling-book/training\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">Part 5</a>. <strong>Decision note (25m):</strong> for those three, write what is split, the dominant communication, and one condition that makes it necessary; then choose a combination for one stated model/chip count. Add one cue line each for expert parallelism and FSDP/ZeRO. Stop after those two lines.",
        "competency": "distributed training",
        "scenario": "Breadth round (Liu names this question); systems design",
-       "why": "Directly evidenced.",
+       "why": "Current research-engineering roles ask for distributed-training choices, and the JAX/TPU claim on your CV makes this discussion likely.",
        "doneWhen": "You can answer ‘what is 5D parallelism’ in 45 seconds unprompted.",
        "fallback": "Write what each of the five splits and communicates, one line each.",
        "prereq": "W7-T1",
@@ -2309,9 +2375,9 @@
        "text": "Answer three retrieval cards without notes. Then record a response about mentoring someone and improving the team’s research quality.",
        "competency": "retrieval, behavioral",
        "scenario": "Behavioral",
-       "why": "Weekly Core.",
-       "doneWhen": "Both done.",
-       "fallback": "Card pull only.",
+       "why": "The retrieval pull keeps earlier material available, and the story rehearsal prepares one example for behavioral interviews.",
+       "doneWhen": "You answered the review cards and saved the behavioral response.",
+       "fallback": "Answer the review cards and stop.",
        "prereq": "W1-T5",
        "repeat": "Weekly."
       }
@@ -2382,9 +2448,9 @@
        "text": "Use this unscheduled block for conference travel, illness, dissertation work, or one unfinished Saturday session from Weeks 1–7. Leave it empty if you do not need recovery time, and begin Week 9 on its scheduled date.",
        "competency": "—",
        "scenario": "—",
-       "why": "Slack weeks are correct and rare in self-made plans.",
-       "doneWhen": "—",
-       "fallback": "—"
+       "why": "This block protects the next phase when research, travel, illness, or an earlier task takes longer than expected.",
+       "doneWhen": "You either recovered one unfinished priority or deliberately left the block empty.",
+       "fallback": "Leave it empty. You do not need to catch up before Week 9."
       }
      ]
     },
@@ -2397,9 +2463,9 @@
        "text": "Answer five retrieval cards without notes. Then identify the two weakest behavioral stories and record a version of each that lasts no more than two minutes.",
        "competency": "retrieval, behavioral",
        "scenario": "Behavioral",
-       "why": "Weekly Core, slightly widened.",
+       "why": "This short review keeps earlier material and one behavioral story available during the recovery week.",
        "doneWhen": "Five cards pulled and two stories re-recorded.",
-       "fallback": "Cards only."
+       "fallback": "Answer the review cards and stop."
       }
      ]
     },
@@ -2501,9 +2567,9 @@
        "text": "Answer three retrieval cards without notes. Then record a response about cross-functional collaboration between research and engineering.",
        "competency": "retrieval, behavioral",
        "scenario": "Behavioral",
-       "why": "Weekly Core.",
-       "doneWhen": "Both done.",
-       "fallback": "Card pull only.",
+       "why": "The retrieval pull keeps earlier material available, and the story rehearsal prepares one example for behavioral interviews.",
+       "doneWhen": "You answered the review cards and saved the behavioral response.",
+       "fallback": "Answer the review cards and stop.",
        "prereq": "W1-T5",
        "repeat": "Weekly."
       }
@@ -2618,7 +2684,7 @@
       {
        "id": "W10-T4",
        "priority": "core",
-       "text": "<strong>Run (15m):</strong> use the numbered prompts in <a href=\"drills/g3b-breadth-gate.md\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">G3b breadth gate</a>, 45 seconds each, with a partner reading or a timer. <strong>Repair (20m):</strong> open the <a href=\"drills/g3b-breadth-gate-answer.md\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">answer cues</a>, make cards for misses only. <strong>Rerun (10m):</strong> answer the misses again.",
+       "text": "<strong>Run (15m):</strong> use the numbered prompts in <a href=\"drills/g3b-breadth-gate.html\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">G3b breadth gate</a>, 45 seconds each, with a partner reading or a timer. <strong>Repair (20m):</strong> open the <a href=\"drills/g3b-breadth-gate-answer.html\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">answer cues</a>, make cards for misses only. <strong>Rerun (10m):</strong> answer the misses again.",
        "competency": "retrieval breadth",
        "scenario": "Rapid-fire technical discussion",
        "why": "This checkpoint measures response speed, which is the relevant weakness for a well-read candidate.",
@@ -2639,9 +2705,9 @@
        "text": "Answer three retrieval cards without notes. Then record a response about operating under ambiguity or with limited compute.",
        "competency": "retrieval, behavioral",
        "scenario": "Behavioral",
-       "why": "Weekly Core.",
-       "doneWhen": "Both done.",
-       "fallback": "Card pull only.",
+       "why": "The retrieval pull keeps earlier material available, and the story rehearsal prepares one example for behavioral interviews.",
+       "doneWhen": "You answered the review cards and saved the behavioral response.",
+       "fallback": "Answer the review cards and stop.",
        "prereq": "W1-T5",
        "repeat": "Weekly."
       }
@@ -2653,10 +2719,10 @@
       {
        "id": "W10-T6",
        "priority": "core",
-       "text": "Use the fixed prompt and follow-up questions in <a href=\"drills/experiment-design-mock.md\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">experiment-design-mock.md</a> for a 45-minute mock interview. Grade how clearly you state assumptions, reason quantitatively, consider alternatives, handle failures, and communicate.",
+       "text": "Use the fixed prompt and follow-up questions in the <a href=\"drills/experiment-design-mock.html\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">experiment-design mock</a> for a 45-minute interview. Grade how clearly you state assumptions, reason quantitatively, consider alternatives, handle failures, and communicate.",
        "competency": "experiment design under observation",
        "scenario": "Technical discussion round",
-       "why": "Third of four mocks.",
+       "why": "This mock tests whether the experiment-design framework can be used aloud under interview conditions.",
        "doneWhen": "Scored on all five axes.",
        "fallback": "Answer one design prompt aloud for 15 minutes, recorded.",
        "prereq": "W10-T3",
@@ -2666,7 +2732,7 @@
       {
        "id": "W10-T7",
        "priority": "core",
-       "text": "Keep the check sheet closed, start a 45-minute timer, and open <a href=\"drills/ml-coding-mock-a.md\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">ML-coding mock A</a>. Work without AI assistance and explain your reasoning aloud. Stop coding after 35 minutes, and use <a href=\"drills/ml-coding-mock-a-check.md\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">the check sheet</a> during the final 10 minutes to identify the first broken step.",
+       "text": "Keep the check sheet closed, start a 45-minute timer, and open <a href=\"drills/ml-coding-mock-a.html\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">ML-coding mock A</a>. Work without AI assistance and explain your reasoning aloud. Stop coding after 35 minutes, and use <a href=\"drills/ml-coding-mock-a-check.html\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">the check sheet</a> during the final 10 minutes to identify the first broken step.",
        "competency": "ML coding under observation",
        "scenario": "The most common round",
        "why": "Repeated mocks make it possible to distinguish a one-time error from a recurring failure pattern.",
@@ -2776,9 +2842,9 @@
        "text": "Answer three retrieval cards without notes. Then record a response about a high-impact result and your personal contribution to it.",
        "competency": "retrieval, behavioral",
        "scenario": "Behavioral",
-       "why": "Weekly Core.",
-       "doneWhen": "Both done.",
-       "fallback": "Card pull only.",
+       "why": "The retrieval pull keeps earlier material available, and the story rehearsal prepares one example for behavioral interviews.",
+       "doneWhen": "You answered the review cards and saved the behavioral response.",
+       "fallback": "Answer the review cards and stop.",
        "prereq": "W1-T5",
        "repeat": "Weekly."
       }
@@ -2801,7 +2867,7 @@
       {
        "id": "W11-T7",
        "priority": "core",
-       "text": "<strong>G10 (35m):</strong> have someone choose one of the seven publication cards at random. Give a five-minute pitch, then answer questions 1–6 from <a href=\"drills/research-defense-questions.md\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">research-defense-questions.md</a> without opening the card. <strong>Repair (15m):</strong> rewrite and re-record the weakest answer, then update the W0 coverage table.",
+       "text": "<strong>G10 (35m):</strong> have someone choose one of the seven publication cards at random. Give a five-minute pitch, then answer questions 1–6 from the <a href=\"drills/research-defense-questions.html\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">research-defense questions</a> without opening the card. <strong>Repair (15m):</strong> rewrite and re-record the weakest answer, then update the W0 coverage table.",
        "competency": "research defense",
        "scenario": "Research round",
        "why": "The random defense now happens only after all seven cards exist, and it closes the loop opened at W0-T4.",
@@ -2846,8 +2912,8 @@
        "competency": "—",
        "scenario": "—",
        "why": "Conference deadlines, holidays, and early recruiter activity commonly compete for this part of the calendar.",
-       "doneWhen": "—",
-       "fallback": "—"
+       "doneWhen": "You either recovered one unfinished priority or deliberately left the week mostly empty.",
+       "fallback": "Leave it empty. Start Week 13 on its scheduled date."
       }
      ]
     },
@@ -2860,9 +2926,9 @@
        "text": "Answer five retrieval cards without notes. Then identify and record the two weakest stories again.",
        "competency": "retrieval, behavioral",
        "scenario": "Behavioral",
-       "why": "Weekly Core.",
-       "doneWhen": "Both done.",
-       "fallback": "Cards only."
+       "why": "This short review keeps earlier material and one behavioral story available during the recovery week.",
+       "doneWhen": "You answered the review cards and re-recorded both weak stories.",
+       "fallback": "Answer the review cards and stop."
       }
      ]
     },
@@ -2960,9 +3026,9 @@
        "text": "Answer three retrieval cards without notes. Then record a response about a project that you stopped, redirected, or deprioritized.",
        "competency": "retrieval, behavioral",
        "scenario": "Behavioral",
-       "why": "Weekly Core.",
-       "doneWhen": "Both done.",
-       "fallback": "Card pull only.",
+       "why": "The retrieval pull keeps earlier material available, and the story rehearsal prepares one example for behavioral interviews.",
+       "doneWhen": "You answered the review cards and saved the behavioral response.",
+       "fallback": "Answer the review cards and stop.",
        "prereq": "W1-T5",
        "repeat": "Weekly."
       }
@@ -3098,9 +3164,9 @@
        "text": "Answer three retrieval cards without notes. Then record the weakest story from Tuesday’s checkpoint again.",
        "competency": "retrieval, behavioral",
        "scenario": "Behavioral",
-       "why": "Weekly Core.",
-       "doneWhen": "Both done.",
-       "fallback": "Cards only."
+       "why": "The retrieval pull keeps earlier material available, and the story rehearsal repairs the weakest example from Tuesday.",
+       "doneWhen": "You answered the review cards and re-recorded the weak story.",
+       "fallback": "Answer the review cards and stop."
       }
      ]
     },
@@ -3110,7 +3176,7 @@
       {
        "id": "W14-T6",
        "priority": "core",
-       "text": "Keep the check sheet closed, start a 45-minute timer, and open <a href=\"drills/ml-coding-mock-b.md\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">ML-coding mock B</a>. Reproduce interview conditions by turning off AI assistance, keeping the camera on, and explaining your reasoning throughout. Stop coding after 35 minutes, and use <a href=\"drills/ml-coding-mock-b-check.md\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">the check sheet</a> during the final 10 minutes.",
+       "text": "Keep the check sheet closed, start a 45-minute timer, and open <a href=\"drills/ml-coding-mock-b.html\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">ML-coding mock B</a>. Reproduce interview conditions by turning off AI assistance, keeping the camera on, and explaining your reasoning throughout. Stop coding after 35 minutes, and use <a href=\"drills/ml-coding-mock-b-check.html\" target=\"_blank\" rel=\"noopener\" class=\"tlink\">the check sheet</a> during the final 10 minutes.",
        "competency": "ML coding under observation",
        "scenario": "Virtual onsite",
        "why": "Simulation is the only way to find performance failure modes.",
@@ -3224,9 +3290,9 @@
        "text": "Answer five retrieval cards without notes.",
        "competency": "retrieval",
        "scenario": "Breadth round",
-       "why": "Weekly Core, forever.",
-       "doneWhen": "Five cards pulled.",
-       "fallback": "Three cards."
+       "why": "A short retrieval session checks which material still comes back quickly before active interviewing begins.",
+       "doneWhen": "You answered five review cards without notes.",
+       "fallback": "Answer three review cards and stop."
       }
      ]
     },
@@ -3295,8 +3361,8 @@
        "competency": "retrieval",
        "scenario": "Breadth round",
        "why": "Retention decays; the cards are cheap.",
-       "doneWhen": "Five cards pulled.",
-       "fallback": "Three cards."
+       "doneWhen": "You answered five review cards without notes.",
+       "fallback": "Answer three review cards and stop."
       }
      ]
     },
@@ -3309,7 +3375,7 @@
        "text": "Solve one problem each week, alternating between ML implementation and general coding. Choose a problem related to a recent miss whenever possible.",
        "competency": "coding",
        "scenario": "Coding screen",
-       "why": "Misses outrank curriculum.",
+       "why": "A mistake from a real interview is the most relevant subject for the next coding session.",
        "doneWhen": "One problem completed or logged as abandoned.",
        "fallback": "Re-solve a known problem from blank."
       }

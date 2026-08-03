@@ -1,4 +1,10 @@
-# Debugging drill 01 - answer key
+---
+layout: interview-drill
+title: Debugging drill 01 answer key
+permalink: /interview-prep/drills/debugging-01-answer.html
+---
+
+# Debugging drill 01: answer key
 
 Open this only after both checks pass or the 35-minute cap expires.
 

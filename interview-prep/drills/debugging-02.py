@@ -1,6 +1,6 @@
 """Second two-bug debugging drill.
 
-Keep debugging-02-answer.md closed until both checks pass or 40 minutes expire.
+Keep the debugging drill 02 answer page closed until both checks pass or 40 minutes expire.
 Write hypotheses before edits.
 """
 

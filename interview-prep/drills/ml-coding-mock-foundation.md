@@ -1,3 +1,9 @@
+---
+layout: interview-drill
+title: ML-coding foundation mock
+permalink: /interview-prep/drills/ml-coding-mock-foundation.html
+---
+
 # ML-coding foundation mock
 
 Open this file only when the 45-minute timer starts. Keep the check sheet closed.
@@ -42,4 +48,4 @@ Answer aloud:
 - a backward pass with finite gradients;
 - one invalid-target case.
 
-Stop coding at 35 minutes. Use the last 10 minutes with `ml-coding-mock-foundation-check.md`.
+Stop coding at 35 minutes. Use the check sheet during the last 10 minutes.

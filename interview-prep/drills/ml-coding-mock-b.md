@@ -1,3 +1,9 @@
+---
+layout: interview-drill
+title: ML-coding mock B
+permalink: /interview-prep/drills/ml-coding-mock-b.html
+---
+
 # ML-coding mock B
 
 Open this file only when the onsite-simulation timer starts. Keep the check sheet closed.
@@ -43,4 +49,4 @@ Write and run:
 - batch size 2 with different cluster layouts;
 - CPU and, if available, accelerator device preservation.
 
-Stop coding at 35 minutes. Use the last 10 minutes with `ml-coding-mock-b-check.md`.
+Stop coding at 35 minutes. Use the check sheet during the last 10 minutes.
