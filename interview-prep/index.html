@@ -3,1860 +3,1180 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vision Research Scientist Interview Prep</title>
+<meta name="description" content="A concrete, ADHD-friendly preparation system for PhD-level Research Scientist and Research Engineer interviews.">
+<title>Research Interview Lab</title>
 <style>
-  :root{
-    --bg:#ffffff; --panel:#ffffff; --panel2:#fafafa; --line:#e6e6e6;
-    --ink:#1a1a1a; --mut:#6b7280; --accent:#cc0000; --accent2:#cc0000;
-    --good:#1a7f37; --warn:#b45309; --bad:#cc0000; --chip:#f2f2f2;
-    --r:8px; --sh:none;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    background:var(--bg);color:var(--ink);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
-  a{color:var(--accent);text-decoration:none}
-  a:hover{text-decoration:underline}
-  header{padding:18px 26px 0;border-bottom:1px solid var(--line);position:sticky;top:0;
-    background:rgba(255,255,255,.94);backdrop-filter:blur(6px);z-index:20}
-  .htop{display:flex;flex-wrap:wrap;align-items:center;gap:16px;justify-content:space-between}
-  h1{font-size:20px;margin:0;font-weight:700;letter-spacing:-.01em}
-  h1 small{display:block;font-size:12.5px;color:var(--mut);font-weight:400;margin-top:3px}
-  .meta{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
-  .stat{text-align:center;min-width:64px}
-  .stat b{display:block;font-size:18px;line-height:1.1;font-weight:700}
-  .stat span{font-size:10.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.03em}
-  .overall{flex:1;min-width:200px}
-  .bar{height:6px;background:var(--chip);border-radius:99px;overflow:hidden}
-  .bar > i{display:block;height:100%;background:var(--accent);width:0;transition:width .4s}
-  nav{display:flex;gap:2px;overflow-x:auto;margin-top:12px;scrollbar-width:thin}
-  nav button{background:transparent;border:none;border-bottom:2px solid transparent;color:var(--mut);
-    padding:9px 12px;cursor:pointer;font-size:13px;font-weight:600;margin-bottom:-1px;white-space:nowrap}
-  nav button:hover{color:var(--ink)}
-  nav button.on{color:var(--accent);border-bottom-color:var(--accent)}
-  main{padding:24px 26px 80px;max-width:1080px;margin:0 auto}
-  .view{display:none}
-  .view.on{display:block}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;margin-bottom:14px}
-  .table-card{overflow-x:auto}
-  .card h3{margin:0 0 4px;font-size:15px;font-weight:700}
-  .grid{display:grid;gap:14px}
-  @media(min-width:760px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}}
-  .pill{display:inline-block;font-size:11px;padding:2px 9px;border-radius:99px;background:var(--chip);color:var(--mut);font-weight:600}
-  .pill.p1,.pill.p2,.pill.p3,.pill.p4{background:var(--chip);color:var(--mut)}
-  .ck{display:flex;gap:10px;align-items:flex-start;padding:7px 0}
-  .ck input{margin-top:3px;width:16px;height:16px;accent-color:var(--good);flex:none;cursor:pointer}
-  .taskcopy{font-size:13.5px;min-width:0;flex:1}
-  .tasktext{display:block;cursor:pointer;font-size:14px;line-height:1.62;color:#252525}
-  .task-prose{max-width:74ch}
-  .task-steps{display:grid;gap:8px;margin:2px 0 0}
-  .task-step{display:grid;grid-template-columns:76px minmax(0,1fr);gap:10px;align-items:start}
-  .step-label{font-size:10.5px;line-height:1.4;text-transform:uppercase;letter-spacing:.055em;font-weight:750;color:var(--accent);padding-top:3px}
-  .step-copy{min-width:0}
-  .completion{max-width:74ch;margin-top:9px;padding:8px 10px;border-radius:6px;background:#f3f8f4;color:#285a35;font-size:12px}
-  .completion strong{font-weight:750}
-  .ck.done .tasktext{color:var(--mut);text-decoration:line-through}
-  .ck.done .completion{opacity:.65}
-  .ck.skipped{opacity:.64}
-  .ck.skipped .tasktext{text-decoration:line-through}
-  .res .ck.done span,#v-story .ck.done span{color:var(--mut);text-decoration:line-through}
-  .taskmeta{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:5px;color:var(--mut);font-size:11.5px}
-  .taskmeta .donewhen{color:#374151}
-  .timepill{font-size:10.5px;padding:2px 8px;border-radius:99px;background:#eef3f8;color:#334155;font-weight:650}
-  .timepill.strict{background:#fbe9e9;color:var(--accent)}
-  .timepill.deep{background:#f4eee5;color:var(--warn)}
-  .focusbar{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:7px;padding:7px 9px;background:var(--panel2);border:1px solid var(--line);border-radius:6px}
-  .focusclock{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;font-weight:700;min-width:52px;color:var(--ink)}
-  .focusclock.active{color:var(--accent)}
-  .focushelp{font-size:11px;color:var(--mut);flex:1 1 180px}
-  .taskfallback{margin-top:5px}
-  .taskfallback summary{font-size:11.5px;color:var(--accent);font-weight:600}
-  .taskfallback div{margin-top:4px;color:var(--mut);font-size:12px;border-left:2px solid var(--line);padding-left:8px}
-  .taskstarter{margin-top:9px;padding:7px 9px;border:1px solid #eadfce;border-radius:6px;background:#fffaf2}
-  .taskstarter summary{color:#8a4b08;font-size:12px}
-  .taskmore{margin-top:8px}
-  .taskmore>.taskmorebody{border-left:0;padding:8px 0 0;margin:0;color:var(--mut)}
-  .taskmorebody .taskmeta{margin-top:8px}
-  .dashboard-overview{padding:0;overflow:hidden}
-  .dashboard-overview>summary{padding:13px 16px;color:var(--ink)}
-  .dashboard-overview-body{padding:0 16px 14px}
-  .more-grid{display:grid;gap:10px}
-  @media(min-width:700px){.more-grid{grid-template-columns:1fr 1fr}}
-  .more-link{display:block;width:100%;text-align:left;background:var(--panel2);border:1px solid var(--line);border-radius:7px;padding:13px 14px;cursor:pointer;color:var(--ink);font:inherit}
-  .more-link:hover{border-color:#aaa;background:#fff}
-  .more-link b{display:block;font-size:14px;margin-bottom:2px}
-  .more-link span{display:block;font-size:12px;color:var(--mut)}
-  .coding-summary{display:grid;gap:10px;margin:14px 0}
-  @media(min-width:700px){.coding-summary{grid-template-columns:repeat(3,1fr)}}
-  .coding-stat{border:1px solid var(--line);border-radius:6px;background:var(--panel2);padding:10px 12px}
-  .coding-stat b{display:block;font-size:18px;color:var(--ink)}
-  .coding-stat span{font-size:11.5px;color:var(--mut)}
-  .coding-week{padding:0;overflow:hidden}
-  .coding-week>summary{padding:12px 15px;color:var(--ink)}
-  .coding-week-body{padding:0 15px 12px;border-top:1px solid var(--line)}
-  .problem-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
-  .problem-row:last-child{border-bottom:0}
-  .problem-row>input{width:17px;height:17px;accent-color:var(--good)}
-  .problem-row.done .problem-title{text-decoration:line-through;color:var(--mut)}
-  .problem-title{display:block;font-weight:650;font-size:13.5px}
-  .problem-meta{font-size:11.5px;color:var(--mut);margin-top:2px}
-  .problem-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
-  .coding-source{font-size:11.5px;color:var(--mut);margin-top:10px}
-  .flex-task{background:var(--panel2);border-radius:6px;padding:8px 10px;margin:3px 0}
-  .kind{font-size:9.5px;padding:1px 7px;border-radius:99px;text-transform:uppercase;letter-spacing:.05em;font-weight:700}
-  .kind.core{background:#e8f5ec;color:var(--good)}
-  .kind.flex{background:#f4eee5;color:var(--warn)}
-  .kind.company{background:#fbe9e9;color:var(--accent)}
-  .wkhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
-  .wkhead .pr{font-size:12px;color:var(--mut)}
-  .mini{height:4px;background:var(--chip);border-radius:99px;overflow:hidden;margin:8px 0 4px}
-  .mini>i{display:block;height:100%;background:var(--good);width:0;transition:width .3s}
-  .now{border-color:var(--accent)}
-  .sess{border-top:1px solid var(--line);padding:10px 0 4px;margin:0}
-  .sess:first-of-type{border-top:none}
-  .sesshead{display:flex;align-items:center;gap:9px;margin-bottom:3px;flex-wrap:wrap}
-  .sday{font-size:11px;font-weight:700;color:var(--mut);background:var(--chip);border-radius:5px;padding:2px 8px;flex:none;min-width:40px;text-align:center}
-  .sess.sdone .sday{color:#fff;background:var(--good)}
-  .stitle{font-weight:600;font-size:13.5px;flex:1 1 auto;min-width:0}
-  .sct{font-size:11.5px;color:var(--mut);flex:none;margin-left:auto}
-  table{width:100%;border-collapse:collapse;font-size:13px}
-  th,td{text-align:left;padding:8px 9px;border-bottom:1px solid var(--line);vertical-align:top}
-  th{color:var(--mut);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.04em}
-  td input,td select,td textarea{width:100%;background:#fff;border:1px solid var(--line);color:var(--ink);
-    border-radius:6px;padding:6px 8px;font-size:13px;font-family:inherit}
-  td textarea{resize:vertical;min-height:30px}
-  .btn{background:#fff;border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:7px 13px;
-    cursor:pointer;font-size:13px;font-weight:600}
-  .btn:hover{border-color:var(--ink)}
-  .btn.sm{padding:5px 10px;font-size:12px}
-  .btn.accent{background:var(--accent);border-color:var(--accent);color:#fff}
-  .btn.accent:hover{opacity:.9;border-color:var(--accent)}
-  .row-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-  .x{color:var(--mut);cursor:pointer;font-weight:700;background:none;border:none;font-size:15px}
-  .x:hover{color:var(--bad)}
-  .tag{font-size:10.5px;padding:2px 9px;border-radius:99px;background:var(--chip);color:var(--mut);margin-right:6px;display:inline-block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
-  .res a{font-weight:600}
-  .res small{color:var(--mut)}
-  .res li{margin-bottom:11px;list-style:none}
-  .res ul{padding-left:0;margin:0}
-  .star{color:var(--accent)}
-  .secthead{display:flex;justify-content:space-between;align-items:center;margin:0 0 6px;flex-wrap:wrap;gap:8px}
-  .muted{color:var(--mut)}
-  code{overflow-wrap:anywhere;word-break:break-word}
-  .sectionhdr{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);
-    margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
-  .sectionhdr:first-child{margin-top:4px}
-  .kpi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:14px}
-  .kpi .card{min-width:0;margin:0;text-align:left;padding:14px 16px}
-  .kpi b{font-size:22px;display:block;font-weight:700}
-  .kpi .card span{font-size:11.5px;color:var(--mut)}
-  .note{font-size:12.5px;color:var(--mut);background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--accent);padding:9px 12px;border-radius:0 6px 6px 0;margin:8px 0}
-  .empty{padding:34px 20px;text-align:center;color:var(--mut)}
-  .toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
-  .toolbar .sp{flex:1}
-  .savedtag{font-size:12px;color:var(--good);opacity:0;transition:opacity .3s}
-  .savedtag.show{opacity:1}
-  details summary{cursor:pointer;font-weight:600;color:var(--mut);font-size:13px}
-  .storagebar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px;padding:0 0 12px;font-size:12px;color:var(--mut)}
-  .storagebar .sp{flex:1}
-  .storagebar b{color:var(--ink)}
-  .storagebar .sm{font-size:11.5px}
-  .dot{width:7px;height:7px;border-radius:99px;background:var(--mut);flex:none}
-  .dot.good{background:var(--good)}.dot.warn{background:var(--warn)}.dot.bad{background:var(--bad)}
-  .tlink{color:var(--accent);font-weight:600;text-decoration:none}
-  .tlink:hover{text-decoration:underline}
-  .setlbl{display:block;font-size:12px;color:var(--mut);margin:10px 0 4px;font-weight:600}
-  .setrow{display:flex;gap:14px;flex-wrap:wrap}
-  .setrow>div{flex:1 1 160px}
-  .setdays{display:grid;gap:10px;grid-template-columns:1fr}
-  @media(min-width:620px){.setdays{grid-template-columns:1fr 1fr}}
-  #v-settings input,#v-settings select{width:100%;background:#fff;border:1px solid var(--line);color:var(--ink);
-    border-radius:6px;padding:9px 10px;font-size:13.5px;font-family:inherit}
-  .authbar{display:none;align-items:center;gap:8px;flex-wrap:wrap;padding:0 0 12px;margin-top:-4px}
-  .authbar.on{display:flex}
-  .authbar input{background:#fff;border:1px solid var(--line);color:var(--ink);border-radius:6px;
-    padding:7px 9px;font-size:13px;font-family:inherit;width:170px}
-  .authbar .btn{padding:7px 11px}
-  .gbtn{display:flex;align-items:center;gap:7px;background:#fff;color:#1a1a1a;
-    border:1px solid var(--line);border-radius:6px;padding:7px 11px;font-size:13px;font-weight:600;cursor:pointer}
-  .gbtn:hover{background:#f7f7f7}
-  .gbtn svg{width:15px;height:15px}
-  #autherr{color:var(--bad);font-size:12px;flex-basis:100%}
-  #autherr:empty{display:none}
-  #cfgnote{display:none;font-size:12px;color:var(--warn)}
-  .linkbtn{border:0;background:none;color:var(--accent);font:inherit;font-size:12px;padding:0;cursor:pointer}
-  .linkbtn:hover{text-decoration:underline}
-  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-  .page-foot{color:var(--mut);font-size:12px;text-align:center;margin-top:28px}
-  .gategrid{display:grid;gap:12px}
-  @media(min-width:760px){.gategrid{grid-template-columns:1fr 1fr}}
-  .gatecard{margin:0}
-  .gatehead{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
-  .gatehead h3{margin:0}
-  .gatestate{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;font-weight:700;padding:3px 8px;border-radius:99px;background:var(--chip);color:var(--mut)}
-  .gatestate.pass{background:#e8f5ec;color:var(--good)}
-  .gatestate.fail{background:#fbe9e9;color:var(--bad)}
-  .gatestate.defer{background:#f4eee5;color:var(--warn)}
-  .gateform{display:grid;gap:8px;grid-template-columns:1fr 1fr;margin-top:10px}
-  .gateform label{font-size:11px;color:var(--mut);font-weight:600}
-  .gateform select,.gateform input,.gateform textarea{display:block;width:100%;margin-top:3px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:7px 8px;font:inherit;font-size:12.5px}
-  .gateform textarea{grid-column:1/-1;min-height:58px;resize:vertical}
-  .protocol-on{border-color:var(--accent);background:#fff8f8}
-  .protocol-step{border-left:3px solid var(--line);padding-left:12px;margin:14px 0}
-  .protocol-step h3{margin-bottom:2px}
-  .protocol-step ul,.rulelist{margin:7px 0 0;padding-left:20px}
-  .protocol-step li,.rulelist li{margin:5px 0}
-  .idtag{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;color:var(--mut)}
-  .tasknote textarea{width:100%;min-height:56px;margin-top:6px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:7px 8px;font:inherit;font-size:12px;resize:vertical}
-  .cardprompt{font-weight:650;font-size:14px}
-  .cardanswer{white-space:pre-wrap;margin:8px 0;color:#374151}
-  .due{border-color:var(--warn)}
-  #v-cards textarea,#v-cards input[type=date]{background:#fff;border:1px solid var(--line);border-radius:6px;padding:8px 9px;font:inherit;font-size:13px}
-  .target-universe{padding:18px;margin-top:14px}
-  .target-universe>p{margin:4px 0 14px}
-  .target-group{border-top:1px solid var(--line);padding:12px 0 2px}
-  .target-group:first-of-type{border-top:0;padding-top:0}
-  .target-group>summary{color:var(--ink);font-size:14px}
-  .target-rule{margin:5px 0 11px;font-size:12px;color:var(--mut)}
-  .target-grid{display:grid;gap:10px}
-  @media(min-width:760px){.target-grid{grid-template-columns:1fr 1fr}}
-  .target-card{border:1px solid var(--line);border-radius:7px;padding:13px;background:var(--panel2);margin:0}
-  .target-card h4{font-size:14px;margin:0}
-  .target-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
-  .target-meta{font-size:11.5px;color:var(--mut);margin:3px 0 8px}
-  .target-roles{font-size:12px;margin:8px 0;color:#374151}
-  .target-why{font-size:12.5px;margin:0}
-  .target-pack{font-size:11.5px;color:var(--mut);margin-top:8px}
-  .target-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px}
-  .target-actions .btn:disabled{cursor:default;opacity:.62}
-  .plan-intro{padding:20px 21px;margin-bottom:14px;border-left:4px solid var(--accent)}
-  .plan-intro h2{font-size:20px;line-height:1.25;margin:0 0 6px;letter-spacing:-.015em}
-  .plan-intro p{max-width:72ch;margin:0;color:var(--mut)}
-  .reading-cues{display:grid;gap:8px;margin-top:14px}
-  @media(min-width:760px){.reading-cues{grid-template-columns:repeat(3,1fr)}}
-  .reading-cue{padding:9px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel2);font-size:12px;color:var(--mut)}
-  .reading-cue b{display:block;color:var(--ink);margin-bottom:1px}
-  .plan-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0 16px}
-  .plan-tools .sp{flex:1}
-  .week-card{padding:0;overflow:hidden}
-  .week-card[open]{border-color:#d7d7d7}
-  .week-card.now{border-color:var(--accent)}
-  .week-summary{list-style:none;padding:15px 18px;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;color:var(--ink)}
-  .week-summary::-webkit-details-marker{display:none}
-  .week-summary::before{content:'›';grid-column:2;grid-row:1/3;font-size:22px;color:var(--mut);transform:rotate(0);transition:transform .15s}
-  .week-card[open]>.week-summary::before{transform:rotate(90deg)}
-  .week-title{font-size:15px;font-weight:720;line-height:1.35;padding-right:8px}
-  .week-sub{font-size:11.5px;color:var(--mut);margin-top:3px;padding-right:8px}
-  .week-body{padding:0 18px 14px;border-top:1px solid var(--line)}
-  .timing-guide{padding:0;overflow:hidden}
-  .timing-guide>summary{padding:13px 16px;color:var(--ink)}
-  .timing-guide-body{padding:0 16px 14px}
-  @media(max-width:700px){
-    header{padding:14px 16px 0}
-    main{padding:18px 14px 64px}
-    .meta{width:100%}.overall{width:100%}
-    .kpi{grid-template-columns:1fr}
-    nav{margin-left:-16px;margin-right:-16px;padding:0 8px}
-    nav button{padding:9px 10px}
-    .storagebar .muted{max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-    .storagebar .sp{display:none}
-    .authbar input{width:100%}
-    th,td{min-width:105px}
-    .task-step{grid-template-columns:1fr;gap:1px}
-    .step-label{padding-top:0}
-    .week-summary{padding:13px 14px}.week-body{padding:0 14px 12px}
-    .problem-row{grid-template-columns:auto minmax(0,1fr)}
-    .problem-actions{grid-column:2;justify-content:flex-start}
-  }
-  @media(prefers-reduced-motion:reduce){
-    *,*::before,*::after{scroll-behavior:auto!important;transition:none!important}
-  }
+:root{
+  --paper:#f5f3ed;
+  --surface:#fffefa;
+  --surface-2:#ece9df;
+  --ink:#17201c;
+  --muted:#647069;
+  --line:#d9d6cc;
+  --accent:#245c48;
+  --accent-2:#d8643b;
+  --accent-soft:#e2eee8;
+  --warn:#8a531d;
+  --warn-soft:#f6ead8;
+  --danger:#a33b32;
+  --danger-soft:#f8e6e2;
+  --shadow:0 18px 50px rgba(31,42,36,.08);
+  --radius:18px;
+  --radius-sm:11px;
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 10% 0%,rgba(36,92,72,.08),transparent 30rem),
+    radial-gradient(circle at 90% 10%,rgba(216,100,59,.06),transparent 26rem),
+    var(--paper);
+  font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+button,input,textarea,select{font:inherit}
+button{color:inherit}
+a{color:var(--accent);text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+.skip-link{position:fixed;left:16px;top:-80px;z-index:100;background:var(--ink);color:white;padding:10px 14px;border-radius:8px}
+.skip-link:focus{top:12px}
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:30;
+  border-bottom:1px solid rgba(217,214,204,.9);
+  background:rgba(245,243,237,.92);
+  backdrop-filter:blur(18px);
+}
+.header-inner{max-width:var(--max);margin:auto;padding:15px 24px 0}
+.brand-row{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand-mark{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--ink);color:white;font-weight:800;letter-spacing:-.03em;flex:none}
+.brand-copy{min-width:0}
+.brand-copy strong{display:block;font-size:15px;letter-spacing:-.01em}
+.brand-copy span{display:block;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-status{display:flex;align-items:center;gap:14px;min-width:min(360px,42vw)}
+.status-copy{min-width:98px;text-align:right}
+.status-copy strong,.status-copy span{display:block}
+.status-copy strong{font-size:13px}
+.status-copy span{font-size:11px;color:var(--muted)}
+.header-progress{height:7px;flex:1;background:#dedbd1;border-radius:999px;overflow:hidden}
+.header-progress i{display:block;width:0;height:100%;background:var(--accent);border-radius:inherit;transition:width .25s ease}
+.main-nav{display:flex;gap:4px;overflow:auto;margin-top:12px;scrollbar-width:none}
+.main-nav::-webkit-scrollbar{display:none}
+.nav-btn{
+  appearance:none;
+  border:0;
+  border-bottom:3px solid transparent;
+  background:transparent;
+  padding:10px 12px 11px;
+  color:var(--muted);
+  cursor:pointer;
+  font-size:13px;
+  font-weight:720;
+  white-space:nowrap;
+}
+.nav-btn:hover{color:var(--ink)}
+.nav-btn.on{color:var(--accent);border-bottom-color:var(--accent)}
+main{max-width:var(--max);margin:auto;padding:34px 24px 90px}
+.view{display:none}
+.view.on{display:block}
+.page-head{max-width:700px;margin-bottom:16px}
+.eyebrow{
+  margin:0 0 7px;
+  color:var(--accent);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+h1,h2,h3,h4,p{margin-top:0}
+h1,h2,h3{letter-spacing:-.025em}
+.page-head h1{font-size:clamp(26px,3vw,36px);line-height:1.08;margin-bottom:0;max-width:700px}
+.card{
+  background:rgba(255,254,250,.95);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:0 1px 0 rgba(23,32,28,.02);
+}
+.focus-shell{max-width:780px;margin:0 auto}
+.focus-context{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:0 3px 10px;color:var(--muted);font-size:12px;font-weight:700}
+.today-grid{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(260px,.75fr);gap:20px;align-items:start}
+.task-card{overflow:hidden;box-shadow:var(--shadow)}
+.task-top{padding:20px 22px 16px;border-bottom:1px solid var(--line)}
+.task-kicker{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.tag{display:inline-flex;align-items:center;gap:5px;border-radius:999px;background:var(--surface-2);padding:4px 9px;color:var(--muted);font-size:11px;font-weight:750}
+.tag.accent{background:var(--accent-soft);color:var(--accent)}
+.tag.orange{background:#fae8e0;color:#9a4428}
+.task-top h2{font-size:clamp(23px,3.5vw,31px);line-height:1.1;margin-bottom:7px}
+.artifact{margin:0;color:var(--muted)}
+.artifact strong{color:var(--ink)}
+.task-body{padding:20px 22px}
+.session-section{margin:0 0 16px}
+.session-section .detail-label{margin:0 0 5px}
+.step-checklist{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:3px 0}
+.rescue-action{margin:0;padding:12px 14px;border-left:3px solid var(--accent-2);background:#faeee8;border-radius:0 9px 9px 0;font-weight:650}
+.need-row{display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap;margin-bottom:16px}
+.need-row .label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding-top:5px}
+.resource-link{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);background:white;border-radius:999px;padding:5px 10px;text-decoration:none;font-size:12px;font-weight:700}
+.resource-link:hover{border-color:var(--accent)}
+.step-panel{
+  padding:20px;
+  border-radius:15px;
+  background:var(--ink);
+  color:white;
+  min-height:160px;
+}
+.step-label{color:#b8cec4;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px}
+.step-panel h3{font-size:20px;line-height:1.3;margin:0 0 17px;max-width:700px}
+.step-actions{display:flex;gap:9px;flex-wrap:wrap}
+.btn{
+  appearance:none;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:white;
+  padding:9px 14px;
+  font-weight:750;
+  font-size:13px;
+  cursor:pointer;
+  transition:transform .12s ease,border-color .12s ease,background .12s ease;
+}
+.btn:hover{border-color:#9b9a92}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:white}
+.btn.primary:hover{background:#1d4d3b}
+.btn.warm{background:var(--accent-2);border-color:var(--accent-2);color:white}
+.btn.ghost{background:transparent}
+.btn.invert{background:white;border-color:white;color:var(--ink)}
+.btn.small{padding:6px 10px;font-size:12px}
+.btn.danger{color:var(--danger);border-color:#e6bcb6}
+.btn:disabled{opacity:.48;cursor:not-allowed}
+.timer{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin:13px 0 15px;
+  padding:11px 13px;
+  border:1px solid var(--line);
+  border-radius:13px;
+  background:#fbfaf5;
+}
+.timer-time{font-variant-numeric:tabular-nums;font-size:23px;font-weight:800;letter-spacing:-.04em;min-width:78px}
+.timer-copy{flex:1;min-width:150px}
+.timer-copy strong,.timer-copy span{display:block}
+.timer-copy strong{font-size:12px}
+.timer-copy span{font-size:11px;color:var(--muted)}
+.timer-actions{display:flex;gap:7px}
+.finish-line{border-left:3px solid var(--accent);padding:8px 11px;background:var(--accent-soft);border-radius:0 9px 9px 0;margin:0 0 14px}
+.finish-line span{display:block;color:var(--accent);font-size:10px;font-weight:850;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+.finish-line p{margin:0;font-size:14px;font-weight:650}
+.task-footer{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.task-footer .spacer{flex:1}
+details{border-top:1px solid var(--line)}
+details summary{cursor:pointer;list-style:none;font-size:13px;font-weight:750;color:var(--muted)}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"＋";margin-right:7px;color:var(--accent)}
+details[open] summary::before{content:"−"}
+.task-details{margin-top:16px;padding-top:13px}
+.all-steps{margin:12px 0 0;padding:0;list-style:none;counter-reset:steps}
+.all-steps li{counter-increment:steps;display:flex;gap:10px;padding:7px 0;color:var(--muted);font-size:13px}
+.all-steps li::before{content:counter(steps);display:grid;place-items:center;width:22px;height:22px;flex:none;border-radius:7px;background:var(--surface-2);color:var(--ink);font-size:11px;font-weight:800}
+.all-steps li.done{text-decoration:line-through;opacity:.65}
+.detail-label{margin:13px 0 5px;color:var(--muted);font-size:10px;font-weight:850;letter-spacing:.1em;text-transform:uppercase}
+.input-list{margin:0;padding-left:18px;color:var(--muted);font-size:13px}
+.input-list li{margin:3px 0}
+.notes{width:100%;min-height:110px;margin-top:12px;border:1px solid var(--line);border-radius:10px;padding:11px 12px;background:white;resize:vertical}
+.week-rail{padding:18px;position:sticky;top:120px}
+.session-strip{display:flex;align-items:center;gap:7px;margin-top:12px;padding:9px 11px;overflow:auto}
+.session-strip>span{font-size:11px;color:var(--muted);font-weight:750;margin-right:2px;white-space:nowrap}
+.session-dot{display:grid;place-items:center;min-width:34px;height:31px;border:1px solid var(--line);border-radius:9px;background:var(--surface);font-size:11px;font-weight:800;cursor:pointer}
+.session-dot.on{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.session-dot.done{background:var(--accent);border-color:var(--accent);color:white}
+.rail-head{display:flex;justify-content:space-between;gap:10px;align-items:end;margin-bottom:12px}
+.rail-head h3{font-size:16px;margin:0}
+.rail-head span{font-size:11px;color:var(--muted)}
+.rail-list{display:grid;gap:7px}
+.rail-task{
+  width:100%;
+  display:grid;
+  grid-template-columns:27px minmax(0,1fr);
+  gap:9px;
+  align-items:start;
+  border:1px solid transparent;
+  background:transparent;
+  border-radius:11px;
+  padding:9px;
+  text-align:left;
+  cursor:pointer;
+}
+.rail-task:hover{background:var(--paper)}
+.rail-task.on{background:var(--accent-soft);border-color:#c8ded3}
+.rail-task.done .rail-title{text-decoration:line-through;color:var(--muted)}
+.rail-num{display:grid;place-items:center;width:25px;height:25px;border-radius:8px;background:var(--surface-2);font-size:11px;font-weight:800}
+.rail-task.done .rail-num{background:var(--accent);color:white}
+.rail-title{display:block;font-size:12px;font-weight:750;line-height:1.35}
+.rail-meta{display:block;font-size:10px;color:var(--muted);margin-top:2px}
+.rail-rule{margin:15px 2px 0;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:11px}
+.notice{padding:14px 16px;border:1px solid #e8d0ae;background:var(--warn-soft);color:#65401b;border-radius:12px;margin-bottom:18px;font-size:13px}
+.notice strong{color:#4e3014}
+.success-card{text-align:center;padding:48px 26px}
+.success-mark{display:grid;place-items:center;width:58px;height:58px;border-radius:20px;background:var(--accent-soft);color:var(--accent);font-size:26px;font-weight:900;margin:0 auto 16px}
+.success-card h2{font-size:28px;margin-bottom:8px}
+.success-card p{color:var(--muted);max-width:520px;margin:0 auto 20px}
+.section-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:24px}
+.mini-card{padding:17px}
+.mini-card b{display:block;font-size:20px;letter-spacing:-.03em}
+.mini-card span{font-size:12px;color:var(--muted)}
+.week-card{margin-bottom:11px;overflow:hidden}
+.week-card>summary{border:0;padding:17px 19px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;color:var(--ink)}
+.week-card>summary::before{display:none}
+.week-summary-title{font-size:16px;font-weight:800;display:block}
+.week-summary-sub{font-size:12px;color:var(--muted);display:block;margin-top:2px}
+.week-badge{font-size:11px;background:var(--surface-2);padding:5px 9px;border-radius:999px;white-space:nowrap}
+.week-card[open] .week-badge{background:var(--accent-soft);color:var(--accent)}
+.week-body{border-top:1px solid var(--line);padding:9px 18px 16px}
+.road-task{display:grid;grid-template-columns:42px minmax(0,1fr) auto;gap:11px;align-items:center;padding:11px 0;border-bottom:1px solid #ece9e1}
+.road-task:last-child{border-bottom:0}
+.road-day{font-size:10px;color:var(--muted);font-weight:800;text-transform:uppercase}
+.road-title{font-size:13px;font-weight:750}
+.road-meta{font-size:11px;color:var(--muted);margin-top:2px}
+.status-chip{font-size:10px;font-weight:800;padding:4px 8px;border-radius:999px;background:var(--surface-2);color:var(--muted)}
+.status-chip.pass{background:var(--accent-soft);color:var(--accent)}
+.status-chip.repair{background:var(--warn-soft);color:var(--warn)}
+.status-chip.missed{background:var(--danger-soft);color:var(--danger)}
+.toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.filter-btn{border:1px solid var(--line);background:var(--surface);padding:7px 11px;border-radius:999px;font-size:12px;font-weight:750;cursor:pointer}
+.filter-btn.on{background:var(--ink);border-color:var(--ink);color:white}
+.toolbar .spacer{flex:1}
+.drill-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.drill-card{padding:16px;display:flex;flex-direction:column;min-height:132px}
+.drill-card h3{font-size:18px;line-height:1.2;margin:10px 0 6px}
+.drill-card p{font-size:12px;color:var(--muted);flex:1}
+.drill-card .btn{align-self:flex-start}
+.drill-run{max-width:820px}
+.drill-prompt{font-size:20px;line-height:1.45;margin:18px 0;padding:22px;border-radius:14px;background:var(--ink);color:white}
+.followups{padding-left:20px}
+.followups li{margin:7px 0}
+.check-box{padding:14px 16px;background:var(--accent-soft);border-radius:12px;margin:18px 0;font-size:13px}
+.rubric-list{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:12px}
+.rubric-list li{margin:7px 0}
+.rubric-list strong{color:var(--ink)}
+.score-actions{display:flex;gap:8px;flex-wrap:wrap}
+.score-actions .btn.on{outline:3px solid rgba(36,92,72,.2);border-color:var(--accent)}
+.readiness-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:20px}
+.readiness-summary .card{padding:18px}
+.readiness-summary b{display:block;font-size:28px;letter-spacing:-.04em}
+.readiness-summary span{font-size:11px;color:var(--muted)}
+.gate-list{display:grid;gap:11px}
+.gate-card{padding:0;overflow:hidden}
+.gate-top{display:flex;justify-content:space-between;gap:12px}
+.gate-card>.gate-top{padding:15px 17px;align-items:center;color:var(--ink)}
+.gate-card>.gate-top::before{display:none}
+.gate-card[open]>.gate-top{border-bottom:1px solid var(--line)}
+.gate-card>.gate-pass,.gate-card>.score-actions,.gate-card>.notes{margin-left:17px;margin-right:17px}
+.gate-card>.notes{width:calc(100% - 34px);margin-bottom:17px}
+.gate-card>.task-details{margin:14px 17px;padding-top:12px}
+.gate-top h3{font-size:16px;margin:0}
+.gate-pass{font-size:13px;color:var(--muted);margin:10px 0 14px}
+.lane-table{width:100%;border-collapse:collapse;font-size:13px}
+.lane-table th,.lane-table td{padding:11px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.lane-table th{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.interview-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(290px,.8fr);gap:18px;align-items:start}
+.form-card,.source-card,.rules-card{padding:21px}
+.field{margin-bottom:15px}
+.field label{display:block;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.field input,.field textarea,.field select{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:white;
+  padding:10px 11px;
+  color:var(--ink);
+}
+.field textarea{min-height:110px;resize:vertical}
+.help{font-size:11px;color:var(--muted);margin-top:5px}
+.company-card{padding:15px;margin-bottom:9px}
+.company-card h3{font-size:14px;margin-bottom:5px}
+.company-card p{font-size:12px;color:var(--muted);margin-bottom:7px}
+.compact-details{padding:0;overflow:hidden}
+.compact-details>summary{padding:15px 17px;color:var(--ink)}
+.compact-details>summary::before{display:none}
+.compact-details>summary::after{content:"＋";float:right;color:var(--accent)}
+.compact-details[open]>summary::after{content:"−"}
+.compact-details[open]>summary{border-bottom:1px solid var(--line)}
+.compact-body{padding:15px 17px}
+.protocol-head{padding:20px 22px;margin-bottom:15px;border:2px solid var(--accent);background:var(--accent-soft)}
+.protocol-head h2{margin-bottom:5px}
+.protocol-head p{color:var(--muted);margin-bottom:0}
+.protocol-card{margin-bottom:11px;overflow:hidden;border-top:1px solid var(--line)}
+.protocol-card.current{border-color:var(--accent);box-shadow:0 0 0 2px rgba(36,92,72,.08)}
+.protocol-title{padding:15px 17px;display:block;color:var(--ink)}
+.protocol-title::before{display:none}
+.protocol-title::after{content:"＋";float:right;color:var(--accent)}
+.protocol-card[open]>.protocol-title::after{content:"−"}
+.protocol-title span{font-size:10px;color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.protocol-title h3{font-size:18px;margin:3px 0 0}
+.protocol-actions{border-top:1px solid var(--line);padding:10px 18px 16px}
+.check-row{display:flex;gap:10px;align-items:flex-start;padding:8px 0}
+.check-row input{width:17px;height:17px;margin-top:3px;accent-color:var(--accent);flex:none}
+.check-row label{font-size:13px;cursor:pointer}
+.check-row.done label{text-decoration:line-through;color:var(--muted)}
+.setup-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:15px;margin-bottom:22px}
+.source-list{display:grid;gap:10px}
+.source-row{padding:14px 0;border-bottom:1px solid var(--line)}
+.source-row:last-child{border-bottom:0}
+.source-row b,.source-row span{display:block}
+.source-row b{font-size:13px}
+.source-row span{font-size:11px;color:var(--muted);margin:2px 0 4px}
+.rules-list{padding-left:20px;margin-bottom:0}
+.rules-list li{margin:9px 0;font-size:13px}
+.storage-note{display:inline-flex;align-items:center;gap:7px;color:var(--muted);font-size:11px}
+.storage-note::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.inline-empty{padding:30px;text-align:center;color:var(--muted)}
+.footer-note{margin-top:32px;color:var(--muted);font-size:11px;text-align:center}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid rgba(216,100,59,.4);outline-offset:2px}
+@media(max-width:850px){
+  .today-grid,.interview-layout{grid-template-columns:1fr}
+  .week-rail{position:static;order:-1}
+  .section-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){
+  body{font-size:15px}
+  .header-inner{padding:11px 14px 0}
+  .brand-copy span{max-width:190px}
+  .header-status{min-width:0;flex:0}
+  .header-progress{display:none}
+  .status-copy span{display:none}
+  .main-nav{margin-left:-4px;margin-right:-4px}
+  .nav-btn{padding:9px 9px 10px;font-size:12px}
+  main{padding:26px 14px 78px}
+  .page-head h1{font-size:34px}
+  .task-top,.task-body{padding:20px}
+  .step-panel{padding:18px;min-height:170px}
+  .step-panel h3{font-size:19px}
+  .timer-time{font-size:24px}
+  .drill-grid,.setup-grid{grid-template-columns:1fr}
+  .section-grid,.readiness-summary{grid-template-columns:1fr}
+  .road-task{grid-template-columns:37px minmax(0,1fr)}
+  .road-task .btn{grid-column:2;justify-self:start}
+  .lane-table{font-size:11px}
+  .lane-table th,.lane-table td{padding:8px 5px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;transition:none!important}
+}
 </style>
 </head>
 <body>
-<header>
-  <div class="htop">
-    <h1>Interview Prep<small id="sub">Research Scientist · Generative Vision / Multimodal / RL</small></h1>
-    <div class="meta">
-      <div class="overall">
-        <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px;gap:14px">
-          <span class="muted" id="kWeekLabel">—</span><span id="kPct" class="muted">0%</span>
+<a class="skip-link" href="#main">Skip to preparation task</a>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand-row">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">RI</div>
+        <div class="brand-copy">
+          <strong>Research Interview Lab</strong>
+          <span id="role-label">RS + RE prep</span>
         </div>
-        <div class="bar"><i id="kBar"></i></div>
+      </div>
+      <div class="header-status" aria-label="Current plan status">
+        <div class="status-copy">
+          <strong id="week-label">Loading…</strong>
+          <span id="week-progress-label">Your progress is saved here</span>
+        </div>
+        <div class="header-progress" role="progressbar" aria-label="Current week progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="week-progress"></i></div>
       </div>
     </div>
-  </div>
-  <nav id="nav" aria-label="Interview preparation sections"></nav>
-  <div id="storagebar" class="storagebar"></div>
-  <div id="authbar" class="authbar">
-    <button class="gbtn" id="g-signin" type="button">
-      <svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.4 29.3 35 24 35c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 5.1 29.5 3 24 3 12.4 3 3 12.4 3 24s9.4 21 21 21 21-9.4 21-21c0-1.2-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 13 24 13c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 5.1 29.5 3 24 3 16 3 9.1 7.6 6.3 14.7z"/><path fill="#4CAF50" d="M24 45c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 36 26.7 37 24 37c-5.3 0-9.7-2.6-11.3-7l-6.5 5C9 40.3 15.9 45 24 45z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.1-4.1 5.6l6.2 5.2C40.9 35.7 45 30.4 45 24c0-1.2-.1-2.3-.4-3.5z"/></svg>
-      Google
-    </button>
-    <label class="sr-only" for="auth-email">Email address</label>
-    <input id="auth-email" type="email" placeholder="you@example.com" autocomplete="username">
-    <label class="sr-only" for="auth-pass">Password</label>
-    <input id="auth-pass" type="password" placeholder="Password" autocomplete="current-password">
-    <button class="btn accent" id="e-signin" type="button">Sign in</button>
-    <button class="btn" id="e-register" type="button">Create account</button>
-    <button class="linkbtn" id="e-reset" type="button">Forgot password?</button>
-    <span id="cfgnote">Sign-in is not configured for this deployment. Progress stays in this browser.</span>
-    <div id="autherr" role="status" aria-live="polite"></div>
+    <nav class="main-nav" id="nav" aria-label="Preparation sections"></nav>
   </div>
 </header>
-<main>
-  <section class="view on" id="v-dash"></section>
-  <section class="view" id="v-plan"></section>
-  <section class="view" id="v-topics"></section>
-  <section class="view" id="v-leet"></section>
-  <section class="view" id="v-mocks"></section>
-  <section class="view" id="v-pipe"></section>
-  <section class="view" id="v-story"></section>
-  <section class="view" id="v-cards"></section>
-  <section class="view" id="v-gates"></section>
-  <section class="view" id="v-evidence"></section>
-  <section class="view" id="v-protocol"></section>
-  <section class="view" id="v-res"></section>
-  <section class="view" id="v-more"></section>
-  <section class="view" id="v-settings"></section>
+
+<main id="main" tabindex="-1">
+  <section class="view on" id="view-today"></section>
+  <section class="view" id="view-roadmap"></section>
+  <section class="view" id="view-practice"></section>
+  <section class="view" id="view-readiness"></section>
+  <section class="view" id="view-interview"></section>
+  <section class="view" id="view-setup"></section>
 </main>
 
+<input id="import-file" type="file" accept="application/json" hidden>
+<div id="live-region" class="skip-link" aria-live="polite" aria-atomic="true"></div>
+
 <script>
-/* ---------- dates (user-configurable via Settings) ---------- */
-const DEF_START='2026-08-03', DEF_TARGET='2027-05-31';
-function getStart(){const v=(typeof S!=='undefined'&&S.settings&&S.settings.startDate)||DEF_START;return new Date(v+'T00:00:00');}
-function getTarget(){const v=(typeof S!=='undefined'&&S.settings&&S.settings.targetDate)||DEF_TARGET;return new Date(v+'T00:00:00');}
-function fmtD(d){return d.toLocaleDateString(undefined,{month:'short',day:'numeric'});}
-function dateKey(d){const x=new Date(d);return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0');}
-function weekDateLabel(i,w){const a=new Date(getStart());a.setDate(a.getDate()+i*7);
-  if(w&&(w.openEnded||w.id==='live'))return 'From '+fmtD(a)+' onward';
-  const b=new Date(a);b.setDate(b.getDate()+6);return fmtD(a)+' – '+fmtD(b);}
+(function(){
+"use strict";
 
-/* ---------- plan content (loaded from plan.json; personalized at render time) ---------- */
-let WEEKS=[], PHASES={}, TOPICS=[], STORY_CATS=[], RESOURCES=[], PACING={};
-let GATES=[], EVIDENCE={}, TIMING={}, PROTOCOL={}, RUBRIC={}, TARGET_COMPANIES={groups:[]}, ADAPT_RULES=[], FAILURE_CATEGORIES=[], FIRST_CUTS=[], NEVER_CUT=[];
-let PERSONALIZATION={vars:{},branches:{}};
-let RAW_PLAN=null;
-let activeUid=null, activeEmail='', activeKey=null;
-let planError='';
-const PLAN_REFINEMENT_VERSION=12;
-const PLAN_CONTENT_REFINEMENT_VERSION=12;
-const TARGET_COMPANY_FIELDS=[
-  ['targetCompanyA','Target company 1','e.g. OpenAI'],
-  ['targetCompanyB','Target company 2','e.g. Anthropic'],
-  ['targetCompanyC','Target company 3','e.g. Google DeepMind']
+var PLAN=null;
+var KEY="research_interview_lab_v5";
+var S=null;
+var activeView="today";
+var activeCategory="All";
+var ticker=null;
+var TABS=[
+  ["today","Today"],
+  ["roadmap","Plan"],
+  ["practice","Practice"],
+  ["readiness","Gates"],
+  ["interview","Interview"],
+  ["setup","Settings"]
 ];
 
-function userVars(){
-  const vars={};
-  const cfg=(typeof S!=='undefined'&&S&&S.userConfig)||{};
-  const defs=PERSONALIZATION.vars||{};
-  TARGET_COMPANY_FIELDS.forEach(([k,label])=>{
-    const v=(cfg[k]||'').toString().trim();
-    vars[k]=v||label.toLowerCase();
-  });
-  Object.keys(defs).forEach(k=>{
-    const v=(cfg[k]||'').toString().trim();
-    vars[k]=v||(defs[k]&&defs[k].default)||k;
-  });
-  return vars;
-}
-function userBranchChoice(branchId){
-  const cfg=(typeof S!=='undefined'&&S&&S.userConfig)||{};
-  const defs=PERSONALIZATION.branches||{};
-  const def=defs[branchId];
-  const choice=(cfg.branches&&cfg.branches[branchId])||(def&&def.default);
-  return choice;
-}
-function substituteVars(text,vars){
-  if(typeof text!=='string')return text;
-  return text.replace(/\{\{(\w+)\}\}/g,(m,k)=>vars[k]!=null?vars[k]:m);
-}
-function taskText(t){
-  return typeof t==='string'?t:(t&&t.text)||'';
-}
-function taskPriority(t){
-  const p=typeof t==='object'&&t&&t.priority;
-  return p==='flex'||p==='company'?p:'core';
-}
-function isCoreTask(t){return taskPriority(t)==='core';}
-function normalizePlanContent(raw){
-  const plan=JSON.parse(JSON.stringify(raw||{}));
-  const weeks=Array.isArray(plan.weeks)?plan.weeks:[];
-  (plan.recurringTasks||[]).forEach(r=>{
-    const start=weeks.findIndex(w=>w.id===r.fromWeek);
-    const end=weeks.findIndex(w=>w.id===r.throughWeek);
-    if(start<0||end<start)return;
-    for(let wi=start;wi<=end;wi++){
-      const w=weeks[wi];
-      if((r.excludeWeeks||[]).includes(w.id))continue;
-      const suffix=r.taskIdSuffix||'OUT';
-      const id=w.id.toUpperCase()+'-'+suffix;
-      if((w.sessions||[]).some(s=>(s.x||[]).some(t=>t&&t.id===id)))continue;
-      const task=Object.assign({},r,{id});
-      delete task.fromWeek;delete task.throughWeek;delete task.excludeWeeks;delete task.taskIdSuffix;delete task.sessionTitle;
-      w.sessions=w.sessions||[];
-      w.sessions.push({t:r.sessionTitle,x:[task],_preserveDay:true});
-    }
-  });
-  const coding=plan.codingProgram||{};
-  const ordered=(coding.weekOrder||[]).flatMap(weekId=>(coding.schedule&&coding.schedule[weekId]||[]).map(q=>({weekId,q})));
-  ordered.forEach(({weekId,q},index)=>{
-    const w=weeks.find(x=>x.id===weekId);if(!w)return;
-    const taskId=q.taskId||q.id;
-    if((w.sessions||[]).some(s=>(s.x||[]).some(t=>t&&t.id===taskId)))return;
-    const reserve=Math.ceil((Number(q.attemptMinutes)||20)*1.96/5)*5;
-    const prior=index?ordered[index-1].q:null;
-    const prereq=q.prereq||(prior?(prior.taskId||prior.id):'');
-    const task={
-      id:taskId,priority:'core',codingProblem:true,codingProblemId:q.id,
-      difficulty:q.difficulty,topic:q.topic,attemptMinutes:q.attemptMinutes,
-      workWindow:`${q.attemptMinutes}m attempt + ${Math.max(15,reserve-q.attemptMinutes)}m review and log`,
-      calendarReserve:`${reserve}m`,gate:q.gate||undefined,
-      text:`<strong>Attempt:</strong> open <a href="${q.url}" target="_blank" rel="noopener" class="tlink">${q.title}</a>, turn AI assistance off, and set a ${q.attemptMinutes}-minute countdown. Explain the approach and target complexity before coding. <strong>Review:</strong> test edge cases, then inspect one explanation only after the countdown. Close it and restate the approach from memory. <strong>Log:</strong> save the pattern, elapsed attempt time, outcome, complexity, and first broken step.`,
-      competency:'general coding',scenario:'Coding screen',
-      why:q.gate?'This is the second problem in the first two-Medium checkpoint, scheduled after 19 mixed-topic preparations.':`This problem keeps ${String(q.topic||'coding').replaceAll('-',' ')} in a mixed sequence instead of isolating one topic for several weeks.`,
-      doneWhen:`${q.title} is logged with the pattern, elapsed attempt time, outcome, complexity, and first broken step.${q.gate?' The G1 result is also recorded.':''}`,
-      fallback:'Read the prompt, write a three-sentence approach and target complexity, log why implementation did not start, and stop.',
-      prereq
-    };
-    const problems=(coding.schedule&&coding.schedule[weekId])||[];
-    const slot=problems.findIndex(x=>x.id===q.id);
-    const days=weekId==='w0'?(problems.length===2?['Sun AM','Sun PM']:['Sat AM','Sun AM','Sun PM']):problems.length===2?['Wed','Sun']:['Tue','Thu','Sun'];
-    w.sessions=w.sessions||[];
-    const day=days[slot]||'Any day';
-    const session={t:`${day} · ${reserve}m — Grind 75 #${q.id.replace('G75-','')}: ${q.title}`,x:[task],_preserveDay:true};
-    const prefix=day.slice(0,3);let insertAt=-1;
-    w.sessions.forEach((s,i)=>{if(String(s.t||'').slice(0,3)===prefix)insertAt=i+1;});
-    if(insertAt<0)w.sessions.push(session);else w.sessions.splice(insertAt,0,session);
-  });
-  weeks.forEach(w=>{
-    (w.sessions||[]).forEach((s,si)=>{
-      s.x=(Array.isArray(s.x)?s.x:[]).map((t,ti)=>{
-        const legacyKey=w.id+'s'+si+'#'+ti;
-        if(typeof t==='string')return {text:t,_key:legacyKey,_legacyKey:legacyKey};
-        return Object.assign({},t||{},{_key:(t&&t.id)||legacyKey,_legacyKey:legacyKey});
-      });
-    });
-  });
-  plan.clientRefinementVersion=PLAN_CONTENT_REFINEMENT_VERSION;
-  return plan;
-}
-function applyTrackFilter(weeks){
-  return (weeks||[]).filter(w=>{
-    if(!w.track)return true;
-    const branchId=w.trackOf||'w9';
-    return userBranchChoice(branchId)===w.track;
+function esc(value){
+  return String(value==null?"":value).replace(/[&<>"']/g,function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
   });
 }
-function migratePlanProgress(){
-  if(typeof S==='undefined'||!S||S.planRefinementVersion>=PLAN_REFINEMENT_VERSION)return false;
-  if(!S.weekTasks||typeof S.weekTasks!=='object')S.weekTasks={};
-  if((S.planRefinementVersion||0)<3) S.weekTasks={};
-  if((S.planRefinementVersion||0)<4){
-    Object.keys(S.weekTasks).forEach(k=>{if(/^(w4|w6|w7|w8|w9)/.test(k))delete S.weekTasks[k];});
-  }
-  // v5 re-sequences every week (adds W0 and the Live Phase), so positional task keys no longer
-  // point at the same work. Keeping them would mark unrelated tasks done.
-  if((S.planRefinementVersion||0)<5) S.weekTasks={};
-  // v6 switches from positional keys to the stable IDs introduced by the audit.
-  // Preserve any progress recorded against the first v5 renderer.
-  if((S.planRefinementVersion||0)<6){
-    WEEKS.forEach(w=>(w.sessions||[]).forEach(s=>(s.x||[]).forEach(t=>{
-      if(t.id&&t._legacyKey&&S.weekTasks[t._legacyKey])S.weekTasks[t.id]=true;
-    })));
-  }
-  // v7 fixes the prerequisite order. These six tasks changed meaning, and old gate
-  // results must not survive the move from a cold Week 0 test to taught Week 1/2 gates.
-  if((S.planRefinementVersion||0)<7){
-    ['W0-G1','W0-G2','W0-G8','W1-T8','W2-T2','W2-T8'].forEach(id=>delete S.weekTasks[id]);
-    if(S.gates) ['G1','G2','G8'].forEach(id=>delete S.gates[id]);
-  }
-  if((S.planRefinementVersion||0)<8){
-    const changed=['W1-T4','W3-T1','W3-T3','W3-T4','W4-T2','W4-T3','W4-T4',
-      'W5-T2','W5-T3','W5-T4','W5-T7','W6-T2','W6-T3','W6-T7','W6-T8',
-      'W7-T1','W7-T2','W7-T3','W7-T4','W7-T8','W8-T3','W9-T2','W9-T3',
-      'W9-T4','W9-T7','W9-T8','W10-T4','W11-T4','W11-T7','W13-T2','W13-T3',
-      'W13-T4','W13-T7','W14-T1','W14-T3','W15-T3','W15-T6','W15-T7'];
-    changed.forEach(id=>delete S.weekTasks[id]);
-  }
-  // v9 adds the evidence-backed coding sequence and changes the modern vision,
-  // visual post-training and data/evaluation assignments.
-  if((S.planRefinementVersion||0)<9){
-    ['W0-G1','W2-T8','W3-T2','W3-T6','W6-T3','W9-T2','W9-T4','W9-T8','W10-T3','W10-T7','W14-T6']
-      .forEach(id=>delete S.weekTasks[id]);
-    if(S.gates) ['G1','G7'].forEach(id=>delete S.gates[id]);
-  }
-  // v10 changes timing presentation and adds actual-duration calibration without
-  // invalidating completed curriculum work.
-  if((S.planRefinementVersion||0)<10&&!S.taskTimes)S.taskTimes={};
-  // v11 replaces the one-problem maintenance queue with a 34-problem Grind 75
-  // sequence and moves G1 until after 19 preparations. Old coding marks no
-  // longer refer to the same work.
-  if((S.planRefinementVersion||0)<11){
-    Object.keys(S.weekTasks).forEach(k=>{if(/-DSA$/.test(k)||['W0-G1','W2-T8','W3-T2'].includes(k))delete S.weekTasks[k];});
-    if(S.gates)delete S.gates.G1;
-  }
-  // v12 replaces the old Two Sum task with a recognition-sheet refresher.
-  // Progress, notes and elapsed time for the old task must not mark the new work done.
-  if((S.planRefinementVersion||0)<12){
-    delete S.weekTasks['W0-G1'];
-    if(S.taskNotes)delete S.taskNotes['W0-G1'];
-    if(S.taskTimes)delete S.taskTimes['W0-G1'];
-    if(S.skippedTasks)delete S.skippedTasks['W0-G1'];
-  }
-  S.planRefinementVersion=PLAN_REFINEMENT_VERSION;
-  return true;
+function todayKey(){
+  var d=new Date();
+  return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
 }
-function rebuildWeeks(){
-  if(!RAW_PLAN)return;
-  const allWeeks=Array.isArray(RAW_PLAN.weeks)?RAW_PLAN.weeks:[];
-  allWeeks.forEach(w=>{if(w.track&&!w.trackOf)w.trackOf='w9';});
-  WEEKS=JSON.parse(JSON.stringify(applyTrackFilter(allWeeks)));
+function nextMondayKey(){
+  var d=new Date();
+  var add=(8-d.getDay())%7;
+  d.setDate(d.getDate()+add);
+  return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
 }
-function setPlan(raw){
-  if(!raw)return;
-  RAW_PLAN=normalizePlanContent(raw);
-  PERSONALIZATION=RAW_PLAN.personalization||{vars:{},branches:{}};
-  PACING=RAW_PLAN.pacing||{};
-  rebuildWeeks();
-  PHASES=RAW_PLAN.phases||{};TOPICS=RAW_PLAN.topics||[];
-  STORY_CATS=RAW_PLAN.stories||[];RESOURCES=RAW_PLAN.resources||[];
-  GATES=RAW_PLAN.gates||[];EVIDENCE=RAW_PLAN.evidenceBase||{};TIMING=RAW_PLAN.timingModel||{};PROTOCOL=RAW_PLAN.protocol||{};RUBRIC=RAW_PLAN.rubric||{};TARGET_COMPANIES=RAW_PLAN.targetCompanies||{groups:[]};
-  ADAPT_RULES=RAW_PLAN.adaptationRules||[];FAILURE_CATEGORIES=RAW_PLAN.failureCategories||[];
-  FIRST_CUTS=RAW_PLAN.firstFiveCuts||[];NEVER_CUT=RAW_PLAN.neverCut||[];
-  planError='';const migrated=migratePlanProgress();
+function freshState(){
+  return {
+    version:5,
+    startDate:nextMondayKey(),
+    targetDate:PLAN.defaultTargetDate,
+    role:"both",
+    completed:{},
+    stepDone:{},
+    minimum:{},
+    notes:{},
+    selectedTask:"",
+    selectedAtWeek:-1,
+    gateResults:{},
+    gateNotes:{},
+    drillResults:{},
+    activeDrill:"",
+    interview:{active:false,company:"",role:"Research Scientist / Research Engineer",date:"",format:"",focus:"",checks:{},sprint:"",sprintChoices:{},contractKey:"",runId:""},
+    timer:{id:"",remaining:0,running:false,startedAt:0}
+  };
+}
+function loadState(){
+  var base=freshState();
   try{
-    if(migrated&&activeKey)localStorage.setItem(activeKey,JSON.stringify(S));
-  }catch(e){}
-}
-window.__applyPlan=function(p){ setPlan(p); if(typeof renderAllViews==='function') renderAllViews(); };
-window.__hasPlan=()=>WEEKS.length>0;
-window.__planMissing=function(){ planError="The preparation plan could not be loaded. Please refresh or contact the site owner."; if(typeof renderAllViews==='function') renderAllViews(); };
-
-/* ---------- state ---------- */
-const KEY='ipcc_v2';
-const DEFAULT={
-  schemaVersion:5,
-  planRefinementVersion:0,
-  weekTasks:{},        // "w1#0": true
-  topics:{},           // idx: {explain:bool, implement:bool, status:''}
-  storyReady:{},       // cat: bool
-  storyText:{},        // cat: text
-  resReviewed:{},      // "g#i": bool
-  leet:[],             // {date,problem,pattern,diff,unaided,min,revisit,notes}
-  mocks:[],            // {date,type,who,score,well,fix,follow}
-  pipe:[],             // {company,role,priority,stage,recruiter,referral,applied,next,status,notes}
-  cards:[],            // {prompt,answer,source,due,last}
-  taskNotes:{},
-  taskTimes:{},         // stable task key: accumulated focus seconds
-  skippedTasks:{},
-  openWeeks:{},         // week id: whether its roadmap card is expanded
-  gates:{},            // gate id: {status,date,failure,notes}
-  protocolActive:false,
-  protocolCompany:'',
-  settings:{startDate:DEF_START,targetDate:DEF_TARGET,days:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],name:''},
-  userConfig:{projectA:'',projectB:'',projectC:'',primaryLane:'',adjacentLane:'',targetLabA:'',targetLabB:'',targetCompanyA:'',targetCompanyB:'',targetCompanyC:'',branches:{}},
-};
-function freshState(){return JSON.parse(JSON.stringify(DEFAULT))}
-function normSettings(o){const d={startDate:DEF_START,targetDate:DEF_TARGET,days:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],name:''};
-  const s=Object.assign({},d,o||{}); if(!Array.isArray(s.days)||s.days.length<6)s.days=d.days.slice(); return s;}
-function normUserConfig(o){
-  const d={projectA:'',projectB:'',projectC:'',primaryLane:'',adjacentLane:'',targetLabA:'',targetLabB:'',targetCompanyA:'',targetCompanyB:'',targetCompanyC:'',branches:{}};
-  const u=Object.assign({},d,o||{});
-  if(!u.branches||typeof u.branches!=='object')u.branches=Object.assign({},d.branches);
-  else u.branches=Object.assign({},d.branches,u.branches);
-  return u;
-}
-let S=freshState();
-function normalizeState(raw){
-  const prior=raw||{};const m=Object.assign(freshState(),prior);
-  m.settings=normSettings(m.settings);
-  if((prior.schemaVersion||0)<4&&m.settings.startDate==='2026-06-29'&&m.settings.targetDate==='2026-10-19'){
-    m.settings.startDate=DEF_START;m.settings.targetDate=DEF_TARGET;
-  }
-  if((prior.schemaVersion||0)<5&&m.settings.targetDate==='2027-01-11')m.settings.targetDate=DEF_TARGET;
-  if(!m.gates||typeof m.gates!=='object')m.gates={};
-  if(!Array.isArray(m.cards))m.cards=[];
-  if(!m.taskNotes||typeof m.taskNotes!=='object')m.taskNotes={};
-  if(!m.taskTimes||typeof m.taskTimes!=='object')m.taskTimes={};
-  if(!m.skippedTasks||typeof m.skippedTasks!=='object')m.skippedTasks={};
-  if(!m.openWeeks||typeof m.openWeeks!=='object')m.openWeeks={};
-  m.schemaVersion=5;m.userConfig=normUserConfig(m.userConfig);return m;
-}
-function loadForUser(uid){
-  const carry=RAW_PLAN;   // the plan is shared content — keep it across guest ↔ account switches
-  activeUid=uid;activeKey=KEY+':'+uid;
-  WEEKS=[];PHASES={};TOPICS=[];STORY_CATS=[];RESOURCES=[];planError='';
-  try{S=normalizeState(JSON.parse(localStorage.getItem(activeKey)))}catch(e){S=freshState()}
-  // Curriculum content is shared and comes from plan.json. Account changes may
-  // replace progress, but they must never replace the current curriculum.
-  if(carry)setPlan(carry);
-  try{localStorage.removeItem('ipcc_plan_v2:'+uid)}catch(e){}
-}
-let saveTimer;
-function save(){clearTimeout(saveTimer);saveTimer=setTimeout(()=>{if(activeKey)localStorage.setItem(activeKey,JSON.stringify(S));flashSaved();scheduleFileWrite();scheduleServerSave();if(window.__cloudSave)window.__cloudSave(S);},150)}
-function flashSaved(){document.querySelectorAll('.savedtag').forEach(t=>{t.classList.add('show');setTimeout(()=>t.classList.remove('show'),900)})}
-
-/* ---------- cloud mode (Firebase) — local helper disabled in the deployed app ---------- */
-const CLOUD = true;
-window.__getState=()=>S;
-window.__prepareUser=function(uid,email){loadForUser(uid);activeEmail=email||'(signed in)';window.__user=activeEmail;renderAllViews();};
-window.__applyRemote=function(data){ if(data&&Object.keys(data).length){ S=normalizeState(data);const migrated=migratePlanProgress();if(activeKey)localStorage.setItem(activeKey,JSON.stringify(S));renderAllViews();if(migrated)save(); } };
-window.__onLogin=function(){ window.__hideAuth(); renderStorageBar(); renderAllViews(); };
-
-/* ---------- guest mode: the plan is readable and tickable without an account ---------- */
-const GUEST_UID='guest';
-function hasProgress(st){
-  if(!st)return false;
-  if(st.weekTasks&&Object.keys(st.weekTasks).some(k=>st.weekTasks[k]))return true;
-  if(st.topics&&Object.keys(st.topics).length)return true;
-  if(st.storyReady&&Object.keys(st.storyReady).some(k=>st.storyReady[k]))return true;
-  if(st.gates&&Object.values(st.gates).some(g=>g&&g.status))return true;
-  if(st.protocolActive)return true;
-  if(Array.isArray(st.cards)&&st.cards.length)return true;
-  if(st.taskNotes&&Object.keys(st.taskNotes).some(k=>st.taskNotes[k]))return true;
-  if(st.skippedTasks&&Object.keys(st.skippedTasks).some(k=>st.skippedTasks[k]))return true;
-  return ['leet','mocks','pipe'].some(k=>Array.isArray(st[k])&&st[k].length);
-}
-// Read the guest session's progress without destroying it — it stays as a local backup.
-window.__guestProgress=function(){
-  try{const st=JSON.parse(localStorage.getItem(KEY+':'+GUEST_UID));return hasProgress(st)?st:null;}catch(e){return null;}
-};
-window.__adoptState=function(st){
-  if(!st)return;
-  S=normalizeState(st);migratePlanProgress();
-  if(activeKey)localStorage.setItem(activeKey,JSON.stringify(S));
-  renderAllViews();
-};
-window.__startGuest=function(){
-  window.__user=null;activeEmail='';
-  loadForUser(GUEST_UID);
-  window.__hideAuth();renderAllViews();renderStorageBar();
-};
-window.__showAuth=function(){
-  const o=document.getElementById('authbar'); if(o)o.classList.add('on');
-  const e=document.getElementById('autherr'); if(e)e.textContent='';
-  const em=document.getElementById('auth-email'); if(em)em.focus();
-};
-window.__hideAuth=function(){
-  const o=document.getElementById('authbar'); if(o)o.classList.remove('on');
-  const e=document.getElementById('autherr'); if(e)e.textContent='';
-};
-window.__toggleAuth=function(){
-  const o=document.getElementById('authbar');
-  if(o&&o.classList.contains('on'))window.__hideAuth(); else window.__showAuth();
-};
-window.__onLogout=function(){
-  // Signing out drops back to the guest session rather than locking the app.
-  window.__syncStatus='';
-  window.__startGuest();
-};
-window.__authError=function(msg){ const e=document.getElementById('autherr'); if(e)e.textContent=msg||'Something went wrong. Try again.'; };
-window.__syncState=function(state){window.__syncStatus=state;renderStorageBar();};
-window.__needConfig=function(){
-  const c=document.getElementById('cfgnote'); if(c)c.style.display='inline';
-  ['g-signin','auth-email','auth-pass','e-signin','e-register','e-reset']
-    .forEach(id=>{const e=document.getElementById(id); if(e)e.style.display='none';});
-};
-const SERVER = false;
-let serverTimer, serverOK=false;
-async function serverPing(){try{const r=await fetch('/ping',{cache:'no-store'});serverOK=r.ok;}catch(e){serverOK=false;}return serverOK;}
-async function serverLoad(){
-  try{const r=await fetch('/load',{cache:'no-store'});if(r.ok){const j=await r.json();serverOK=true;
-    if(j&&Object.keys(j).length){S=normalizeState(j);if(activeKey)localStorage.setItem(activeKey,JSON.stringify(S));}}}
-  catch(e){serverOK=false;}
-}
-function scheduleServerSave(){if(!SERVER)return;clearTimeout(serverTimer);serverTimer=setTimeout(serverSave,350)}
-async function serverSave(){
-  if(!SERVER)return;
-  try{const r=await fetch('/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(S)});
-    serverOK=r.ok;setFileStatus(r.ok?'saved to progress.json ✓':'helper error; kept in browser');}
-  catch(e){serverOK=false;setFileStatus('helper offline; kept in browser');renderStorageBar();}
-}
-
-/* ---------- robust file persistence (File System Access API) ---------- */
-let fileHandle=null, fileName='';
-function fsaSupported(){return 'showSaveFilePicker' in window}
-function idbOpen(){return new Promise((res,rej)=>{const r=indexedDB.open('ipcc_fs',1);r.onupgradeneeded=()=>r.result.createObjectStore('kv');r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
-async function idbSet(k,v){try{const db=await idbOpen();await new Promise((res,rej)=>{const t=db.transaction('kv','readwrite');t.objectStore('kv').put(v,k);t.oncomplete=res;t.onerror=()=>rej(t.error)})}catch(e){}}
-async function idbGet(k){try{const db=await idbOpen();return await new Promise((res,rej)=>{const t=db.transaction('kv','readonly');const q=t.objectStore('kv').get(k);q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error)})}catch(e){return null}}
-async function idbDel(k){try{const db=await idbOpen();await new Promise(res=>{const t=db.transaction('kv','readwrite');t.objectStore('kv').delete(k);t.oncomplete=res;t.onerror=res})}catch(e){}}
-
-async function connectFile(){
-  if(!fsaSupported()){alert('Auto-save to a file needs Chrome or Edge. On any browser you can still use Export / Import to back up.');return}
-  try{
-    const h=await window.showSaveFilePicker({suggestedName:'Interview_Prep_progress.json',
-      types:[{description:'Progress JSON',accept:{'application/json':['.json']}}]});
-    let existing=null;
-    try{const f=await h.getFile();const txt=await f.text();if(txt.trim())existing=JSON.parse(txt)}catch(e){}
-    if(existing&&Object.keys(existing).length){
-      if(confirm('This file already has saved progress.\n\nOK = load it into the app.\nCancel = overwrite it with your current progress.')){
-        S=normalizeState(existing);if(activeKey)localStorage.setItem(activeKey,JSON.stringify(S));
-      }
+    var saved=JSON.parse(localStorage.getItem(KEY)||"null");
+    if(saved&&saved.version===5){
+      Object.keys(saved).forEach(function(k){base[k]=saved[k];});
+      base.interview=Object.assign(freshState().interview,saved.interview||{});
+      base.timer=Object.assign(freshState().timer,saved.timer||{});
     }
-    fileHandle=h;fileName=h.name;await idbSet('handle',h);
-    await writeFile();renderAllViews();renderStorageBar();
-  }catch(e){if(e&&e.name!=='AbortError')alert('Could not open the file picker here. If you opened this page directly from disk, your browser may block file access. Use Export / Import instead, or open it through a local web server.')}
+  }catch(err){}
+  return base;
 }
-async function disconnectFile(){fileHandle=null;fileName='';await idbDel('handle');renderStorageBar()}
-let fileTimer;
-function scheduleFileWrite(){if(!fileHandle)return;clearTimeout(fileTimer);fileTimer=setTimeout(writeFile,400)}
-async function writeFile(){
-  if(!fileHandle)return;
-  try{
-    if(fileHandle.queryPermission){let p=await fileHandle.queryPermission({mode:'readwrite'});
-      if(p!=='granted'){p=await fileHandle.requestPermission({mode:'readwrite'});if(p!=='granted'){renderStorageBar(true);return}}}
-    const w=await fileHandle.createWritable();await w.write(JSON.stringify(S,null,2));await w.close();
-    setFileStatus('saved to file ✓');
-  }catch(e){setFileStatus('file save failed; kept in browser')}
+function save(){
+  try{localStorage.setItem(KEY,JSON.stringify(S));}catch(err){}
 }
-async function loadFromFile(){
-  try{const f=await fileHandle.getFile();const txt=await f.text();
-    if(txt.trim()){S=normalizeState(JSON.parse(txt));if(activeKey)localStorage.setItem(activeKey,JSON.stringify(S));renderAllViews()}}catch(e){}
+function announce(text){
+  var node=document.getElementById("live-region");
+  node.textContent=text;
 }
-async function tryReconnect(){
-  if(!fsaSupported())return;
-  const h=await idbGet('handle');if(!h)return;
-  fileHandle=h;fileName=h.name||'progress file';
-  let perm='prompt';try{perm=await h.queryPermission({mode:'readwrite'})}catch(e){}
-  if(perm==='granted'){await loadFromFile();renderStorageBar()}else{renderStorageBar(true)}
+function parseDate(key){
+  return new Date(key+"T12:00:00");
 }
-async function grantReconnect(){
-  if(!fileHandle)return;
-  try{const r=await fileHandle.requestPermission({mode:'readwrite'});if(r==='granted'){await loadFromFile();renderStorageBar()}}catch(e){}
+function dayDiff(a,b){
+  return Math.floor((a-b)/86400000);
 }
-function setFileStatus(t){const e=document.getElementById('filestat');if(e)e.textContent=t}
-function renderStorageBar(needReconnect){
-  const bar=document.getElementById('storagebar');if(!bar)return;
-  let html;
-  if(CLOUD){
-    if(window.__user){
-      const status=window.__syncStatus||'synced';
-      const dot=status==='error'?'bad':status==='saving'?'warn':'good';
-      const label=status==='error'?'Sync failed. Progress is safe on this device.':status==='saving'?'Saving…':'Synced';
-      bar.innerHTML=`<span class="dot ${dot}"></span><span class="muted">${label} · <b id="sync-user"></b></span><span class="sp"></span><button class="btn sm" id="sb-set">Settings</button><button class="btn sm" id="sb-out">Sign out</button>`;
-      const u=document.getElementById('sync-user');if(u)u.textContent=window.__user;
-      const o=document.getElementById('sb-out'); if(o)o.onclick=()=>{window.__signOut&&window.__signOut()};
-    } else {
-      bar.innerHTML='<span class="dot warn"></span><span class="muted">Progress is saved in this browser only.</span><span class="sp"></span><button class="btn sm" id="sb-set">Settings</button><button class="btn sm accent" id="sb-in">Sign in to sync</button>';
-      const i=document.getElementById('sb-in'); if(i)i.onclick=()=>window.__toggleAuth();
-    }
-    const g=document.getElementById('sb-set'); if(g)g.onclick=()=>show('settings');
-    return;
+function elapsedWeekIndex(){
+  var start=parseDate(S.startDate);
+  var now=parseDate(todayKey());
+  if(now<start)return 0;
+  return Math.max(0,Math.floor(dayDiff(now,start)/7));
+}
+function weekIndex(){
+  return Math.min(PLAN.weeks.length-1,elapsedWeekIndex());
+}
+function weekDates(index){
+  var start=parseDate(S.startDate);
+  start.setDate(start.getDate()+index*7);
+  var end=new Date(start);
+  end.setDate(end.getDate()+6);
+  var fmt=new Intl.DateTimeFormat(undefined,{month:"short",day:"numeric"});
+  return fmt.format(start)+"–"+fmt.format(end);
+}
+function allTasks(){
+  var out=[];
+  PLAN.weeks.forEach(function(w,wi){
+    w.sessions.forEach(function(t,ti){out.push({task:t,week:w,weekIndex:wi,taskIndex:ti});});
+  });
+  return out;
+}
+function findTask(id){
+  var fixed=allTasks().find(function(x){return x.task.id===id;});
+  if(fixed)return fixed;
+  var wi=elapsedWeekIndex();
+  if(wi>=PLAN.weeks.length){
+    var w=maintenanceWeek(wi);
+    var task=w.sessions.find(function(t){return t.id===id;});
+    if(task)return {task:task,week:w,weekIndex:wi,taskIndex:w.sessions.indexOf(task)};
   }
-  if(SERVER){
-    html=`<span class="dot ${serverOK?'good':'warn'}"></span><span>${serverOK?'Auto-saving to <b>progress.json</b> through the local helper.':'The local helper is not responding. Progress remains in this browser. Make sure the helper is installed (see Install.command).'}</span><span id="filestat" class="muted sm"></span>`;
-    bar.innerHTML=html;return;
+  return null;
+}
+function currentWeek(){
+  var wi=elapsedWeekIndex();
+  return wi<PLAN.weeks.length?PLAN.weeks[wi]:maintenanceWeek(wi);
+}
+function maintenanceWeek(wi){
+  var number=wi-PLAN.weeks.length+1;
+  var due=PLAN.maintenance.filter(function(t){
+    if(/^Every other /.test(t.cadence||""))return number%2===1;
+    if(/^Monthly/.test(t.cadence||""))return (number-1)%4===0;
+    return true;
+  });
+  return {
+    id:"maintenance-"+number,
+    title:"Maintenance week "+number,
+    outcome:"Keep retrieval, coding, implementation, targeting, and one mock alive without rebuilding the syllabus.",
+    maintenance:true,
+    sessions:due.map(function(t){
+      return Object.assign({},t,{id:"M"+number+"-"+t.id.replace("MM-","")});
+    })
+  };
+}
+function weekDoneCount(w){
+  return w.sessions.filter(function(t){return !!S.completed[t.id];}).length;
+}
+function firstIncomplete(w){
+  return w.sessions.find(function(t){return !S.completed[t.id];})||null;
+}
+function displayRole(){
+  if(S.role==="rs")return "Research Scientist";
+  if(S.role==="re")return "Research Engineer";
+  return "Research Scientist + Research Engineer";
+}
+function currentTaskRecord(){
+  if(S.selectedTask&&S.selectedAtWeek===elapsedWeekIndex()){
+    var selected=findTask(S.selectedTask);
+    if(selected)return selected;
   }
-  if(fileHandle&&!needReconnect){
-    html=`<span class="dot good"></span><span>Auto-saving to <b>${fileName}</b></span><span id="filestat" class="muted sm"></span><span class="sp"></span><button class="btn sm" id="sb-disc">Disconnect</button>`;
-  }else if(fileHandle&&needReconnect){
-    html=`<span class="dot warn"></span><span>Progress file found. Reconnect it to resume automatic saving.</span><span class="sp"></span><button class="btn sm accent" id="sb-recon">Reconnect file</button>`;
-  }else{
-    const sup=fsaSupported();
-    html=`<span class="dot ${sup?'':'bad'}"></span><span>${sup?'Progress is saved in this browser. Link a file in your folder for automatic saving and backup.':'Progress is saved in this browser. Automatic file saving needs Chrome or Edge. Use Export / Import to make a backup.'}</span><span class="sp"></span>${sup?'<button class="btn sm accent" id="sb-conn">Link progress file</button>':''}`;
-  }
-  bar.innerHTML=html;
-  const g=id=>document.getElementById(id);
-  if(g('sb-conn'))g('sb-conn').onclick=connectFile;
-  if(g('sb-disc'))g('sb-disc').onclick=disconnectFile;
-  if(g('sb-recon'))g('sb-recon').onclick=grantReconnect;
+  var wi=elapsedWeekIndex();
+  var w=currentWeek();
+  var task=firstIncomplete(w)||w.sessions[w.sessions.length-1];
+  return {task:task,week:w,weekIndex:wi,taskIndex:w.sessions.indexOf(task)};
 }
-function renderAllViews(){
-  renderDash();renderPlan();renderTopics();renderLeet();renderMocks();renderPipe();renderStory();
-  renderCards();renderGates();renderEvidence();renderProtocol();renderRes();renderMore();renderSettings();
-  refreshHeader();
-}
-
-/* ---------- helpers ---------- */
-const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
-function escapeHtml(v){return String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function daysBetween(a,b){return Math.round((b-a)/86400000)}
-function currentWeekIdx(){if(!WEEKS.length)return 0;const now=new Date();const st=getStart();if(now<st)return 0;const w=Math.floor(daysBetween(st,now)/7);return Math.min(Math.max(w,0),WEEKS.length-1)}
-
-/* ---------- progress math ---------- */
-function weekStamp(d){const x=new Date(d);const day=(x.getDay()+6)%7;x.setDate(x.getDate()-day);return dateKey(x)}
-function tkey(w,si,ti,t){
-  const base=(t&&t.id)||(t&&t._key)||w.id+'s'+si+'#'+ti;
-  return w.id==='live'&&['LIVE-1','LIVE-2','LIVE-3'].includes(base)?base+'@'+weekStamp(new Date()):base;
-}
-function taskSkipped(w,si,ti,t){return !!S.skippedTasks[tkey(w,si,ti,t)]}
-function weekTotal(i){let n=0;const w=WEEKS[i];w.sessions.forEach((s,si)=>s.x.forEach((task,ti)=>{if(isCoreTask(task)&&!taskSkipped(w,si,ti,task))n++}));return n}
-function weekDone(i){const w=WEEKS[i];let d=0;w.sessions.forEach((s,si)=>s.x.forEach((t,ti)=>{if(isCoreTask(t)&&!taskSkipped(w,si,ti,t)&&S.weekTasks[tkey(w,si,ti,t)])d++}));return d}
-function reserveMinutes(profile){
-  const s=(profile.calendarReserve||'').toLowerCase();const h=s.match(/(\d+)h(?:\s*(\d+)m)?/);if(h)return Number(h[1])*60+Number(h[2]||0);
-  const nums=(s.match(/\d+/g)||[]).map(Number);return nums.length?Math.max(...nums):0;
-}
-function weekReserve(i){const w=WEEKS[i];let m=0;w.sessions.forEach((s,si)=>s.x.forEach((t,ti)=>{if(isCoreTask(t)&&!taskSkipped(w,si,ti,t))m+=reserveMinutes(timingProfile(w,s,t));}));return m;}
-function reserveLabel(m){return m>=60?`${Math.floor(m/60)}h${m%60?String(m%60).padStart(2,'0')+'m':''}`:`${m}m`;}
-function sessDone(w,si){let d=0;w.sessions[si].x.forEach((t,ti)=>{if(S.weekTasks[tkey(w,si,ti,t)]||taskSkipped(w,si,ti,t))d++});return d}
-function sessCoreTotal(w,si){let n=0;w.sessions[si].x.forEach((t,ti)=>{if(isCoreTask(t)&&!taskSkipped(w,si,ti,t))n++});return n}
-function sessCoreDone(w,si){let d=0;w.sessions[si].x.forEach((t,ti)=>{if(isCoreTask(t)&&!taskSkipped(w,si,ti,t)&&S.weekTasks[tkey(w,si,ti,t)])d++});return d}
-function planPct(){let t=0,d=0;WEEKS.forEach((w,i)=>{if(w.id==='live')return;t+=weekTotal(i);d+=weekDone(i)});return t?d/t:0}
-function topicsPct(){let t=TOPICS.length*2,d=0;TOPICS.forEach((_,i)=>{const o=S.topics[i]||{};if(o.explain)d++;if(o.implement)d++});return t?d/t:0}
-function storyPct(){let d=0;STORY_CATS.forEach(c=>{if(S.storyReady[c])d++});return STORY_CATS.length?d/STORY_CATS.length:0}
-function resPct(){let t=0,d=0;RESOURCES.forEach((g,gi)=>g.items.forEach((_,ii)=>{t++;if(S.resReviewed[gi+'#'+ii])d++}));return t?d/t:0}
-function leetCount(){return S.leet.filter(r=>r.unaided==='Y'||r.problem).length}
-function gatePct(){return GATES.length?GATES.filter(g=>(S.gates[g.id]||{}).status==='pass').length/GATES.length:0}
-function orderedGates(){
-  const wi=id=>{const n=WEEKS.findIndex(w=>w.id===id);return n<0?999:n;};
-  return [...GATES].sort((a,b)=>wi(a.week)-wi(b.week)||a.id.localeCompare(b.id,undefined,{numeric:true}));
-}
-function overallPct(){
-  // Do not manufacture a "readiness" number from arbitrary weights.
-  return planPct();
-}
-function pct(x){return Math.round(x*100)+'%'}
-
-/* ---------- header ---------- */
-function refreshHeader(){
-  const now=new Date();const st=getStart();
-  const current=WEEKS[currentWeekIdx()];
-  const wk = now<st ? ('Starts '+fmtD(st)) : (current?current.label:'Plan');
-  const wl=document.getElementById('kWeekLabel'); if(wl)wl.textContent=wk;
-  const sub=document.getElementById('sub'); if(sub)sub.textContent=(S.settings&&S.settings.name)||'Research Scientist · Generative Vision / Multimodal';
-  const p=overallPct();
-  const kp=document.getElementById('kPct'); if(kp)kp.textContent=pct(p)+' complete';
-  const kb=document.getElementById('kBar'); if(kb)kb.style.width=pct(p);
-}
-
-/* ---------- navigation ---------- */
-const TABS=[['dash','Today'],['plan','Plan'],['leet','Coding'],['mocks','Mocks'],['pipe','Companies'],['more','More']];
-const AUX_TABS=[
-  ['topics','Knowledge map','Track concepts that you can explain and apply.'],
-  ['story','Stories','Prepare and save behavioral examples.'],
-  ['cards','Review cards','Retrieve earlier material without rereading it.'],
-  ['gates','Checkpoints','Record measured interview-practice results.'],
-  ['protocol','Before an interview','Switch to the 72-hour company plan.'],
-  ['evidence','Why this plan','Read the evidence and limits behind the curriculum.'],
-  ['res','Reading','Find a source when a task identifies a gap.'],
-  ['settings','Settings','Change dates, study days, projects, and account data.']
-];
-const KNOWN_TABS=new Set([...TABS,...AUX_TABS].map(x=>x[0]));
 function buildNav(){
-  const nav=document.getElementById('nav');if(!nav)return;nav.innerHTML='';
-  TABS.forEach(([id,label])=>{
-    const b=el('button',null,label);
-    b.type='button';b.id='tab-'+id;b.onclick=()=>show(id);nav.appendChild(b);
+  var nav=document.getElementById("nav");
+  nav.innerHTML="";
+  TABS.forEach(function(item){
+    var b=document.createElement("button");
+    b.className="nav-btn";
+    b.type="button";
+    b.id="nav-"+item[0];
+    b.textContent=item[1];
+    b.addEventListener("click",function(){show(item[0]);});
+    nav.appendChild(b);
   });
 }
 function show(id){
-  document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
-  document.querySelectorAll('#nav button').forEach(b=>b.classList.remove('on'));
-  const v=document.getElementById('v-'+id);
-  if(!v)return;
-  // Re-render the target view so checkmark state set on other tabs propagates here.
-  const renders={dash:renderDash,plan:renderPlan,topics:renderTopics,leet:renderLeet,mocks:renderMocks,
-    pipe:renderPipe,story:renderStory,cards:renderCards,gates:renderGates,evidence:renderEvidence,protocol:renderProtocol,res:renderRes,more:renderMore,settings:renderSettings};
-  if(renders[id])renders[id]();
-  v.classList.add('on');
-  const tab=document.getElementById('tab-'+id)||document.getElementById('tab-more');if(tab)tab.classList.add('on');
-  if(tab)tab.scrollIntoView({block:'nearest',inline:'center'});
-  if(id!=='settings')history.replaceState(null,'','#'+id);
+  if(!document.getElementById("view-"+id))id="today";
+  activeView=id;
+  document.querySelectorAll(".view").forEach(function(v){v.classList.remove("on");});
+  document.querySelectorAll(".nav-btn").forEach(function(b){b.classList.remove("on");b.removeAttribute("aria-current");});
+  document.getElementById("view-"+id).classList.add("on");
+  var tab=document.getElementById("nav-"+id);
+  tab.classList.add("on");
+  tab.setAttribute("aria-current","page");
+  renderView(id);
+  history.replaceState(null,"","#"+id);
   window.scrollTo(0,0);
 }
+function renderView(id){
+  if(id==="today")renderToday();
+  if(id==="roadmap")renderRoadmap();
+  if(id==="practice")renderPractice();
+  if(id==="readiness")renderReadiness();
+  if(id==="interview")renderInterview();
+  if(id==="setup")renderSetup();
+  renderHeader();
+}
+function renderHeader(){
+  var w=currentWeek();
+  var done=weekDoneCount(w);
+  var pct=Math.round(done/w.sessions.length*100);
+  var wi=elapsedWeekIndex();
+  var phaseLabel=wi<PLAN.weeks.length?("Week "+(wi+1)+" of "+PLAN.weeks.length):("Maintenance "+(wi-PLAN.weeks.length+1));
+  document.getElementById("week-label").textContent=S.interview.active?"Interview mode":phaseLabel;
+  document.getElementById("week-progress-label").textContent=S.interview.active?(S.interview.company||"Weekly plan paused"):(done+"/"+w.sessions.length+" sessions · "+weekDates(wi));
+  document.getElementById("week-progress").style.width=pct+"%";
+  document.querySelector(".header-progress").setAttribute("aria-valuenow",String(pct));
+  document.getElementById("role-label").textContent=displayRole()+" prep";
+}
+function pageHead(eyebrow,title,copy){
+  return '<div class="page-head"><p class="eyebrow">'+esc(eyebrow)+'</p><h1>'+esc(title)+'</h1></div>';
+}
+function groundingLabel(value){
+  if(value==="External public exercise")return "Sourced exercise";
+  if(value==="External authoritative reference")return "Official example";
+  if(value==="Source-grounded simulation")return "Grounded simulation";
+  return value||"Source-backed";
+}
+function externalResourceLinks(resources){
+  if(!resources||!resources.length)return "";
+  return '<div class="need-row"><span class="label">Source</span>'+resources.map(function(link){
+    return '<a class="resource-link" href="'+esc(link.url)+'" target="_blank" rel="noopener">'+esc(link.label)+' ↗</a>';
+  }).join("")+'</div>';
+}
+function taskStatus(task,wi){
+  if(S.completed[task.id])return {text:"Done",cls:"pass"};
+  if(wi<elapsedWeekIndex())return {text:"Archived",cls:"missed"};
+  return {text:"Not done",cls:""};
+}
+function timerRemaining(){
+  if(!S.timer.running)return Math.max(0,S.timer.remaining||0);
+  return Math.max(0,(S.timer.remaining||0)-Math.floor((Date.now()-S.timer.startedAt)/1000));
+}
+function timerLabel(seconds){
+  var m=Math.floor(seconds/60);
+  var s=seconds%60;
+  return String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+}
+function setTimer(id,minutes,run){
+  S.timer={id:id,remaining:Math.max(1,minutes)*60,running:!!run,startedAt:run?Date.now():0};
+  save();
+  startTicker();
+}
+function pauseTimer(){
+  S.timer.remaining=timerRemaining();
+  S.timer.running=false;
+  S.timer.startedAt=0;
+  save();
+  paintTimer();
+}
+function toggleTimer(id,minutes){
+  if(S.timer.id!==id){setTimer(id,minutes,true);return;}
+  if(S.timer.running){pauseTimer();return;}
+  if(timerRemaining()<=0)S.timer.remaining=minutes*60;
+  S.timer.running=true;
+  S.timer.startedAt=Date.now();
+  save();
+  startTicker();
+  paintTimer();
+}
+function resetTimer(id,minutes){
+  setTimer(id,minutes,false);
+  paintTimer();
+}
+function startTicker(){
+  if(ticker)clearInterval(ticker);
+  ticker=setInterval(function(){
+    if(!S||!S.timer.running)return;
+    var left=timerRemaining();
+    if(left<=0){
+      S.timer.remaining=0;
+      S.timer.running=false;
+      S.timer.startedAt=0;
+      save();
+      announce("Focus block finished. Stand up, drink water, and decide whether the finish line is true.");
+    }
+    paintTimer();
+  },1000);
+}
+function paintTimer(){
+  var node=document.querySelector("[data-timer-id]");
+  if(!node||node.getAttribute("data-timer-id")!==S.timer.id)return;
+  var left=timerRemaining();
+  var time=node.querySelector(".timer-time");
+  var start=node.querySelector("[data-timer-toggle]");
+  var msg=node.querySelector("[data-timer-message]");
+  if(time)time.textContent=timerLabel(left);
+  if(start)start.textContent=S.timer.running?"Pause":"Start";
+  if(msg)msg.textContent=left<=0?"Block finished. Stand up before choosing another.":(S.timer.running?"Timer keeps running if you change tabs.":"One focus block. The full session may use two.");
+}
+function timerHtml(id,minutes){
+  if(S.timer.id!==id)setTimer(id,minutes,false);
+  return '<div class="timer" data-timer-id="'+esc(id)+'">'+
+    '<div class="timer-time">'+timerLabel(timerRemaining())+'</div>'+
+    '<div class="timer-copy"><strong>'+minutes+'-minute focus block</strong><span data-timer-message>'+(S.timer.running?"Timer keeps running if you change tabs.":"One focus block. The full session may use two.")+'</span></div>'+
+    '<div class="timer-actions"><button class="btn small primary" type="button" data-timer-toggle>'+(S.timer.running?"Pause":"Start")+'</button><button class="btn small" type="button" data-timer-reset>Reset</button></div>'+
+  '</div>';
+}
+function bindTimer(root,id,minutes){
+  var toggle=root.querySelector("[data-timer-toggle]");
+  var reset=root.querySelector("[data-timer-reset]");
+  if(toggle)toggle.addEventListener("click",function(){toggleTimer(id,minutes);});
+  if(reset)reset.addEventListener("click",function(){resetTimer(id,minutes);});
+}
+function selectTask(id){
+  S.selectedTask=id;
+  S.selectedAtWeek=elapsedWeekIndex();
+  save();
+  show("today");
+}
+function renderToday(){
+  var root=document.getElementById("view-today");
+  if(S.interview.active){renderInterviewToday(root);return;}
+  var rec=currentTaskRecord();
+  var task=rec.task;
+  var week=rec.week;
+  var minimum=!!S.minimum[task.id];
+  var done=!!S.completed[task.id];
+  var steps=S.stepDone[task.id]||[];
 
-/* ---------- render: dashboard ---------- */
-function renderDash(){
-  const v=document.getElementById('v-dash');v.innerHTML='';
-  if(!WEEKS.length){ v.appendChild(el('div','note',planError||'Loading your plan…')); return; }
-  const ci=currentWeekIdx();const now=new Date();const st=getStart();
-  if(S.protocolActive){
-    const who=S.protocolCompany?' for <strong>'+escapeHtml(S.protocolCompany)+'</strong>':'';
-    const p=el('div','card protocol-on',`<h3>Interview plan${who}</h3><p>The weekly curriculum is paused. Use the 72-hour plan for this interview.</p><button class="btn accent" id="dash-protocol" type="button">Open the interview plan</button>`);
-    v.appendChild(p);p.querySelector('#dash-protocol').onclick=()=>show('protocol');
-    v.appendChild(el('p','page-foot','Your saved weekly progress will still be here after the interview.'));
+  if(done){
+    root.innerHTML='<div class="focus-shell"><div class="card success-card"><div class="success-mark">✓</div><h2>Session complete</h2><p>'+esc(task.title)+'</p><button class="btn" id="continue-anyway" type="button">Open next session</button></div></div>';
+    var next=week.sessions.find(function(t){return !S.completed[t.id];});
+    var c=document.getElementById("continue-anyway");
+    if(!next){c.textContent="Open the plan";c.onclick=function(){show("roadmap");};}
+    else c.onclick=function(){selectTask(next.id);};
     return;
   }
-  const w=WEEKS[ci];const done=weekDone(ci);const tot=weekTotal(ci);
-  v.appendChild(el('div','note','<strong>Do one thing:</strong> work on the task below until its finish line is true. If starting feels difficult, open the smaller version on the card.'));
-  const focus=el('div','card now');
-  focus.appendChild(el('div',null,`<div class="wkhead"><h3>${now<st?'Your first task':'Your next task'}</h3><span class="pill">${escapeHtml(w.label)}</span></div><div class="pr">${escapeHtml(w.theme)}</div>`));
-  const today=now.toLocaleDateString('en-US',{weekday:'short'});
-  const dayOrder=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];const todayIndex=dayOrder.indexOf(today);
-  const isDue=s=>{const p=sessionParts(0,substituteVars(s.t,userVars()),s);const i=dayOrder.indexOf(String(p.day||'').slice(0,3));return i<0||i<=todayIndex;};
-  // Surface the earliest unfinished Core block whose displayed day has arrived.
-  // Multiple tasks can share a day, so session-array position is not used as a calendar proxy.
-  let si=now<st?w.sessions.findIndex((_,idx)=>sessCoreDone(w,idx)<sessCoreTotal(w,idx)):w.sessions.findIndex((s,idx)=>isDue(s)&&sessCoreDone(w,idx)<sessCoreTotal(w,idx));
-  if(si<0||si>=w.sessions.length)si=w.sessions.findIndex((_,idx)=>sessCoreDone(w,idx)<sessCoreTotal(w,idx));
-  if(si<0||si>=w.sessions.length)si=w.sessions.findIndex((_,idx)=>sessDone(w,idx)<w.sessions[idx].x.length);
-  if(si<0||si>=w.sessions.length){
-    focus.appendChild(el('div','empty','You finished this week. Stop here. The next week will appear on its start date.'));
-  } else {
-    const nextTi=w.sessions[si].x.findIndex((t,ti)=>isCoreTask(t)&&!taskSkipped(w,si,ti,t)&&!S.weekTasks[tkey(w,si,ti,t)]);
-    const fallbackTi=w.sessions[si].x.findIndex((t,ti)=>!taskSkipped(w,si,ti,t)&&!S.weekTasks[tkey(w,si,ti,t)]);
-    renderSession(focus,w,si,nextTi>=0?nextTi:fallbackTi>=0?fallbackTi:null);
-  }
-  v.appendChild(focus);
 
-  const overview=el('details','card dashboard-overview');
-  overview.appendChild(el('summary',null,'Progress and reminders'));
-  const body=el('div','dashboard-overview-body');
-  body.appendChild(el('div','kpi',`
-    <div class="card"><b>${daysBetween(now,getTarget())>0?daysBetween(now,getTarget()):0}</b><span>days to target (${fmtD(getTarget())})</span></div>
-    <div class="card"><b>${done}/${tot}</b><span>${escapeHtml(w.label)} tasks complete</span></div>
-    <div class="card"><b>${pct(overallPct())}</b><span>curriculum complete</span></div>
-  `));
-  body.appendChild(el('div','note',`${escapeHtml(weekDateLabel(ci,w))}. Set aside about ${escapeHtml(reserveLabel(weekReserve(ci)))} for the full week.`));
-  const gp=GATES.filter(g=>(S.gates[g.id]||{}).status==='pass').length;
-  const unresolved=orderedGates().find(g=>!(S.gates[g.id]||{}).status);
-  const gate=el('div','note',`<strong>Checkpoints:</strong> ${gp}/${GATES.length} passed.${unresolved?` <button class="linkbtn" id="next-gate" type="button">Open ${unresolved.id}: ${escapeHtml(unresolved.name)}</button>`:''}`);
-  body.appendChild(gate);const ng=gate.querySelector('#next-gate');if(ng)ng.onclick=()=>show('gates');
-  const due=S.cards.filter(c=>!c.due||c.due<=dateKey(new Date())).length;
-  if(due){
-    const cn=el('div','note',`<strong>${due} review card${due===1?' is':'s are'} due.</strong> <button class="linkbtn" id="due-cards" type="button">Open review cards</button>`);
-    body.appendChild(cn);cn.querySelector('#due-cards').onclick=()=>show('cards');
-  }
-  body.appendChild(el('div','note','If a task slips, return to the first unfinished task at your next study session. After a second slip, use the Skip task option and continue. Do not create a catch-up day.'));
-  overview.appendChild(body);v.appendChild(overview);
-  v.appendChild(el('p','page-foot','Methodology inspired by <a href="https://alisawuffles.github.io/blog/job-search/" target="_blank" rel="noopener">Alisa Liu’s notes on the industry job search</a>, adapted for research scientist roles in generative vision and multimodal ML.'));
-}
-function sessionParts(si,rawTitle,s){
-  const bits=rawTitle.split(' · ');
-  const defaults=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-  const defaultIdx=defaults.indexOf(bits[0]);
-  const day=(defaultIdx>=0&&S.settings&&S.settings.days?S.settings.days[defaultIdx]:bits[0])||bits[0];
-  const content=(bits.length>1?bits.slice(1).join(' · '):rawTitle)
-    .replace(/^(?:~?\d+h(?:\d+m)?|~?\d+m|\d+×\d+m)(?:\s+(?:including breaks|calendar reserve))?\s+—\s+/i,'');
-  return {day,content};
-}
-function timingProfile(w,s,t){
-  const id=(t&&t.id)||'';const profiles=TIMING.profiles||{};
-  let name='standard';
-  if((TIMING.staminaTaskIds||[]).includes(id))name='stamina';
-  else if(t&&t.codingProblem)name='strict';
-  else if((TIMING.strictTaskIds||[]).includes(id)||t.gate||/-DSA$/.test(id))name='strict';
-  else if((TIMING.deepTaskIds||[]).includes(id))name='deep';
-  else if(/-OUT$/.test(id)||/^Fri\b/.test(s.t)||w.id==='w8'||w.id==='w12'||['LIVE-2','LIVE-4'].includes(id))name='brief';
-  const profile=Object.assign({label:name,workWindow:'40–65m',calendarReserve:'75m',rhythm:'Two focus cycles',stopRule:''},profiles[name]||{},{name});
-  if(t&&t.workWindow)profile.workWindow=t.workWindow;
-  if(t&&t.calendarReserve)profile.calendarReserve=t.calendarReserve;
-  if(t&&t.codingProblem)profile.stopRule=`Stop the attempt at ${t.attemptMinutes} minutes. Use the remaining reservation for tests, review and the log.`;
-  return profile;
-}
-function flexibleTaskText(raw,profile){
-  if(profile.name==='strict'||profile.name==='stamina')return raw;
-  let step=0;const cues=['First','Next','Then','Finish'];
-  return raw
-    .replace(/<strong>([^<]*?) \(\d+(?:–\d+)?m(?: total)?\)(:\s*<\/strong>)/g,'<strong>$1$2')
-    .replace(/\b\d+\s*min:/g,()=>cues[Math.min(step++,cues.length-1)]+':')
-    .replace(/Spend \d+ minutes per paper:/g,'For each paper:')
-    .replace(/Use the final \w+ minutes/g,'At the end')
-    .replace(/Use the remaining time/g,'For the final step');
-}
-function humanTaskHtml(raw){
-  const parts=[];const re=/<strong>([^<]+)<\/strong>\s*([\s\S]*?)(?=<strong>|$)/g;let m;
-  while((m=re.exec(raw)))parts.push({at:m.index,label:m[1].replace(/:\s*$/,''),copy:m[2].trim()});
-  if(parts.length>=2&&parts[0].at===0){
-    return '<div class="task-steps">'+parts.map(p=>`<div class="task-step"><span class="step-label">${p.label}</span><span class="step-copy">${p.copy}</span></div>`).join('')+'</div>';
-  }
-  return `<div class="task-prose">${raw}</div>`;
-}
-let ACTIVE_FOCUS={key:'',startedAt:0};let focusTicker=null;let focusPaintTicks=0;
-function focusSeconds(key){
-  const saved=Number(S.taskTimes[key]||0);
-  return saved+(ACTIVE_FOCUS.key===key?Math.max(0,Math.floor((Date.now()-ACTIVE_FOCUS.startedAt)/1000)):0);
-}
-function focusClockText(sec){const m=Math.floor(sec/60),s=sec%60;return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
-function checkpointFocus(){
-  if(!ACTIVE_FOCUS.key)return;
-  const key=ACTIVE_FOCUS.key;S.taskTimes[key]=focusSeconds(key);ACTIVE_FOCUS.startedAt=Date.now();
-  try{if(activeKey)localStorage.setItem(activeKey,JSON.stringify(S));}catch(e){}
-}
-function paintFocusClocks(){
-  document.querySelectorAll('[data-focus-clock]').forEach(n=>{const key=n.dataset.focusClock;n.textContent=focusClockText(focusSeconds(key));n.classList.toggle('active',ACTIVE_FOCUS.key===key);});
-  focusPaintTicks++;if(focusPaintTicks%15===0)checkpointFocus();
-}
-function pauseFocus(){
-  if(!ACTIVE_FOCUS.key)return;
-  const key=ACTIVE_FOCUS.key;S.taskTimes[key]=focusSeconds(key);ACTIVE_FOCUS={key:'',startedAt:0};
-  clearInterval(focusTicker);focusTicker=null;save();
-}
-function startFocus(key){
-  if(ACTIVE_FOCUS.key===key){pauseFocus();return;}
-  pauseFocus();ACTIVE_FOCUS={key,startedAt:Date.now()};
-  clearInterval(focusTicker);focusPaintTicks=0;focusTicker=setInterval(paintFocusClocks,1000);paintFocusClocks();
-}
-function resetFocus(key){
-  if(!confirm('Reset the recorded focus time for this task?'))return;
-  if(ACTIVE_FOCUS.key===key){ACTIVE_FOCUS={key:'',startedAt:0};clearInterval(focusTicker);focusTicker=null;}
-  delete S.taskTimes[key];save();refreshAll();
-}
-function renderFocusBar(copy,key,profile){
-  const bar=el('div','focusbar');
-  const clock=el('span','focusclock'+(ACTIVE_FOCUS.key===key?' active':''),focusClockText(focusSeconds(key)));clock.dataset.focusClock=key;
-  clock.setAttribute('aria-live','polite');
-  const toggle=el('button','btn sm',ACTIVE_FOCUS.key===key?'Pause':'Start this task');toggle.type='button';
-  toggle.onclick=()=>{startFocus(key);refreshAll();};
-  const reset=el('button','linkbtn','Reset');reset.type='button';reset.onclick=()=>resetFocus(key);
-  const hint=profile.name==='strict'||profile.name==='stamina'?'Use the exercise countdown separately. This clock records the whole session.':'The clock counts up. Pause for a short break whenever your attention drops.';
-  const help=el('span','focushelp',hint);
-  bar.append(clock,toggle,reset,help);copy.appendChild(bar);
-}
-function renderSession(parent,w,si,onlyTi=null){
-  const s=w.sessions[si];const d=sessDone(w,si);const done=d===s.x.length;
-  if(!s.x.length)return;
-  const p=sessionParts(si,substituteVars(s.t,userVars()),s);
-  const status=onlyTi==null?`${d}/${s.x.length}`:`Task ${onlyTi+1} of ${s.x.length}`;
-  const box=el('div','sess'+(done?' sdone':''));
-  box.appendChild(el('div','sesshead',`<span class="sday">${p.day}</span><span class="stitle">${p.content}</span><span class="sct">${status}</span>`));
-  s.x.forEach((t,ti)=>{if(onlyTi==null||ti===onlyTi)box.appendChild(taskRow(w,si,ti,t));});
-  parent.appendChild(box);
-}
-function codingProgram(){return RAW_PLAN&&RAW_PLAN.codingProgram?RAW_PLAN.codingProgram:null;}
-function codingProblems(){const cp=codingProgram();return cp?(cp.weekOrder||[]).flatMap(weekId=>(cp.schedule&&cp.schedule[weekId]||[]).map(q=>Object.assign({weekId},q))):[];}
-function codingProblemById(id){return codingProblems().find(q=>q.id===id||q.taskId===id);}
-function codingTaskId(q){return q.taskId||q.id;}
-function codingReserve(q){return Math.ceil((Number(q.attemptMinutes)||20)*1.96/5)*5;}
-function ensureCodingLog(q){
-  if(!q)return null;
-  let row=S.leet.find(r=>r.sourceId===q.id);
-  if(!row){
-    row={sourceId:q.id,date:dateKey(new Date()),problem:q.title,pattern:String(q.topic||'').replaceAll('-',' '),diff:q.difficulty,unaided:'',min:'',revisit:'',notes:''};
-    S.leet.push(row);save();
-  }
-  return row;
-}
-function taskRow(w,si,ti,t){
-  const key=tkey(w,si,ti,t);const on=!!S.weekTasks[key];const skipped=!!S.skippedTasks[key];
-  const priority=taskPriority(t);
-  const row=el('div','ck'+(on?' done':'')+(skipped?' skipped':'')+(priority!=='core'?' flex-task':''));
-  const cb=el('input');cb.type='checkbox';cb.checked=on;cb.disabled=skipped;
-  cb.id='task-'+key.replace(/[^a-zA-Z0-9_-]/g,'-');
-  cb.setAttribute('aria-label',on?'Mark task unfinished':'Mark task complete');
-  cb.onchange=()=>{if(cb.checked&&ACTIVE_FOCUS.key===key)pauseFocus();S.weekTasks[key]=cb.checked;save();refreshAll()};
-  row.appendChild(cb);
-  const profile=timingProfile(w,w.sessions[si],t);
-  const raw=taskText(t);
-  const text=flexibleTaskText(substituteVars(raw,userVars()),profile);
-  const copy=el('div','taskcopy');
-  const label=el('label','tasktext',humanTaskHtml(text));label.htmlFor=cb.id;
-  label.querySelectorAll('a').forEach(an=>{an.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();window.open(an.href,'_blank','noopener')});});
-  copy.appendChild(label);
-  const artifact=typeof t==='object'&&t?t.artifact:'';
-  const doneWhen=typeof t==='object'&&t?(t.doneWhen||artifact):'';
-  const minimum=typeof t==='object'&&t?(t.fallback||t.minimum):'';
-  const metaBits=[];
-  if(skipped)metaBits.push('<span class="kind flex">Skipped</span>');
-  else if(priority==='company')metaBits.push('<span class="kind company">Company-specific</span>');
-  else if(priority==='flex')metaBits.push('<span class="kind flex">Optional</span>');
-  const zeroTime=/\b0m\b/.test(w.sessions[si].t);
-  const timeText=zeroTime?'No time required':profile.name==='strict'||profile.name==='stamina'?`Timed practice · set aside ${profile.calendarReserve}`:`Set aside ${profile.calendarReserve}`;
-  metaBits.push(`<span class="timepill ${profile.name==='strict'||profile.name==='stamina'?'strict':profile.name==='deep'?'deep':''}">${escapeHtml(timeText)}</span>`);
-  if(t.gate)metaBits.push(`<button class="linkbtn" type="button" data-gate="${t.gate}">Open checkpoint ${t.gate}</button>`);
-  const meta=el('div','taskmeta',metaBits.join(''));
-  if(doneWhen)copy.appendChild(el('div','completion',`<strong>You are finished when:</strong> ${doneWhen}`));
-  if(minimum){
-    const details=el('details','taskfallback taskstarter',`<summary>Cannot start? Do this smaller version</summary><div>${minimum}</div>`);
-    copy.appendChild(details);
-  }
-  copy.appendChild(meta);renderFocusBar(copy,key,profile);
-  meta.querySelectorAll('[data-gate]').forEach(b=>b.onclick=()=>show('gates'));
+  var timerMinutes=minimum?10:task.focus;
+  var stepList=task.steps.map(function(step,i){
+    var id="task-step-"+i;
+    return '<div class="check-row '+(steps[i]?"done":"")+'"><input id="'+id+'" type="checkbox" data-task-step="'+i+'" '+(steps[i]?"checked":"")+'><label for="'+id+'">'+esc(step)+'</label></div>';
+  }).join("");
+  var inputList=(task.inputs||[]).map(function(item){return '<li>'+esc(item)+'</li>';}).join("");
+  var laneTag=task.lane!=="common"?'<span class="tag">'+esc(task.lane.toUpperCase())+'</span>':"";
+  var workBlock=minimum?'<section class="session-section"><p class="detail-label">10-minute version</p><p class="rescue-action">'+esc(task.rescue)+'</p></section>':'<section class="session-section"><p class="detail-label">Steps</p><div class="step-checklist">'+stepList+'</div></section>';
+  var doneText=minimum?"Complete the 10-minute action, then stop.":task.done;
 
-  const more=el('details','taskfallback taskmore','<summary>Options and context</summary>');
-  const moreBody=el('div','taskmorebody');
-  if(t.id||t.competency||t.why||t.scenario||t.repeat||t.prereq||profile.stopRule){
-    const facts=[];
-    if(t.why)facts.push('<strong>Why:</strong> '+t.why);
-    if(t.scenario&&t.scenario!=='—')facts.push('<strong>Interview:</strong> '+t.scenario);
-    if(t.prereq)facts.push('<strong>Prerequisite:</strong> '+t.prereq);
-    if(profile.stopRule)facts.push('<strong>Stopping rule:</strong> '+escapeHtml(profile.stopRule));
-    if(t.id)facts.push('<strong>Reference:</strong> <span class="idtag">'+escapeHtml(t.id)+'</span>');
-    moreBody.appendChild(el('div',null,facts.join('<br>')));
-  }
-  const controls=el('div','taskmeta');
-  if(t.codingProblem){
-    const log=el('button','linkbtn','Open coding log');log.type='button';
-    log.onclick=()=>{ensureCodingLog(codingProblemById(t.codingProblemId||t.id));show('leet');requestAnimationFrame(()=>document.getElementById('coding-log')?.scrollIntoView({block:'start'}));};
-    controls.appendChild(log);
-  }
-  const canSkip=!NEVER_CUT.includes(t.id)&&!/-OUT$/.test(t.id);
-  if(canSkip){
-    const skip=el('button','linkbtn',skipped?'Restore task':'Skip task');skip.type='button';
-    skip.onclick=()=>{S.skippedTasks[key]=!skipped;if(!skipped)delete S.weekTasks[key];save();refreshAll();};controls.appendChild(skip);
-  }
-  const addCard=el('button','linkbtn','Add review card');addCard.type='button';
-  addCard.onclick=()=>{S.cards.push({prompt:'',answer:'',source:t.id||key,due:dateKey(new Date()),last:''});save();show('cards');};
-  controls.appendChild(addCard);moreBody.appendChild(controls);
-  const note=el('div','tasknote','<label class="setlbl">Saved note or next step</label>');
-  const ta=el('textarea');ta.placeholder='File, link, result, or the first place you got stuck';ta.value=S.taskNotes[key]||'';
-  ta.oninput=()=>{S.taskNotes[key]=ta.value;save()};note.appendChild(ta);moreBody.appendChild(note);
-  more.appendChild(moreBody);copy.appendChild(more);
-  row.appendChild(copy);
-  return row;
-}
+  root.innerHTML='<div class="focus-shell"><article class="card task-card">'+
+    '<div class="task-top"><div class="task-kicker"><span class="tag accent">'+esc(task.day)+'</span><span class="tag">'+task.minutes+' min</span>'+laneTag+'<span class="tag">'+esc(groundingLabel(task.grounding))+'</span>'+(minimum?'<span class="tag orange">10-minute version</span>':"")+'</div><h2>'+esc(task.title)+'</h2><p class="artifact"><strong>Make:</strong> '+esc(task.artifact)+'</p></div>'+
+    '<div class="task-body">'+externalResourceLinks(task.links)+(inputList?'<section class="session-section"><p class="detail-label">Prepare</p><ul class="input-list">'+inputList+'</ul></section>':"")+workBlock+
+      timerHtml(task.id,timerMinutes)+'<div class="finish-line"><span>Done when</span><p>'+esc(doneText)+'</p></div>'+
+      '<div class="task-footer"><button class="btn primary" type="button" id="complete-task">'+(minimum?"Mark 10-minute version complete":"Mark session complete")+'</button><button class="btn ghost" type="button" id="minimum-toggle">'+(minimum?"Return to full session":"Use 10-minute version")+'</button></div>'+
+      '<details class="task-details"><summary>Notes (optional)</summary><textarea class="notes" id="task-notes" aria-label="Session notes" placeholder="Artifact link or a brief note…">'+esc(S.notes[task.id]||"")+'</textarea></details>'+
+    '</div></article></div>';
 
-/* ---------- render: plan ---------- */
-function renderPlan(){
-  const v=document.getElementById('v-plan');if(!v)return;v.innerHTML='';
-  if(!WEEKS.length){ v.appendChild(el('div','note',planError||'Loading your plan…')); return; }
-  const ci=currentWeekIdx();const started=new Date()>=getStart();
-  const intro=el('div','card plan-intro');
-  intro.appendChild(el('h2',null,'Your preparation roadmap'));
-  intro.appendChild(el('p',null,'Your current week is open by default. Work from the top and finish one task before opening another week. A task that slips twice should be skipped instead of becoming catch-up debt.'));
-  intro.appendChild(el('div','reading-cues',`<div class="reading-cue"><b>Read the action</b>The task includes the exact source, problem, or prompt.</div><div class="reading-cue"><b>Use the finish line</b>Stop when “You are finished when” is true.</div><div class="reading-cue"><b>Make starting smaller</b>Open the smaller version when the full task feels difficult to begin.</div>`));
-  v.appendChild(intro);
-  const tools=el('div','plan-tools');
-  const openNow=el('button','btn accent sm',started?'Open this week':'Open the starting week');openNow.type='button';
-  openNow.onclick=()=>{WEEKS.forEach((w,i)=>S.openWeeks[w.id]=i===ci);save();renderPlan();requestAnimationFrame(()=>document.getElementById('week-'+WEEKS[ci].id)?.scrollIntoView({block:'start'}));};
-  const closeAll=el('button','btn sm','Fold every week');closeAll.type='button';closeAll.onclick=()=>{WEEKS.forEach(w=>S.openWeeks[w.id]=false);save();renderPlan();};
-  tools.append(openNow,closeAll,el('span','sp'),el('span','muted','Open another week only when you want the roadmap view.'));v.appendChild(tools);
-  if(TIMING.profiles){
-    const guide=el('details','card timing-guide');guide.appendChild(el('summary',null,'How timing works'));
-    const body=el('div','timing-guide-body');
-    body.appendChild(el('p','muted',escapeHtml(TIMING.purpose||'')));
-    const grid=el('div','grid g2');
-    Object.values(TIMING.profiles).forEach(p=>{const c=el('div','note',`<strong>${escapeHtml(p.label)}</strong> · set aside ${escapeHtml(p.calendarReserve)}<br>${escapeHtml(p.rhythm)}<br><span class="muted">${escapeHtml(p.stopRule)}</span>`);grid.appendChild(c);});
-    body.appendChild(grid);
-    const observed=Object.values(S.taskTimes||{}).map(Number).filter(x=>x>=300).sort((a,b)=>a-b);
-    const median=observed.length?observed[Math.floor(observed.length/2)]:0;
-    body.appendChild(el('p','muted',escapeHtml(TIMING.calibration||'')));
-    body.appendChild(el('p',null,observed.length?`<strong>Your calibration:</strong> ${observed.length} recorded task${observed.length===1?'':'s'} · median ${focusClockText(median)}.`:'<strong>Your calibration:</strong> You have not completed a focus-clock session yet. Three recorded sessions will provide the first useful estimate.'));
-    if((TIMING.sources||[]).length){
-      const src=el('details','taskfallback','<summary>Why the timing system works this way</summary>');
-      src.appendChild(el('div',null,(TIMING.sources||[]).map(x=>`<a href="${escapeHtml(x.url)}" target="_blank" rel="noopener">${escapeHtml(x.name)}</a>. ${escapeHtml(x.usedFor)}`).join('<br><br>')));body.appendChild(src);
+  root.querySelectorAll("[data-task-step]").forEach(function(box){
+    box.onchange=function(){
+      var index=Number(box.getAttribute("data-task-step"));
+      var arr=S.stepDone[task.id]||[];
+      arr[index]=box.checked;
+      S.stepDone[task.id]=arr;
+      box.closest(".check-row").classList.toggle("done",box.checked);
+      save();
+    };
+  });
+  document.getElementById("complete-task").onclick=function(){
+    S.completed[task.id]=true;
+    pauseTimer();
+    save();
+    renderToday();
+    renderHeader();
+    announce(minimum?"Ten-minute version complete.":"Session complete.");
+  };
+  document.getElementById("minimum-toggle").onclick=function(){
+    S.minimum[task.id]=!minimum;
+    save();
+    setTimer(task.id,S.minimum[task.id]?10:task.focus,false);
+    renderToday();
+  };
+  document.getElementById("task-notes").addEventListener("input",function(e){S.notes[task.id]=e.target.value;save();});
+  bindTimer(root,task.id,timerMinutes);
+  bindRail(root);
+}
+function sessionStrip(week,activeId){
+  return '<nav class="card session-strip" aria-label="This week"><span>This week</span>'+week.sessions.map(function(t,i){
+    var label=S.completed[t.id]?"✓":String(i+1);
+    return '<button type="button" class="session-dot '+(t.id===activeId?"on ":"")+(S.completed[t.id]?"done":"")+'" data-task="'+esc(t.id)+'" aria-label="'+esc(t.day+": "+t.title)+'" title="'+esc(t.title)+'">'+label+'</button>';
+  }).join("")+'</nav>';
+}
+function weekRail(week,wi,activeId){
+  var done=weekDoneCount(week);
+  var items=week.sessions.map(function(t,i){
+    return '<button type="button" class="rail-task '+(t.id===activeId?"on ":"")+(S.completed[t.id]?"done":"")+'" data-task="'+esc(t.id)+'">'+
+      '<span class="rail-num">'+(S.completed[t.id]?"✓":(i+1))+'</span><span><span class="rail-title">'+esc(t.title)+'</span><span class="rail-meta">'+esc(t.day)+" · "+esc(t.lane)+'</span></span></button>';
+  }).join("");
+  var label=week.maintenance?("Maintenance "+(wi-PLAN.weeks.length+1)):("Week "+(wi+1));
+  return '<aside class="card week-rail"><div class="rail-head"><h3>'+label+'</h3><span>'+done+'/'+week.sessions.length+' done</span></div><div class="rail-list">'+items+'</div><p class="rail-rule"><strong>No catch-up:</strong> unfinished sessions archive when the next week starts. Use their miss only to choose a repair.</p></aside>';
+}
+function bindRail(root){
+  root.querySelectorAll("[data-task]").forEach(function(b){
+    b.addEventListener("click",function(){selectTask(b.getAttribute("data-task"));});
+  });
+}
+function renderRoadmap(){
+  var root=document.getElementById("view-roadmap");
+  var elapsed=elapsedWeekIndex();
+  var roadCurrent=elapsed<PLAN.weeks.length?elapsed:-1;
+  var total=allTasks().length;
+  var complete=allTasks().filter(function(r){return !!S.completed[r.task.id];}).length;
+  var hours=Math.round(allTasks().reduce(function(sum,r){return sum+r.task.minutes;},0)/60);
+  var gatesPassed=PLAN.gates.filter(function(g){return S.gateResults[g.id]==="pass";}).length;
+  var html=pageHead("Plan","12-week core","")+
+    '<div class="section-grid"><div class="card mini-card"><b>'+complete+'/'+total+'</b><span>sessions completed</span></div><div class="card mini-card"><b>≈'+hours+'h</b><span>total calendar reserve</span></div><div class="card mini-card"><b>'+gatesPassed+'/'+PLAN.gates.length+'</b><span>readiness gates passed</span></div></div>';
+  PLAN.weeks.forEach(function(w,wi){
+    var count=weekDoneCount(w);
+    var label=wi===roadCurrent?"Current":(count===w.sessions.length?"Complete":(wi<elapsed?"Archived":count+"/"+w.sessions.length));
+    html+='<details class="card week-card" '+(wi===roadCurrent?"open":"")+'><summary><span><span class="week-summary-title">Week '+(wi+1)+' · '+esc(w.theme||w.title)+'</span><span class="week-summary-sub">'+esc(weekDates(wi))+'</span></span><span class="week-badge">'+esc(label)+'</span></summary><div class="week-body">';
+    w.sessions.forEach(function(t){
+      var status=taskStatus(t,wi);
+      html+='<div class="road-task"><span class="road-day">'+esc(t.day.slice(0,3))+'</span><span><span class="road-title">'+esc(t.title)+'</span><span class="road-meta">'+esc(t.lane)+' · '+t.minutes+' min</span></span><button class="btn small" type="button" data-task="'+esc(t.id)+'">'+(S.completed[t.id]?"Review":"Open")+'</button></div>';
+    });
+    html+='</div></details>';
+  });
+  var maintenanceNumber=Math.max(1,elapsed-PLAN.weeks.length+1);
+  html+='<details class="card week-card" '+(elapsed>=PLAN.weeks.length?"open":"")+'><summary><span><span class="week-summary-title">After Week 12 · Maintenance</span><span class="week-summary-sub">Five blocks repeat weekly.</span></span><span class="week-badge">'+(elapsed>=PLAN.weeks.length?("Current · "+maintenanceNumber):"Repeats weekly")+'</span></summary><div class="week-body">'+PLAN.maintenance.map(function(t){return '<div class="road-task"><span class="road-day">'+esc(t.day.slice(0,3))+'</span><span><span class="road-title">'+esc(t.title)+'</span><span class="road-meta">'+esc(t.lane)+' · '+t.minutes+' min</span></span></div>';}).join("")+'</div></details>';
+  root.innerHTML=html;
+  bindRail(root);
+}
+function drillById(id){
+  return PLAN.drills.find(function(d){return d.id===id;});
+}
+function rubricHtml(rubric){
+  if(!rubric||!rubric.length)return "";
+  return '<ul class="rubric-list">'+rubric.map(function(row){
+    return '<li><strong>'+esc(row.dimension)+':</strong> 0 — '+esc(row.score_0)+' 1 — '+esc(row.score_1)+' 2 — '+esc(row.score_2)+'</li>';
+  }).join("")+'</ul>';
+}
+function openDrill(id){
+  S.activeDrill=id;
+  save();
+  show("practice");
+}
+function renderPractice(){
+  var root=document.getElementById("view-practice");
+  if(S.activeDrill&&drillById(S.activeDrill)){renderDrillRun(root,drillById(S.activeDrill));return;}
+  var cats=["All"].concat(Array.from(new Set(PLAN.drills.map(function(d){return d.category;}))));
+  var drills=PLAN.drills.filter(function(d){return activeCategory==="All"||d.category===activeCategory;});
+  var html=pageHead("Practice","Source-backed practice","")+
+    '<div class="toolbar">'+cats.map(function(c){return '<button class="filter-btn '+(c===activeCategory?"on":"")+'" type="button" data-category="'+esc(c)+'">'+esc(c)+'</button>';}).join("")+'<span class="spacer"></span><button class="btn warm" type="button" id="pick-drill">Pick for me</button></div>'+
+    '<div class="drill-grid">'+drills.map(function(d){
+      var result=S.drillResults[d.id]||"";
+      return '<article class="card drill-card"><span class="tag '+(result==="solid"?"accent":result==="repair"?"orange":"")+'">'+esc(result==="solid"?"Solid":result==="repair"?"Needs repair":d.category)+'</span><h3>'+esc(d.title)+'</h3><p>'+d.minutes+' minutes</p><button class="btn small" type="button" data-open-drill="'+esc(d.id)+'">Open practice</button></article>';
+    }).join("")+'</div>';
+  root.innerHTML=html;
+  root.querySelectorAll("[data-category]").forEach(function(b){b.onclick=function(){activeCategory=b.getAttribute("data-category");renderPractice();};});
+  root.querySelectorAll("[data-open-drill]").forEach(function(b){b.onclick=function(){openDrill(b.getAttribute("data-open-drill"));};});
+  document.getElementById("pick-drill").onclick=function(){
+    var pool=drills.length?drills:PLAN.drills;
+    openDrill(pool[Math.floor(Math.random()*pool.length)].id);
+  };
+}
+function renderDrillRun(root,d){
+  var result=S.drillResults[d.id]||"";
+  root.innerHTML='<button class="btn small" id="back-drills" type="button">← All practice</button>'+
+    '<div class="page-head" style="margin-top:22px"><p class="eyebrow">'+esc(d.category)+' · '+d.minutes+' minutes</p><h1>'+esc(d.title)+'</h1><p>Start the timer before revealing any notes. Speak your assumptions and decisions aloud.</p></div>'+
+    '<article class="card form-card drill-run">'+externalResourceLinks(d.resources)+'<div class="drill-prompt">'+esc(d.prompt)+'</div>'+
+      '<h3>Follow-ups</h3><ol class="followups">'+d.followups.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ol>'+
+      timerHtml("drill:"+d.id,d.minutes)+
+      '<div class="check-box"><strong>Check:</strong> '+esc(d.check)+'</div>'+
+      '<div class="score-actions"><button class="btn '+(result==="repair"?"on":"")+'" id="drill-repair" type="button">Needs repair</button><button class="btn primary '+(result==="solid"?"on":"")+'" id="drill-solid" type="button">Solid</button></div>'+
+      '<details class="task-details"><summary>Rubric + repair</summary>'+rubricHtml(d.rubric)+(d.repair?'<p class="gate-pass"><strong>Repair:</strong> '+esc(d.repair)+'</p>':"")+'</details>'+
+      '<textarea class="notes" id="drill-note" placeholder="First miss, score, or repair action…">'+esc(S.notes["drill:"+d.id]||"")+'</textarea>'+
+    '</article>';
+  document.getElementById("back-drills").onclick=function(){S.activeDrill="";save();renderPractice();};
+  document.getElementById("drill-repair").onclick=function(){S.drillResults[d.id]="repair";save();renderDrillRun(root,d);};
+  document.getElementById("drill-solid").onclick=function(){S.drillResults[d.id]="solid";save();renderDrillRun(root,d);};
+  document.getElementById("drill-note").oninput=function(e){S.notes["drill:"+d.id]=e.target.value;save();};
+  bindTimer(root,"drill:"+d.id,d.minutes);
+}
+function renderReadiness(){
+  var root=document.getElementById("view-readiness");
+  var pass=PLAN.gates.filter(function(g){return S.gateResults[g.id]==="pass";}).length;
+  var repair=PLAN.gates.filter(function(g){return S.gateResults[g.id]==="repair";}).length;
+  var unrun=PLAN.gates.length-pass-repair;
+  var next=PLAN.gates.find(function(g){return S.gateResults[g.id]!=="pass";});
+  var html=pageHead("Gates","Proof of readiness","")+
+    '<div class="readiness-summary"><div class="card"><b>'+pass+'</b><span>passed</span></div><div class="card"><b>'+repair+'</b><span>need one repair</span></div><div class="card"><b>'+unrun+'</b><span>not yet measured</span></div></div>';
+  if(next)html+='<div class="notice"><strong>Next proof:</strong> '+esc(next.title)+' — '+esc(next.pass)+'</div>';
+  html+='<div class="gate-list">';
+  PLAN.gates.forEach(function(g){
+    var val=S.gateResults[g.id]||"not-run";
+    var sourceSessions=(g.source_session_ids||[]).map(function(id){
+      var record=findTask(id);
+      return record?id+" · "+record.task.title:id;
+    }).join("; ");
+    var gateDetails='<details class="task-details"><summary>Conditions, rubric + repair</summary>'+
+      (g.conditions?'<p class="gate-pass"><strong>Conditions:</strong> '+esc(g.conditions)+'</p>':"")+
+      rubricHtml(g.rubric)+
+      (g.critical_failures&&g.critical_failures.length?'<p class="gate-pass"><strong>Critical failures:</strong> '+esc(g.critical_failures.join("; "))+'</p>':"")+
+      (g.repair?'<p class="gate-pass"><strong>Repair:</strong> '+esc(g.repair)+'</p>':"")+
+      (g.retest_rule?'<p class="gate-pass"><strong>Retest:</strong> '+esc(g.retest_rule)+'</p>':"")+
+    '</details>';
+    html+='<details class="card gate-card" '+(next&&g.id===next.id?"open":"")+'><summary class="gate-top"><h3>'+esc(g.title)+'</h3><span class="status-chip '+(val==="pass"?"pass":val==="repair"?"repair":"")+'">'+esc(val==="pass"?"Passed":val==="repair"?"Repair":"Not run")+'</span></summary>'+
+      externalResourceLinks(g.resources)+(sourceSessions?'<p class="gate-pass"><strong>Use session:</strong> '+esc(sourceSessions)+'</p>':"")+
+      (g.prompt_rule?'<p class="gate-pass"><strong>Run:</strong> '+esc(g.prompt_rule)+'</p>':"")+
+      '<p class="gate-pass"><strong>Pass when:</strong> '+esc(g.pass)+'</p>'+gateDetails+'<div class="score-actions"><button class="btn small '+(val==="not-run"?"on":"")+'" data-gate="'+esc(g.id)+'" data-value="not-run">Not run</button><button class="btn small '+(val==="repair"?"on":"")+'" data-gate="'+esc(g.id)+'" data-value="repair">Repair</button><button class="btn small primary '+(val==="pass"?"on":"")+'" data-gate="'+esc(g.id)+'" data-value="pass">Passed</button></div><textarea class="notes" data-gate-note="'+esc(g.id)+'" placeholder="Optional score or repair…">'+esc(S.gateNotes[g.id]||"")+'</textarea></details>';
+  });
+  html+='</div><details class="card compact-details" style="margin-top:16px"><summary>RS vs RE expectations</summary><div class="compact-body" style="overflow:auto"><table class="lane-table"><thead><tr><th>Surface</th><th>Research Scientist</th><th>Research Engineer</th></tr></thead><tbody>'+
+    '<tr><td>Research</td><td>Novel hypothesis, scientific depth, falsification, agenda</td><td>Turn ideas into reliable experiments and scalable implementations</td></tr>'+
+    '<tr><td>Coding</td><td>Correct ML code and enough general coding for the stated loop</td><td>Clean, tested, efficient code; debugging and interface judgment</td></tr>'+
+    '<tr><td>Systems</td><td>Enough scale intuition to make credible research decisions</td><td>Memory/FLOP arithmetic, distributed design, profiling, recovery</td></tr>'+
+    '<tr><td>Communication</td><td>Paper defense, job talk, research taste, collaboration</td><td>Tradeoffs, ownership, incident reasoning, cross-functional clarity</td></tr>'+
+    '<tr><td>Your evidence</td><td>Generative-vision papers, research agenda, Waymo/Amazon studies</td><td>JAX/TPU, production at 5M+ requests/day, pipelines, model systems</td></tr>'+
+    '</tbody></table></div></details>';
+  root.innerHTML=html;
+  root.querySelectorAll("[data-gate]").forEach(function(b){b.onclick=function(){S.gateResults[b.getAttribute("data-gate")]=b.getAttribute("data-value");save();renderReadiness();renderHeader();};});
+  root.querySelectorAll("[data-gate-note]").forEach(function(n){n.oninput=function(){S.gateNotes[n.getAttribute("data-gate-note")]=n.value;save();};});
+}
+function interviewPhaseIndex(){
+  if(!S.interview.date)return 0;
+  var diff=dayDiff(parseDate(S.interview.date),parseDate(todayKey()));
+  if(diff>14)return 0;
+  if(diff>=4)return 1;
+  if(diff>=2)return 2;
+  if(diff===1)return 3;
+  if(diff===0)return 4;
+  return 5;
+}
+function interviewDaysRemaining(){
+  return S.interview.date?dayDiff(parseDate(S.interview.date),parseDate(todayKey())):null;
+}
+function currentSprint(){
+  var diff=interviewDaysRemaining();
+  if(diff==null||diff<=0||diff>14)return null;
+  var kind=S.interview.sprint;
+  if(!kind&&diff<=3)return {key:"final",label:"Final 72 hours",dayLabel:"Now",actions:PLAN.interviewSprints.final_72_hours,index:0};
+  if(!kind){
+    kind=diff<=7?"seven":"fourteen";
+    S.interview.sprint=kind;
+    save();
+  }
+  var items=kind==="seven"?PLAN.interviewSprints.seven_day:PLAN.interviewSprints.fourteen_day;
+  var total=kind==="seven"?7:14;
+  var index=Math.max(0,Math.min(items.length-1,total-diff));
+  return {key:kind,label:kind==="seven"?"7-day sprint":"14-day sprint",dayLabel:"Day "+(index+1),day:items[index],index:index};
+}
+function renderInterviewToday(root){
+  var sprint=currentSprint();
+  if(sprint){renderSprintToday(root,sprint);return;}
+  var idx=interviewPhaseIndex();
+  var phase=PLAN.interviewProtocol[idx];
+  var keyPrefix=(S.interview.runId||"current")+":protocol:"+phase.id+":";
+  var done=phase.actions.filter(function(_,i){return !!S.interview.checks[keyPrefix+i];}).length;
+  root.innerHTML=pageHead("Weekly plan paused","Interview mode: "+(S.interview.company||"scheduled interview"),"Only the current protocol is visible. Resume the curriculum after the loop.")+
+    '<div class="today-grid"><article class="card task-card"><div class="task-top"><div class="task-kicker"><span class="tag accent">'+esc(phase.window)+'</span><span class="tag">'+done+'/'+phase.actions.length+' done</span></div><h2>'+esc(phase.title)+'</h2><p class="artifact"><strong>Interview:</strong> '+esc(S.interview.role)+(S.interview.date?" · "+esc(S.interview.date):"")+'</p></div><div class="task-body">'+
+      phase.actions.map(function(a,i){
+        var id="today-protocol-"+i;
+        return '<div class="check-row '+(S.interview.checks[keyPrefix+i]?"done":"")+'"><input id="'+id+'" type="checkbox" data-protocol-check="'+keyPrefix+i+'" '+(S.interview.checks[keyPrefix+i]?"checked":"")+'><label for="'+id+'">'+esc(a)+'</label></div>';
+      }).join("")+
+      '<div class="task-footer" style="margin-top:18px"><button class="btn primary" id="open-protocol" type="button">Open full interview plan</button><span class="spacer"></span><span class="storage-note">Curriculum progress is preserved</span></div></div></article>'+
+      '<aside class="card week-rail"><div class="rail-head"><h3>Your contract</h3></div><p class="rail-rule" style="border:0;padding:0;margin:0 0 12px"><strong>Confirmed format</strong><br>'+esc(S.interview.format||"Not recorded yet")+'</p><p class="rail-rule"><strong>Five-priority focus</strong><br>'+esc(S.interview.focus||"Not recorded yet")+'</p></aside></div>';
+  bindProtocolChecks(root);
+  document.getElementById("open-protocol").onclick=function(){show("interview");};
+}
+function renderSprintToday(root,sprint){
+  var run=S.interview.runId||"current";
+  var key="sprint:"+run+":"+sprint.key+":"+sprint.index;
+  var done=!!S.interview.checks[key];
+  if(sprint.key==="final"){
+    root.innerHTML=pageHead(sprint.label,sprint.dayLabel,"")+
+      '<div class="focus-shell"><article class="card task-card"><div class="task-top"><div class="task-kicker"><span class="tag accent">Final 72 hours</span><span class="tag">No new topics</span></div><h2>Protect readiness</h2><p class="artifact"><strong>Interview:</strong> '+esc(S.interview.role)+(S.interview.date?" · "+esc(S.interview.date):"")+'</p></div><div class="task-body"><ol class="all-steps">'+sprint.actions.map(function(item){return '<li>'+esc(item)+'</li>';}).join("")+'</ol><div class="task-footer"><button class="btn primary" id="complete-sprint" type="button">'+(done?"Completed ✓":"Complete final check")+'</button><button class="btn" id="open-protocol" type="button">Open full interview plan</button></div></div></article></div>';
+    document.getElementById("complete-sprint").onclick=function(){S.interview.checks[key]=!done;save();renderSprintToday(root,sprint);};
+    document.getElementById("open-protocol").onclick=function(){show("interview");};
+    return;
+  }
+  var day=sprint.day;
+  var choiceKey=run+":"+sprint.key+":"+sprint.index;
+  var choices=day.options||[];
+  var chosen=S.interview.sprintChoices[choiceKey];
+  if(choices.length>1&&chosen==null){
+    root.innerHTML=pageHead(sprint.label,sprint.dayLabel,"")+'<div class="focus-shell"><article class="card task-card"><div class="task-top"><div class="task-kicker"><span class="tag accent">'+esc(sprint.dayLabel)+'</span><span class="tag">'+day.minutes+' min</span><span class="tag">Choose one</span></div><h2>'+esc(day.focus)+'</h2></div><div class="task-body"><div class="finish-line"><span>One decision</span><p>Select one sourced session. Do not complete both.</p></div><div class="score-actions">'+choices.map(function(option,index){return '<button class="btn '+(index===0?"primary":"")+'" type="button" data-sprint-choice="'+index+'">'+esc(sprintOptionLabel(option))+'</button>';}).join("")+'</div><div class="task-footer"><button class="btn" id="open-protocol" type="button">Open full interview plan</button></div></div></article></div>';
+    root.querySelectorAll("[data-sprint-choice]").forEach(function(button){button.onclick=function(){S.interview.sprintChoices[choiceKey]=Number(button.getAttribute("data-sprint-choice"));save();renderSprintToday(root,sprint);};});
+    document.getElementById("open-protocol").onclick=function(){show("interview");};
+    return;
+  }
+  var option=choices.length?choices[chosen==null?0:chosen]:[];
+  var taskCards=option.map(function(segment){
+    var record=findTask(segment.task_id);
+    if(!record)return "";
+    var task=record.task;
+    var steps=task.steps;
+    var finish=task.done;
+    if(segment.mode==="rescue"){steps=[task.rescue];finish="Complete this session's 10-minute rescue only.";}
+    if(segment.mode==="one story"){steps=["Record one evidence-backed story using the session's source and constraints."];finish="One factual ownership story is recorded.";}
+    if(segment.mode==="two stories"){steps=["Record two evidence-backed stories using the session's source and constraints."];finish="Two factual ownership stories are recorded.";}
+    return '<section class="task-details" style="padding:16px 0"><div class="task-kicker"><span class="tag">'+esc(segment.mode)+"</span></div><h3>"+esc(segment.task_id+" · "+task.title)+'</h3>'+externalResourceLinks(task.links)+'<ol class="all-steps">'+steps.map(function(step){return '<li>'+esc(step)+'</li>';}).join("")+'</ol><p class="gate-pass"><strong>Make:</strong> '+esc(task.artifact)+'</p><div class="finish-line"><span>Done when</span><p>'+esc(finish)+'</p></div></section>';
+  }).join("");
+  root.innerHTML=pageHead(sprint.label,sprint.dayLabel,"")+
+    '<div class="focus-shell"><article class="card task-card"><div class="task-top"><div class="task-kicker"><span class="tag accent">'+esc(sprint.dayLabel)+'</span><span class="tag">'+day.minutes+' min</span><span class="tag">Weekly plan paused</span></div><h2>'+esc(day.focus)+'</h2><p class="artifact"><strong>Interview:</strong> '+esc(S.interview.role)+(S.interview.date?" · "+esc(S.interview.date):"")+'</p></div><div class="task-body">'+taskCards+(day.extra?'<div class="notice"><strong>Also:</strong> '+esc(day.extra)+'</div>':"")+(day.minutes?timerHtml(key,25):'<div class="finish-line"><span>Stop</span><p>'+esc(day.extra||"Nothing is scheduled today.")+'</p></div>')+
+      '<div class="task-footer"><button class="btn primary" id="complete-sprint" type="button">'+(done?"Completed ✓":"Complete today's sprint")+'</button><button class="btn" id="open-protocol" type="button">Open full interview plan</button></div></div></article></div>';
+  document.getElementById("complete-sprint").onclick=function(){var next=!done;if(next)pauseTimer();S.interview.checks[key]=next;save();renderSprintToday(root,sprint);};
+  document.getElementById("open-protocol").onclick=function(){show("interview");};
+  if(day.minutes)bindTimer(root,key,25);
+}
+function sprintOptionLabel(option){
+  return option.map(function(segment){
+    var record=findTask(segment.task_id);
+    return segment.task_id+" · "+(record?record.task.title:segment.task_id)+(segment.mode!=="full"?" ("+segment.mode+")":"");
+  }).join(" + ");
+}
+function bindProtocolChecks(root){
+  root.querySelectorAll("[data-protocol-check]").forEach(function(c){
+    c.onchange=function(){S.interview.checks[c.getAttribute("data-protocol-check")]=c.checked;save();if(activeView==="today")renderToday();else renderInterview();};
+  });
+}
+function renderInterview(){
+  var root=document.getElementById("view-interview");
+  if(!S.interview.active){renderInterviewSetup(root);return;}
+  var current=interviewPhaseIndex();
+  var html=pageHead("Interview",S.interview.company||"Scheduled interview","")+
+    '<div class="card protocol-head"><h2>'+esc(S.interview.role)+'</h2><p>'+(S.interview.date?"Interview date: "+esc(S.interview.date)+" · ":"")+esc(S.interview.format||"Format still needs confirmation.")+'</p><div class="task-footer" style="margin-top:14px"><button class="btn primary" id="go-today" type="button">Go to current action</button><button class="btn" id="edit-interview" type="button">Edit contract</button><span class="spacer"></span><button class="btn danger" id="end-interview" type="button">End interview mode</button></div></div>';
+  PLAN.interviewProtocol.forEach(function(p,pi){
+    html+='<details class="card protocol-card '+(pi===current?"current":"")+'" '+(pi===current?"open":"")+'><summary class="protocol-title"><span>'+(pi===current?"Do this now · ":"")+esc(p.window)+'</span><h3>'+esc(p.title)+'</h3></summary><div class="protocol-actions">'+p.actions.map(function(a,i){
+      var key=(S.interview.runId||"current")+":protocol:"+p.id+":"+i;
+      var id="protocol-"+p.id+"-"+i;
+      return '<div class="check-row '+(S.interview.checks[key]?"done":"")+'"><input id="'+id+'" type="checkbox" data-protocol-check="'+key+'" '+(S.interview.checks[key]?"checked":"")+'><label for="'+id+'">'+esc(a)+'</label></div>';
+    }).join("")+'</div></details>';
+  });
+  html+=sprintScheduleHtml()+defensePortfolioHtml();
+  root.innerHTML=html;
+  bindProtocolChecks(root);
+  document.getElementById("go-today").onclick=function(){show("today");};
+  document.getElementById("edit-interview").onclick=function(){S.interview.active=false;save();renderInterview();};
+  document.getElementById("end-interview").onclick=function(){
+    if(!confirm("End interview mode and resume the weekly plan? The protocol checklist will be kept."))return;
+    S.interview.active=false;save();renderInterview();renderHeader();
+  };
+}
+function sprintScheduleHtml(){
+  var s=PLAN.interviewSprints;
+  if(!s)return "";
+  function dayList(title,days){
+    return '<h3>'+esc(title)+'</h3><ol class="rules-list">'+days.map(function(day){
+      var links=[];
+      (day.options||[]).forEach(function(option){option.forEach(function(segment){
+        var record=findTask(segment.task_id);
+        (record&&record.task.links||[]).forEach(function(link){if(!links.some(function(saved){return saved.url===link.url;}))links.push(link);});
+      });});
+      var optionText=(day.options||[]).map(sprintOptionLabel).join(" OR ");
+      return '<li><strong>Day '+day.day+': '+esc(day.focus)+'</strong> · '+day.minutes+' min'+(optionText?'<br>'+esc(optionText):"")+(day.extra?'<br>'+esc(day.extra):"")+(links.length?'<div class="need-row">'+links.map(function(link){return '<a class="resource-link" href="'+esc(link.url)+'" target="_blank" rel="noopener">'+esc(link.label)+' ↗</a>';}).join("")+'</div>':"")+'</li>';
+    }).join("")+'</ol>';
+  }
+  function actionList(title,items){
+    return '<h3>'+esc(title)+'</h3><ol class="rules-list">'+items.map(function(item){
+      return '<li>'+esc(item)+'</li>';
+    }).join("")+'</ol>';
+  }
+  return '<details class="card compact-details" style="margin-top:15px"><summary>Source-grounded sprint schedules</summary><div class="compact-body"><p>A sprint replaces the normal schedule; it never stacks on top.</p>'+dayList("14 days",s.fourteen_day)+dayList("7 days",s.seven_day)+actionList("Final 72 hours",s.final_72_hours)+'</div></details>';
+}
+function defensePortfolioHtml(){
+  if(!PLAN.defense_packets||!PLAN.defense_packets.length)return "";
+  return '<details class="card compact-details" style="margin-top:15px"><summary>Five primary defenses + one standby</summary><div class="compact-body">'+PLAN.defense_packets.map(function(packet){
+    return '<article class="company-card"><div class="task-kicker"><span class="tag '+(packet.status==="primary"?"accent":"")+'">'+esc(packet.status)+'</span></div><h3>'+esc(packet.title)+'</h3><p>'+esc(packet.why_selected)+'</p>'+externalResourceLinks(packet.resources)+'<p class="gate-pass"><strong>Answer spine:</strong> '+esc(packet.answer_spine.join(" → "))+'</p></article>';
+  }).join("")+'</div></details>';
+}
+function renderInterviewSetup(root){
+  var i=S.interview;
+  var packs=PLAN.rolePacks.map(function(pack){
+    return '<button class="filter-btn" type="button" data-role-pack="'+esc(pack.id)+'">'+esc(pack.name)+'</button>';
+  }).join("");
+  var patterns=PLAN.companyPatterns.map(function(c){
+    return '<article class="company-card"><h3>'+esc(c.name)+'</h3><p>'+esc(c.use)+'</p>'+(c.source?'<a href="'+esc(c.source)+'" target="_blank" rel="noopener">Official guide ↗</a>':"")+'</article>';
+  }).join("");
+  root.innerHTML=pageHead("Interview","Build the real loop","")+
+    '<div class="interview-layout"><form class="card form-card" id="interview-form"><div class="field"><label for="company">Company and team</label><input id="company" value="'+esc(i.company)+'" placeholder="e.g. Google DeepMind · Generative Media"></div>'+
+    '<div class="field"><label for="interview-role">Role</label><select id="interview-role"><option>Research Scientist</option><option>Research Engineer</option><option>Research Scientist / Research Engineer</option><option>Applied Scientist</option></select></div>'+
+    '<div class="field"><label for="interview-date">Interview date</label><input id="interview-date" type="date" value="'+esc(i.date)+'"></div>'+
+    '<div class="field"><label for="interview-format">Confirmed rounds and rules</label><textarea id="interview-format" placeholder="Example: 45m Python coding; 60m research; 45m ML system design; no AI; docs allowed.">'+esc(i.format)+'</textarea><p class="help">Include durations, tools, AI/documentation rules, and whether a talk is required.</p></div>'+
+    '<div class="field"><label>Start from one role pack</label><div class="toolbar" style="margin-bottom:0">'+packs+'</div><p class="help">A pack fills five priorities. Edit or replace anything the recruiter did not confirm.</p></div>'+
+    '<div class="field"><label for="interview-focus">Exactly five priorities</label><textarea id="interview-focus" placeholder="1. Paper defense&#10;2. ML coding&#10;3. Training design&#10;4. Behavioral&#10;5. Team research">'+esc(i.focus)+'</textarea><p class="help">Five is a cap. Delete anything the confirmed loop does not test.</p></div>'+
+    '<button class="btn primary" type="submit">Activate and pause weekly plan</button></form>'+
+    '<aside style="display:grid;gap:12px"><details class="card compact-details"><summary>Company notes</summary><div class="compact-body">'+patterns+'</div></details>'+sprintScheduleHtml()+defensePortfolioHtml()+'</aside></div>';
+  document.getElementById("interview-role").value=i.role;
+  root.querySelectorAll("[data-role-pack]").forEach(function(button){
+    button.onclick=function(){
+      var pack=PLAN.rolePacks.find(function(x){return x.id===button.getAttribute("data-role-pack");});
+      if(!pack)return;
+      S.interview.focus=pack.priorities.map(function(x,index){return (index+1)+". "+x;}).join("\n");
+      document.getElementById("interview-focus").value=S.interview.focus;
+      save();
+      announce(pack.name+" priorities loaded. Edit them to match the confirmed loop.");
+    };
+  });
+  ["company","interview-role","interview-date","interview-format","interview-focus"].forEach(function(id){
+    document.getElementById(id).addEventListener("input",function(){
+      var map={"company":"company","interview-role":"role","interview-date":"date","interview-format":"format","interview-focus":"focus"};
+      S.interview[map[id]]=document.getElementById(id).value;save();
+    });
+  });
+  document.getElementById("interview-form").onsubmit=function(e){
+    e.preventDefault();
+    var contractKey=[S.interview.company,S.interview.date,S.interview.role].join("|");
+    if(S.interview.contractKey!==contractKey){
+      S.interview.contractKey=contractKey;
+      S.interview.runId=Date.now().toString(36);
+      S.interview.checks={};
+      S.interview.sprintChoices={};
     }
-    guide.appendChild(body);
-    v.appendChild(guide);
-  }
-  let curPhase=null;
-  WEEKS.forEach((w,i)=>{
-    if(w.phase!==curPhase){curPhase=w.phase;
-      v.appendChild(el('div','sectionhdr',`Phase ${w.phase} · ${PHASES[w.phase]}`));}
-    const done=weekDone(i);const tot=weekTotal(i);const isnow=i===ci;
-    const c=el('details','card week-card'+(isnow?' now':''));c.id='week-'+w.id;
-    const hasSaved=Object.prototype.hasOwnProperty.call(S.openWeeks,w.id);c.open=hasSaved?!!S.openWeeks[w.id]:isnow;
-    const nowLabel=isnow?(started?' · This week':' · Start here'):'';
-    const summary=el('summary','week-summary',`<div><div class="week-title">${escapeHtml(w.label)} · ${escapeHtml(w.theme)}${nowLabel?` <span class="pill" style="background:var(--accent);color:#fff">${escapeHtml(nowLabel.replace(' · ',''))}</span>`:''}</div><div class="week-sub">${escapeHtml(weekDateLabel(i,w))} · ${done}/${tot} complete · set aside about ${escapeHtml(reserveLabel(weekReserve(i)))}</div><div class="mini"><i style="width:${tot?Math.round(done/tot*100):0}%"></i></div></div>`);
-    c.appendChild(summary);
-    const body=el('div','week-body');w.sessions.forEach((s,si)=>renderSession(body,w,si));c.appendChild(body);
-    c.addEventListener('toggle',()=>{S.openWeeks[w.id]=c.open;save();});
-    v.appendChild(c);
-  });
+    var remaining=interviewDaysRemaining();
+    S.interview.sprint=remaining!=null&&remaining<=7&&remaining>3?"seven":(remaining!=null&&remaining<=14&&remaining>3?"fourteen":"");
+    S.interview.active=true;save();renderInterview();renderHeader();announce("Interview mode active. The weekly plan is paused.");
+  };
 }
-
-/* ---------- render: topics ---------- */
-function renderTopics(){
-  const v=document.getElementById('v-topics');v.innerHTML='';
-  v.appendChild(el('div','note','Two boxes per topic: can you <strong>explain</strong> it cold, and can you <strong>apply</strong> it in a derivation, design discussion, or small implementation? Both ticked = owned.'));
-  let cur='';
-  let tbl,tb;
-  TOPICS.forEach((tp,i)=>{
-    const cat=Array.isArray(tp)?tp[0]:tp.c, name=Array.isArray(tp)?tp[1]:tp.n;
-    if(cat!==cur){cur=cat;
-      const card=el('div','card table-card');card.appendChild(el('h3',null,cat));
-      tbl=el('table',null,'<thead><tr><th>Topic</th><th style="width:90px">Explain</th><th style="width:90px">Apply</th><th>Notes</th></tr></thead>');
-      tb=el('tbody');tbl.appendChild(tb);card.appendChild(tbl);v.appendChild(card);}
-    const o=S.topics[i]||(S.topics[i]={explain:false,implement:false,notes:''});
-    const tr=el('tr');
-    tr.appendChild(el('td',null,name));
-    const td1=el('td');const c1=el('input');c1.type='checkbox';c1.checked=o.explain;c1.style.width='16px';
-    c1.onchange=()=>{o.explain=c1.checked;save();refreshAll()};td1.appendChild(c1);tr.appendChild(td1);
-    const td2=el('td');const c2=el('input');c2.type='checkbox';c2.checked=o.implement;c2.style.width='16px';
-    c2.onchange=()=>{o.implement=c2.checked;save();refreshAll()};td2.appendChild(c2);tr.appendChild(td2);
-    const td3=el('td');const inp=el('input');inp.value=o.notes||'';inp.placeholder='link / reminder';
-    inp.oninput=()=>{o.notes=inp.value;save()};td3.appendChild(inp);tr.appendChild(td3);
-    tb.appendChild(tr);
-  });
-}
-
-/* ---------- generic log table ---------- */
-function logToolbar(label){
-  const t=el('div','toolbar');
-  const add=el('button','btn accent sm','+ Add row');
-  const sp=el('div','sp');
-  const exp=el('button','btn sm','⤓ Export');
-  const imp=el('button','btn sm','⤒ Import');
-  const saved=el('span','savedtag','saved ✓');
-  exp.onclick=exportData;imp.onclick=importData;
-  t.append(add,sp,saved,exp,imp);
-  return {bar:t,add};
+function renderSetup(){
+  var root=document.getElementById("view-setup");
+  var completed=Object.keys(S.completed).filter(function(k){return S.completed[k];}).length;
+  var sourceRows=PLAN.sources.map(function(src){
+    var name=src.url?'<a href="'+esc(src.url)+'" target="_blank" rel="noopener">'+esc(src.name)+' ↗</a>':esc(src.name);
+    return '<div class="source-row"><b>'+name+'</b><span>'+esc(src.type)+'</span><small>'+esc(src.usedFor)+'</small></div>';
+  }).join("");
+  root.innerHTML=pageHead("Settings","Plan and data","")+
+    '<div class="setup-grid"><section class="card form-card"><h2>Plan settings</h2><div class="field"><label for="start-date">Week 1 starts</label><input id="start-date" type="date" value="'+esc(S.startDate)+'"><p class="help">A new week archives unfinished work; it does not create a backlog.</p></div>'+
+    '<div class="field"><label for="target-date">Target date</label><input id="target-date" type="date" value="'+esc(S.targetDate)+'"></div>'+
+    '<div class="field"><label for="role">Primary label</label><select id="role"><option value="both">RS + RE</option><option value="rs">Research Scientist</option><option value="re">Research Engineer</option></select><p class="help">This changes emphasis labels, not the common core. Both is recommended for your background.</p></div></section>'+
+    '<section class="card form-card"><h2>Progress data</h2><p>'+completed+' sessions are complete. Progress stays in this browser unless you download a backup.</p><div class="task-footer"><button class="btn" id="export-data" type="button">Download backup</button><button class="btn" id="import-data" type="button">Import backup</button><span class="spacer"></span><button class="btn danger" id="reset-data" type="button">Reset progress</button></div><p class="help" style="margin-top:14px">The earlier interview-prep version remains under its old storage key and is not overwritten.</p></section></div>'+
+    '<div class="setup-grid"><details class="card compact-details"><summary>Plan rules</summary><div class="compact-body"><ol class="rules-list">'+PLAN.rules.map(function(r){return '<li>'+esc(r)+'</li>';}).join("")+'</ol></div></details>'+
+    '<details class="card compact-details"><summary>Sources and design notes</summary><div class="compact-body"><p>Today uses a short critical path, limited distraction, written instructions, and timed focus blocks. This is an interface choice, not medical advice.</p><div class="source-list">'+sourceRows+'</div></div></details></div>';
+  document.getElementById("role").value=S.role;
+  document.getElementById("start-date").onchange=function(e){if(e.target.value){S.startDate=e.target.value;S.selectedTask="";save();renderHeader();renderSetup();}};
+  document.getElementById("target-date").onchange=function(e){if(e.target.value){S.targetDate=e.target.value;save();}};
+  document.getElementById("role").onchange=function(e){S.role=e.target.value;save();renderHeader();};
+  document.getElementById("export-data").onclick=exportData;
+  document.getElementById("import-data").onclick=function(){document.getElementById("import-file").click();};
+  document.getElementById("reset-data").onclick=function(){
+    if(!confirm("Reset all progress, notes, scores, timers, and interview details in this version? Download a backup first if needed."))return;
+    S=freshState();save();renderSetup();renderHeader();announce("Progress reset.");
+  };
 }
 function exportData(){
-  const blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
-  const a=el('a');a.href=URL.createObjectURL(blob);a.download='interview-prep-progress.json';a.click();
+  var blob=new Blob([JSON.stringify(S,null,2)],{type:"application/json"});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement("a");
+  a.href=url;a.download="research-interview-lab-backup.json";a.click();
+  setTimeout(function(){URL.revokeObjectURL(url);},500);
 }
-function importData(){
-  const inp=el('input');inp.type='file';inp.accept='.json';
-  inp.onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();
-    r.onload=()=>{try{S=normalizeState(JSON.parse(r.result));migratePlanProgress();save();refreshAll();alert('Progress imported.')}catch(err){alert('Could not read file.')}};r.readAsText(f)};
-  inp.click();
+function importData(file){
+  if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(){
+    try{
+      var value=JSON.parse(reader.result);
+      if(value.version!==5)throw new Error("Wrong version");
+      S=Object.assign(freshState(),value);
+      S.interview=Object.assign(freshState().interview,value.interview||{});
+      S.timer=Object.assign(freshState().timer,value.timer||{});
+      save();renderView(activeView);announce("Backup imported.");
+    }catch(err){alert("That file is not a Research Interview Lab v5 backup.");}
+  };
+  reader.readAsText(file);
 }
-
-/* ---------- render: leetcode ---------- */
-function codingProblemRow(q){
-  const id=codingTaskId(q),on=!!S.weekTasks[id];
-  const row=el('div','problem-row'+(on?' done':''));
-  const cb=el('input');cb.type='checkbox';cb.checked=on;cb.setAttribute('aria-label',`${on?'Mark unfinished':'Mark complete'}: ${q.title}`);
-  cb.onchange=()=>{if(cb.checked&&ACTIVE_FOCUS.key===id)pauseFocus();S.weekTasks[id]=cb.checked;save();refreshAll();};
-  const copy=el('div');
-  copy.appendChild(el('a','problem-title',escapeHtml(q.title)));copy.querySelector('a').href=q.url;copy.querySelector('a').target='_blank';copy.querySelector('a').rel='noopener';
-  copy.appendChild(el('div','problem-meta',`${escapeHtml(q.id)} · ${escapeHtml(q.difficulty)} · ${escapeHtml(String(q.topic).replaceAll('-',' '))} · ${q.attemptMinutes}m attempt · set aside ${codingReserve(q)}m${q.gate?' · G1 checkpoint':''}`));
-  const actions=el('div','problem-actions');
-  const open=el('a','btn sm','Open problem');open.href=q.url;open.target='_blank';open.rel='noopener';
-  const log=el('button','linkbtn','Log result');log.type='button';log.onclick=()=>{ensureCodingLog(q);renderLeet();requestAnimationFrame(()=>document.getElementById('coding-log')?.scrollIntoView({block:'start'}));};
-  actions.append(open,log);row.append(cb,copy,actions);return row;
-}
-function renderLeet(){
-  const v=document.getElementById('v-leet');v.innerHTML='';
-  const cp=codingProgram();
-  if(cp){
-    const all=codingProblems(),done=all.filter(q=>S.weekTasks[codingTaskId(q)]).length;
-    const intro=el('div','card plan-intro');
-    intro.appendChild(el('h2',null,escapeHtml(cp.name||'Coding program')));
-    intro.appendChild(el('p',null,'Work in the displayed order. Each row is one study block: use the problem limit as a countdown, then use the remaining reservation for tests, review, and the log.'));
-    const stats=el('div','coding-summary');
-    stats.appendChild(el('div','coding-stat',`<b>${done}/${all.length}</b><span>Core problems complete</span>`));
-    stats.appendChild(el('div','coding-stat',`<b>${escapeHtml(cp.selection&&cp.selection.difficultyMix||'Easy and Medium')}</b><span>No Hard problems in Core</span>`));
-    stats.appendChild(el('div','coding-stat',`<b>~${escapeHtml(String(cp.selection&&cp.selection.coreEstimatedHours||''))}h</b><span>Across 14 active weeks</span>`));
-    intro.appendChild(stats);
-    intro.appendChild(el('div','note','Begin with the Week 0 four-cue recognition sheet before opening the first prompt. Two Sum is omitted from Core; use it only as an optional five-minute editor check if you need to verify syntax or setup.'));
-    intro.appendChild(el('div','note','The two recovery weeks contain no new coding problems. A failed checkpoint replaces one later problem with a repair problem; it never adds another task to the week.'));
-    intro.appendChild(el('div','coding-source',`Based on <a href="${cp.source.filteredUrl||cp.source.url}" target="_blank" rel="noopener">this Grind 75 filter</a>: ${escapeHtml(cp.selection.filter)}. Core uses questions 2–34; Two Sum is below the target level, and the final three filtered questions are reserved for targeted replacement only.`));
-    v.appendChild(intro);
-
-    const current=WEEKS[currentWeekIdx()];const currentProblems=current&&cp.schedule&&cp.schedule[current.id];
-    const nowCard=el('div','card');nowCard.appendChild(el('h3',null,currentProblems&&currentProblems.length?'This week’s coding problems':'No new coding problems this week'));
-    if(currentProblems&&currentProblems.length){
-      nowCard.appendChild(el('p','muted','Complete one problem per study block. Do not combine them into a single sitting.'));
-      currentProblems.forEach(q=>nowCard.appendChild(codingProblemRow(Object.assign({weekId:current.id},q))));
-    }else{
-      nowCard.appendChild(el('p','muted','Keep this week available for recovery, interviews, or the rest of the curriculum. Do not pull future problems forward.'));
-    }
-    v.appendChild(nowCard);
-
-    const schedule=el('div');schedule.appendChild(el('div','sectionhdr','Complete schedule'));
-    (cp.weekOrder||[]).forEach(weekId=>{
-      const probs=(cp.schedule&&cp.schedule[weekId])||[];const w=WEEKS.find(x=>x.id===weekId);const wi=WEEKS.indexOf(w);
-      const count=probs.filter(q=>S.weekTasks[codingTaskId(q)]).length;
-      const reserve=probs.reduce((n,q)=>n+codingReserve(q),0);
-      const card=el('details','card coding-week');card.open=!!(current&&current.id===weekId);
-      card.appendChild(el('summary',null,`${escapeHtml(w?w.label:weekId)} · ${count}/${probs.length} complete · set aside about ${reserveLabel(reserve)}`));
-      const body=el('div','coding-week-body');
-      if(w&&wi>=0)body.appendChild(el('div','problem-meta',escapeHtml(weekDateLabel(wi,w))));
-      probs.forEach(q=>body.appendChild(codingProblemRow(Object.assign({weekId},q))));card.appendChild(body);schedule.appendChild(card);
-    });
-    v.appendChild(schedule);
-    const repair=el('details','card coding-week');repair.appendChild(el('summary',null,'Replacement-only repair problems'));
-    const repairBody=el('div','coding-week-body');repairBody.appendChild(el('p','muted','Use one only when a checkpoint identifies the matching failure. It replaces a later problem instead of increasing the workload.'));
-    (cp.repairPool||[]).forEach(q=>{
-      const r=el('div','problem-row');
-      const copy=el('div',null,`<a class="problem-title" href="${q.url}" target="_blank" rel="noopener">${escapeHtml(q.title)}</a><div class="problem-meta">${escapeHtml(q.difficulty)} · ${escapeHtml(String(q.topic).replaceAll('-',' '))} · ${q.attemptMinutes}m attempt<br>${escapeHtml(q.useWhen||'')}</div>`);
-      r.append(el('span','pill','Reserve'),copy);repairBody.appendChild(r);
-    });
-    repair.appendChild(repairBody);v.appendChild(repair);
-  }
-
-  const logSection=el('div');logSection.id='coding-log';logSection.appendChild(el('div','sectionhdr','Detailed coding log'));
-  const {bar,add}=logToolbar();logSection.appendChild(bar);
-  logSection.appendChild(el('div','note','The problem countdown measures the attempt. Record that number in “Min”; setup, review, and logging belong to the larger reservation shown above.'));
-  const card=el('div','card table-card');
-  const tbl=el('table',null,'<thead><tr><th>Date</th><th>Problem</th><th>Pattern</th><th>Diff</th><th>Unaided</th><th>Min</th><th>Revisit</th><th>Notes</th><th></th></tr></thead>');
-  const tb=el('tbody');tbl.appendChild(tb);card.appendChild(tbl);logSection.appendChild(card);v.appendChild(logSection);
-  function rowEl(r,idx){
-    const tr=el('tr');
-    const f=(k,ph,w)=>{const td=el('td');const i=el('input');i.value=r[k]||'';if(ph)i.placeholder=ph;if(w)i.style.minWidth=w;
-      i.oninput=()=>{r[k]=i.value;save()};td.appendChild(i);return td;};
-    const sel=(k,opts)=>{const td=el('td');const s=el('select');opts.forEach(o=>{const op=el('option',null,o);op.value=o;s.appendChild(op)});
-      s.value=r[k]||'';s.onchange=()=>{r[k]=s.value;save();refreshAll()};td.appendChild(s);return td;};
-    tr.appendChild(f('date','m/d','70px'));
-    tr.appendChild(f('problem','name'));
-    tr.appendChild(f('pattern','e.g. two pointers'));
-    tr.appendChild(sel('diff',['','Easy','Medium','Hard']));
-    tr.appendChild(sel('unaided',['','Y','N']));
-    tr.appendChild(f('min','','46px'));
-    tr.appendChild(sel('revisit',['','Y','N']));
-    tr.appendChild(f('notes','what tripped you'));
-    const tdx=el('td');const x=el('button','x','×');x.title='delete';
-    x.onclick=()=>{S.leet.splice(idx,1);save();renderLeet();refreshAll()};tdx.appendChild(x);tr.appendChild(tdx);
-    return tr;
-  }
-  S.leet.forEach((r,i)=>tb.appendChild(rowEl(r,i)));
-  add.onclick=()=>{S.leet.push({date:dateKey(new Date())});save();renderLeet();requestAnimationFrame(()=>document.getElementById('coding-log')?.scrollIntoView({block:'start'}));};
-  if(!S.leet.length)tb.appendChild(el('tr',null,'<td colspan="9" class="muted" style="text-align:center;padding:18px">You have not logged a coding problem yet. Choose “Add row” to create the first entry.</td>'));
-}
-
-/* ---------- render: mocks ---------- */
-function renderMocks(){
-  const v=document.getElementById('v-mocks');v.innerHTML='';
-  const {bar,add}=logToolbar();v.appendChild(el('h3',null,'Mock Interview Log'));v.appendChild(bar);
-  const card=el('div','card table-card');
-  const tbl=el('table',null,'<thead><tr><th>Date</th><th>Type</th><th>With</th><th>Score</th><th>Went well</th><th>To fix</th><th></th></tr></thead>');
-  const tb=el('tbody');tbl.appendChild(tb);card.appendChild(tbl);v.appendChild(card);
-  const types=['','ML coding','General coding','Technical discussion','Research discussion','Behavioral','Math','Job talk'];
-  function rowEl(r,idx){
-    const tr=el('tr');
-    const f=(k,ph)=>{const td=el('td');const i=el('input');i.value=r[k]||'';if(ph)i.placeholder=ph;i.oninput=()=>{r[k]=i.value;save()};td.appendChild(i);return td;};
-    const ta=(k,ph)=>{const td=el('td');const i=el('textarea');i.value=r[k]||'';if(ph)i.placeholder=ph;i.oninput=()=>{r[k]=i.value;save()};td.appendChild(i);return td;};
-    tr.appendChild(f('date','m/d'));
-    const tdt=el('td');const s=el('select');types.forEach(o=>{const op=el('option',null,o);op.value=o;s.appendChild(op)});
-    s.value=r.type||'';s.onchange=()=>{r.type=s.value;save();refreshAll()};tdt.appendChild(s);tr.appendChild(tdt);
-    tr.appendChild(f('who','peer / AI'));
-    const tds=el('td');const sc=el('select');['','1','2','3','4','5'].forEach(o=>{const op=el('option',null,o);op.value=o;sc.appendChild(op)});
-    sc.value=r.score||'';sc.onchange=()=>{r.score=sc.value;save()};tds.appendChild(sc);tr.appendChild(tds);
-    tr.appendChild(ta('well',''));tr.appendChild(ta('fix',''));
-    const tdx=el('td');const x=el('button','x','×');x.onclick=()=>{S.mocks.splice(idx,1);save();renderMocks();refreshAll()};tdx.appendChild(x);tr.appendChild(tdx);
-    return tr;
-  }
-  S.mocks.forEach((r,i)=>tb.appendChild(rowEl(r,i)));
-  add.onclick=()=>{S.mocks.push({});save();renderMocks()};
-  if(!S.mocks.length)tb.appendChild(el('tr',null,'<td colspan="7" class="muted" style="text-align:center;padding:18px">You have not logged a mock interview yet.</td>'));
-}
-
-/* ---------- render: pipeline ---------- */
-function renderPipe(){
-  const v=document.getElementById('v-pipe');v.innerHTML='';
-  const {bar,add}=logToolbar();v.appendChild(el('h3',null,'Company Pipeline'));v.appendChild(bar);
-  v.appendChild(el('div','note','Keep at most five Dream/High targets, two practice companies, and one watch relationship active. Interview with one or two practice companies first. Schedule high-priority companies close together only if your energy allows it.'));
-  const targetGroups=(TARGET_COMPANIES&&TARGET_COMPANIES.groups)||[];
-  if(targetGroups.length){
-    const universe=el('div','card target-universe');
-    universe.appendChild(el('h3',null,escapeHtml(TARGET_COMPANIES.title||'Suggested target universe')));
-    universe.appendChild(el('p','muted',escapeHtml(TARGET_COMPANIES.principle||'')));
-    targetGroups.forEach((group,gi)=>{
-      const details=el('details','target-group');
-      if(gi===0)details.open=true;
-      const companies=group.companies||[];
-      details.appendChild(el('summary',null,`${escapeHtml(group.name||'Targets')} <span class="pill">${companies.length}</span>`));
-      details.appendChild(el('p','target-rule',escapeHtml(group.rule||'')));
-      const grid=el('div','target-grid');
-      companies.forEach(c=>{
-        const exists=S.pipe.some(r=>(r.company||'').trim().toLowerCase()===c.name.trim().toLowerCase());
-        const item=el('article','target-card');
-        const head=el('div','target-head');
-        head.appendChild(el('h4',null,escapeHtml(c.name)));
-        head.appendChild(el('span','pill',escapeHtml(c.fit||'')));
-        item.appendChild(head);
-        item.appendChild(el('div','target-meta',`${escapeHtml(c.status||'')} · ${escapeHtml(c.location||'Location varies')} · suggested ${escapeHtml(c.defaultPriority||'High')}`));
-        item.appendChild(el('p','target-why',escapeHtml(c.why||'')));
-        item.appendChild(el('div','target-roles',`<strong>Likely roles:</strong> ${escapeHtml(c.roles||'Check current openings')}`));
-        item.appendChild(el('div','target-pack',`<strong>Review before the interview:</strong> ${escapeHtml(c.pack||'Use the job description to choose what to review')}`));
-        const actions=el('div','target-actions');
-        const addTarget=el('button','btn accent sm',exists?'Already in pipeline':'Add to pipeline');addTarget.type='button';addTarget.disabled=exists;
-        addTarget.onclick=()=>{
-          if(S.pipe.some(r=>(r.company||'').trim().toLowerCase()===c.name.trim().toLowerCase()))return;
-          S.pipe.push({company:c.name,role:c.roles||'',priority:c.defaultPriority||'High',stage:(c.defaultPriority==='Watch'?'Watching':'Networking'),next:c.next||'Open current roles and choose one next step',notes:`Fit: ${c.fit||'role-dependent'}. Activation: ${c.pack||'choose from the posted role'}.`});
-          save();renderPipe();refreshAll();
-        };
-        const source=el('a','tlink','Official roles / careers');source.href=c.url;source.target='_blank';source.rel='noopener';
-        actions.append(addTarget,source);item.appendChild(actions);grid.appendChild(item);
-      });
-      details.appendChild(grid);universe.appendChild(details);
-    });
-    universe.appendChild(el('p','muted',`Verified against official company or job-board pages on ${escapeHtml(TARGET_COMPANIES.asOf||'the audit date')}. “Hiring now” describes that date, not a permanent promise.`));
-    v.appendChild(universe);
-  }
-  const card=el('div','card table-card');
-  const tbl=el('table',null,'<thead><tr><th>Company</th><th>Role</th><th>Priority</th><th>Stage</th><th>Next step</th><th>Notes</th><th></th></tr></thead>');
-  const tb=el('tbody');tbl.appendChild(tb);card.appendChild(tbl);v.appendChild(card);
-  const stages=['','Watching','Networking','Applied','Recruiter call','Phone screen','Onsite/loop','Offer','Negotiating','Accepted','Withdrawn','Rejected','Ghosted'];
-  const prios=['','Dream','High','Practice','Watch'];
-  function rowEl(r,idx){
-    const tr=el('tr');
-    const f=(k,ph)=>{const td=el('td');const i=el('input');i.value=r[k]||'';if(ph)i.placeholder=ph;i.oninput=()=>{r[k]=i.value;save()};td.appendChild(i);return td;};
-    const sel=(k,opts)=>{const td=el('td');const s=el('select');opts.forEach(o=>{const op=el('option',null,o);op.value=o;s.appendChild(op)});
-      s.value=r[k]||'';s.onchange=()=>{r[k]=s.value;save();refreshAll()};td.appendChild(s);return td;};
-    tr.appendChild(f('company','name'));tr.appendChild(f('role','RS / RE / MTS'));
-    tr.appendChild(sel('priority',prios));tr.appendChild(sel('stage',stages));
-    tr.appendChild(f('next','call Thu / send refs'));tr.appendChild(f('notes',''));
-    const tdx=el('td');const x=el('button','x','×');x.onclick=()=>{S.pipe.splice(idx,1);save();renderPipe();refreshAll()};tdx.appendChild(x);tr.appendChild(tdx);
-    return tr;
-  }
-  S.pipe.forEach((r,i)=>tb.appendChild(rowEl(r,i)));
-  add.onclick=()=>{S.pipe.push({});save();renderPipe()};
-  if(!S.pipe.length)tb.appendChild(el('tr',null,'<td colspan="7" class="muted" style="text-align:center;padding:18px">You have not added a company to the pipeline yet.</td>'));
-}
-
-/* ---------- render: stories ---------- */
-function renderStory(){
-  const v=document.getElementById('v-story');v.innerHTML='';
-  v.appendChild(el('div','note','Connect each prompt to a specific event from your PhD, internships, or production work. Mark a story as ready when you can explain the situation, your action, and the result in about two minutes without reading notes.'));
-  STORY_CATS.forEach(cat=>{
-    const on=!!S.storyReady[cat];
-    const c=el('div','card');
-    c.appendChild(el('div',null,`<div class="wkhead"><h3>${cat}</h3></div>`));
-    const lab=el('label','ck'+(on?' done':''));
-    const cb=el('input');cb.type='checkbox';cb.checked=on;
-    cb.onchange=()=>{S.storyReady[cat]=cb.checked;save();lab.classList.toggle('done',cb.checked);refreshAll()};
-    lab.appendChild(cb);lab.appendChild(el('span',null,'Ready (can deliver in ~2 min)'));
-    c.appendChild(lab);
-    const ta=el('textarea');ta.style.cssText='width:100%;min-height:64px;margin-top:8px';
-    ta.placeholder='Situation / Task → Action → Result';ta.value=S.storyText[cat]||'';
-    ta.oninput=()=>{S.storyText[cat]=ta.value;save()};
-    c.appendChild(ta);v.appendChild(c);
+function boot(){
+  fetch("plan.json",{cache:"no-store"}).then(function(r){
+    if(!r.ok)throw new Error("Plan failed to load");
+    return r.json();
+  }).then(function(plan){
+    PLAN=plan;
+    S=loadState();
+    buildNav();
+    document.getElementById("import-file").addEventListener("change",function(e){importData(e.target.files[0]);e.target.value="";});
+    var hash=(location.hash||"#today").slice(1);
+    if(hash.indexOf("practice:")===0){S.activeDrill=hash.split(":")[1]||"";hash="practice";}
+    if(!TABS.some(function(t){return t[0]===hash;}))hash="today";
+    show(hash);
+    startTicker();
+  }).catch(function(){
+    document.getElementById("view-today").innerHTML='<div class="notice"><strong>The curriculum could not load.</strong> Serve this folder over HTTP and keep plan.json beside index.html.</div>';
   });
 }
-
-/* ---------- render: retrieval cards ---------- */
-function addDaysISO(n){
-  const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+n);return dateKey(d);
-}
-function renderCards(){
-  const v=document.getElementById('v-cards');if(!v)return;v.innerHTML='';
-  const today=dateKey(new Date());
-  const due=S.cards.filter(c=>!c.due||c.due<=today).length;
-  v.appendChild(el('div','note',`<strong>${due} due now.</strong> Friday pulls start with due cards, then the oldest unseen cards. “Missed” returns tomorrow; “Got it” returns in seven days. Add cards from any curriculum task so the source ID is preserved.`));
-  const toolbar=el('div','toolbar');const add=el('button','btn accent sm','+ New card');
-  add.onclick=()=>{S.cards.unshift({prompt:'',answer:'',source:'manual',due:today,last:''});save();renderCards();};
-  toolbar.append(add);v.appendChild(toolbar);
-  if(!S.cards.length){v.appendChild(el('div','empty','You have not created a retrieval card yet. Open a curriculum task and choose “Add retrieval card.”'));return;}
-  const ordered=S.cards.map((card,index)=>({card,index})).sort((a,b)=>(a.card.due||'').localeCompare(b.card.due||''));
-  ordered.forEach(({card,index})=>{
-    const isDue=!card.due||card.due<=today;
-    const c=el('div','card'+(isDue?' due':''));
-    const head=el('div','wkhead');
-    const source=el('span','idtag',card.source||'manual');
-    const dueLabel=el('span','pill',isDue?'Due now':'Due '+card.due);
-    head.append(source,dueLabel);c.appendChild(head);
-    const prompt=el('textarea');prompt.className='cardprompt';prompt.style.cssText='width:100%;min-height:48px;margin-top:10px';prompt.placeholder='Question / retrieval cue';prompt.value=card.prompt||'';
-    prompt.oninput=()=>{card.prompt=prompt.value;save()};c.appendChild(prompt);
-    const answerBox=el('details');answerBox.appendChild(el('summary',null,'Show / edit answer'));
-    const answer=el('textarea');answer.style.cssText='width:100%;min-height:80px;margin-top:8px';answer.placeholder='Answer in 40 words or fewer';answer.value=card.answer||'';
-    answer.oninput=()=>{card.answer=answer.value;save()};answerBox.appendChild(answer);c.appendChild(answerBox);
-    const dueInput=el('input');dueInput.type='date';dueInput.value=card.due||today;dueInput.onchange=()=>{card.due=dueInput.value;save();renderCards();};
-    const dueWrap=el('label','setlbl','Next review');dueWrap.appendChild(dueInput);c.appendChild(dueWrap);
-    const actions=el('div','row-actions');
-    const miss=el('button','btn sm','Missed → tomorrow');miss.onclick=()=>{card.last=today;card.due=addDaysISO(1);save();renderCards();};
-    const got=el('button','btn accent sm','Got it → 7 days');got.onclick=()=>{card.last=today;card.due=addDaysISO(7);save();renderCards();};
-    const del=el('button','btn sm','Delete');del.onclick=()=>{if(confirm('Delete this retrieval card?')){S.cards.splice(index,1);save();renderCards();}};
-    actions.append(miss,got,del);c.appendChild(actions);v.appendChild(c);
-  });
-}
-
-/* ---------- render: performance gates and adaptation ---------- */
-function taskById(id){
-  for(const w of WEEKS)for(const s of (w.sessions||[]))for(const t of (s.x||[]))if(t.id===id)return t;
-  return null;
-}
-function renderGates(){
-  const v=document.getElementById('v-gates');if(!v)return;v.innerHTML='';
-  if(!GATES.length){v.appendChild(el('div','note',planError||'Loading gates…'));return;}
-  const passed=GATES.filter(g=>(S.gates[g.id]||{}).status==='pass').length;
-  v.appendChild(el('div','note',`<strong>You have passed ${passed} of ${GATES.length} checkpoints.</strong> A passing result allows you to remove redundant preparation. After an unsuccessful attempt, repair the specific failure category before repeating the checkpoint.`));
-  const grid=el('div','gategrid');
-  orderedGates().forEach(g=>{
-    const rec=S.gates[g.id]||(S.gates[g.id]={status:'',date:'',failure:'',notes:''});
-    const stateClass=rec.status==='pass'?'pass':rec.status==='fail'?'fail':rec.status==='defer'?'defer':'';
-    const stateText=rec.status==='pass'?'Passed':rec.status==='fail'?'Failed':rec.status==='defer'?'Deferred':'Not run';
-    const c=el('div','card gatecard');
-    const head=el('div','gatehead');
-    const title=el('div');title.appendChild(el('h3',null,`${escapeHtml(g.id)} · ${escapeHtml(g.name)}`));
-    title.appendChild(el('div','muted',`${escapeHtml(g.week||'')} · ${escapeHtml(g.limit||'No fixed limit')}`));
-    head.append(title,el('span','gatestate '+stateClass,stateText));c.appendChild(head);
-    c.appendChild(el('p',null,`<strong>Format:</strong> ${escapeHtml(g.format)}`));
-    c.appendChild(el('p',null,`<strong>Pass:</strong> ${escapeHtml(g.pass)}`));
-    const detail=el('details',null,`<summary>Remediation and retest</summary><p><strong>Repair:</strong> ${escapeHtml(g.remediation||'—')}</p><p><strong>Retest:</strong> ${escapeHtml(g.retest||'—')}</p>`);
-    c.appendChild(detail);
-    const form=el('div','gateform');
-    const statusWrap=el('label',null,'Result');
-    const status=el('select');
-    [['','Not run'],['pass','Passed'],['fail','Failed'],['defer','Deferred']].forEach(([value,label])=>{const o=el('option',null,label);o.value=value;status.appendChild(o);});
-    status.value=rec.status||'';
-    const dateWrap=el('label',null,'Date');
-    const date=el('input');date.type='date';date.value=rec.date||'';
-    const failWrap=el('label',null,'Failure category');
-    const failure=el('select');failure.appendChild(el('option',null,'—'));failure.options[0].value='';
-    FAILURE_CATEGORIES.forEach(f=>{const o=el('option',null,f.signature);o.value=f.id;failure.appendChild(o);});
-    failure.value=rec.failure||'';
-    const noteWrap=el('label',null,'Notes / evidence');noteWrap.style.gridColumn='1/-1';
-    const notes=el('textarea');notes.placeholder='What happened? What will change?';notes.value=rec.notes||'';
-    const persist=()=>{rec.status=status.value;rec.date=date.value;rec.failure=failure.value;rec.notes=notes.value;save();};
-    status.onchange=()=>{persist();renderGates();refreshHeader();};
-    date.onchange=persist;failure.onchange=persist;notes.oninput=persist;
-    statusWrap.appendChild(status);dateWrap.appendChild(date);failWrap.appendChild(failure);noteWrap.appendChild(notes);
-    form.append(statusWrap,dateWrap,failWrap,noteWrap);c.appendChild(form);grid.appendChild(c);
-  });
-  v.appendChild(grid);
-
-  v.appendChild(el('div','sectionhdr','How the plan adapts'));
-  const rules=el('div','card');rules.appendChild(el('h3',null,'Rules that outrank the calendar'));
-  rules.appendChild(el('ul','rulelist',ADAPT_RULES.map(x=>`<li>${escapeHtml(x)}</li>`).join('')));v.appendChild(rules);
-
-  const cats=el('div','card table-card');cats.appendChild(el('h3',null,'Failure → smallest useful repair'));
-  const tbl=el('table','',`<thead><tr><th>Category</th><th>What it looks like</th><th>Repair</th></tr></thead><tbody>${FAILURE_CATEGORIES.map(f=>`<tr><td>${escapeHtml(f.id.replaceAll('_',' '))}</td><td>${escapeHtml(f.signature)}</td><td>${escapeHtml(f.remediation)}</td></tr>`).join('')}</tbody>`);
-  cats.appendChild(tbl);v.appendChild(cats);
-
-  const cut=el('div','grid g2');
-  const first=el('div','card');first.appendChild(el('h3',null,'First five cuts when overloaded'));
-  first.appendChild(el('ol','rulelist',FIRST_CUTS.map(id=>{const t=taskById(id);return `<li><span class="idtag">${escapeHtml(id)}</span>${t?' · '+taskText(t):''}</li>`;}).join('')));
-  const never=el('div','card');never.appendChild(el('h3',null,'Never cut'));
-  never.appendChild(el('ul','rulelist',NEVER_CUT.map(id=>{const t=taskById(id);return `<li><span class="idtag">${escapeHtml(id)}</span>${t?' · '+taskText(t):''}</li>`;}).join('')));
-  cut.append(first,never);v.appendChild(cut);
-
-  if(RUBRIC.axes){
-    const r=el('div','card');r.appendChild(el('h3',null,'Mock and real-round rubric'));
-    r.appendChild(el('p','muted',`${escapeHtml(RUBRIC.scale)} · Pass: ${escapeHtml(RUBRIC.pass)}`));
-    r.appendChild(el('ol','rulelist',RUBRIC.axes.map(a=>`<li>${escapeHtml(a)}</li>`).join('')));v.appendChild(r);
-  }
-}
-
-/* ---------- render: evidence and curriculum rationale ---------- */
-function renderEvidence(){
-  const v=document.getElementById('v-evidence');if(!v)return;v.innerHTML='';
-  if(!EVIDENCE.asOf){v.appendChild(el('div','note',planError||'Loading the evidence base…'));return;}
-  v.appendChild(el('div','note',`<strong>Research cutoff: ${escapeHtml(EVIDENCE.asOf)}.</strong> ${escapeHtml(EVIDENCE.thesis||'')}`));
-
-  const fit=el('div','card');
-  fit.appendChild(el('h3',null,'Why this curriculum fits this CV'));
-  fit.appendChild(el('p',null,escapeHtml(EVIDENCE.candidateFit||'')));
-  v.appendChild(fit);
-
-  const lanes=el('div','grid g2');
-  (EVIDENCE.roleLanes||[]).forEach(lane=>{
-    const c=el('div','card');
-    c.appendChild(el('div','wkhead',`<h3>${escapeHtml(lane.lane)}</h3><span class="pill">${escapeHtml(lane.weight)}</span>`));
-    c.appendChild(el('p',null,escapeHtml(lane.signals)));
-    c.appendChild(el('p','muted',escapeHtml(lane.employerEvidence)));
-    lanes.appendChild(c);
-  });
-  v.appendChild(lanes);
-
-  const conclusions=el('div','card');
-  conclusions.appendChild(el('h3',null,'What the research supports'));
-  conclusions.appendChild(el('ul','rulelist',(EVIDENCE.marketConclusions||[]).map(x=>`<li>${escapeHtml(x)}</li>`).join('')));
-  v.appendChild(conclusions);
-
-  const contract=el('div','grid g2');
-  const task=el('div','card');task.appendChild(el('h3',null,'Task design contract'));
-  task.appendChild(el('ol','rulelist',(EVIDENCE.taskContract||[]).map(x=>`<li>${escapeHtml(x)}</li>`).join('')));
-  const limits=el('div','card');limits.appendChild(el('h3',null,'Uncertainty kept visible'));
-  limits.appendChild(el('ul','rulelist',(EVIDENCE.limitations||[]).map(x=>`<li>${escapeHtml(x)}</li>`).join('')));
-  contract.append(task,limits);v.appendChild(contract);
-
-  const grades=Object.fromEntries((EVIDENCE.evidenceGrades||[]).map(x=>[x.grade,x.meaning]));
-  const sources=el('div','card res');sources.appendChild(el('h3',null,'Source ledger'));
-  const ul=el('ul');
-  (EVIDENCE.sourceLedger||[]).forEach(src=>{
-    ul.appendChild(el('li',null,`<span class="pill">${escapeHtml(src.grade)}</span> <a href="${escapeHtml(src.url)}" target="_blank" rel="noopener">${escapeHtml(src.name)}</a><br><small>${escapeHtml(src.usedFor)} ${grades[src.grade]?'<br><span class="muted">'+escapeHtml(grades[src.grade])+'</span>':''}</small>`));
-  });
-  sources.appendChild(ul);v.appendChild(sources);
-}
-
-/* ---------- render: 72-hour company protocol ---------- */
-function renderProtocol(){
-  const v=document.getElementById('v-protocol');if(!v)return;v.innerHTML='';
-  if(!PROTOCOL.steps){v.appendChild(el('div','note',planError||'Loading the protocol…'));return;}
-  const control=el('div','card'+(S.protocolActive?' protocol-on':''));
-  control.appendChild(el('h3',null,S.protocolActive?'Interview protocol is active. Weekly tasks are paused.':'Activate when an interview is scheduled'));
-  control.appendChild(el('p','muted',escapeHtml(PROTOCOL.activation||'')));
-  const row=el('div','setrow');
-  const companyWrap=el('div');companyWrap.innerHTML='<label class="setlbl">Company / team</label>';
-  const company=el('input');company.type='text';company.placeholder='e.g. DeepMind · Generative Media';company.value=S.protocolCompany||'';
-  const buttonWrap=el('div');buttonWrap.innerHTML='<label class="setlbl">Status</label>';
-  const toggle=el('button','btn '+(S.protocolActive?'':'accent'),S.protocolActive?'End protocol and resume next week':'Activate 72-hour protocol');
-  company.oninput=()=>{S.protocolCompany=company.value;save();};
-  toggle.onclick=()=>{S.protocolActive=!S.protocolActive;save();renderProtocol();refreshHeader();};
-  companyWrap.appendChild(company);buttonWrap.appendChild(toggle);row.append(companyWrap,buttonWrap);control.appendChild(row);v.appendChild(control);
-
-  const mix=el('div','card');mix.appendChild(el('h3',null,'Five-priority cap'));
-  mix.appendChild(el('p','muted','Choose the matching role family. These are default mixes, not a sixth source of work.'));
-  const mixList=el('div');
-  Object.entries(PROTOCOL.defaultPriorityMix||{}).forEach(([role,text])=>{
-    mixList.appendChild(el('details',null,`<summary>${escapeHtml(role.replaceAll('_',' '))}</summary><p>${escapeHtml(text)}</p>`));
-  });
-  mix.appendChild(mixList);v.appendChild(mix);
-
-  if((PROTOCOL.activationPacks||[]).length){
-    const packs=el('div','card');packs.appendChild(el('h3',null,'Role-specific review plans'));
-    packs.appendChild(el('p','muted','Choose one pack only when the job description or recruiter triggers it. Its five items become the five-priority cap above.'));
-    (PROTOCOL.activationPacks||[]).forEach(pack=>{
-      const detail=el('details');
-      detail.appendChild(el('summary',null,escapeHtml(pack.name)));
-      detail.appendChild(el('p','muted','Trigger: '+escapeHtml(pack.trigger)));
-      detail.appendChild(el('ol','rulelist',(pack.fivePriorities||[]).map(x=>`<li>${escapeHtml(x)}</li>`).join('')));
-      packs.appendChild(detail);
-    });
-    v.appendChild(packs);
-  }
-
-  PROTOCOL.steps.forEach((step,i)=>{
-    const c=el('div','card protocol-step');
-    c.appendChild(el('h3',null,`${i+1}. ${escapeHtml(step.window)} · ${escapeHtml(step.duration)}`));
-    c.appendChild(el('ul','rulelist',(step.actions||[]).map(a=>`<li>${escapeHtml(a)}</li>`).join('')));
-    v.appendChild(c);
-  });
-  const rules=el('div','grid g2');
-  const retain=el('div','card');retain.appendChild(el('h3',null,'Keep active'));
-  retain.appendChild(el('ul','rulelist',(PROTOCOL.retainedWhileActive||[]).map(x=>`<li>${escapeHtml(x)}</li>`).join('')));
-  const suspend=el('div','card');suspend.appendChild(el('h3',null,'Suspend'));
-  suspend.appendChild(el('ul','rulelist',(PROTOCOL.suspendedWhileActive||[]).map(x=>`<li>${escapeHtml(x)}</li>`).join('')));
-  rules.append(retain,suspend);v.appendChild(rules);
-  v.appendChild(el('div','note',`<strong>After the loop:</strong> ${escapeHtml(PROTOCOL.afterLoop||'')}`));
-}
-
-/* ---------- render: resources ---------- */
-function renderRes(){
-  const v=document.getElementById('v-res');v.innerHTML='';
-  v.appendChild(el('div','note','Use this library when a task or checkpoint identifies a gap. You do not need to finish every item.'));
-  RESOURCES.forEach((g,gi)=>{
-    const c=el('div','card res');c.appendChild(el('h3',null,g.g));
-    const ul=el('ul');
-    g.items.forEach((it,ii)=>{
-      const key=gi+'#'+ii;const on=!!S.resReviewed[key];
-      const li=el('li');
-      const lab=el('label','ck'+(on?' done':''));
-      const cb=el('input');cb.type='checkbox';cb.checked=on;
-      cb.onchange=()=>{S.resReviewed[key]=cb.checked;save();lab.classList.toggle('done',cb.checked);refreshAll()};
-      lab.appendChild(cb);
-      const span=el('span',null,`${it.s?'<span class="star">★</span> ':''}<a href="${it.u}" target="_blank" rel="noopener">${it.t}</a><br><small>${it.d}</small>`);
-      lab.appendChild(span);li.appendChild(lab);ul.appendChild(li);
-    });
-    c.appendChild(ul);v.appendChild(c);
-  });
-}
-
-/* ---------- render: secondary tools ---------- */
-function renderMore(){
-  const v=document.getElementById('v-more');if(!v)return;v.innerHTML='';
-  const intro=el('div','card plan-intro');
-  intro.appendChild(el('h2',null,'More tools'));
-  intro.appendChild(el('p',null,'These tools support the weekly plan. Open one when a task tells you to use it.'));
-  v.appendChild(intro);
-  const grid=el('div','more-grid');
-  AUX_TABS.forEach(([id,label,description])=>{
-    const b=el('button','more-link',`<b>${escapeHtml(label)}</b><span>${escapeHtml(description)}</span>`);
-    b.type='button';b.onclick=()=>show(id);grid.appendChild(b);
-  });
-  v.appendChild(grid);
-}
-
-/* ---------- render: settings ---------- */
-function renderSettings(){
-  const v=document.getElementById('v-settings');if(!v)return;v.innerHTML='';
-  const s=S.settings;
-  if(!S.userConfig)S.userConfig=normUserConfig();
-  const cfg=S.userConfig;
-  const back=el('button','btn sm','← Back to Today'); back.style.marginBottom='14px'; back.onclick=()=>show('dash'); v.appendChild(back);
-  v.appendChild(el('div','note','Changing the <strong>start date</strong> re-dates every week; changing a <strong>day</strong> re-labels that session across the plan. Personalization fields below are substituted into the task text so it reads as your plan.'));
-
-  const c=el('div','card');c.appendChild(el('h3',null,'Your plan'));
-  const nameW=el('div',null,'<label class="setlbl">Header label (shown under the title)</label>');
-  const name=el('input');name.type='text';name.value=s.name||'';name.placeholder='e.g. Your name · RS / RE / MTS · Vision/ML';
-  name.oninput=()=>{s.name=name.value;save();const sub=document.getElementById('sub');if(sub)sub.textContent=s.name||'Interview Prep';};
-  nameW.appendChild(name);c.appendChild(nameW);
-  const dRow=el('div','setrow');
-  const mkDate=(lbl,key)=>{const w=el('div');w.innerHTML='<label class="setlbl">'+lbl+'</label>';
-    const i=el('input');i.type='date';i.value=s[key]||'';
-    i.onchange=()=>{if(i.value){s[key]=i.value;save();renderAllViews();}};w.appendChild(i);return w;};
-  dRow.appendChild(mkDate('Start date (Week 0 begins)','startDate'));
-  dRow.appendChild(mkDate('Target interview date','targetDate'));
-  c.appendChild(dRow);v.appendChild(c);
-
-  const tc=el('div','card');tc.appendChild(el('h3',null,'Target companies'));
-  tc.appendChild(el('div',null,'<div class="muted" style="font-size:12.5px;margin-bottom:8px">Use these for company-specific plan wording. Keep broader pipeline tracking in the Companies tab.</div>'));
-  const tcRow=el('div','setrow');
-  TARGET_COMPANY_FIELDS.forEach(([k,label,ph])=>{
-    const w=el('div');
-    w.innerHTML='<label class="setlbl">'+label+'</label>';
-    const inp=el('input');inp.type='text';inp.value=cfg[k]||'';inp.placeholder=ph||'';
-    inp.oninput=()=>{cfg[k]=inp.value;save();refreshAll();};
-    w.appendChild(inp);tcRow.appendChild(w);
-  });
-  tc.appendChild(tcRow);v.appendChild(tc);
-
-  /* ---- Personalization: variable substitutions ---- */
-  const varDefs=(PERSONALIZATION&&PERSONALIZATION.vars)||{};
-  const targetKeys=TARGET_COMPANY_FIELDS.map(f=>f[0]);
-  const varKeys=Object.keys(varDefs).filter(k=>!targetKeys.includes(k));
-  if(varKeys.length){
-    const pc=el('div','card');pc.appendChild(el('h3',null,'Personalize the plan'));
-    pc.appendChild(el('div',null,'<div class="muted" style="font-size:12.5px;margin-bottom:8px">Names and labels you enter here are substituted into every task. Leave a field blank to keep the generic label.</div>'));
-    const pRow=el('div','setrow');
-    varKeys.forEach(k=>{
-      const def=varDefs[k]||{};
-      const w=el('div');
-      w.innerHTML='<label class="setlbl">'+(def.label||k)+'</label>';
-      const inp=el('input');inp.type='text';inp.value=cfg[k]||'';inp.placeholder=def.default||'';
-      inp.oninput=()=>{cfg[k]=inp.value;save();refreshAll();};
-      w.appendChild(inp);pRow.appendChild(w);
-    });
-    pc.appendChild(pRow);v.appendChild(pc);
-  }
-
-  /* ---- Personalization: branchable weeks (e.g. W9 interp vs post-training) ---- */
-  const branchDefs=(PERSONALIZATION&&PERSONALIZATION.branches)||{};
-  const branchKeys=Object.keys(branchDefs);
-  if(branchKeys.length){
-    const bc=el('div','card');bc.appendChild(el('h3',null,'Weekly focus options'));
-    branchKeys.forEach(k=>{
-      const def=branchDefs[k]||{};
-      const w=el('div');
-      w.innerHTML='<label class="setlbl">'+(def.label||k)+'</label>'+(def.help?'<div class="muted" style="font-size:12px;margin:0 0 6px">'+def.help+'</div>':'');
-      const sel=el('select');
-      (def.options||[]).forEach(o=>{const op=el('option',null,o.label);op.value=o.id;sel.appendChild(op);});
-      if(!cfg.branches)cfg.branches={};
-      sel.value=cfg.branches[k]||def.default||'';
-      sel.onchange=()=>{cfg.branches[k]=sel.value;save();rebuildWeeks();renderAllViews();};
-      w.appendChild(sel);bc.appendChild(w);
-    });
-    v.appendChild(bc);
-  }
-
-  const dc=el('div','card');dc.appendChild(el('h3',null,'Study days'));
-  dc.appendChild(el('div',null,'<div class="muted" style="font-size:12.5px;margin-bottom:8px">Each row sets the weekday for a session slot. The plan ships with Mon–Sun; remap if your study week is shifted (e.g., weekend off Wed/Thu).</div>'));
-  const slotLabels=[
-    'Slot 1: weeknight (default Mon)',
-    'Slot 2: weeknight LeetCode (default Tue)',
-    'Slot 3: weeknight (default Wed)',
-    'Slot 4: weeknight (default Thu)',
-    'Slot 5: Friday rotation (default Fri)',
-    'Slot 6: long block A (default Sat)',
-    'Slot 7: long block B (default Sun)'
-  ];
-  const DOW=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-  const grid=el('div','setdays');
-  slotLabels.forEach((lbl,i)=>{
-    const w=el('div');w.innerHTML='<label class="setlbl">'+lbl+'</label>';
-    const sel=el('select');DOW.forEach(d=>{const o=el('option',null,d);o.value=d;sel.appendChild(o)});
-    sel.value=s.days[i]||DOW[i];
-    sel.onchange=()=>{s.days[i]=sel.value;save();renderAllViews();};
-    w.appendChild(sel);grid.appendChild(w);
-  });
-  dc.appendChild(grid);v.appendChild(dc);
-
-  const rc=el('div','card');
-  const rb=el('button','btn sm','Reset dates & days to defaults');
-  rb.onclick=()=>{s.startDate=DEF_START;s.targetDate=DEF_TARGET;s.days=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];save();renderAllViews();show('settings');};
-  rc.appendChild(rb);v.appendChild(rc);
-
-  const data=el('div','card');data.appendChild(el('h3',null,'Data and privacy'));
-  const privacy=el('p','muted');privacy.textContent=`Signed in as ${activeEmail||'—'}. Progress is stored under your account and cached locally using an account-specific key.`;data.appendChild(privacy);
-  const actions=el('div','row-actions');
-  const exp=el('button','btn sm','Download backup');exp.type='button';exp.onclick=exportData;
-  const imp=el('button','btn sm','Import backup');imp.type='button';imp.onclick=importData;
-  actions.append(exp,imp);data.appendChild(actions);v.appendChild(data);
-}
-
-/* ---------- refresh ---------- */
-function refreshAll(){
-  refreshHeader();
-  const active=document.querySelector('.view.on');
-  const id=active?active.id.replace('v-',''):'dash';
-  const renders={dash:renderDash,plan:renderPlan,topics:renderTopics,leet:renderLeet,mocks:renderMocks,
-    pipe:renderPipe,story:renderStory,cards:renderCards,gates:renderGates,evidence:renderEvidence,protocol:renderProtocol,res:renderRes,more:renderMore,settings:renderSettings};
-  if(renders[id])renders[id]();
-}
-
-/* ---------- init ---------- */
-buildNav();
-// Open the app immediately as a guest. Firebase may replace this with a real session later.
-window.__startGuest();
-// The plan ships with the page, so it loads without an account.
-window.__planReady=(async function bootPlan(){
-  try{
-    const r=await fetch('plan.json',{cache:'no-store'});
-    if(r.ok){window.__applyPlan(await r.json());return;}
-  }catch(e){}
-  if(!window.__hasPlan())window.__planMissing();
+window.addEventListener("beforeunload",function(){if(S&&S.timer.running)pauseTimer();});
+boot();
 })();
-renderStorageBar();
-document.addEventListener('keydown',e=>{if(e.key==='Escape')window.__hideAuth();});
-window.addEventListener('beforeunload',checkpointFocus);
-const initial=(location.hash||'#dash').slice(1);
-show(KNOWN_TABS.has(initial)?initial:'dash');
-window.addEventListener('hashchange',()=>{
-  const id=(location.hash||'#dash').slice(1);
-  if(KNOWN_TABS.has(id))show(id);
-});
-</script>
-
-<!-- ============================================================
-     Firebase login + cloud sync.
-     PASTE YOUR CONFIG BELOW (6 values from the Firebase console).
-     See SETUP_GUIDE.md for the exact 10-minute walkthrough.
-     The apiKey is NOT a secret — it is safe to commit to GitHub.
-     ============================================================ -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-  import { getAuth, setPersistence, browserLocalPersistence, onAuthStateChanged, GoogleAuthProvider,
-           signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut }
-           from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-  import { initializeFirestore, doc, getDoc, setDoc, onSnapshot }
-           from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
-
-  // ---------- PASTE YOUR FIREBASE CONFIG HERE ----------
-  const firebaseConfig = {
-    apiKey: "AIzaSyCPqPOeFJR6Fcdckh00EjQ-2jbJW8D_L5g",
-    authDomain: "rs-interview-prep.firebaseapp.com",
-    projectId: "rs-interview-prep",
-    storageBucket: "rs-interview-prep.firebasestorage.app",
-    messagingSenderId: "313793650421",
-    appId: "1:313793650421:web:32cc5f747cf39c88796fbc",
-    measurementId: "G-ZSLZ55E3MJ"
-  };
-  // -----------------------------------------------------
-
-  const wire = () => {
-    const g=(id)=>document.getElementById(id);
-    if(g('g-signin')) g('g-signin').onclick=()=>window.__signInGoogle&&window.__signInGoogle();
-    if(g('e-signin')) g('e-signin').onclick=()=>window.__signInEmail&&window.__signInEmail();
-    if(g('e-register')) g('e-register').onclick=()=>window.__registerEmail&&window.__registerEmail();
-    if(g('e-reset')) g('e-reset').onclick=()=>window.__resetPassword&&window.__resetPassword();
-    if(g('auth-pass'))g('auth-pass').onkeydown=e=>{if(e.key==='Enter')window.__signInEmail&&window.__signInEmail();};
-  };
-  wire();
-
-  if(String(firebaseConfig.apiKey).includes("PASTE")){
-    window.__needConfig&&window.__needConfig();
-  } else {
-    const app=initializeApp(firebaseConfig);
-    const auth=getAuth(app);
-    const db=initializeFirestore(app,{experimentalAutoDetectLongPolling:true},'default');
-    setPersistence(auth, browserLocalPersistence).catch(()=>{});
-    let userRef=null, unsub=null, writeTimer=null;
-    const friendly=(e)=>{const c=(e&&e.code)||'';const m=(e&&e.message)||'';
-      if(c.includes('invalid-credential')||c.includes('wrong-password')||c.includes('user-not-found')) return 'Could not sign in with that email and password.';
-      if(c.includes('email-already-in-use')) return 'Could not create the account. Try signing in or resetting the password.';
-      if(c.includes('weak-password')) return 'Password should be at least 6 characters.';
-      if(c.includes('invalid-email')) return 'That doesn\'t look like a valid email.';
-      if(c.includes('operation-not-allowed')) return 'Email/Password sign-in is OFF in Firebase → Authentication → Sign-in method. Enable it.';
-      if(c.includes('network-request-failed')) return 'The network request failed. Check your connection or ad/script blocker.';
-      if(c.includes('too-many-requests')) return 'Too many attempts. Wait a minute and retry.';
-      if(c.includes('popup-closed')||c.includes('cancelled-popup')||c.includes('popup-blocked')) return 'The browser blocked the Google popup. Use email/password instead.';
-      if(c.includes('web-storage-unsupported')||c.includes('missing-initial-state')||m.includes('missing initial state')) return 'Your browser blocked the Google sign-in handoff (common on iPhone Safari or private browsing). Use email/password to sign in instead.';
-      if(c.includes('unauthorized-domain')) return 'This domain isn\'t authorized: add it in Firebase → Authentication → Settings → Authorized domains.';
-      return 'Sign-in failed: '+(c||m||'unknown error');};
-
-    window.__signInGoogle=()=>signInWithPopup(auth,new GoogleAuthProvider()).catch(e=>window.__authError(friendly(e)));
-    window.__signInEmail=()=>{const em=document.getElementById('auth-email').value.trim(),pw=document.getElementById('auth-pass').value;
-      window.__authError(''); signInWithEmailAndPassword(auth,em,pw).catch(e=>window.__authError(friendly(e)));};
-    window.__registerEmail=()=>{const em=document.getElementById('auth-email').value.trim(),pw=document.getElementById('auth-pass').value;
-      window.__authError(''); createUserWithEmailAndPassword(auth,em,pw).catch(e=>window.__authError(friendly(e)));};
-    window.__resetPassword=()=>{const em=document.getElementById('auth-email').value.trim();
-      if(!em){window.__authError('Enter your email address first.');return}
-      window.__authError('');sendPasswordResetEmail(auth,em)
-        .then(()=>window.__authError('If an account exists for that address, a reset email has been sent.'))
-        .catch(e=>window.__authError(friendly(e)));};
-    window.__signOut=()=>signOut(auth);
-    window.__cloudSave=(state)=>{ if(!userRef)return; clearTimeout(writeTimer);
-      window.__syncState('saving');
-      writeTimer=setTimeout(()=>{ setDoc(userRef,{state,updated:Date.now()},{merge:true})
-        .then(()=>window.__syncState('synced')).catch(()=>window.__syncState('error')); },300); };
-
-    onAuthStateChanged(auth, async (user)=>{
-      if(user){
-        // Carry anything ticked while signed out into a brand-new account.
-        const guestState=window.__guestProgress();
-        userRef=doc(db,'users',user.uid);
-        window.__prepareUser(user.uid,user.email || '(signed in)');
-        window.__onLogin();
-        // The curriculum always comes from plan.json. Firebase stores progress only.
-        await window.__planReady;
-        if(!window.__hasPlan())window.__planMissing();
-        // Load this user's progress after the current curriculum is ready.
-        try{
-          const snap=await getDoc(userRef);
-          if(snap.exists() && snap.data().state){ window.__applyRemote(snap.data().state); }
-          else { window.__adoptState(guestState); window.__cloudSave(window.__getState()); }
-        }catch(e){ window.__authError(friendly(e)); }
-        if(unsub)unsub();
-        unsub=onSnapshot(userRef,(s)=>{ if(s.metadata.hasPendingWrites)return;
-          const d=s.data(); if(d&&d.state) window.__applyRemote(d.state); });
-      } else {
-        if(unsub){unsub();unsub=null;} userRef=null;window.__syncStatus='';window.__onLogout();
-      }
-    });
-  }
 </script>
 </body>
 </html>
