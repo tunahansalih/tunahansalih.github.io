@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Resume &#8211; Tuna Meral</title>
-  <meta name="description" content="Resume and curriculum vitae of Tuna Meral, Ph.D. candidate at Virginia Tech.">
+  <meta name="description" content="Curriculum vitae and academic resume for Tuna Meral, Ph.D. Candidate at Virginia Tech.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="canonical" href="https://tmeral.com/resume/">
 
@@ -11,12 +11,12 @@
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Resume &#8211; Tuna Meral">
-  <meta property="og:description" content="Resume and curriculum vitae of Tuna Meral, Ph.D. candidate at Virginia Tech.">
+  <meta property="og:description" content="Curriculum vitae and academic resume for Tuna Meral, Ph.D. Candidate at Virginia Tech.">
   <meta property="og:url" content="https://tmeral.com/resume/">
   <meta property="og:site_name" content="Tuna Meral">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Resume &#8211; Tuna Meral">
-  <meta name="twitter:description" content="Resume and curriculum vitae of Tuna Meral, Ph.D. candidate at Virginia Tech.">
+  <meta name="twitter:description" content="Curriculum vitae and academic resume for Tuna Meral, Ph.D. Candidate at Virginia Tech.">
   <meta name="twitter:site" content="@tunahansalih">
 
   <!-- Icons and Styles -->
@@ -49,43 +49,26 @@
         </button>
 
         <ul id="nav-menu" class="nav-menu">
-          
-            
-            
-            
             <li class="nav-item">
-              <a href="/"  class="nav-link">
+              <a href="/" class="nav-link">
                 Home
               </a>
             </li>
-          
-            
-            
-            
             <li class="nav-item">
-              <a href="/publications/"  class="nav-link">
+              <a href="/publications/" class="nav-link">
                 Publications
               </a>
             </li>
-          
-            
-            
-            
             <li class="nav-item">
-              <a href="/news/"  class="nav-link">
+              <a href="/news/" class="nav-link">
                 News
               </a>
             </li>
-          
-            
-            
-            
             <li class="nav-item active">
-              <a href="/resume/"  class="nav-link">
+              <a href="/resume/" class="nav-link">
                 Resume
               </a>
             </li>
-          
         </ul>
       </nav>
 
@@ -101,12 +84,13 @@
 
     if (navToggle && navMenu) {
       navToggle.addEventListener('click', function () {
-        const isOpen = navMenu.classList.toggle('active');
-        navToggle.setAttribute('aria-expanded', String(isOpen));
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !isExpanded);
+        navMenu.classList.toggle('active');
       });
 
       document.addEventListener('click', function (event) {
-        if (!event.target.closest('.site-nav') && navMenu.classList.contains('active')) {
+        if (!navToggle.contains(event.target) && !navMenu.contains(event.target)) {
           navMenu.classList.remove('active');
           navToggle.setAttribute('aria-expanded', 'false');
         }
@@ -124,11 +108,8 @@
   });
 </script>
 
-
   <div id="main" role="main">
     <div class="article-author-side">
-      
-
 <aside class="academic-author-card profile-card">
   <div class="profile-card__photo-wrap">
     <img src="/images/bio-avatar.jpg" class="academic-bio-photo profile-card__photo"
@@ -145,18 +126,16 @@
     <a href="https://linkedin.com/in/tmeral" class="author-social" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
     <a href="mailto:mail@tmeral.com" class="author-social" title="Email" aria-label="Email"><i class="fas fa-envelope"></i></a>
     <a href="https://twitter.com/tunahansalih" class="author-social" title="Twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-    
   </div>
 </aside>
 
     </div>
-
     <article class="page">
-      
+
         <h1>Resume</h1>
       
       <div class="article-wrap">
-        <div class="resume">
+<div class="resume">
           <p><a href="https://drive.google.com/file/d/1RxtH5A56p0lZVManDSTV9uilSw3wbbzg/view?usp=sharing" class="download-button" target="_blank" rel="noopener"><i class="fas fa-download"></i> Download PDF</a></p>
 
 <h2 id="summary">Summary</h2>
@@ -187,82 +166,84 @@ B.S. in Computer Engineering</p>
 <code >2017</code> BSH Analytics for Production Excellence Hackathon, Winner</p>
 
 <h2 id="publications">Publications</h2>
-<p><code >2026</code>
+
+<p><code>2026</code>
 <strong>Aligning Latent Geometry for Spherical Flow Matching in Image Generation</strong>
 <strong>Tuna Han Salih Meral</strong>, Kaan Oktay, Hidir Yesiltepe, Adil Kaan Akan, Pinar Yanardag
 <em>arXiv preprint</em>
-<a href="https://arxiv.org/abs/2605.15193">Paper</a> · <a href="https://aligning-latent-geometry.github.io">Project Page</a></p>
+<a href="https://arxiv.org/abs/2605.15193">Paper</a> &middot; <a href="https://aligning-latent-geometry.github.io">Project Page</a></p>
 
-<p><code >2026</code>
-<strong>Infinity-RoPE: Action-Controllable Infinite Video Generation Emerges from Autoregressive Self-Rollout</strong>
-Hidir Yesiltepe, <strong>Tuna Han Salih Meral</strong>, Adil Kaan Akan, Kaan Oktay, Pinar Yanardag
-<em>CVPR 2026</em>
-<a href="https://arxiv.org/abs/2511.20649">Paper</a> · <a href="https://infinity-rope.github.io">Project Page</a></p>
-
-<p><code >2026</code>
+<p><code>2026</code>
 <strong>VideoMLA: Low-Rank Latent KV Cache for Minute-Scale Autoregressive Video Diffusion</strong>
 Hidir Yesiltepe, Jiazhen Hu, <strong>Tuna Han Salih Meral</strong>, Adil Kaan Akan, Kaan Oktay, Hoda Eldardiry, Pinar Yanardag
 <em>arXiv preprint</em>
 <a href="https://arxiv.org/abs/2605.30351">Paper</a></p>
 
-<p><code >2026</code>
-<strong>MotionFlow: Attention-Driven Motion Transfer in Video Diffusion Models</strong>
-<strong>Tuna Han Salih Meral</strong>, Hidir Yesiltepe, Connor Dunlop, Pinar Yanardag
-<em>AAAI 2026, Main Technical Track</em>
-<a href="https://arxiv.org/abs/2412.05275">Paper</a> · <a href="https://motionflow-diffusion.github.io/">Project Page</a></p>
+<p><code>2026</code>
+<strong>Infinity-RoPE: Action-Controllable Infinite Video Generation Emerges from Autoregressive Self-Rollout</strong>
+Hidir Yesiltepe, <strong>Tuna Han Salih Meral</strong>, Adil Kaan Akan, Kaan Oktay, Pinar Yanardag
+<em>CVPR 2026</em>
+<a href="https://arxiv.org/abs/2511.20649">Paper</a> &middot; <a href="https://infinity-rope.github.io">Project Page</a></p>
 
-<p><code >2025</code>
-<strong>CLoRA: A Contrastive Approach to Compose Multiple LoRA Models</strong>
-<strong>Tuna Han Salih Meral</strong>*, Enis Simsar*, Federico Tombari, Pinar Yanardag
-<em>ICCV 2025 (Highlight)</em>
-<a href="https://arxiv.org/abs/2403.19776">Paper</a> · <a href="https://clora-diffusion.github.io">Project Page</a></p>
-
-<p><code >2025</code>
+<p><code>2025</code>
 <strong>ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features</strong>
 Alec Helbling, <strong>Tuna Han Salih Meral</strong>, Ben Hoover, Pinar Yanardag, Duen Horng Chau
 <em>ICML 2025 (Oral)</em>
-<a href="https://arxiv.org/abs/2502.04320">Paper</a></p>
+<a href="https://arxiv.org/abs/2502.04320">Paper</a> &middot; <a href="https://huggingface.co/spaces/helblazer811/ConceptAttention">HF Space</a> &middot; <a href="https://github.com/helblazer811/ConceptAttention">Code</a></p>
 
-<p><code >2025</code>
-<strong>MITHRIL: Playing Tabletop Games with Generative Policies</strong>
-Michael Atkins, William Denman, <strong>Tuna Han Salih Meral</strong>, Mustafa Doga Dogan, Pinar Yanardag
-<em>NeurIPS 2025 GenProCC Workshop</em></p>
-
-<p><code >2025</code>
-<strong>SteerCLR: A Contrastive Learning Approach for Unsupervised Discovery of Interpretable Steering Vectors in Large Language Models</strong>
+<p><code>2025</code>
+<strong><span class="publication-year">2025</span> SteerCLR: A Contrastive Learning Approach for Unsupervised Discovery of Interpretable Steering Vectors in Large Language Models</strong>
 <strong>Tuna Han Salih Meral</strong>, Connor Dunlop, Sanmitra Bhattacharya, Balaji Veeramani, Stephen Adams, Edward Bowen, Pinar Yanardag
 <em>Under review</em></p>
 
-<p><code >2024</code>
+<p><code>2025</code>
+<strong>MITHRIL: Playing Tabletop Games with Generative Policies</strong>
+Michael Atkins, William Denman, <strong>Tuna Han Salih Meral</strong>, Mustafa Doga Dogan, Pinar Yanardag
+<em>NeurIPS 2025 GenProCC Workshop</em>
+<a href="https://openreview.net/pdf?id=EKZV46BGsS">Paper</a></p>
+
+<p><code>2026</code>
+<strong>MotionFlow: Attention-Driven Motion Transfer in Video Diffusion Models</strong>
+<strong>Tuna Han Salih Meral</strong>, Hidir Yesiltepe, Connor Dunlop, Pinar Yanardag
+<em>AAAI 2026 (Main Technical Track)</em>
+<a href="https://arxiv.org/abs/2412.05275">Paper</a> &middot; <a href="https://motionflow-diffusion.github.io">Project Page</a></p>
+
+<p><code>2024</code>
 <strong>MotionShop: Zero-Shot Motion Transfer in Video Diffusion Models with Mixture of Score Guidance</strong>
 Hidir Yesiltepe, <strong>Tuna Han Salih Meral</strong>, Connor Dunlop, Pinar Yanardag
-<em>arXiv preprint</em>
-<a href="https://arxiv.org/abs/2412.05355">Paper</a> · <a href="https://motionshop-diffusion.github.io/">Project Page</a></p>
+<em>Preprint</em>
+<a href="https://arxiv.org/abs/2412.05355">Paper</a> &middot; <a href="https://github.com/gemlab-vt/MotionShop">Code</a></p>
 
-<p><code >2024</code>
-<strong>CONFORM: Contrast Is All You Need for High-Fidelity Text-to-Image Diffusion Models</strong>
-<strong>Tuna Han Salih Meral</strong>, Enis Simsar, Federico Tombari, Pinar Yanardag
-<em>CVPR 2024</em>
-<a href="https://arxiv.org/abs/2312.06059">Paper</a> · <a href="https://conform-diffusion.github.io">Project Page</a></p>
-
-<p><code >2024</code>
+<p><code>2024</code>
 <strong>Conditional Information Gain Trellis</strong>
 Ufuk Can Bicici, <strong>Tuna Han Salih Meral</strong>, Lale Akarun
 <em>Pattern Recognition Letters</em>
 <a href="https://www.sciencedirect.com/science/article/pii/S0167865524001880">Paper</a></p>
 
-<p><code >2022</code>
-<strong>Unsupervised Routing Strategies for Conditional Deep Neural Networks</strong>
+<p><code>2025</code>
+<strong>CLoRA: A Contrastive Approach to Compose Multiple LoRA Models</strong>
+<strong>Tuna Han Salih Meral</strong><sup>*</sup>, Enis Simsar<sup>*</sup>, Federico Tombari, Pinar Yanardag
+<em>ICCV 2025 (Highlight)</em>
+<a href="https://arxiv.org/abs/2403.19776">Paper</a> &middot; <a href="https://clora-diffusion.github.io">Project Page</a> &middot; <a href="https://github.com/gemlab-vt/clora">Code</a></p>
+
+<p><code>2024</code>
+<strong>CONFORM: Contrast is All You Need for High-Fidelity Text-to-Image Diffusion Models</strong>
+<strong>Tuna Han Salih Meral</strong>, Enis Simsar, Federico Tombari, Pinar Yanardag
+<em>CVPR 2024</em>
+<a href="https://arxiv.org/abs/2312.06059">Paper</a> &middot; <a href="https://conform-diffusion.github.io">Project Page</a> &middot; <a href="https://github.com/gemlab-vt/CONFORM">Code</a></p>
+
+<p><code>2022</code>
+<strong><span class="publication-year">2022</span> Unsupervised Routing Strategies for Conditional Deep Neural Networks</strong>
 <strong>Tuna Han Salih Meral</strong>
 <em>M.S. Thesis, Bogazici University</em></p>
 
-<p><code >2020</code>
-<strong>BURST: Software and Simulation Solutions of an Autonomous Vehicle</strong>
+<p><code>2020</code>
+<strong><span class="publication-year">2020</span> BURST: Software and Simulation Solutions of an Autonomous Vehicle</strong>
 Fatih Kose, Ibrahim Ozcan, Melih Dal, Metehan Yildirim, Kadir Turksoy, Kerem Zaman, <strong>Tuna Han Salih Meral</strong>, Sinan Oncu
 <em>SIU 2020</em></p>
 
-<p><code >2018</code>
-<strong>Privacy-Preserving Intersection Management for Autonomous Vehicles</strong>
+<p><code>2018</code>
+<strong><span class="publication-year">2018</span> Privacy-Preserving Intersection Management for Autonomous Vehicles</strong>
 Nadin Kokciyan, Mustafa Erdogan, <strong>Tuna Han Salih Meral</strong>, Pinar Yolum
 <em>International Workshop on Agents in Traffic and Transportation (ATT 2018)</em></p>
 
@@ -382,11 +363,8 @@ Journal reviewer: IEEE TPAMI, IEEE TBIOM</p>
   <div class="footer-wrap">
     <footer>
       <span>&copy; 2026 Tuna Meral.</span>
-
     </footer>
   </div>
-
-  <!-- Pure static site: no client-side runtime scripts required -->
 
 <script src="https://www.w3counter.com/tracker.js?id=135831" async></script>
 </body>

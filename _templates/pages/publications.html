@@ -1,0 +1,31 @@
+<p>Papers and preprints, ordered from most recent to earliest.</p>
+
+<section id="publications" class="academic-publications-list">
+  <div class="academic-publications-container">
+    {{publications_list}}
+  </div>
+</section>
+
+<script>
+  function toggleCitation(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.hidden = !el.hidden;
+  }
+
+  function copyCitation(id, btn) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const pre = el.querySelector('pre');
+    const text = pre ? pre.textContent : '';
+    if (!text) return;
+
+    navigator.clipboard.writeText(text).then(function () {
+      const orig = btn.textContent;
+      btn.textContent = 'Copied!';
+      setTimeout(function () {
+        btn.textContent = orig;
+      }, 1500);
+    });
+  }
+</script>

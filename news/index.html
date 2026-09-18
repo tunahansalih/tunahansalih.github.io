@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>News &#8211; Tuna Meral</title>
-  <meta name="description" content="Recent updates, papers, milestones, and awards from Tuna Meral.">
+  <meta name="description" content="Recent research news, paper releases, fellowship awards, and career milestones for Tuna Meral.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="canonical" href="https://tmeral.com/news/">
 
@@ -11,12 +11,12 @@
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
   <meta property="og:title" content="News &#8211; Tuna Meral">
-  <meta property="og:description" content="Recent updates, papers, milestones, and awards from Tuna Meral.">
+  <meta property="og:description" content="Recent research news, paper releases, fellowship awards, and career milestones for Tuna Meral.">
   <meta property="og:url" content="https://tmeral.com/news/">
   <meta property="og:site_name" content="Tuna Meral">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="News &#8211; Tuna Meral">
-  <meta name="twitter:description" content="Recent updates, papers, milestones, and awards from Tuna Meral.">
+  <meta name="twitter:description" content="Recent research news, paper releases, fellowship awards, and career milestones for Tuna Meral.">
   <meta name="twitter:site" content="@tunahansalih">
 
   <!-- Icons and Styles -->
@@ -49,43 +49,26 @@
         </button>
 
         <ul id="nav-menu" class="nav-menu">
-          
-            
-            
-            
             <li class="nav-item">
-              <a href="/"  class="nav-link">
+              <a href="/" class="nav-link">
                 Home
               </a>
             </li>
-          
-            
-            
-            
             <li class="nav-item">
-              <a href="/publications/"  class="nav-link">
+              <a href="/publications/" class="nav-link">
                 Publications
               </a>
             </li>
-          
-            
-            
-            
             <li class="nav-item active">
-              <a href="/news/"  class="nav-link">
+              <a href="/news/" class="nav-link">
                 News
               </a>
             </li>
-          
-            
-            
-            
             <li class="nav-item">
-              <a href="/resume/"  class="nav-link">
+              <a href="/resume/" class="nav-link">
                 Resume
               </a>
             </li>
-          
         </ul>
       </nav>
 
@@ -101,12 +84,13 @@
 
     if (navToggle && navMenu) {
       navToggle.addEventListener('click', function () {
-        const isOpen = navMenu.classList.toggle('active');
-        navToggle.setAttribute('aria-expanded', String(isOpen));
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !isExpanded);
+        navMenu.classList.toggle('active');
       });
 
       document.addEventListener('click', function (event) {
-        if (!event.target.closest('.site-nav') && navMenu.classList.contains('active')) {
+        if (!navToggle.contains(event.target) && !navMenu.contains(event.target)) {
           navMenu.classList.remove('active');
           navToggle.setAttribute('aria-expanded', 'false');
         }
@@ -124,11 +108,8 @@
   });
 </script>
 
-
   <div id="main" role="main">
     <div class="article-author-side">
-      
-
 <aside class="academic-author-card profile-card">
   <div class="profile-card__photo-wrap">
     <img src="/images/bio-avatar.jpg" class="academic-bio-photo profile-card__photo"
@@ -145,454 +126,302 @@
     <a href="https://linkedin.com/in/tmeral" class="author-social" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
     <a href="mailto:mail@tmeral.com" class="author-social" title="Email" aria-label="Email"><i class="fas fa-envelope"></i></a>
     <a href="https://twitter.com/tunahansalih" class="author-social" title="Twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-    
   </div>
 </aside>
 
-      
     </div>
     <article class="page">
-      
+
         <h1>News</h1>
       
       <div class="article-wrap">
-        <p>Recent papers, milestones, and awards.</p>
+<p>Recent papers, milestones, and awards.</p>
 
 <section id="news" class="timeline-section">
   <div class="timeline">
-    
-    
+          <h3 class="timeline-year">2026</h3>
 
-    
-      <h3 class="timeline-year">2026</h3>
-
-      
-      
         <article class="timeline-item" data-type="milestone">
           <p class="timeline-date">Sep 2026</p>
           <div class="timeline-content">
             I am officially on the job market! Completing my Ph.D. in Spring 2027 and actively seeking full-time Research Scientist/Engineer roles in generative AI, video and image generation, and foundation models.
           </div>
 
-          
             <div class="timeline-links">
-              
-                <a href="/resume/" class="timeline-link" target="_blank" rel="noopener">Resume</a>
-              
+              <a href="/resume/" class="timeline-link" target="_blank" rel="noopener">Resume</a>
             </div>
-          
         </article>
-      
         <article class="timeline-item" data-type="internship">
           <p class="timeline-date">Aug 2026</p>
           <div class="timeline-content">
             Completed a research internship at Waymo working on open-vocabulary 3D perception.
           </div>
 
-          
         </article>
-      
         <article class="timeline-item" data-type="milestone">
           <p class="timeline-date">May 2026</p>
           <div class="timeline-content">
             Selected as an Outstanding Reviewer at CVPR 2026.
           </div>
 
-          
         </article>
-      
         <article class="timeline-item" data-type="publication">
           <p class="timeline-date">May 2026</p>
           <div class="timeline-content">
             Released the <em>Aligning Latent Geometry for Spherical Flow Matching in Image Generation</em> preprint on arXiv.
           </div>
 
-          
             <div class="timeline-links">
-              
-                <a href="https://arxiv.org/abs/2605.15193" class="timeline-link" target="_blank" rel="noopener">Paper</a>
-              
-                <a href="https://aligning-latent-geometry.github.io" class="timeline-link" target="_blank" rel="noopener">Project Page</a>
-              
+              <a href="https://arxiv.org/abs/2605.15193" class="timeline-link" target="_blank" rel="noopener">Paper</a> <a href="https://aligning-latent-geometry.github.io" class="timeline-link" target="_blank" rel="noopener">Project Page</a>
             </div>
-          
         </article>
-      
         <article class="timeline-item" data-type="internship">
           <p class="timeline-date">May 2026</p>
           <div class="timeline-content">
             Started a research internship at Waymo.
           </div>
 
-          
         </article>
-      
         <article class="timeline-item" data-type="milestone">
           <p class="timeline-date">Feb 2026</p>
           <div class="timeline-content">
             Passed the Ph.D. preliminary exam and advanced to candidacy. Dissertation: <em>Representation Steering as a Control Surface for Generative Foundation Models</em>.
           </div>
 
-          
         </article>
-      
         <article class="timeline-item" data-type="publication">
           <p class="timeline-date">Feb 2026</p>
           <div class="timeline-content">
             Infinity-RoPE was accepted to CVPR 2026.
           </div>
 
-          
             <div class="timeline-links">
-              
-                <a href="https://arxiv.org/abs/2511.20649" class="timeline-link" target="_blank" rel="noopener">Paper</a>
-              
-                <a href="https://infinity-rope.github.io" class="timeline-link" target="_blank" rel="noopener">Project Page</a>
-              
+              <a href="https://arxiv.org/abs/2511.20649" class="timeline-link" target="_blank" rel="noopener">Paper</a> <a href="https://infinity-rope.github.io" class="timeline-link" target="_blank" rel="noopener">Project Page</a>
             </div>
-          
         </article>
-      
-    
       <h3 class="timeline-year">2025</h3>
 
-      
-      
         <article class="timeline-item" data-type="milestone">
           <p class="timeline-date">Dec 2025</p>
           <div class="timeline-content">
             The CVPR 2026 Personalization in Generative AI (P13N) workshop proposal was accepted in December. This is the second workshop edition.
           </div>
 
-          
             <div class="timeline-links">
-              
-                <a href="https://p13n-workshop.github.io/" class="timeline-link" target="_blank" rel="noopener">Website</a>
-              
+              <a href="https://p13n-workshop.github.io/" class="timeline-link" target="_blank" rel="noopener">Website</a>
             </div>
-          
         </article>
-      
         <article class="timeline-item" data-type="publication">
           <p class="timeline-date">Nov 2025</p>
           <div class="timeline-content">
             Released the Infinity-RoPE preprint on arXiv.
           </div>
 
-          
             <div class="timeline-links">
-              
-                <a href="https://arxiv.org/abs/2511.20649" class="timeline-link" target="_blank" rel="noopener">Paper</a>
-              
-                <a href="https://infinity-rope.github.io" class="timeline-link" target="_blank" rel="noopener">Project Page</a>
-              
+              <a href="https://arxiv.org/abs/2511.20649" class="timeline-link" target="_blank" rel="noopener">Paper</a> <a href="https://infinity-rope.github.io" class="timeline-link" target="_blank" rel="noopener">Project Page</a>
             </div>
-          
         </article>
-      
         <article class="timeline-item" data-type="publication">
           <p class="timeline-date">Nov 2025</p>
           <div class="timeline-content">
             MotionFlow was accepted to AAAI 2026 (Main Technical Track).
           </div>
 
-          
             <div class="timeline-links">
-              
-                <a href="https://arxiv.org/abs/2412.05275" class="timeline-link" target="_blank" rel="noopener">Paper</a>
-              
-                <a href="https://motionflow-diffusion.github.io" class="timeline-link" target="_blank" rel="noopener">Project Page</a>
-              
+              <a href="https://arxiv.org/abs/2412.05275" class="timeline-link" target="_blank" rel="noopener">Paper</a> <a href="https://motionflow-diffusion.github.io" class="timeline-link" target="_blank" rel="noopener">Project Page</a>
             </div>
-          
         </article>
-      
         <article class="timeline-item" data-type="grant">
           <p class="timeline-date">Aug 2025</p>
           <div class="timeline-content">
             Received the FAL Fellowship for Fall 2025-Spring 2026 to support research on controllable and efficient vision generation.
           </div>
 
-          
             <div class="timeline-links">
-              
-                <a href="https://fal.ai" class="timeline-link" target="_blank" rel="noopener">FAL Fellowship</a>
-              
+              <a href="https://fal.ai" class="timeline-link" target="_blank" rel="noopener">FAL Fellowship</a>
             </div>
-          
         </article>
-      
         <article class="timeline-item" data-type="milestone">
           <p class="timeline-date">Aug 2025</p>
           <div class="timeline-content">
             Selected as a finalist for the Qualcomm Innovation Fellowship.
           </div>
 
-          
             <div class="timeline-links">
-              
-                <a href="https://www.qualcomm.com/research/university-relations/innovation-fellowship/finalists" class="timeline-link" target="_blank" rel="noopener">Finalists</a>
-              
+              <a href="https://www.qualcomm.com/research/university-relations/innovation-fellowship/finalists" class="timeline-link" target="_blank" rel="noopener">Finalists</a>
             </div>
-          
         </article>
-      
         <article class="timeline-item" data-type="publication">
           <p class="timeline-date">Jul 2025</p>
           <div class="timeline-content">
             CLoRA was selected as a Highlight Paper at ICCV 2025.
           </div>
 
-          
             <div class="timeline-links">
-              
-                <a href="https://arxiv.org/abs/2403.19776" class="timeline-link" target="_blank" rel="noopener">Paper</a>
-              
+              <a href="https://arxiv.org/abs/2403.19776" class="timeline-link" target="_blank" rel="noopener">Paper</a>
             </div>
-          
         </article>
-      
         <article class="timeline-item" data-type="publication">
           <p class="timeline-date">Jun 2025</p>
           <div class="timeline-content">
             CLoRA was accepted to ICCV 2025.
           </div>
 
-          
             <div class="timeline-links">
-              
-                <a href="https://arxiv.org/abs/2403.19776" class="timeline-link" target="_blank" rel="noopener">Paper</a>
-              
+              <a href="https://arxiv.org/abs/2403.19776" class="timeline-link" target="_blank" rel="noopener">Paper</a>
             </div>
-          
         </article>
-      
         <article class="timeline-item" data-type="milestone">
           <p class="timeline-date">May 2025</p>
           <div class="timeline-content">
             Started at Amazon AGI Foundations as an Applied Scientist Intern in San Francisco, working on video foundation models.
           </div>
 
-          
         </article>
-      
         <article class="timeline-item" data-type="publication">
           <p class="timeline-date">May 2025</p>
           <div class="timeline-content">
             ConceptAttention received the Best Paper Award at the 2nd Workshop on Visual Concepts (CVPR 2025).
           </div>
 
-          
             <div class="timeline-links">
-              
-                <a href="https://arxiv.org/pdf/2502.04320" class="timeline-link" target="_blank" rel="noopener">Paper</a>
-              
+              <a href="https://arxiv.org/pdf/2502.04320" class="timeline-link" target="_blank" rel="noopener">Paper</a>
             </div>
-          
         </article>
-      
         <article class="timeline-item" data-type="publication">
           <p class="timeline-date">May 2025</p>
           <div class="timeline-content">
             ConceptAttention was accepted to ICML 2025 as an Oral.
           </div>
 
-          
             <div class="timeline-links">
-              
-                <a href="https://arxiv.org/pdf/2502.04320" class="timeline-link" target="_blank" rel="noopener">Paper</a>
-              
+              <a href="https://arxiv.org/pdf/2502.04320" class="timeline-link" target="_blank" rel="noopener">Paper</a>
             </div>
-          
         </article>
-      
         <article class="timeline-item" data-type="milestone">
           <p class="timeline-date">Apr 2025</p>
           <div class="timeline-content">
             The ICCV 2025 Personalization in Generative AI workshop proposal was accepted.
           </div>
 
-          
             <div class="timeline-links">
-              
-                <a href="https://p13n-workshop.github.io/" class="timeline-link" target="_blank" rel="noopener">Website</a>
-              
+              <a href="https://p13n-workshop.github.io/" class="timeline-link" target="_blank" rel="noopener">Website</a>
             </div>
-          
         </article>
-      
         <article class="timeline-item" data-type="publication">
           <p class="timeline-date">Feb 2025</p>
           <div class="timeline-content">
             Released the ConceptAttention preprint on arXiv.
           </div>
 
-          
             <div class="timeline-links">
-              
-                <a href="https://arxiv.org/pdf/2502.04320" class="timeline-link" target="_blank" rel="noopener">Paper</a>
-              
+              <a href="https://arxiv.org/pdf/2502.04320" class="timeline-link" target="_blank" rel="noopener">Paper</a>
             </div>
-          
         </article>
-      
-    
       <h3 class="timeline-year">2024</h3>
 
-      
-      
         <article class="timeline-item" data-type="publication">
           <p class="timeline-date">Nov 2024</p>
           <div class="timeline-content">
             Released the MotionFlow preprint on arXiv.
           </div>
 
-          
             <div class="timeline-links">
-              
-                <a href="https://motionflow-diffusion.github.io" class="timeline-link" target="_blank" rel="noopener">Project Page</a>
-              
+              <a href="https://motionflow-diffusion.github.io" class="timeline-link" target="_blank" rel="noopener">Project Page</a>
             </div>
-          
         </article>
-      
         <article class="timeline-item" data-type="publication">
           <p class="timeline-date">Nov 2024</p>
           <div class="timeline-content">
             Released the MotionShop preprint on arXiv.
           </div>
 
-          
             <div class="timeline-links">
-              
-                <a href="https://motionshop-diffusion.github.io" class="timeline-link" target="_blank" rel="noopener">Project Page</a>
-              
+              <a href="https://motionshop-diffusion.github.io" class="timeline-link" target="_blank" rel="noopener">Project Page</a>
             </div>
-          
         </article>
-      
         <article class="timeline-item" data-type="grant">
           <p class="timeline-date">Oct 2024</p>
           <div class="timeline-content">
             Received a Deloitte research grant at Virginia Tech for mechanistic interpretability research on large language models.
           </div>
 
-          
         </article>
-      
         <article class="timeline-item" data-type="internship">
           <p class="timeline-date">Oct 2024</p>
           <div class="timeline-content">
             Completed a research internship at Adobe, focusing on instruction-based video editing with diffusion transformers.
           </div>
 
-          
         </article>
-      
         <article class="timeline-item" data-type="internship">
           <p class="timeline-date">Jun 2024</p>
           <div class="timeline-content">
             Started a Summer 2024 research internship at Adobe.
           </div>
 
-          
         </article>
-      
         <article class="timeline-item" data-type="publication">
           <p class="timeline-date">Jun 2024</p>
           <div class="timeline-content">
             Conditional Information Gain Trellis was accepted to Pattern Recognition Letters.
           </div>
 
-          
             <div class="timeline-links">
-              
-                <a href="https://www.sciencedirect.com/science/article/pii/S0167865524001880" class="timeline-link" target="_blank" rel="noopener">Paper</a>
-              
+              <a href="https://www.sciencedirect.com/science/article/pii/S0167865524001880" class="timeline-link" target="_blank" rel="noopener">Paper</a>
             </div>
-          
         </article>
-      
         <article class="timeline-item" data-type="publication">
           <p class="timeline-date">May 2024</p>
           <div class="timeline-content">
             CONFORM was accepted to CVPR 2024.
           </div>
 
-          
             <div class="timeline-links">
-              
-                <a href="https://conform-diffusion.github.io" class="timeline-link" target="_blank" rel="noopener">Project Page</a>
-              
+              <a href="https://conform-diffusion.github.io" class="timeline-link" target="_blank" rel="noopener">Project Page</a>
             </div>
-          
         </article>
-      
         <article class="timeline-item" data-type="publication">
           <p class="timeline-date">Mar 2024</p>
           <div class="timeline-content">
             Released the CLoRA preprint on arXiv.
           </div>
 
-          
             <div class="timeline-links">
-              
-                <a href="https://clora-diffusion.github.io" class="timeline-link" target="_blank" rel="noopener">Project Page</a>
-              
+              <a href="https://clora-diffusion.github.io" class="timeline-link" target="_blank" rel="noopener">Project Page</a>
             </div>
-          
         </article>
-      
         <article class="timeline-item" data-type="milestone">
           <p class="timeline-date">Jan 2024</p>
           <div class="timeline-content">
             Open-sourced the code for CONFORM.
           </div>
 
-          
             <div class="timeline-links">
-              
-                <a href="https://github.com/tunahansalih/CONFORM" class="timeline-link" target="_blank" rel="noopener">Code</a>
-              
-                <a href="https://conform-diffusion.github.io" class="timeline-link" target="_blank" rel="noopener">Project Page</a>
-              
+              <a href="https://github.com/tunahansalih/CONFORM" class="timeline-link" target="_blank" rel="noopener">Code</a> <a href="https://conform-diffusion.github.io" class="timeline-link" target="_blank" rel="noopener">Project Page</a>
             </div>
-          
         </article>
-      
-    
       <h3 class="timeline-year">2023</h3>
 
-      
-      
         <article class="timeline-item" data-type="publication">
           <p class="timeline-date">Dec 2023</p>
           <div class="timeline-content">
             Released the CONFORM preprint on arXiv.
           </div>
 
-          
             <div class="timeline-links">
-              
-                <a href="https://conform-diffusion.github.io" class="timeline-link" target="_blank" rel="noopener">Project Page</a>
-              
+              <a href="https://conform-diffusion.github.io" class="timeline-link" target="_blank" rel="noopener">Project Page</a>
             </div>
-          
         </article>
-      
         <article class="timeline-item" data-type="milestone">
           <p class="timeline-date">Aug 2023</p>
           <div class="timeline-content">
             Started the Ph.D. in Computer Science at Virginia Tech, advised by Pinar Yanardag.
           </div>
 
-          
         </article>
-      
-    
   </div>
 </section>
-
 
       </div>
     </article>
@@ -601,11 +430,8 @@
   <div class="footer-wrap">
     <footer>
       <span>&copy; 2026 Tuna Meral.</span>
-
     </footer>
   </div>
-
-  <!-- Pure static site: no client-side runtime scripts required -->
 
 <script src="https://www.w3counter.com/tracker.js?id=135831" async></script>
 </body>

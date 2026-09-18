@@ -4,33 +4,43 @@ Personal academic website for Tuna Meral (Ph.D. Candidate in Computer Science at
 
 Live site: [tmeral.com](https://tmeral.com)
 
-## Local Preview
+## Local Development
 
-No build tools, package managers, or dependencies are required. Preview locally with Python:
+No Ruby, Bundler, or external packages required. Uses standard Python:
 
 ```bash
-python3 -m http.server 4000
+python3 dev.py
 ```
 
-Open `http://localhost:4000` in your browser.
+This builds the site and starts a local server on `http://localhost:4000`.
+
+To build without starting the server:
+
+```bash
+python3 build.py
+```
 
 ## Structure
 
 ```
-├── index.html              # Homepage (Bio, job market announcement, selected research)
-├── resume/index.html       # Full CV / Resume
-├── publications/index.html # Full publications list
-├── news/index.html         # News and milestones timeline
-├── 404.html                # Not found page
-├── .nojekyll               # GitHub Pages static flag (bypasses build pipeline)
-├── CNAME                   # Custom domain configuration (tmeral.com)
+├── data/
+│   ├── profile.json            # Name, role, affiliation, social links
+│   ├── publications.json       # All papers, venues, links, abstracts, BibTeX
+│   └── news.json               # All milestones and awards
+├── _templates/
+│   ├── base.html               # Shared HTML shell (head, nav, sidebar, footer)
+│   └── pages/                  # Page body templates (index, resume, pubs, news, 404)
+├── build.py                    # Zero-dependency site generator
+├── dev.py                      # Build + local preview server
 ├── assets/
-│   └── css/style.css       # Shared stylesheet
-└── images/
-    ├── bio-avatar.jpg      # Profile photo
-    └── publications/       # Paper figures
+│   └── css/style.css           # Single shared stylesheet
+├── images/                     # Photos and publication figures
+├── CNAME                       # Custom domain configuration (tmeral.com)
+└── .github/workflows/
+    └── deploy.yml              # GitHub Actions automated build & deployment
 ```
 
 ## Deployment
 
-The repository is hosted on GitHub Pages. Pushing to `main` serves the static HTML directly.
+Deployments are automated via GitHub Actions on every push to `main`.
+GitHub Actions runs `python3 build.py` and deploys the static artifact directly to GitHub Pages.

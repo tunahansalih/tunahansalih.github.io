@@ -2,21 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Page Not Found &#8211; Tuna Meral</title>
-  <meta name="description" content="Page not found.">
+  <title>{{title}}</title>
+  <meta name="description" content="{{page_description}}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="canonical" href="https://tmeral.com/404.html">
+  <link rel="canonical" href="https://tmeral.com{{page_url}}">
 
   <!-- Open Graph / Twitter -->
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Page Not Found &#8211; Tuna Meral">
-  <meta property="og:description" content="Page not found.">
-  <meta property="og:url" content="https://tmeral.com/404.html">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{page_description}}">
+  <meta property="og:url" content="https://tmeral.com{{page_url}}">
   <meta property="og:site_name" content="Tuna Meral">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Page Not Found &#8211; Tuna Meral">
-  <meta name="twitter:description" content="Page not found.">
+  <meta name="twitter:title" content="{{title}}">
+  <meta name="twitter:description" content="{{page_description}}">
   <meta name="twitter:site" content="@tunahansalih">
 
   <!-- Icons and Styles -->
@@ -49,22 +49,22 @@
         </button>
 
         <ul id="nav-menu" class="nav-menu">
-            <li class="nav-item">
+            <li class="nav-item{{nav_active_home}}">
               <a href="/" class="nav-link">
                 Home
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item{{nav_active_publications}}">
               <a href="/publications/" class="nav-link">
                 Publications
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item{{nav_active_news}}">
               <a href="/news/" class="nav-link">
                 News
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item{{nav_active_resume}}">
               <a href="/resume/" class="nav-link">
                 Resume
               </a>
@@ -110,33 +110,13 @@
 
   <div id="main" role="main">
     <div class="article-author-side">
-<aside class="academic-author-card profile-card">
-  <div class="profile-card__photo-wrap">
-    <img src="/images/bio-avatar.jpg" class="academic-bio-photo profile-card__photo"
-      alt="Tuna Meral portrait">
-  </div>
-
-  <h3 class="academic-author-name profile-card__name">Tuna Meral</h3>
-  <p class="profile-card__role">Ph.D. Candidate</p>
-  <p class="profile-card__affiliation">Virginia Tech &bull; Computer Science</p>
-
-  <div class="social-icons profile-card__social">
-    <a href="https://scholar.google.com/citations?user=5ZAhf5IAAAAJ" class="author-social" title="Google Scholar" aria-label="Google Scholar"><i class="ai ai-google-scholar"></i></a>
-    <a href="https://github.com/tunahansalih" class="author-social" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://linkedin.com/in/tmeral" class="author-social" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-    <a href="mailto:mail@tmeral.com" class="author-social" title="Email" aria-label="Email"><i class="fas fa-envelope"></i></a>
-    <a href="https://twitter.com/tunahansalih" class="author-social" title="Twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-  </div>
-</aside>
-
+{{profile_card}}
+{{sidebar_extra}}
     </div>
     <article class="page">
-
-        <h1>Page Not Found</h1>
-      
+{{page_header}}
       <div class="article-wrap">
-<p>The requested page could not be found. Please return to the <a href="/">homepage</a> or view recent <a href="/publications/">publications</a>.</p>
-
+{{content}}
       </div>
     </article>
   </div>

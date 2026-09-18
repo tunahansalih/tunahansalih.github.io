@@ -49,43 +49,26 @@
         </button>
 
         <ul id="nav-menu" class="nav-menu">
-          
-            
-            
-            
             <li class="nav-item active">
-              <a href="/"  class="nav-link">
+              <a href="/" class="nav-link">
                 Home
               </a>
             </li>
-          
-            
-            
-            
             <li class="nav-item">
-              <a href="/publications/"  class="nav-link">
+              <a href="/publications/" class="nav-link">
                 Publications
               </a>
             </li>
-          
-            
-            
-            
             <li class="nav-item">
-              <a href="/news/"  class="nav-link">
+              <a href="/news/" class="nav-link">
                 News
               </a>
             </li>
-          
-            
-            
-            
             <li class="nav-item">
-              <a href="/resume/"  class="nav-link">
+              <a href="/resume/" class="nav-link">
                 Resume
               </a>
             </li>
-          
         </ul>
       </nav>
 
@@ -101,12 +84,13 @@
 
     if (navToggle && navMenu) {
       navToggle.addEventListener('click', function () {
-        const isOpen = navMenu.classList.toggle('active');
-        navToggle.setAttribute('aria-expanded', String(isOpen));
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !isExpanded);
+        navMenu.classList.toggle('active');
       });
 
       document.addEventListener('click', function (event) {
-        if (!event.target.closest('.site-nav') && navMenu.classList.contains('active')) {
+        if (!navToggle.contains(event.target) && !navMenu.contains(event.target)) {
           navMenu.classList.remove('active');
           navToggle.setAttribute('aria-expanded', 'false');
         }
@@ -124,11 +108,8 @@
   });
 </script>
 
-
   <div id="main" role="main">
     <div class="article-author-side">
-      
-
 <aside class="academic-author-card profile-card">
   <div class="profile-card__photo-wrap">
     <img src="/images/bio-avatar.jpg" class="academic-bio-photo profile-card__photo"
@@ -145,58 +126,43 @@
     <a href="https://linkedin.com/in/tmeral" class="author-social" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
     <a href="mailto:mail@tmeral.com" class="author-social" title="Email" aria-label="Email"><i class="fas fa-envelope"></i></a>
     <a href="https://twitter.com/tunahansalih" class="author-social" title="Twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-    
   </div>
 </aside>
 
-      
-        <section class="sidebar-news" aria-label="Recent news">
+<section class="sidebar-news" aria-label="Recent news">
   <h3 class="sidebar-news__title">Recent news</h3>
   <ul class="sidebar-news__list">
-    
-    
       <li class="sidebar-news__item">
         <time class="sidebar-news__date">Sep 2026</time>
         <div class="sidebar-news__body">
           I am officially on the job market! Completing my Ph.D. in Spring 2027 and actively seeking full-time Research Scientist/Engineer roles in generative AI, video and image generation, and foundation models.
-          
             <span class="sidebar-news__links">
-              
-                <a href="/resume/" class="sidebar-news__link" target="_blank" rel="noopener">[Resume]</a>
-              
+              <a href="/resume/" class="sidebar-news__link" target="_blank" rel="noopener">[Resume]</a>
             </span>
-          
         </div>
       </li>
-    
       <li class="sidebar-news__item">
         <time class="sidebar-news__date">Aug 2026</time>
         <div class="sidebar-news__body">
           Completed a research internship at Waymo working on open-vocabulary 3D perception.
-          
         </div>
       </li>
-    
       <li class="sidebar-news__item">
         <time class="sidebar-news__date">May 2026</time>
         <div class="sidebar-news__body">
           Selected as an Outstanding Reviewer at CVPR 2026.
-          
         </div>
       </li>
-    
   </ul>
   <p class="sidebar-news__more">
     <a href="/news/">All news &rarr;</a>
   </p>
 </section>
-
-      
     </div>
     <article class="page">
-      
+
       <div class="article-wrap">
-        <section class="job-market-callout" aria-label="Job market announcement">
+<section class="job-market-callout" aria-label="Job market announcement">
   <h2 class="job-market-callout__headline">Seeking Research Scientist / Engineer Roles &bull; Spring 2027</h2>
   <p class="job-market-callout__body">
     Ph.D. candidate at Virginia Tech completing in Spring 2027. Seeking full-time roles in <strong>generative AI, video and image generation, and foundation models</strong>.
@@ -226,255 +192,138 @@
 <section class="featured-publications">
   <h2>Selected research</h2>
   <div class="featured-pubs-grid">
-    
-    
-      <article class="featured-pub-card">
+          <article class="featured-pub-card">
         <figure class="featured-pub-image">
-          
-          
-          
-          
-
-          
-            <a class="featured-pub-image-frame" href="https://arxiv.org/abs/2605.15193" target="_blank" rel="noopener">
-              
-                <img src="/images/publications/aligning-latent-geometry.png" onerror="this.style.display='none'; this.parentElement.classList.add('featured-pub-image-frame--empty');" alt="Aligning Latent Geometry for Spherical Flow Matching in Image Generation" />
-              
-            </a>
-          
+          <a class="featured-pub-image-frame" href="https://arxiv.org/abs/2605.15193" target="_blank" rel="noopener">
+            <img src="/images/publications/aligning-latent-geometry.png" onerror="this.style.display='none'; this.parentElement.classList.add('featured-pub-image-frame--empty');" alt="Aligning Latent Geometry for Spherical Flow Matching in Image Generation" />
+          </a>
         </figure>
 
         <div class="featured-pub-content">
           <h3>
-            
-              <a href="https://arxiv.org/abs/2605.15193" target="_blank" rel="noopener">Aligning Latent Geometry for Spherical Flow Matching in Image Generation</a>
-            
+            <a href="https://arxiv.org/abs/2605.15193" target="_blank" rel="noopener">Aligning Latent Geometry for Spherical Flow Matching in Image Generation</a>
           </h3>
           <p class="featured-pub-venue">
-            arXiv preprint · 2026
+            arXiv preprint &middot; 2026
           </p>
           <p class="featured-pub-authors"><strong>Tuna Han Salih Meral</strong>, Kaan Oktay, Hidir Yesiltepe, Adil Kaan Akan, Pinar Yanardag</p>
 
-          
             <div class="featured-pub-links">
-              
-                <a href="https://arxiv.org/abs/2605.15193" target="_blank" rel="noopener">Paper</a>
-              
-                <a href="https://aligning-latent-geometry.github.io" target="_blank" rel="noopener">Project Page</a>
-              
+              <a href="https://arxiv.org/abs/2605.15193" target="_blank" rel="noopener">Paper</a> <a href="https://aligning-latent-geometry.github.io" target="_blank" rel="noopener">Project Page</a>
             </div>
-          
         </div>
       </article>
-    
       <article class="featured-pub-card">
         <figure class="featured-pub-image">
-          
-          
-          
-          
-
-          
-            <a class="featured-pub-image-frame" href="https://arxiv.org/abs/2511.20649" target="_blank" rel="noopener">
-              
-                <img src="/images/publications/infinity-rope.png" onerror="this.style.display='none'; this.parentElement.classList.add('featured-pub-image-frame--empty');" alt="Infinity-RoPE: Action-Controllable Infinite Video Generation Emerges from Autoregressive Self-Rollout" />
-              
-            </a>
-          
+          <a class="featured-pub-image-frame" href="https://arxiv.org/abs/2511.20649" target="_blank" rel="noopener">
+            <img src="/images/publications/infinity-rope.png" onerror="this.style.display='none'; this.parentElement.classList.add('featured-pub-image-frame--empty');" alt="Infinity-RoPE: Action-Controllable Infinite Video Generation Emerges from Autoregressive Self-Rollout" />
+          </a>
         </figure>
 
         <div class="featured-pub-content">
           <h3>
-            
-              <a href="https://arxiv.org/abs/2511.20649" target="_blank" rel="noopener">Infinity-RoPE: Action-Controllable Infinite Video Generation Emerges from Autoregressive Self-Rollout</a>
-            
+            <a href="https://arxiv.org/abs/2511.20649" target="_blank" rel="noopener">Infinity-RoPE: Action-Controllable Infinite Video Generation Emerges from Autoregressive Self-Rollout</a>
           </h3>
           <p class="featured-pub-venue">
-            CVPR 2026 · 2026
+            CVPR 2026 &middot; 2026
           </p>
           <p class="featured-pub-authors">Hidir Yesiltepe, <strong>Tuna Han Salih Meral</strong>, Adil Kaan Akan, Kaan Oktay, Pinar Yanardag</p>
 
-          
             <div class="featured-pub-links">
-              
-                <a href="https://arxiv.org/abs/2511.20649" target="_blank" rel="noopener">Paper</a>
-              
-                <a href="https://infinity-rope.github.io" target="_blank" rel="noopener">Project Page</a>
-              
+              <a href="https://arxiv.org/abs/2511.20649" target="_blank" rel="noopener">Paper</a> <a href="https://infinity-rope.github.io" target="_blank" rel="noopener">Project Page</a>
             </div>
-          
         </div>
       </article>
-    
       <article class="featured-pub-card">
         <figure class="featured-pub-image">
-          
-          
-          
-          
-
-          
-            <a class="featured-pub-image-frame" href="https://arxiv.org/abs/2412.05275" target="_blank" rel="noopener">
-              
-                <img src="/images/publications/motionflow.png" onerror="this.style.display='none'; this.parentElement.classList.add('featured-pub-image-frame--empty');" alt="MotionFlow: Attention-Driven Motion Transfer in Video Diffusion Models" />
-              
-            </a>
-          
+          <a class="featured-pub-image-frame" href="https://arxiv.org/abs/2502.04320" target="_blank" rel="noopener">
+            <img src="/images/publications/conceptattention.png" onerror="this.style.display='none'; this.parentElement.classList.add('featured-pub-image-frame--empty');" alt="ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features" />
+          </a>
         </figure>
 
         <div class="featured-pub-content">
           <h3>
-            
-              <a href="https://arxiv.org/abs/2412.05275" target="_blank" rel="noopener">MotionFlow: Attention-Driven Motion Transfer in Video Diffusion Models</a>
-            
+            <a href="https://arxiv.org/abs/2502.04320" target="_blank" rel="noopener">ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features</a>
           </h3>
           <p class="featured-pub-venue">
-            AAAI 2026 (Main Technical Track) · 2026
-          </p>
-          <p class="featured-pub-authors"><strong>Tuna Han Salih Meral</strong>, Hidir Yesiltepe, Connor Dunlop, Pinar Yanardag</p>
-
-          
-            <div class="featured-pub-links">
-              
-                <a href="https://arxiv.org/abs/2412.05275" target="_blank" rel="noopener">Paper</a>
-              
-                <a href="https://motionflow-diffusion.github.io" target="_blank" rel="noopener">Project Page</a>
-              
-            </div>
-          
-        </div>
-      </article>
-    
-      <article class="featured-pub-card">
-        <figure class="featured-pub-image">
-          
-          
-          
-          
-
-          
-            <a class="featured-pub-image-frame" href="https://arxiv.org/abs/2403.19776" target="_blank" rel="noopener">
-              
-                <img src="/images/publications/clora.png" onerror="this.style.display='none'; this.parentElement.classList.add('featured-pub-image-frame--empty');" alt="CLoRA: A Contrastive Approach to Compose Multiple LoRA Models" />
-              
-            </a>
-          
-        </figure>
-
-        <div class="featured-pub-content">
-          <h3>
-            
-              <a href="https://arxiv.org/abs/2403.19776" target="_blank" rel="noopener">CLoRA: A Contrastive Approach to Compose Multiple LoRA Models</a>
-            
-          </h3>
-          <p class="featured-pub-venue">
-            ICCV 2025 (Highlight) · 2025
-          </p>
-          <p class="featured-pub-authors"><strong>Tuna Han Salih Meral</strong><sup>*</sup>, Enis Simsar<sup>*</sup>, Federico Tombari, Pinar Yanardag</p>
-
-          
-            <div class="featured-pub-links">
-              
-                <a href="https://arxiv.org/abs/2403.19776" target="_blank" rel="noopener">Paper</a>
-              
-                <a href="https://clora-diffusion.github.io" target="_blank" rel="noopener">Project Page</a>
-              
-                <a href="https://github.com/gemlab-vt/clora" target="_blank" rel="noopener">Code</a>
-              
-            </div>
-          
-        </div>
-      </article>
-    
-      <article class="featured-pub-card">
-        <figure class="featured-pub-image">
-          
-          
-          
-          
-
-          
-            <a class="featured-pub-image-frame" href="https://arxiv.org/abs/2502.04320" target="_blank" rel="noopener">
-              
-                <img src="/images/publications/conceptattention.png" onerror="this.style.display='none'; this.parentElement.classList.add('featured-pub-image-frame--empty');" alt="ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features" />
-              
-            </a>
-          
-        </figure>
-
-        <div class="featured-pub-content">
-          <h3>
-            
-              <a href="https://arxiv.org/abs/2502.04320" target="_blank" rel="noopener">ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features</a>
-            
-          </h3>
-          <p class="featured-pub-venue">
-            ICML 2025 (Oral) · 2025
+            ICML 2025 (Oral) &middot; 2025
           </p>
           <p class="featured-pub-authors">Alec Helbling, <strong>Tuna Han Salih Meral</strong>, Ben Hoover, Pinar Yanardag, Duen Horng Chau</p>
 
-          
             <div class="featured-pub-links">
-              
-                <a href="https://arxiv.org/abs/2502.04320" target="_blank" rel="noopener">Paper</a>
-              
-                <a href="https://huggingface.co/spaces/helblazer811/ConceptAttention" target="_blank" rel="noopener">HF Space</a>
-              
-                <a href="https://github.com/helblazer811/ConceptAttention" target="_blank" rel="noopener">Code</a>
-              
+              <a href="https://arxiv.org/abs/2502.04320" target="_blank" rel="noopener">Paper</a> <a href="https://huggingface.co/spaces/helblazer811/ConceptAttention" target="_blank" rel="noopener">HF Space</a> <a href="https://github.com/helblazer811/ConceptAttention" target="_blank" rel="noopener">Code</a>
             </div>
-          
         </div>
       </article>
-    
       <article class="featured-pub-card">
         <figure class="featured-pub-image">
-          
-          
-          
-          
-
-          
-            <a class="featured-pub-image-frame" href="https://arxiv.org/abs/2312.06059" target="_blank" rel="noopener">
-              
-                <img src="/images/publications/conform.png" onerror="this.style.display='none'; this.parentElement.classList.add('featured-pub-image-frame--empty');" alt="CONFORM: Contrast is All You Need for High-Fidelity Text-to-Image Diffusion Models" />
-              
-            </a>
-          
+          <a class="featured-pub-image-frame" href="https://arxiv.org/abs/2412.05275" target="_blank" rel="noopener">
+            <img src="/images/publications/motionflow.png" onerror="this.style.display='none'; this.parentElement.classList.add('featured-pub-image-frame--empty');" alt="MotionFlow: Attention-Driven Motion Transfer in Video Diffusion Models" />
+          </a>
         </figure>
 
         <div class="featured-pub-content">
           <h3>
-            
-              <a href="https://arxiv.org/abs/2312.06059" target="_blank" rel="noopener">CONFORM: Contrast is All You Need for High-Fidelity Text-to-Image Diffusion Models</a>
-            
+            <a href="https://arxiv.org/abs/2412.05275" target="_blank" rel="noopener">MotionFlow: Attention-Driven Motion Transfer in Video Diffusion Models</a>
           </h3>
           <p class="featured-pub-venue">
-            CVPR 2024 · 2024
+            AAAI 2026 (Main Technical Track) &middot; 2026
+          </p>
+          <p class="featured-pub-authors"><strong>Tuna Han Salih Meral</strong>, Hidir Yesiltepe, Connor Dunlop, Pinar Yanardag</p>
+
+            <div class="featured-pub-links">
+              <a href="https://arxiv.org/abs/2412.05275" target="_blank" rel="noopener">Paper</a> <a href="https://motionflow-diffusion.github.io" target="_blank" rel="noopener">Project Page</a>
+            </div>
+        </div>
+      </article>
+      <article class="featured-pub-card">
+        <figure class="featured-pub-image">
+          <a class="featured-pub-image-frame" href="https://arxiv.org/abs/2403.19776" target="_blank" rel="noopener">
+            <img src="/images/publications/clora.png" onerror="this.style.display='none'; this.parentElement.classList.add('featured-pub-image-frame--empty');" alt="CLoRA: A Contrastive Approach to Compose Multiple LoRA Models" />
+          </a>
+        </figure>
+
+        <div class="featured-pub-content">
+          <h3>
+            <a href="https://arxiv.org/abs/2403.19776" target="_blank" rel="noopener">CLoRA: A Contrastive Approach to Compose Multiple LoRA Models</a>
+          </h3>
+          <p class="featured-pub-venue">
+            ICCV 2025 (Highlight) &middot; 2025
+          </p>
+          <p class="featured-pub-authors"><strong>Tuna Han Salih Meral</strong><sup>*</sup>, Enis Simsar<sup>*</sup>, Federico Tombari, Pinar Yanardag</p>
+
+            <div class="featured-pub-links">
+              <a href="https://arxiv.org/abs/2403.19776" target="_blank" rel="noopener">Paper</a> <a href="https://clora-diffusion.github.io" target="_blank" rel="noopener">Project Page</a> <a href="https://github.com/gemlab-vt/clora" target="_blank" rel="noopener">Code</a>
+            </div>
+        </div>
+      </article>
+      <article class="featured-pub-card">
+        <figure class="featured-pub-image">
+          <a class="featured-pub-image-frame" href="https://arxiv.org/abs/2312.06059" target="_blank" rel="noopener">
+            <img src="/images/publications/conform.png" onerror="this.style.display='none'; this.parentElement.classList.add('featured-pub-image-frame--empty');" alt="CONFORM: Contrast is All You Need for High-Fidelity Text-to-Image Diffusion Models" />
+          </a>
+        </figure>
+
+        <div class="featured-pub-content">
+          <h3>
+            <a href="https://arxiv.org/abs/2312.06059" target="_blank" rel="noopener">CONFORM: Contrast is All You Need for High-Fidelity Text-to-Image Diffusion Models</a>
+          </h3>
+          <p class="featured-pub-venue">
+            CVPR 2024 &middot; 2024
           </p>
           <p class="featured-pub-authors"><strong>Tuna Han Salih Meral</strong>, Enis Simsar, Federico Tombari, Pinar Yanardag</p>
 
-          
             <div class="featured-pub-links">
-              
-                <a href="https://arxiv.org/abs/2312.06059" target="_blank" rel="noopener">Paper</a>
-              
-                <a href="https://conform-diffusion.github.io" target="_blank" rel="noopener">Project Page</a>
-              
-                <a href="https://github.com/gemlab-vt/CONFORM" target="_blank" rel="noopener">Code</a>
-              
+              <a href="https://arxiv.org/abs/2312.06059" target="_blank" rel="noopener">Paper</a> <a href="https://conform-diffusion.github.io" target="_blank" rel="noopener">Project Page</a> <a href="https://github.com/gemlab-vt/CONFORM" target="_blank" rel="noopener">Code</a>
             </div>
-          
         </div>
       </article>
-    
   </div>
 
   <p class="view-all-pubs">
     <a href="/publications/" class="view-all-link">View all publications</a>
   </p>
 </section>
-
 
       </div>
     </article>
@@ -483,11 +332,8 @@
   <div class="footer-wrap">
     <footer>
       <span>&copy; 2026 Tuna Meral.</span>
-
     </footer>
   </div>
-
-  <!-- Pure static site: no client-side runtime scripts required -->
 
 <script src="https://www.w3counter.com/tracker.js?id=135831" async></script>
 </body>

@@ -1,0 +1,337 @@
+[
+  {
+    "date": "Sep 2026",
+    "year": 2026,
+    "type": "milestone",
+    "content": "I am officially on the job market! Completing my Ph.D. in Spring 2027 and actively seeking full-time Research Scientist/Engineer roles in generative AI, video and image generation, and foundation models.",
+    "links": [
+      {
+        "text": "Resume",
+        "url": "/resume/"
+      }
+    ]
+  },
+  {
+    "date": "Aug 2026",
+    "year": 2026,
+    "type": "internship",
+    "content": "Completed a research internship at Waymo working on open-vocabulary 3D perception.",
+    "links": []
+  },
+  {
+    "date": "May 2026",
+    "year": 2026,
+    "type": "milestone",
+    "content": "Selected as an Outstanding Reviewer at CVPR 2026.",
+    "links": []
+  },
+  {
+    "date": "May 2026",
+    "year": 2026,
+    "type": "publication",
+    "content": "Released the <em>Aligning Latent Geometry for Spherical Flow Matching in Image Generation</em> preprint on arXiv.",
+    "links": [
+      {
+        "text": "Paper",
+        "url": "https://arxiv.org/abs/2605.15193"
+      },
+      {
+        "text": "Project Page",
+        "url": "https://aligning-latent-geometry.github.io"
+      }
+    ]
+  },
+  {
+    "date": "May 2026",
+    "year": 2026,
+    "type": "internship",
+    "content": "Started a research internship at Waymo.",
+    "links": []
+  },
+  {
+    "date": "Feb 2026",
+    "year": 2026,
+    "type": "milestone",
+    "content": "Passed the Ph.D. preliminary exam and advanced to candidacy. Dissertation: <em>Representation Steering as a Control Surface for Generative Foundation Models</em>.",
+    "links": []
+  },
+  {
+    "date": "Feb 2026",
+    "year": 2026,
+    "type": "publication",
+    "content": "Infinity-RoPE was accepted to CVPR 2026.",
+    "links": [
+      {
+        "text": "Paper",
+        "url": "https://arxiv.org/abs/2511.20649"
+      },
+      {
+        "text": "Project Page",
+        "url": "https://infinity-rope.github.io"
+      }
+    ]
+  },
+  {
+    "date": "Dec 2025",
+    "year": 2025,
+    "type": "milestone",
+    "content": "The CVPR 2026 Personalization in Generative AI (P13N) workshop proposal was accepted in December. This is the second workshop edition.",
+    "links": [
+      {
+        "text": "Website",
+        "url": "https://p13n-workshop.github.io/"
+      }
+    ]
+  },
+  {
+    "date": "Nov 2025",
+    "year": 2025,
+    "type": "publication",
+    "content": "Released the Infinity-RoPE preprint on arXiv.",
+    "links": [
+      {
+        "text": "Paper",
+        "url": "https://arxiv.org/abs/2511.20649"
+      },
+      {
+        "text": "Project Page",
+        "url": "https://infinity-rope.github.io"
+      }
+    ]
+  },
+  {
+    "date": "Nov 2025",
+    "year": 2025,
+    "type": "publication",
+    "content": "MotionFlow was accepted to AAAI 2026 (Main Technical Track).",
+    "links": [
+      {
+        "text": "Paper",
+        "url": "https://arxiv.org/abs/2412.05275"
+      },
+      {
+        "text": "Project Page",
+        "url": "https://motionflow-diffusion.github.io"
+      }
+    ]
+  },
+  {
+    "date": "Aug 2025",
+    "year": 2025,
+    "type": "grant",
+    "content": "Received the FAL Fellowship for Fall 2025-Spring 2026 to support research on controllable and efficient vision generation.",
+    "links": [
+      {
+        "text": "FAL Fellowship",
+        "url": "https://fal.ai"
+      }
+    ]
+  },
+  {
+    "date": "Aug 2025",
+    "year": 2025,
+    "type": "milestone",
+    "content": "Selected as a finalist for the Qualcomm Innovation Fellowship.",
+    "links": [
+      {
+        "text": "Finalists",
+        "url": "https://www.qualcomm.com/research/university-relations/innovation-fellowship/finalists"
+      }
+    ]
+  },
+  {
+    "date": "Jul 2025",
+    "year": 2025,
+    "type": "publication",
+    "content": "CLoRA was selected as a Highlight Paper at ICCV 2025.",
+    "links": [
+      {
+        "text": "Paper",
+        "url": "https://arxiv.org/abs/2403.19776"
+      }
+    ]
+  },
+  {
+    "date": "Jun 2025",
+    "year": 2025,
+    "type": "publication",
+    "content": "CLoRA was accepted to ICCV 2025.",
+    "links": [
+      {
+        "text": "Paper",
+        "url": "https://arxiv.org/abs/2403.19776"
+      }
+    ]
+  },
+  {
+    "date": "May 2025",
+    "year": 2025,
+    "type": "milestone",
+    "content": "Started at Amazon AGI Foundations as an Applied Scientist Intern in San Francisco, working on video foundation models.",
+    "links": []
+  },
+  {
+    "date": "May 2025",
+    "year": 2025,
+    "type": "publication",
+    "content": "ConceptAttention received the Best Paper Award at the 2nd Workshop on Visual Concepts (CVPR 2025).",
+    "links": [
+      {
+        "text": "Paper",
+        "url": "https://arxiv.org/pdf/2502.04320"
+      }
+    ]
+  },
+  {
+    "date": "May 2025",
+    "year": 2025,
+    "type": "publication",
+    "content": "ConceptAttention was accepted to ICML 2025 as an Oral.",
+    "links": [
+      {
+        "text": "Paper",
+        "url": "https://arxiv.org/pdf/2502.04320"
+      }
+    ]
+  },
+  {
+    "date": "Apr 2025",
+    "year": 2025,
+    "type": "milestone",
+    "content": "The ICCV 2025 Personalization in Generative AI workshop proposal was accepted.",
+    "links": [
+      {
+        "text": "Website",
+        "url": "https://p13n-workshop.github.io/"
+      }
+    ]
+  },
+  {
+    "date": "Feb 2025",
+    "year": 2025,
+    "type": "publication",
+    "content": "Released the ConceptAttention preprint on arXiv.",
+    "links": [
+      {
+        "text": "Paper",
+        "url": "https://arxiv.org/pdf/2502.04320"
+      }
+    ]
+  },
+  {
+    "date": "Nov 2024",
+    "year": 2024,
+    "type": "publication",
+    "content": "Released the MotionFlow preprint on arXiv.",
+    "links": [
+      {
+        "text": "Project Page",
+        "url": "https://motionflow-diffusion.github.io"
+      }
+    ]
+  },
+  {
+    "date": "Nov 2024",
+    "year": 2024,
+    "type": "publication",
+    "content": "Released the MotionShop preprint on arXiv.",
+    "links": [
+      {
+        "text": "Project Page",
+        "url": "https://motionshop-diffusion.github.io"
+      }
+    ]
+  },
+  {
+    "date": "Oct 2024",
+    "year": 2024,
+    "type": "grant",
+    "content": "Received a Deloitte research grant at Virginia Tech for mechanistic interpretability research on large language models.",
+    "links": []
+  },
+  {
+    "date": "Oct 2024",
+    "year": 2024,
+    "type": "internship",
+    "content": "Completed a research internship at Adobe, focusing on instruction-based video editing with diffusion transformers.",
+    "links": []
+  },
+  {
+    "date": "Jun 2024",
+    "year": 2024,
+    "type": "internship",
+    "content": "Started a Summer 2024 research internship at Adobe.",
+    "links": []
+  },
+  {
+    "date": "Jun 2024",
+    "year": 2024,
+    "type": "publication",
+    "content": "Conditional Information Gain Trellis was accepted to Pattern Recognition Letters.",
+    "links": [
+      {
+        "text": "Paper",
+        "url": "https://www.sciencedirect.com/science/article/pii/S0167865524001880"
+      }
+    ]
+  },
+  {
+    "date": "May 2024",
+    "year": 2024,
+    "type": "publication",
+    "content": "CONFORM was accepted to CVPR 2024.",
+    "links": [
+      {
+        "text": "Project Page",
+        "url": "https://conform-diffusion.github.io"
+      }
+    ]
+  },
+  {
+    "date": "Mar 2024",
+    "year": 2024,
+    "type": "publication",
+    "content": "Released the CLoRA preprint on arXiv.",
+    "links": [
+      {
+        "text": "Project Page",
+        "url": "https://clora-diffusion.github.io"
+      }
+    ]
+  },
+  {
+    "date": "Jan 2024",
+    "year": 2024,
+    "type": "milestone",
+    "content": "Open-sourced the code for CONFORM.",
+    "links": [
+      {
+        "text": "Code",
+        "url": "https://github.com/tunahansalih/CONFORM"
+      },
+      {
+        "text": "Project Page",
+        "url": "https://conform-diffusion.github.io"
+      }
+    ]
+  },
+  {
+    "date": "Dec 2023",
+    "year": 2023,
+    "type": "publication",
+    "content": "Released the CONFORM preprint on arXiv.",
+    "links": [
+      {
+        "text": "Project Page",
+        "url": "https://conform-diffusion.github.io"
+      }
+    ]
+  },
+  {
+    "date": "Aug 2023",
+    "year": 2023,
+    "type": "milestone",
+    "content": "Started the Ph.D. in Computer Science at Virginia Tech, advised by Pinar Yanardag.",
+    "links": []
+  }
+]
