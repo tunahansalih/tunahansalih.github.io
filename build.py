@@ -288,6 +288,18 @@ def build():
 
     for p in pages:
         page_body = open(PAGES_DIR / p["template"], "r", encoding="utf-8").read()
+
+        # Guard: Strip accidental full-page wrapper tags if pasted into page templates
+        if "<header" in page_body or "<footer" in page_body or "<body" in page_body:
+            # Extract content from inside .article-wrap if present, or strip header/footer
+            m_wrap = re.search(r'<div class="article-wrap">(.*?)</div>\s*</article>', page_body, re.DOTALL)
+            if m_wrap:
+                page_body = m_wrap.group(1).strip()
+            else:
+                page_body = re.sub(r'<header.*?</header>', '', page_body, flags=re.DOTALL)
+                page_body = re.sub(r'<footer.*?</footer>', '', page_body, flags=re.DOTALL)
+                page_body = re.sub(r'<head.*?</head>', '', page_body, flags=re.DOTALL)
+
         for placeholder, value in p["substitutions"].items():
             page_body = page_body.replace(placeholder, value)
 
