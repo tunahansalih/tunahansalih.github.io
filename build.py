@@ -303,6 +303,8 @@ def build():
         for placeholder, value in p["substitutions"].items():
             page_body = page_body.replace(placeholder, value)
 
+        page_body = page_body.replace("{{resume_pdf}}", profile.get("resume_pdf", "#"))
+
         html = base_template
         html = html.replace("{{title}}", p["title"])
         html = html.replace("{{page_description}}", p["page_description"])
