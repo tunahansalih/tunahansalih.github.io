@@ -1,0 +1,770 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Publications &#8211; Tuna Meral</title>
+  <meta name="description" content="Publications and preprints in generative vision models, video diffusion, and mechanistic interpretability by Tuna Meral.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://tmeral.com/publications/">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Publications &#8211; Tuna Meral">
+  <meta property="og:description" content="Publications and preprints in generative vision models, video diffusion, and mechanistic interpretability by Tuna Meral.">
+  <meta property="og:url" content="https://tmeral.com/publications/">
+  <meta property="og:site_name" content="Tuna Meral">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Publications &#8211; Tuna Meral">
+  <meta name="twitter:description" content="Publications and preprints in generative vision models, video diffusion, and mechanistic interpretability by Tuna Meral.">
+  <meta name="twitter:site" content="@tunahansalih">
+
+  <!-- Icons and Styles -->
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="shortcut icon" href="/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body class="page">
+
+  <header class="main-header academic-header">
+  <div class="navigation-wrapper">
+    <div class="site-name">
+      <a href="/" class="site-mark" aria-label="Tuna Meral">
+        <img src="/favicon.png" alt="" aria-hidden="true">
+      </a>
+    </div>
+
+    <div class="nav-controls">
+      <nav role="navigation" class="site-nav" aria-label="Main navigation">
+        <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <ul id="nav-menu" class="nav-menu">
+          
+            
+            
+            
+            <li class="nav-item">
+              <a href="/"  class="nav-link">
+                Home
+              </a>
+            </li>
+          
+            
+            
+            
+            <li class="nav-item active">
+              <a href="/publications/"  class="nav-link">
+                Publications
+              </a>
+            </li>
+          
+            
+            
+            
+            <li class="nav-item">
+              <a href="/news/"  class="nav-link">
+                News
+              </a>
+            </li>
+          
+            
+            
+            
+            <li class="nav-item">
+              <a href="/resume/"  class="nav-link">
+                Resume
+              </a>
+            </li>
+          
+        </ul>
+      </nav>
+
+    </div>
+  </div>
+  <div class="header-separator"></div>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', function () {
+        const isOpen = navMenu.classList.toggle('active');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      document.addEventListener('click', function (event) {
+        if (!event.target.closest('.site-nav') && navMenu.classList.contains('active')) {
+          navMenu.classList.remove('active');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          navMenu.classList.remove('active');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+  });
+</script>
+
+
+  <div id="main" role="main">
+    <div class="article-author-side">
+      
+
+<aside class="academic-author-card profile-card">
+  <div class="profile-card__photo-wrap">
+    <img src="/images/bio-avatar.jpg" class="academic-bio-photo profile-card__photo"
+      alt="Tuna Meral portrait">
+  </div>
+
+  <h3 class="academic-author-name profile-card__name">Tuna Meral</h3>
+  <p class="profile-card__role">Ph.D. Candidate</p>
+  <p class="profile-card__affiliation">Virginia Tech &bull; Computer Science</p>
+
+  <div class="social-icons profile-card__social">
+    <a href="https://scholar.google.com/citations?user=5ZAhf5IAAAAJ" class="author-social" title="Google Scholar" aria-label="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+    <a href="https://github.com/tunahansalih" class="author-social" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://linkedin.com/in/tmeral" class="author-social" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <a href="mailto:mail@tmeral.com" class="author-social" title="Email" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    <a href="https://twitter.com/tunahansalih" class="author-social" title="Twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    
+  </div>
+</aside>
+
+      
+    </div>
+    <article class="page">
+      
+        <h1>Publications</h1>
+      
+      <div class="article-wrap">
+        <p>Papers and preprints, ordered from most recent to earliest.</p>
+
+<section id="publications" class="academic-publications-list">
+  <div class="academic-publications-container">
+    
+    
+
+    
+      
+      
+      
+      <article class="academic-publication">
+        
+        <h3 class="publication-title-academic">
+          <span class="publication-year">2026</span>
+          
+            <a href="https://arxiv.org/abs/2605.15193" target="_blank" rel="noopener">Aligning Latent Geometry for Spherical Flow Matching in Image Generation</a>
+          
+        </h3>
+        <p class="publication-venue-academic">arXiv preprint</p>
+        <p class="publication-authors-academic"><strong>Tuna Han Salih Meral</strong>, Kaan Oktay, Hidir Yesiltepe, Adil Kaan Akan, Pinar Yanardag</p>
+        
+          <p class="publication-description-academic">Projects VAE tokens and Gaussian noise onto a fixed-radius shell and trains flow matching along spherical arcs, which reduces FID by up to 50% on standard tokenizers without modifying the diffusion architecture.</p>
+        
+
+        
+          <div class="publication-links-academic">
+            
+              <a href="https://arxiv.org/abs/2605.15193" class="academic-link" target="_blank" rel="noopener">Paper</a>
+            
+              <a href="https://aligning-latent-geometry.github.io" class="academic-link" target="_blank" rel="noopener">Project Page</a>
+            
+          </div>
+        
+
+        
+          <div class="citation-actions">
+            <button type="button" class="academic-link citation-toggle" onclick="toggleCitation('citation-1')">BibTeX</button>
+            <button type="button" class="academic-link copy-citation" onclick="copyCitation('citation-1', this)">Copy BibTeX</button>
+          </div>
+
+          <div id="citation-1" class="citation-text-academic" hidden="">
+            <pre>@article{meral2026aligning,
+  title={Aligning Latent Geometry for Spherical Flow Matching in Image Generation},
+  author={Meral, Tuna Han Salih and Oktay, Kaan and Yesiltepe, Hidir and Akan, Adil Kaan and Yanardag, Pinar},
+  journal={arXiv preprint arXiv:2605.15193},
+  year={2026}
+}
+</pre>
+          </div>
+        
+      </article>
+    
+      
+      
+      
+      <article class="academic-publication">
+        
+        <h3 class="publication-title-academic">
+          <span class="publication-year">2026</span>
+          
+            <a href="https://arxiv.org/abs/2605.30351" target="_blank" rel="noopener">VideoMLA: Low-Rank Latent KV Cache for Minute-Scale Autoregressive Video Diffusion</a>
+          
+        </h3>
+        <p class="publication-venue-academic">arXiv preprint</p>
+        <p class="publication-authors-academic">Hidir Yesiltepe, Jiazhen Hu, <strong>Tuna Han Salih Meral</strong>, Adil Kaan Akan, Kaan Oktay, Hoda Eldardiry, Pinar Yanardag</p>
+        
+          <p class="publication-description-academic">Introduces Multi-Head Latent Attention for autoregressive video diffusion to reduce KV-cache memory by 92.7% through shared low-rank representations on minute-scale long-horizon generation.</p>
+        
+
+        
+          <div class="publication-links-academic">
+            
+              <a href="https://arxiv.org/abs/2605.30351" class="academic-link" target="_blank" rel="noopener">Paper</a>
+            
+          </div>
+        
+
+        
+          <div class="citation-actions">
+            <button type="button" class="academic-link citation-toggle" onclick="toggleCitation('citation-2')">BibTeX</button>
+            <button type="button" class="academic-link copy-citation" onclick="copyCitation('citation-2', this)">Copy BibTeX</button>
+          </div>
+
+          <div id="citation-2" class="citation-text-academic" hidden="">
+            <pre>@article{yesiltepe2026videomla,
+  title={VideoMLA: Low-Rank Latent KV Cache for Minute-Scale Autoregressive Video Diffusion},
+  author={Yesiltepe, Hidir and Hu, Jiazhen and Meral, Tuna Han Salih and Akan, Adil Kaan and Oktay, Kaan and Eldardiry, Hoda and Yanardag, Pinar},
+  journal={arXiv preprint arXiv:2605.30351},
+  year={2026}
+}
+</pre>
+          </div>
+        
+      </article>
+    
+      
+      
+      
+      <article class="academic-publication">
+        
+        <h3 class="publication-title-academic">
+          <span class="publication-year">2026</span>
+          
+            <a href="https://arxiv.org/abs/2511.20649" target="_blank" rel="noopener">Infinity-RoPE: Action-Controllable Infinite Video Generation Emerges from Autoregressive Self-Rollout</a>
+          
+        </h3>
+        <p class="publication-venue-academic">CVPR 2026</p>
+        <p class="publication-authors-academic">Hidir Yesiltepe, <strong>Tuna Han Salih Meral</strong>, Adil Kaan Akan, Kaan Oktay, Pinar Yanardag</p>
+        
+          <p class="publication-description-academic">Infinity-RoPE provides plug-and-play inference strategies for long-horizon video generation with action control and scene transitions.</p>
+        
+
+        
+          <div class="publication-links-academic">
+            
+              <a href="https://arxiv.org/abs/2511.20649" class="academic-link" target="_blank" rel="noopener">Paper</a>
+            
+              <a href="https://infinity-rope.github.io" class="academic-link" target="_blank" rel="noopener">Project Page</a>
+            
+          </div>
+        
+
+        
+          <div class="citation-actions">
+            <button type="button" class="academic-link citation-toggle" onclick="toggleCitation('citation-3')">BibTeX</button>
+            <button type="button" class="academic-link copy-citation" onclick="copyCitation('citation-3', this)">Copy BibTeX</button>
+          </div>
+
+          <div id="citation-3" class="citation-text-academic" hidden="">
+            <pre>@article{yesiltepe2025infinityrope,
+  title={Infinity-RoPE: Action-Controllable Infinite Video Generation Emerges From Autoregressive Self-Rollout},
+  author={Yesiltepe, Hidir and Meral, Tuna Han Salih and Akan, Adil Kaan and Oktay, Kaan and Yanardag, Pinar},
+  journal={arXiv preprint arXiv:2511.20649},
+  year={2025}
+}
+</pre>
+          </div>
+        
+      </article>
+    
+      
+      
+      
+      <article class="academic-publication">
+        
+        <h3 class="publication-title-academic">
+          <span class="publication-year">2025</span>
+          
+            <a href="https://arxiv.org/abs/2502.04320" target="_blank" rel="noopener">ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features</a>
+          
+        </h3>
+        <p class="publication-venue-academic">ICML 2025 (Oral)</p>
+        <p class="publication-authors-academic">Alec Helbling, <strong>Tuna Han Salih Meral</strong>, Ben Hoover, Pinar Yanardag, Duen Horng Chau</p>
+        
+          <p class="publication-description-academic">ConceptAttention reuses DiT attention parameters to produce contextualized concept embeddings and sharper saliency maps without extra training.</p>
+        
+
+        
+          <div class="publication-links-academic">
+            
+              <a href="https://arxiv.org/abs/2502.04320" class="academic-link" target="_blank" rel="noopener">Paper</a>
+            
+              <a href="https://huggingface.co/spaces/helblazer811/ConceptAttention" class="academic-link" target="_blank" rel="noopener">HF Space</a>
+            
+              <a href="https://github.com/helblazer811/ConceptAttention" class="academic-link" target="_blank" rel="noopener">Code</a>
+            
+          </div>
+        
+
+        
+          <div class="citation-actions">
+            <button type="button" class="academic-link citation-toggle" onclick="toggleCitation('citation-4')">BibTeX</button>
+            <button type="button" class="academic-link copy-citation" onclick="copyCitation('citation-4', this)">Copy BibTeX</button>
+          </div>
+
+          <div id="citation-4" class="citation-text-academic" hidden="">
+            <pre>@inproceedings{helbling2025conceptattention,
+  title={ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features},
+  author={Helbling, Alec and Meral, Tuna Han Salih and Hoover, Benjamin and Yanardag, Pinar and Chau, Duen Horng},
+  booktitle={International Conference on Machine Learning},
+  year={2025}
+}
+</pre>
+          </div>
+        
+      </article>
+    
+      
+      
+      
+      <article class="academic-publication">
+        
+        <h3 class="publication-title-academic">
+          <span class="publication-year">2025</span>
+          
+            SteerCLR: A Contrastive Learning Approach for Unsupervised Discovery of Interpretable Steering Vectors in Large Language Models
+          
+        </h3>
+        <p class="publication-venue-academic">Under review</p>
+        <p class="publication-authors-academic"><strong>Tuna Han Salih Meral</strong>, Connor Dunlop, Sanmitra Bhattacharya, Balaji Veeramani, Stephen Adams, Edward Bowen, Pinar Yanardag</p>
+        
+          <p class="publication-description-academic">SteerCLR discovers interpretable steering vectors for controlling implicit LLM behaviors by learning contrastive representations of internal activations.</p>
+        
+
+        
+
+        
+      </article>
+    
+      
+      
+      
+      <article class="academic-publication">
+        
+        <h3 class="publication-title-academic">
+          <span class="publication-year">2025</span>
+          
+            <a href="https://openreview.net/pdf?id=EKZV46BGsS" target="_blank" rel="noopener">MITHRIL: Playing Tabletop Games with Generative Policies</a>
+          
+        </h3>
+        <p class="publication-venue-academic">NeurIPS 2025 GenProCC Workshop</p>
+        <p class="publication-authors-academic">Michael Atkins, William Denman, <strong>Tuna Han Salih Meral</strong>, Mustafa Doga Dogan, Pinar Yanardag</p>
+        
+          <p class="publication-description-academic">Workshop paper on generative policies for tabletop gameplay.</p>
+        
+
+        
+          <div class="publication-links-academic">
+            
+              <a href="https://openreview.net/pdf?id=EKZV46BGsS" class="academic-link" target="_blank" rel="noopener">Paper</a>
+            
+          </div>
+        
+
+        
+      </article>
+    
+      
+      
+      
+      <article class="academic-publication">
+        
+        <h3 class="publication-title-academic">
+          <span class="publication-year">2026</span>
+          
+            <a href="https://arxiv.org/abs/2412.05275" target="_blank" rel="noopener">MotionFlow: Attention-Driven Motion Transfer in Video Diffusion Models</a>
+          
+        </h3>
+        <p class="publication-venue-academic">AAAI 2026 (Main Technical Track)</p>
+        <p class="publication-authors-academic"><strong>Tuna Han Salih Meral</strong>, Hidir Yesiltepe, Connor Dunlop, Pinar Yanardag</p>
+        
+          <p class="publication-description-academic">MotionFlow is a training-free, attention-driven method for motion transfer in video diffusion models.</p>
+        
+
+        
+          <div class="publication-links-academic">
+            
+              <a href="https://arxiv.org/abs/2412.05275" class="academic-link" target="_blank" rel="noopener">Paper</a>
+            
+              <a href="https://motionflow-diffusion.github.io" class="academic-link" target="_blank" rel="noopener">Project Page</a>
+            
+          </div>
+        
+
+        
+          <div class="citation-actions">
+            <button type="button" class="academic-link citation-toggle" onclick="toggleCitation('citation-7')">BibTeX</button>
+            <button type="button" class="academic-link copy-citation" onclick="copyCitation('citation-7', this)">Copy BibTeX</button>
+          </div>
+
+          <div id="citation-7" class="citation-text-academic" hidden="">
+            <pre>@article{meral2024motionflow,
+  title={MotionFlow: Attention-Driven Motion Transfer in Video Diffusion Models},
+  author={Meral, Tuna Han Salih and Yesiltepe, Hidir and Dunlop, Connor and Yanardag, Pinar},
+  journal={arXiv preprint arXiv:2412.05275},
+  year={2024}
+}
+</pre>
+          </div>
+        
+      </article>
+    
+      
+      
+      
+      <article class="academic-publication">
+        
+        <h3 class="publication-title-academic">
+          <span class="publication-year">2024</span>
+          
+            <a href="https://arxiv.org/abs/2412.05355" target="_blank" rel="noopener">MotionShop: Zero-Shot Motion Transfer in Video Diffusion Models with Mixture of Score Guidance</a>
+          
+        </h3>
+        <p class="publication-venue-academic">Preprint</p>
+        <p class="publication-authors-academic">Hidir Yesiltepe, <strong>Tuna Han Salih Meral</strong>, Connor Dunlop, Pinar Yanardag</p>
+        
+          <p class="publication-description-academic">MotionShop proposes Mixture of Score Guidance (MSG), a method for motion transfer in video diffusion models.</p>
+        
+
+        
+          <div class="publication-links-academic">
+            
+              <a href="https://arxiv.org/abs/2412.05355" class="academic-link" target="_blank" rel="noopener">Paper</a>
+            
+              <a href="https://github.com/gemlab-vt/MotionShop" class="academic-link" target="_blank" rel="noopener">Code</a>
+            
+          </div>
+        
+
+        
+          <div class="citation-actions">
+            <button type="button" class="academic-link citation-toggle" onclick="toggleCitation('citation-8')">BibTeX</button>
+            <button type="button" class="academic-link copy-citation" onclick="copyCitation('citation-8', this)">Copy BibTeX</button>
+          </div>
+
+          <div id="citation-8" class="citation-text-academic" hidden="">
+            <pre>@article{yesiltepe2024motionshop,
+  title={MotionShop: Zero-Shot Motion Transfer in Video Diffusion Models with Mixture of Score Guidance},
+  author={Yesiltepe, Hidir and Meral, Tuna Han Salih and Dunlop, Connor and Yanardag, Pinar},
+  journal={arXiv preprint arXiv:2412.05355},
+  year={2024}
+}
+</pre>
+          </div>
+        
+      </article>
+    
+      
+      
+      
+      <article class="academic-publication">
+        
+        <h3 class="publication-title-academic">
+          <span class="publication-year">2024</span>
+          
+            <a href="https://www.sciencedirect.com/science/article/pii/S0167865524001880" target="_blank" rel="noopener">Conditional Information Gain Trellis</a>
+          
+        </h3>
+        <p class="publication-venue-academic">Pattern Recognition Letters</p>
+        <p class="publication-authors-academic">Ufuk Can Bicici, <strong>Tuna Han Salih Meral</strong>, Lale Akarun</p>
+        
+          <p class="publication-description-academic">Conditional Information Gain Trellis (CIGT) learns differentiable routing paths in deep convolutional networks to improve efficiency and interpretability.</p>
+        
+
+        
+          <div class="publication-links-academic">
+            
+              <a href="https://www.sciencedirect.com/science/article/pii/S0167865524001880" class="academic-link" target="_blank" rel="noopener">Paper</a>
+            
+          </div>
+        
+
+        
+          <div class="citation-actions">
+            <button type="button" class="academic-link citation-toggle" onclick="toggleCitation('citation-9')">BibTeX</button>
+            <button type="button" class="academic-link copy-citation" onclick="copyCitation('citation-9', this)">Copy BibTeX</button>
+          </div>
+
+          <div id="citation-9" class="citation-text-academic" hidden="">
+            <pre>@article{bicici2024conditional,
+  title={Conditional Information Gain Trellis},
+  author={Bicici, Ufuk Can and Meral, Tuna Han Salih and Akarun, Lale},
+  journal={Pattern Recognition Letters},
+  volume={184},
+  pages={212--218},
+  year={2024},
+  publisher={Elsevier}
+}
+</pre>
+          </div>
+        
+      </article>
+    
+      
+      
+      
+      <article class="academic-publication">
+        
+        <h3 class="publication-title-academic">
+          <span class="publication-year">2025</span>
+          
+            <a href="https://arxiv.org/abs/2403.19776" target="_blank" rel="noopener">CLoRA: A Contrastive Approach to Compose Multiple LoRA Models</a>
+          
+        </h3>
+        <p class="publication-venue-academic">ICCV 2025 (Highlight)</p>
+        <p class="publication-authors-academic"><strong>Tuna Han Salih Meral</strong><sup>*</sup>, Enis Simsar<sup>*</sup>, Federico Tombari, Pinar Yanardag</p>
+        
+          <p class="publication-description-academic">CLoRA composes multiple concept and style LoRAs at test time using a contrastive objective. <sup>*</sup> denotes equal contribution.</p>
+        
+
+        
+          <div class="publication-links-academic">
+            
+              <a href="https://arxiv.org/abs/2403.19776" class="academic-link" target="_blank" rel="noopener">Paper</a>
+            
+              <a href="https://clora-diffusion.github.io" class="academic-link" target="_blank" rel="noopener">Project Page</a>
+            
+              <a href="https://github.com/gemlab-vt/clora" class="academic-link" target="_blank" rel="noopener">Code</a>
+            
+          </div>
+        
+
+        
+          <div class="citation-actions">
+            <button type="button" class="academic-link citation-toggle" onclick="toggleCitation('citation-10')">BibTeX</button>
+            <button type="button" class="academic-link copy-citation" onclick="copyCitation('citation-10', this)">Copy BibTeX</button>
+          </div>
+
+          <div id="citation-10" class="citation-text-academic" hidden="">
+            <pre>@article{meral2024clora,
+  title={CLoRA: A Contrastive Approach to Compose Multiple LoRA Models},
+  author={Meral, Tuna Han Salih and Simsar, Enis and Tombari, Federico and Yanardag, Pinar},
+  journal={arXiv preprint arXiv:2403.19776},
+  year={2024}
+}
+</pre>
+          </div>
+        
+      </article>
+    
+      
+      
+      
+      <article class="academic-publication">
+        
+        <h3 class="publication-title-academic">
+          <span class="publication-year">2024</span>
+          
+            <a href="https://arxiv.org/abs/2312.06059" target="_blank" rel="noopener">CONFORM: Contrast is All You Need for High-Fidelity Text-to-Image Diffusion Models</a>
+          
+        </h3>
+        <p class="publication-venue-academic">CVPR 2024</p>
+        <p class="publication-authors-academic"><strong>Tuna Han Salih Meral</strong>, Enis Simsar, Federico Tombari, Pinar Yanardag</p>
+        
+          <p class="publication-description-academic">CONFORM improves text-to-image faithfulness with a contrastive objective for stronger object-attribute grounding.</p>
+        
+
+        
+          <div class="publication-links-academic">
+            
+              <a href="https://arxiv.org/abs/2312.06059" class="academic-link" target="_blank" rel="noopener">Paper</a>
+            
+              <a href="https://conform-diffusion.github.io" class="academic-link" target="_blank" rel="noopener">Project Page</a>
+            
+              <a href="https://github.com/gemlab-vt/CONFORM" class="academic-link" target="_blank" rel="noopener">Code</a>
+            
+          </div>
+        
+
+        
+          <div class="citation-actions">
+            <button type="button" class="academic-link citation-toggle" onclick="toggleCitation('citation-11')">BibTeX</button>
+            <button type="button" class="academic-link copy-citation" onclick="copyCitation('citation-11', this)">Copy BibTeX</button>
+          </div>
+
+          <div id="citation-11" class="citation-text-academic" hidden="">
+            <pre>@inproceedings{meral2024conform,
+  title={CONFORM: Contrast is All You Need for High-Fidelity Text-to-Image Diffusion Models},
+  author={Meral, Tuna Han Salih and Simsar, Enis and Tombari, Federico and Yanardag, Pinar},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={9005--9014},
+  year={2024}
+}
+</pre>
+          </div>
+        
+      </article>
+    
+      
+        
+        <h3 class="publications-section-divider">Earlier Work</h3>
+      
+      
+      
+      <article class="academic-publication">
+        
+        <h3 class="publication-title-academic">
+          <span class="publication-year">2022</span>
+          
+            Unsupervised Routing Strategies for Conditional Deep Neural Networks
+          
+        </h3>
+        <p class="publication-venue-academic">M.S. Thesis, Bogazici University</p>
+        <p class="publication-authors-academic"><strong>Tuna Han Salih Meral</strong></p>
+        
+          <p class="publication-description-academic">Master's thesis on routing strategies for conditional deep neural networks.</p>
+        
+
+        
+
+        
+      </article>
+    
+      
+      
+      
+      <article class="academic-publication">
+        
+        <h3 class="publication-title-academic">
+          <span class="publication-year">2020</span>
+          
+            BURST: Software and Simulation Solutions of an Autonomous Vehicle
+          
+        </h3>
+        <p class="publication-venue-academic">SIU 2020</p>
+        <p class="publication-authors-academic">Fatih Kose, Ibrahim Ozcan, Melih Dal, Metehan Yildirim, Kadir Turksoy, Kerem Zaman, <strong>Tuna Han Salih Meral</strong>, Sinan Oncu</p>
+        
+          <p class="publication-description-academic">Software and simulation framework contributions for autonomous vehicle development.</p>
+        
+
+        
+
+        
+      </article>
+    
+      
+      
+      
+      <article class="academic-publication">
+        
+        <h3 class="publication-title-academic">
+          <span class="publication-year">2018</span>
+          
+            Privacy-Preserving Intersection Management for Autonomous Vehicles
+          
+        </h3>
+        <p class="publication-venue-academic">International Workshop on Agents in Traffic and Transportation (ATT 2018)</p>
+        <p class="publication-authors-academic">Nadin Kokciyan, Mustafa Erdogan, <strong>Tuna Han Salih Meral</strong>, Pinar Yolum</p>
+        
+          <p class="publication-description-academic">Approaches for privacy-aware autonomous vehicle coordination at intersections.</p>
+        
+
+        
+
+        
+      </article>
+    
+  </div>
+</section>
+
+<script>
+  function toggleCitation(id) {
+    const citation = document.getElementById(id);
+    if (!citation) {
+      return;
+    }
+    citation.hidden = !citation.hidden;
+  }
+
+  function copyCitation(id, button) {
+    const citation = document.getElementById(id);
+    if (!citation) {
+      return;
+    }
+
+    const content = citation.querySelector('pre');
+    if (!content) {
+      return;
+    }
+
+    const text = content.textContent;
+    const resetLabel = button.textContent;
+
+    function setSuccess() {
+      button.textContent = 'Copied';
+      setTimeout(function () {
+        button.textContent = resetLabel;
+      }, 1500);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(setSuccess).catch(function () {
+        // Fall through to legacy copy path when clipboard permission is denied.
+        const tempFallback = document.createElement('textarea');
+        tempFallback.value = text;
+        document.body.appendChild(tempFallback);
+        tempFallback.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempFallback);
+        setSuccess();
+      });
+      return;
+    }
+
+    const temp = document.createElement('textarea');
+    temp.value = text;
+    document.body.appendChild(temp);
+    temp.select();
+    document.execCommand('copy');
+    document.body.removeChild(temp);
+    setSuccess();
+  }
+</script>
+
+
+      </div>
+    </article>
+  </div>
+
+  <div class="footer-wrap">
+    <footer>
+      <span>&copy; 2026 Tuna Meral.</span>
+
+    </footer>
+  </div>
+
+  <!-- Pure static site: no client-side runtime scripts required -->
+
+<script src="https://www.w3counter.com/tracker.js?id=135831" async></script>
+</body>
+</html>
