@@ -2,6 +2,18 @@
   {
     "date": "Sep 2026",
     "year": 2026,
+    "type": "publication",
+    "content": "VideoMLA was accepted to NeurIPS 2026.",
+    "links": [
+      {
+        "text": "Paper",
+        "url": "https://arxiv.org/abs/2605.30351"
+      }
+    ]
+  },
+  {
+    "date": "Sep 2026",
+    "year": 2026,
     "type": "milestone",
     "content": "I am officially on the job market! Completing my Ph.D. in Spring 2027 and actively seeking full-time Research Scientist/Engineer roles in generative AI, video and image generation, and foundation models.",
     "links": [
