@@ -1066,6 +1066,12 @@ article.page ol {
   margin: 0;
 }
 
+.featured-pub-note {
+  margin: 0.15rem 0 0;
+  font-size: 0.85rem;
+  color: var(--muted, inherit);
+}
+
 .featured-pub-authors {
   margin-top: 0.2rem;
   font-size: 0.96rem;

@@ -2,10 +2,10 @@
           <p><a href="{{resume_pdf}}" class="download-button" target="_blank" rel="noopener"><i class="fas fa-download"></i> Download PDF</a></p>
 
 <h2 id="summary">Summary</h2>
-<p>Ph.D. candidate at Virginia Tech (expected Spring 2027) researching controllable and efficient image and video generation, advised by Prof. Pinar Yanardag. Currently on the job market seeking full-time Research Scientist/Engineer roles in generative AI, video and image generation, and foundation models. Six years of industry ML engineering experience. Owned cloud serving infrastructure for generative models processing over 5M requests daily, deployed personalization pipelines for thousands of daily users, and developed full-stack computer vision training and evaluation platforms from scratch. Publications at CVPR, ICCV (Highlight), ICML (Oral), and AAAI.</p>
+<p>Virginia Tech Ph.D. candidate (May 2027) researching generative models and diffusion, with 5+ years of production ML experience serving 5M+ daily requests. Built models and infrastructure using PyTorch and JAX across research appointments at fal, Amazon, Waymo and Adobe. Currently on the job market seeking full-time Research Scientist/Engineer roles in generative AI, video and image generation, and foundation models. First- and co-author papers at NeurIPS, ICML (Oral), CVPR, ICCV (Highlight) and AAAI.</p>
 
 <h2 id="education">Education</h2>
-<p><code >Aug 2023 - Expected Spring 2027</code>
+<p><code >Aug 2023 - Expected May 2027</code>
 <strong>Virginia Tech, Blacksburg, VA</strong><br />
 Ph.D. in Computer Science, advised by Pinar Yanardag<br />
 <em>Dissertation: Representation Steering as a Control Surface for Generative Foundation Models</em></p>
@@ -21,9 +21,9 @@ B.S. in Computer Engineering</p>
 <h2 id="honors-and-awards">Honors and awards</h2>
 <p><code >2026</code> Outstanding Reviewer, CVPR 2026<br />
 <code >2025</code> Best Paper Award, 2nd Workshop on Visual Concepts at CVPR 2025 (for ConceptAttention)<br />
-<code >2025</code> FAL.AI Research Fellowship<br />
+<code >2025</code> fal Ph.D. Fellowship<br />
 <code >2025</code> Finalist, Qualcomm Innovation Fellowship (competitive national fellowship for graduate research)<br />
-<code >2024</code> Deloitte Research Fellowship, Virginia Tech<br />
+<code >2024</code> Deloitte Ph.D. Fellowship, Virginia Tech<br />
 <code >2020</code> Teknofest Autonomous Vehicle Competition Simulation, winner in 2019 and 2020, finalist in 2019 and 2020<br />
 <code >2018</code> Mercedes-Benz Hackathon, Winner<br />
 <code >2017</code> BSH Analytics for Production Excellence Hackathon, Winner</p>
@@ -37,7 +37,7 @@ B.S. in Computer Engineering</p>
 <strong>Waymo</strong>
 Research Intern, Perception</p>
 <ul>
-  <li>Proposed and implemented a 3D detector for novel object categories using OWLv2 open-vocabulary 2D models and limited 3D annotations.</li>
+  <li>Proposed and implemented a 3D detector for novel object categories, from concept to completion, using OWLv2 open-vocabulary 2D models and limited 3D annotations.</li>
   <li>Built JAX/Flax training and evaluation infrastructure on TPUs for experiments using the Waymo Open Dataset and internal data.</li>
 </ul>
 
@@ -45,8 +45,8 @@ Research Intern, Perception</p>
 <strong>Amazon</strong>
 Applied Scientist Intern, AGI Foundations</p>
 <ul>
-  <li>Developed test-time scaling for next-scale autoregressive image generation that improved image quality without training or fine-tuning.</li>
-  <li>Observed image-quality gains at later generation stages during video-generation experiments, motivating the test-time scaling approach; investigated complementary training-time adaptation.</li>
+  <li>Proposed and developed a training-free test-time scaling method for next-scale prediction-based visual autoregressive models, improving image generation quality without fine-tuning.</li>
+  <li>Analyzed late-stage generation dynamics across video and next-scale visual autoregressive models to guide test-time compute allocation, alongside complementary training-time adaptation.</li>
 </ul>
 
 <p><code >Aug 2023 - Present</code>
@@ -54,10 +54,10 @@ Applied Scientist Intern, AGI Foundations</p>
 Graduate Research Assistant</p>
 <ul>
   <li>Aligned pretrained VAE latent geometry with spherical flow matching through spherical projection and decoder adaptation, which reduced ImageNet-256 FID by 50.3% compared to a matched linear-flow baseline.</li>
-  <li>Developed contrastive attention methods for object-attribute binding (CONFORM, CVPR 2024) and composition of personalized models without additional training (CLoRA, ICCV 2025 Highlight).</li>
-  <li>Contributed to ConceptAttention (ICML 2025 Oral), which outperformed ImageNet-Segmentation baselines using pretrained diffusion-transformer features for training-free zero-shot segmentation.</li>
-  <li>Contributed to VideoMLA’s low-rank KV cache for video diffusion: 92.7% lower per-token cache memory than dense caching and the highest 60-second VBench overall score among tested methods.</li>
-  <li>Contributed to Infinity-RoPE: temporal RoPE re-indexing and KV-cache management for controllable long-form video generation without retraining, demonstrated in ten-minute videos.</li>
+  <li>Designed training-free contrastive attention steering for object-attribute binding (CONFORM, CVPR 2024) and test-time composition of multiple personalized LoRA models (CLoRA, ICCV 2025 Highlight).</li>
+  <li>Developed attention-driven latent trajectory guidance (MotionFlow, AAAI 2026) for training-free zero-shot motion transfer across UNet and DiT video diffusion models.</li>
+  <li>Co-designed autoregressive video diffusion: low-rank KV caching with 92.7% lower per-token memory (VideoMLA, NeurIPS 2026) and RoPE re-indexing for 10-minute videos (Infinity-RoPE, CVPR 2026).</li>
+  <li>Formulated multi-modal DiT attention-space concept representations (ConceptAttention, ICML 2025 Oral), outperforming ImageNet-Segmentation baselines for training-free zero-shot segmentation.</li>
 </ul>
 
 <p><code >May 2024 - Aug 2024</code>
@@ -72,25 +72,25 @@ Research Intern, Firefly Video Generation</p>
 <strong>Lyrebird Studio</strong>
 Machine Learning Engineer</p>
 <ul>
-  <li>Owned model deployment and serving for services handling 5M+ daily requests; partnered with backend engineers to deploy research models behind production APIs.</li>
-  <li>Introduced diffusion models and deployed image generation, inpainting, and editing services.</li>
+  <li>Owned model deployment and serving for services handling 5M+ daily requests; bridged research and backend engineering teams to ship research models into production.</li>
+  <li>Brought diffusion training and inference pipelines into the company, making Lyrebird one of the earliest companies to ship diffusion models in production across generation, inpainting, and editing.</li>
   <li>Built a diffusion personalization service serving thousands of users daily, training custom image-generation models from user-uploaded photos.</li>
-  <li>Built AWS serving infrastructure to queue requests and scale GPU capacity with traffic, using SQS, SNS, Lambda, EC2, and CloudFront.</li>
+  <li>Built AWS serving infrastructure to queue requests and autoscale GPU capacity with traffic, using SQS, SNS, Lambda, EC2, and CloudFront.</li>
 </ul>
 
 <p><code >Aug 2021 - Nov 2022</code>
 <strong>Vispera</strong>
 Machine Learning Engineer</p>
 <ul>
-  <li>Built and owned the Python training and evaluation system, automating routine data extraction, model training, and evaluation previously handled partly manually by researchers.</li>
-  <li>Co-developed the platform’s backend and frontend so customer-success teams could review model performance and launch training on newly annotated data.</li>
+  <li>Automated online and offline training and evaluation pipelines in Python, eliminating manual routine training workflows for the research team.</li>
+  <li>Co-developed a self-serve monitoring dashboard (backend and frontend) enabling customer-success teams to track model metrics and trigger retraining without researcher intervention.</li>
 </ul>
 
 <p><code >Oct 2019 - Aug 2021</code>
 <strong>Vispera</strong>
 Computer Vision Research Engineer</p>
 <ul>
-  <li>Trained object-detection and image-classification models for retail and consumer goods customers; introduced out-of-distribution detection and few-shot recognition techniques.</li>
+  <li>Built few-shot detection and recognition pipelines and out-of-distribution detection for retail customers, cutting annotation time and enabling day-zero customer model onboarding.</li>
 </ul>
 
 <p><code >Aug 2017 - Oct 2019</code>
@@ -101,11 +101,11 @@ Computer Vision Research Engineer</p>
 </ul>
 
 <h2 id="workshops-and-outreach">Workshops and outreach</h2>
-<p><code >Dec 2025</code>
+<p><code >Jun 2026</code>
 <strong>CVPR 2026 Workshop on Personalization in Generative AI (P13N)</strong>
 Organizer</p>
 <ul>
-  <li>Proposal accepted in December 2025 for the second workshop edition.</li>
+  <li>Co-organized the second edition of the CVPR workshop and challenge track on personalization in generative AI.</li>
 </ul>
 
 <p><code >Oct 2025</code>
@@ -127,13 +127,13 @@ Instructor</p>
 <strong>Bogazici University Autonomous Vehicle Team</strong>
 Founder</p>
 <ul>
-  <li>Founded and led Bogazici University’s first R&amp;D team and lab for autonomous vehicle development.</li>
+  <li>Founded BURST, Bogazici University’s autonomous vehicle team. The team built a car from scratch, including the chassis, battery management, control, and perception systems. TEKNOFEST Robotaxi, 2019–2020: simulation competition winner and main competition finalist.</li>
 </ul>
 
 <h2 id="skills">Skills</h2>
-<p><strong>Languages:</strong> Python, TypeScript, JavaScript, Go, SQL<br />
-<strong>ML / DL:</strong> PyTorch, JAX/Flax, Hugging Face Diffusers, Transformers<br />
-<strong>Systems:</strong> Distributed training and inference on GPUs/TPUs, AWS, Docker, Linux, Git, CI/CD<br />
+<p><strong>Modeling:</strong> Diffusion (DiT, UNet), Flow Matching, Visual Autoregressive Models, LoRA, KV-Cache, 3D Vision<br />
+<strong>ML &amp; Code:</strong> PyTorch, JAX/Flax, Hugging Face Diffusers and Transformers, Python, TypeScript, JavaScript<br />
+<strong>Systems:</strong> Distributed GPU/TPU training &amp; inference, AWS (EC2, SQS, SNS, Lambda), Docker, Linux, Git, CI/CD<br />
 <strong>Research Focus:</strong> Controllable generation, flow matching, diffusion models, diffusion transformers, autoregressive video generation, mechanistic interpretability, representation steering, open-vocabulary perception</p>
 
 <h2 id="reviewing">Reviewing</h2>

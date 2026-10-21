@@ -6,6 +6,7 @@ Compiles data/*.json and _templates/ into static HTML files.
 
 import os
 import json
+import re
 import shutil
 from pathlib import Path
 
@@ -89,6 +90,10 @@ def render_featured_publications(publications):
               {" ".join(link_tags)}
             </div>"""
 
+        equal_note = ""
+        if "<sup>*</sup>" in pub["authors"]:
+            equal_note = '\n          <p class="featured-pub-note"><sup>*</sup> denotes equal contribution.</p>'
+
         cards.append(f"""      <article class="featured-pub-card">
         <figure class="featured-pub-image">
           <a class="featured-pub-image-frame" href="{link}" target="_blank" rel="noopener">
@@ -103,7 +108,7 @@ def render_featured_publications(publications):
           <p class="featured-pub-venue">
             {pub['venue']} &middot; {pub['year']}
           </p>
-          <p class="featured-pub-authors">{pub['authors']}</p>
+          <p class="featured-pub-authors">{pub['authors']}</p>{equal_note}
 {links_html}
         </div>
       </article>""")

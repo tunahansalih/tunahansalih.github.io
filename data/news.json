@@ -131,10 +131,10 @@
     "date": "Aug 2025",
     "year": 2025,
     "type": "grant",
-    "content": "Received the FAL Fellowship for Fall 2025-Spring 2026 to support research on controllable and efficient vision generation.",
+    "content": "Received the fal Ph.D. Fellowship for Fall 2025-Spring 2026 to support research on controllable and efficient vision generation.",
     "links": [
       {
-        "text": "FAL Fellowship",
+        "text": "fal Ph.D. Fellowship",
         "url": "https://fal.ai"
       }
     ]
@@ -262,17 +262,10 @@
     "links": []
   },
   {
-    "date": "Oct 2024",
+    "date": "Aug 2024",
     "year": 2024,
     "type": "internship",
     "content": "Completed a research internship at Adobe, focusing on instruction-based video editing with diffusion transformers.",
-    "links": []
-  },
-  {
-    "date": "Jun 2024",
-    "year": 2024,
-    "type": "internship",
-    "content": "Started a Summer 2024 research internship at Adobe.",
     "links": []
   },
   {
@@ -286,6 +279,13 @@
         "url": "https://www.sciencedirect.com/science/article/pii/S0167865524001880"
       }
     ]
+  },
+  {
+    "date": "May 2024",
+    "year": 2024,
+    "type": "internship",
+    "content": "Started a Summer 2024 research internship at Adobe.",
+    "links": []
   },
   {
     "date": "May 2024",
