@@ -1,5 +1,21 @@
 [
   {
+    "id": "pub-15",
+    "title": "RL Post-Training in Diffusion Transformers Is Activation Steering",
+    "year": 2026,
+    "venue": "arXiv preprint",
+    "authors": "<strong>Tuna Han Salih Meral</strong>, Kaan Oktay, Alec Helbling, Atakan Kara, Duen Horng Chau, Pinar Yanardag",
+    "description": "Shows that fixed, input-independent steering vectors added to a frozen diffusion transformer recover 90–96% of the reward gains of six RL-tuned image models, with 65x fewer parameters than the RL-tuned LoRA.",
+    "link": "https://arxiv.org/abs/2611.26627",
+    "links": {
+      "Paper": "https://arxiv.org/abs/2611.26627",
+      "Project Page": "https://rl-is-steering.github.io"
+    },
+    "bibtex": "@article{meral2026rl,\n  title={RL Post-Training in Diffusion Transformers Is Activation Steering},\n  author={Meral, Tuna Han Salih and Oktay, Kaan and Helbling, Alec and Kara, Atakan and Chau, Duen Horng and Yanardag, Pinar},\n  journal={arXiv preprint arXiv:2611.26627},\n  year={2026}\n}",
+    "selected": true,
+    "image": "/images/publications/rl-is-steering.png"
+  },
+  {
     "id": "pub-1",
     "title": "Aligning Latent Geometry for Spherical Flow Matching in Image Generation",
     "year": 2026,
@@ -28,7 +44,7 @@
     },
     "bibtex": "@inproceedings{yesiltepe2026videomla,\n  title={VideoMLA: Low-Rank Latent KV Cache for Minute-Scale Autoregressive Video Diffusion},\n  author={Yesiltepe, Hidir and Hu, Jiazhen and Meral, Tuna Han Salih and Akan, Adil Kaan and Oktay, Kaan and Eldardiry, Hoda and Yanardag, Pinar},\n  booktitle={Advances in Neural Information Processing Systems},\n  year={2026}\n}",
     "selected": true,
-    "image": ""
+    "image": "/images/publications/videomla.png"
   },
   {
     "id": "pub-3",

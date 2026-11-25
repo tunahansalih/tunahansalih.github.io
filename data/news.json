@@ -1,5 +1,21 @@
 [
   {
+    "date": "Nov 2026",
+    "year": 2026,
+    "type": "publication",
+    "content": "Released the <em>RL Post-Training in Diffusion Transformers Is Activation Steering</em> preprint on arXiv.",
+    "links": [
+      {
+        "text": "Paper",
+        "url": "https://arxiv.org/abs/2611.26627"
+      },
+      {
+        "text": "Project Page",
+        "url": "https://rl-is-steering.github.io"
+      }
+    ]
+  },
+  {
     "date": "Sep 2026",
     "year": 2026,
     "type": "publication",
